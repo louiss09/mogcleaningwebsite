@@ -24,9 +24,84 @@ const FAQStack: React.FC<FAQStackProps> = ({
 }) => {
   const stackRef = React.useRef<HTMLDivElement | null>(null);
   const [activeIndex, setActiveIndex] = React.useState(0);
+  const [isHydrated, setIsHydrated] = React.useState(false);
+
+  // Track when we're running in a browser so we can progressively enhance motion
+  React.useEffect(() => {
+    if (typeof window === 'undefined') return;
+    setIsHydrated(true);
+  }, []);
+
+  // Ensure the stack becomes visible when it enters the viewport
+  React.useEffect(() => {
+    if (typeof window === 'undefined' || !isHydrated) return;
+
+    const node = stackRef.current;
+    if (!node) return;
+
+    const cards = Array.from(node.querySelectorAll<HTMLElement>('.motion-child'));
+    let timeouts: number[] = [];
+
+    cards.forEach((card, index) => {
+      card.style.setProperty('--motion-child-index', index.toString());
+    });
+
+    if (!('IntersectionObserver' in window)) {
+      node.classList.add('motion-visible');
+      cards.forEach((card) => {
+        card.classList.add('motion-child-visible');
+      });
+      return;
+    }
+
+    node.classList.add('motion-ready');
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const element = entry.target as HTMLElement;
+          if (entry.isIntersecting) {
+            element.classList.add('motion-visible');
+            if (timeouts.length) {
+              timeouts.forEach((timeoutId) => window.clearTimeout(timeoutId));
+              timeouts = [];
+            }
+            cards.forEach((card, index) => {
+              const timeoutId = window.setTimeout(() => {
+                card.classList.add('motion-child-visible');
+              }, index * 110);
+              timeouts.push(timeoutId);
+            });
+          } else {
+            element.classList.remove('motion-visible');
+            cards.forEach((card) => {
+              card.classList.remove('motion-child-visible');
+            });
+            if (timeouts.length) {
+              timeouts.forEach((timeoutId) => window.clearTimeout(timeoutId));
+              timeouts = [];
+            }
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(node);
+
+    return () => {
+      observer.disconnect();
+      if (timeouts.length) {
+        timeouts.forEach((timeoutId) => window.clearTimeout(timeoutId));
+        timeouts = [];
+      }
+    };
+  }, [isHydrated, items.length]);
 
   // Animate on scroll
   React.useEffect(() => {
+    if (typeof window === 'undefined' || !isHydrated) return;
+
     const node = stackRef.current;
     if (!node) return;
 
@@ -58,7 +133,7 @@ const FAQStack: React.FC<FAQStackProps> = ({
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleScroll);
     };
-  }, [items.length]);
+  }, [isHydrated, items.length]);
 
   // Optional: Clicking a card brings it to the top
   const handleCardClick = (index: number) => {
@@ -70,9 +145,9 @@ const FAQStack: React.FC<FAQStackProps> = ({
   return (
     <div
       ref={stackRef}
-      className={`faq-stack motion-ready ${className}`.trim()}
+      className={`faq-stack ${className}`.trim()}
       data-motion="rise"
-      data-stagger="true"
+      data-motion-stagger="true"
     >
       {items.map((faq, index) => {
         const position =
@@ -85,9 +160,13 @@ const FAQStack: React.FC<FAQStackProps> = ({
         return (
           <article
             key={faq.question}
-            className={`faq-card motion-child ${cardClassName}`.trim()}
+            className={`faq-card ${isHydrated ? 'motion-child' : ''} ${cardClassName}`.trim()}
             data-state={position}
-            style={{ '--stack-index': index } as React.CSSProperties & { '--stack-index': number }}
+            style={
+              {
+                '--stack-index': index,
+              } as React.CSSProperties & { '--stack-index': number }
+            }
             tabIndex={0}
             aria-current={index === activeIndex}
             onClick={() => handleCardClick(index)}
