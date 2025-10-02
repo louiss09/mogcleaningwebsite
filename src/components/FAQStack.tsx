@@ -20,14 +20,12 @@ const FAQStack: React.FC<FAQStackProps> = ({
   questionClassName = 'text-xl font-semibold text-charcoal',
   answerClassName = 'text-jet leading-relaxed',
 }) => {
-  const [openIndex, setOpenIndex] = React.useState<number | null>(items.length > 0 ? 0 : null);
 
   const handleToggle = (index: number) => {
     setOpenIndex((current) => (current === index ? null : index));
   };
 
   return (
-    <div className={`faq-stack ${className}`.trim()}>
       {items.map((faq, index) => {
         const isOpen = openIndex === index;
         const questionId = `faq-${index}-question`;
@@ -36,7 +34,6 @@ const FAQStack: React.FC<FAQStackProps> = ({
         return (
           <article
             key={faq.question}
-            className={`faq-card ${isOpen ? 'is-open' : ''} ${cardClassName}`.trim()}
           >
             <button
               type="button"
