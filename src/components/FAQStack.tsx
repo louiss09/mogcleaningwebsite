@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 
 type FAQItem = {
   question: string;
@@ -24,13 +24,11 @@ const FAQStack: React.FC<FAQStackProps> = ({
 }) => {
   const stackRef = React.useRef<HTMLDivElement | null>(null);
   const [activeIndex, setActiveIndex] = React.useState(0);
-  const activeRef = React.useRef(0);
 
+  // Animate on scroll
   React.useEffect(() => {
     const node = stackRef.current;
-    if (!node) {
-      return undefined;
-    }
+    if (!node) return;
 
     let rafId: number | null = null;
 
@@ -44,31 +42,30 @@ const FAQStack: React.FC<FAQStackProps> = ({
       const distance = start - rect.top;
       const progress = clamp(distance / range, 0, 1);
       const calculatedIndex = clamp(Math.round(progress * (items.length - 1)), 0, items.length - 1);
-      if (calculatedIndex !== activeRef.current) {
-        activeRef.current = calculatedIndex;
-        setActiveIndex(calculatedIndex);
-      }
+      setActiveIndex(calculatedIndex);
     };
 
     const handleScroll = () => {
-      if (rafId === null) {
-        rafId = window.requestAnimationFrame(update);
-      }
+      if (rafId === null) rafId = window.requestAnimationFrame(update);
     };
 
     handleScroll();
-
     window.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('resize', handleScroll);
 
     return () => {
-      if (rafId !== null) {
-        window.cancelAnimationFrame(rafId);
-      }
+      if (rafId !== null) window.cancelAnimationFrame(rafId);
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleScroll);
     };
   }, [items.length]);
+
+  // Optional: Clicking a card brings it to the top
+  const handleCardClick = (index: number) => {
+    setActiveIndex(index);
+    // Optionally scroll to the FAQ stack for context
+    stackRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  };
 
   return (
     <div
@@ -78,13 +75,25 @@ const FAQStack: React.FC<FAQStackProps> = ({
       data-stagger="true"
     >
       {items.map((faq, index) => {
-        const position = index === activeIndex ? 'active' : index < activeIndex ? 'past' : 'upcoming';
+        const position =
+          index === activeIndex
+            ? 'active'
+            : index < activeIndex
+            ? 'past'
+            : 'upcoming';
+
         return (
           <article
             key={faq.question}
-            className={`faq-card ${cardClassName}`.trim()}
+            className={`faq-card motion-child ${cardClassName}`.trim()}
             data-state={position}
             style={{ '--stack-index': index } as React.CSSProperties & { '--stack-index': number }}
+            tabIndex={0}
+            aria-current={index === activeIndex}
+            onClick={() => handleCardClick(index)}
+            onKeyPress={e => {
+              if (e.key === 'Enter' || e.key === ' ') handleCardClick(index);
+            }}
           >
             <div className="faq-card__glow" aria-hidden="true" />
             <h3 className={questionClassName}>{faq.question}</h3>
