@@ -20,24 +20,26 @@ const FAQStack: React.FC<FAQStackProps> = ({
   questionClassName = 'text-xl font-semibold text-charcoal',
   answerClassName = 'text-jet leading-relaxed',
 }) => {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [openIndex, setOpenIndex] = React.useState<number | null>(items.length > 0 ? 0 : null);
+  const instanceId = React.useId();
 
   const handleToggle = (index: number) => {
     setOpenIndex((current) => (current === index ? null : index));
   };
 
   return (
-    <div className={className}>
+    <div className={`faq-stack ${className}`.trim()}>
       {items.map((faq, index) => {
         const isOpen = openIndex === index;
-        const questionId = `faq-${index}-question`;
-        const answerId = `faq-${index}-answer`;
+        const questionId = `${instanceId}-faq-${index}-question`;
+        const answerId = `${instanceId}-faq-${index}-answer`;
 
         return (
           <article
             key={faq.question}
-            className={cardClassName}
+            className={`faq-card ${isOpen ? 'is-open' : ''} ${cardClassName}`.trim()}
           >
+            <span className="faq-card__accent" aria-hidden="true" />
             <button
               type="button"
               id={questionId}
@@ -46,23 +48,24 @@ const FAQStack: React.FC<FAQStackProps> = ({
               aria-controls={answerId}
               onClick={() => handleToggle(index)}
             >
-              <span className={questionClassName}>{faq.question}</span>
-              <svg
-                className={`faq-card__icon ${isOpen ? 'open' : ''}`.trim()}
-                viewBox="0 0 24 24"
-                role="presentation"
-                focusable="false"
-                aria-hidden="true"
-              >
-                <path
-                  d="M6 9l6 6 6-6"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+              <span className="faq-card__button-inner">
+                <span className="faq-card__label">Question {index + 1}</span>
+                <span className={`faq-card__question ${questionClassName}`.trim()}>
+                  {faq.question}
+                </span>
+              </span>
+              <span className={`faq-card__icon ${isOpen ? 'open' : ''}`.trim()} aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false" role="presentation">
+                  <path
+                    d="M6 9l6 6 6-6"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
             </button>
             <div
               id={answerId}
@@ -71,7 +74,9 @@ const FAQStack: React.FC<FAQStackProps> = ({
               aria-hidden={!isOpen}
               className={`faq-card__answer ${isOpen ? 'open' : ''}`.trim()}
             >
-              <p className={answerClassName}>{faq.answer}</p>
+              <div className="faq-card__answer-inner">
+                <p className={answerClassName}>{faq.answer}</p>
+              </div>
             </div>
           </article>
         );
