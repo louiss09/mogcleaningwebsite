@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 type FAQItem = {
   question: string;
@@ -20,12 +20,14 @@ const FAQStack: React.FC<FAQStackProps> = ({
   questionClassName = 'text-xl font-semibold text-charcoal',
   answerClassName = 'text-jet leading-relaxed',
 }) => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const handleToggle = (index: number) => {
     setOpenIndex((current) => (current === index ? null : index));
   };
 
   return (
+    <div className={className}>
       {items.map((faq, index) => {
         const isOpen = openIndex === index;
         const questionId = `faq-${index}-question`;
@@ -34,6 +36,7 @@ const FAQStack: React.FC<FAQStackProps> = ({
         return (
           <article
             key={faq.question}
+            className={cardClassName}
           >
             <button
               type="button"
