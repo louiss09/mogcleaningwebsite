@@ -320,7 +320,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .faq-card__button:hover {
-  background-color: rgba(13, 161, 225, 0.08);
+  background-color: rgba(13, 161, 225, 0.06);
 }
 
 .faq-card__button:focus-visible {
