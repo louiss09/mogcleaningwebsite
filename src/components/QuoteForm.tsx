@@ -8,6 +8,11 @@ interface QuoteFormProps {
   className?: string;
 }
 
+interface ContactResponse {
+  success: boolean;
+  message?: string;
+}
+
 const QuoteForm: React.FC<QuoteFormProps> = ({
   title = 'Get Your Free Quote',
   subtitle = 'No obligation. Response within 24 hours.',
@@ -45,13 +50,30 @@ const QuoteForm: React.FC<QuoteFormProps> = ({
         body
       });
 
-      const data = await res.json().catch(() => null);
+      const data = (await res.json().catch(() => null)) as ContactResponse | null;
 
-      if (res.ok && data && data.success) {
+      if (!res.ok) {
+        const fallbackMessage =
+          (data && data.message) ||
+          (import.meta.env.DEV
+            ? 'The local development server could not reach the PHP mailer. Make sure the backend endpoint is available.'
+            : 'There was a problem sending your message. Please try again.');
+        setError(fallbackMessage);
+        return;
+      }
+
+      if (!data) {
+        setError('Unexpected response from the server. Please try again later.');
+        return;
+      }
+
+      if (data.success) {
         setFormData({ name: '', phone: '', email: '', message: '' });
         navigate('/thank-you');
       } else {
-        setError((data && data.message) || 'There was a problem sending your message. Please try again.');
+        setError(
+          data.message || 'There was a problem sending your message. Please try again.'
+        );
       }
     } catch (error) {
       console.error('Quote form submission failed', error);
