@@ -9,12 +9,13 @@ MOG Clean Website is a React 18.3.1 + TypeScript + Vite 7.1.6 + TailwindCSS comm
 ### Bootstrap and Dependencies
 Install dependencies and validate the environment:
 ```bash
-npm install
+npm install --legacy-peer-deps
 ```
 - **Duration**: ~21 seconds
 - **NEVER CANCEL**: Dependencies must fully install
 - **Set timeout**: 60+ seconds minimum to avoid premature cancellation
 - **Validation**: Should complete without errors and show "0 vulnerabilities"
+- **Note**: The `--legacy-peer-deps` flag is required due to peer dependency conflicts between @types/react versions 18.x and 19.x
 
 ### Build Process
 Build the production application:
@@ -49,16 +50,13 @@ npm run preview
 - **Set timeout**: Use async=true, runs until stopped
 
 ### Linting
-Run code linting (HAS KNOWN ISSUE):
+Run code linting:
 ```bash
 npm run lint
 ```
-- **KNOWN ISSUE**: ESLint/TypeScript version compatibility error
-- **Error**: `TypeError: Cannot read properties of undefined (reading 'allowShortCircuit')`
-- **Status**: Non-blocking for functionality - application builds and runs perfectly
-- **Workaround**: Code functions correctly despite lint errors
-- **Duration**: ~1 second (fails quickly)
-- **Action**: Document this as a known limitation, not a blocker
+- **Duration**: ~1 second
+- **Current Status**: Linting works correctly, may show minor unused variable warnings
+- **Note**: There are 2 known lint warnings in the codebase (unused variables) that don't affect functionality
 
 ## Manual Validation Requirements
 
@@ -196,19 +194,25 @@ npm run lint
 ## Troubleshooting
 
 ### Known Issues and Workarounds
-1. **ESLint TypeScript Error**:
-   - Error: `Cannot read properties of undefined (reading 'allowShortCircuit')`
-   - Cause: TypeScript version 5.6.3 vs supported <5.6.0
-   - Impact: Linting fails, but application works perfectly
-   - Workaround: Ignore lint errors, focus on build and runtime success
+1. **NPM Peer Dependency Conflict**:
+   - Error: `ERESOLVE could not resolve` - conflict between @types/react 18.x and 19.x
+   - Cause: @types/react-dom@19.1.9 requires @types/react@^19.0.0, but project uses @types/react@^18.3.5
+   - Solution: Always use `npm install --legacy-peer-deps` instead of `npm install`
+   - Impact: No functional impact - application builds and runs perfectly
+   - Status: Known compatibility issue, tracked for future resolution
 
-2. **External Image Loading**:
+2. **Lint Warnings**:
+   - Warning: Unused variables in QuoteForm.tsx and Home.tsx
+   - Impact: No functional impact - these are minor code cleanup items
+   - Status: Non-blocking, can be cleaned up in future updates
+
+3. **External Image Loading**:
    - Images from Pexels may be blocked by browser/network security
    - This is normal in some development environments
    - Application functions normally without images
    - Images will load properly in production environments
 
-3. **Font Loading**:
+4. **Font Loading**:
    - Google Fonts may be blocked in some environments
    - Fallbacks are configured: system fonts will be used
    - Does not affect functionality
@@ -232,7 +236,7 @@ npm run lint
 
 Before committing any changes, complete this checklist:
 
-- [ ] `npm install` completes without errors (21s, set 60s timeout)
+- [ ] `npm install --legacy-peer-deps` completes without errors (21s, set 60s timeout)
 - [ ] `npm run build` completes successfully (4s, set 30s timeout)  
 - [ ] `npm run dev` starts development server (0.3s, async mode)
 - [ ] Homepage loads at localhost:5173 without console errors
