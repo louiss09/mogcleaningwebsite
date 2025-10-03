@@ -1,28 +1,23 @@
 <?php
-declare(strict_types=1);
-
-use PHPMailer\PHPMailer\Exception;
-use PHPMailer\PHPMailer\PHPMailer;
-
 header('Content-Type: application/json; charset=UTF-8');
 
-$allowedOrigins = [
+ = [
     'https://mogclean.com.au',
     'https://mogcleaning.com.au',
 ];
 
-$origin = $_SERVER['HTTP_ORIGIN'] ?? '';
-$isLocalhost = preg_match('#^https?://(localhost|127\.0\.0\.1)(:\d+)?$#', $origin) === 1;
+ = ['HTTP_ORIGIN'] ?? '';
+ = preg_match('#^https?://(localhost|127\.0\.0\.1)(:\d+)?$#', ) === 1;
 
-if (in_array($origin, $allowedOrigins, true) || $isLocalhost) {
-    header('Access-Control-Allow-Origin: ' . $origin);
+if (in_array(, , true) || ) {
+    header('Access-Control-Allow-Origin: ' . );
     header('Vary: Origin');
 }
 
 header('Access-Control-Allow-Methods: POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
 
-if (($_SERVER['REQUEST_METHOD'] ?? '') === 'OPTIONS') {
+if (['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(204);
     exit;
 }
@@ -30,130 +25,101 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') === 'OPTIONS') {
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-$composerAutoload = __DIR__ . '/vendor/autoload.php';
-if (is_readable($composerAutoload)) {
-    require $composerAutoload;
+ = __DIR__ . '/vendor/autoload.php';
+if (is_readable()) {
+    require ;
 } else {
     require __DIR__ . '/phpmailer/src/PHPMailer.php';
     require __DIR__ . '/phpmailer/src/SMTP.php';
     require __DIR__ . '/phpmailer/src/Exception.php';
 }
 
-$configLoaded = false;
-$sharedConfig = '/home/iupaxipp/config.php';
-if (is_readable($sharedConfig)) {
-    require $sharedConfig;
-    $configLoaded = true;
+ = false;
+ = '/home/iupaxipp/config.php';
+if (is_readable()) {
+    require ;
+     = true;
 }
 
-if (!$configLoaded) {
-    $localConfig = __DIR__ . '/config.php';
-    if (is_readable($localConfig)) {
-        require $localConfig;
-        $configLoaded = true;
+if (!) {
+     = __DIR__ . '/config.php';
+    if (is_readable()) {
+        require ;
+         = true;
     }
 }
 
-if (!$configLoaded) {
+if (!) {
     http_response_code(500);
     echo json_encode(['success' => false, 'message' => 'Mail configuration missing.']);
     exit;
 }
 
-if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
+if (['REQUEST_METHOD'] !== 'POST') {
     echo json_encode(['success' => false, 'message' => 'Invalid request']);
     exit;
 }
 
-$name = trim(strip_tags((string) (filter_input(INPUT_POST, 'name', FILTER_UNSAFE_RAW) ?? '')));
-$email = trim((string) (filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL) ?? ''));
-$message = trim(strip_tags((string) (filter_input(INPUT_POST, 'message', FILTER_UNSAFE_RAW) ?? '')));
-$phone = trim(strip_tags((string) (filter_input(INPUT_POST, 'phone', FILTER_UNSAFE_RAW) ?? '')));
+ = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING) ?? '';
+ = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL) ?? '';
+ = filter_input(INPUT_POST, 'message', FILTER_SANITIZE_STRING) ?? '';
+ = filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_STRING) ?? '';
 
-if ($name === '' || $email === '' || $message === '') {
+if ( === '' ||  === '' ||  === '') {
     echo json_encode(['success' => false, 'message' => 'All fields are required']);
     exit;
 }
 
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    echo json_encode(['success' => false, 'message' => 'Please provide a valid email address.']);
-    exit;
-}
-
-$mail = new PHPMailer(true);
+ = new PHPMailer(true);
 
 try {
-    $mail->isSMTP();
-    $mail->Host = SMTP_HOST;
-    $mail->SMTPAuth = true;
-    $mail->Username = SMTP_USER;
-    $mail->Password = SMTP_PASS;
+    ->isSMTP();
+    ->Host = SMTP_HOST;
+    ->SMTPAuth = true;
+    ->Username = SMTP_USER;
+    ->Password = SMTP_PASS;
+    ->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+    ->Port = SMTP_PORT;
 
-    $securePreference = defined('SMTP_SECURE') ? strtolower((string) SMTP_SECURE) : '';
-    if ($securePreference === 'none') {
-        $mail->SMTPSecure = false;
-        $mail->SMTPAutoTLS = false;
-    } else {
-        $mail->SMTPAutoTLS = true;
-        if ($securePreference === 'ssl' || $securePreference === 'smtps') {
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-        } elseif ($securePreference === 'tls' || $securePreference === 'starttls') {
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        } elseif (SMTP_PORT === 465) {
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-        } else {
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        }
-    }
+    ->setFrom(SMTP_USER, 'MOG Clean Website');
+    ->addAddress('quotes@mogcleaning.com.au', 'MOG Cleaning');
+    ->addReplyTo(, );
 
-    $mail->Port = SMTP_PORT;
+    ->isHTML(false);
+    ->Subject = 'New Contact Form Submission';
 
-    $fromAddress = defined('MAIL_FROM_ADDRESS') ? (string) MAIL_FROM_ADDRESS : SMTP_USER;
-    $fromName = defined('MAIL_FROM_NAME') ? (string) MAIL_FROM_NAME : 'MOG Clean Website';
-    $toAddress = defined('MAIL_TO_ADDRESS') ? (string) MAIL_TO_ADDRESS : 'quotes@mogcleaning.com.au';
-    $toName = defined('MAIL_TO_NAME') ? (string) MAIL_TO_NAME : 'MOG Cleaning';
-
-    $mail->setFrom($fromAddress, $fromName);
-    $mail->Sender = $fromAddress;
-    $mail->addAddress($toAddress, $toName);
-    $mail->addReplyTo($email, $name);
-
-    $mail->CharSet = 'UTF-8';
-    $mail->isHTML(false);
-    $mail->Subject = 'New Contact Form Submission';
-
-    $lines = [
-        "Name: {$name}",
-        "Email: {$email}",
+     = [
+        "Name: {}",
+        "Email: {}",
     ];
 
-    if ($phone !== '') {
-        $lines[] = "Phone: {$phone}";
+    if ( !== '') {
+        [] = "Phone: {}";
     }
 
-    $lines[] = 'Message:';
-    $lines[] = $message;
+    [] = 'Message:';
+    [] = ;
 
-    $mail->Body = implode("\n", $lines);
+    ->Body = implode("\n", );
 
-    $mail->send();
+    ->send();
 
     echo json_encode(['success' => true, 'message' => 'Message sent successfully']);
-} catch (Exception $exception) {
-    $logDir = '/home/iupaxipp/mail_logs';
-    if (!is_dir($logDir)) {
-        mkdir($logDir, 0700, true);
+} catch (Exception ) {
+     = '/home/iupaxipp/mail_logs';
+    if (!is_dir()) {
+        mkdir(, 0700, true);
     }
 
-    $logFile = $logDir . '/mail_errors.log';
-    $logMessage = '[' . date('Y-m-d H:i:s') . '] '
-        . "From: {$name} <{$email}>" . PHP_EOL
-        . 'Phone: ' . ($phone !== '' ? $phone : 'N/A') . PHP_EOL
-        . 'Message: ' . $message . PHP_EOL
-        . 'Error: ' . $exception->getMessage() . ' | SMTP: ' . $mail->ErrorInfo . PHP_EOL
-        . str_repeat('-', 50) . PHP_EOL;
+     =  . '/mail_errors.log';
+     = '[' . date('Y-m-d H:i:s') . '] ' .
+        "From: {} <{}>" . PHP_EOL .
+        'Phone: ' . ( !== '' ?  : 'N/A') . PHP_EOL .
+        'Message: ' .  . PHP_EOL .
+        'Error: ' . ->ErrorInfo . PHP_EOL .
+        str_repeat('-', 50) . PHP_EOL;
 
-    file_put_contents($logFile, $logMessage, FILE_APPEND);
+    file_put_contents(, , FILE_APPEND);
 
-    echo json_encode(['success' => false, 'message' => 'Mailer Error: ' . $mail->ErrorInfo]);
+    echo json_encode(['success' => false, 'message' => 'Mailer Error: ' . ->ErrorInfo]);
 }
