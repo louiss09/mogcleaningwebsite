@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://mogcleaning.com.au/sitemap.xml
