@@ -1,4 +1,9 @@
 <?php
+declare(strict_types=1);
+
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
+
 header('Content-Type: application/json; charset=UTF-8');
 
 $allowedOrigins = [
