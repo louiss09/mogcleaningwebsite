@@ -306,7 +306,7 @@ const testimonials = [
         <div className="relative container-max px-6 hero-content-area">
           <div className="grid items-center gap-16 lg:grid-cols-[1.1fr_0.9fr]">
             <div className="max-w-2xl justify-self-center text-center lg:justify-self-start lg:text-left">
-              <div className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-6 py-2 text-xs font-semibold uppercase tracking-[0.28em] backdrop-blur">
+              <div className="mt-2 inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-6 py-2 text-xs font-semibold uppercase tracking-[0.28em] backdrop-blur sm:mt-3 lg:mt-4">
                 <Shield className="h-4 w-4 text-fresh-green" />
                 Trusted Brisbane Partner
               </div>
