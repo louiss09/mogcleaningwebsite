@@ -12,9 +12,9 @@ $allowedOrigins = [
 ];
 
 $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
-$isLocalhost = $origin !== '' && preg_match('#^https?://(localhost|127\\.0\\.0\\.1)(:\\d+)?$#', $origin) === 1;
+$isLocalhost = preg_match('#^https?://(localhost|127\.0\.0\.1)(:\d+)?$#', $origin) === 1;
 
-if ($origin !== '' && (in_array($origin, $allowedOrigins, true) || $isLocalhost)) {
+if (in_array($origin, $allowedOrigins, true) || $isLocalhost) {
     header('Access-Control-Allow-Origin: ' . $origin);
     header('Vary: Origin');
 }
@@ -26,6 +26,9 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') === 'OPTIONS') {
     http_response_code(204);
     exit;
 }
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 $composerAutoload = __DIR__ . '/vendor/autoload.php';
 if (is_readable($composerAutoload)) {
@@ -62,31 +65,19 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
     exit;
 }
 
-$name = trim((string) (filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS) ?? ''));
-$emailRaw = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-$email = trim((string) ($emailRaw ?? ''));
-$message = trim((string) (filter_input(INPUT_POST, 'message', FILTER_SANITIZE_SPECIAL_CHARS) ?? ''));
-$phone = trim((string) (filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_SPECIAL_CHARS) ?? ''));
+$name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING) ?? '';
+$email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL) ?? '';
+$message = filter_input(INPUT_POST, 'message', FILTER_SANITIZE_STRING) ?? '';
+$phone = filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_STRING) ?? '';
 
 if ($name === '' || $email === '' || $message === '') {
     echo json_encode(['success' => false, 'message' => 'All fields are required']);
     exit;
 }
 
-if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
-    echo json_encode(['success' => false, 'message' => 'Invalid email address']);
-    exit;
-}
-
-$fromAddress = getenv('MAIL_FROM_ADDRESS') ?: SMTP_USER;
-$fromName = getenv('MAIL_FROM_NAME') ?: 'MOG Clean Website';
-$recipientAddress = getenv('MAIL_TO_ADDRESS') ?: 'quotes@mogcleaning.com.au';
-$recipientName = getenv('MAIL_TO_NAME') ?: 'MOG Cleaning';
-
 $mail = new PHPMailer(true);
 
 try {
-    $mail->CharSet = 'UTF-8';
     $mail->isSMTP();
     $mail->Host = SMTP_HOST;
     $mail->SMTPAuth = true;
@@ -95,8 +86,8 @@ try {
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
     $mail->Port = SMTP_PORT;
 
-    $mail->setFrom($fromAddress, $fromName);
-    $mail->addAddress($recipientAddress, $recipientName);
+    $mail->setFrom(SMTP_USER, 'MOG Clean Website');
+    $mail->addAddress('quotes@mogcleaning.com.au', 'MOG Cleaning');
     $mail->addReplyTo($email, $name);
 
     $mail->isHTML(false);
