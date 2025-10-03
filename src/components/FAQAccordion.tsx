@@ -1,4 +1,4 @@
-  import React from 'react';
+import React from 'react';
 import { ChevronDown } from 'lucide-react';
 
 type FAQ = {
@@ -80,12 +80,15 @@ const FAQAccordion: React.FC<FAQAccordionProps> = ({
     );
   }
 
+  const OPEN_PADDING_BUFFER = 24; // matches the extra padding applied when a panel is expanded
+
   return (
     <div className={`faq-accordion ${className}`.trim()}>
       {faqs.map((faq, index) => {
         const isOpen = activeIndex === index;
         const measuredHeight = contentRefs.current[index]?.scrollHeight ?? 0;
-        const maxHeight = isOpen ? heights[index] ?? measuredHeight : 0;
+        const contentHeight = heights[index] ?? measuredHeight;
+        const maxHeight = isOpen ? contentHeight + OPEN_PADDING_BUFFER : 0;
 
         return (
           <article
