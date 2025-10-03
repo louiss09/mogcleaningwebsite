@@ -103,9 +103,7 @@ const Header: React.FC = () => {
             <nav className="hidden lg:flex items-center gap-6">
               <Link
                 to="/"
-                className={`font-medium transition-colors hover:text-celestial-blue-1 ${
-                  location.pathname === '/' ? 'text-celestial-blue-1' : 'text-jet'
-                }`}
+                className="font-medium text-jet transition-colors hover:text-celestial-blue-1"
                 onClick={() => handleNavLinkClick('/')}
               >
                 Home
@@ -126,25 +124,31 @@ const Header: React.FC = () => {
                   className={`flex items-center font-medium transition-colors hover:text-celestial-blue-1 ${
                     location.pathname.startsWith('/services') ? 'text-celestial-blue-1' : 'text-jet'
                   }`}
-                >
+                  >
                   Services
                   <ChevronDown className="ml-1 w-4 h-4" />
                 </button>
 
-                {isServicesOpen && (
-                  <div className="absolute top-full left-0 mt-2 w-64 rounded-lg border border-ash-gray/30 bg-white py-2 shadow-lg">
+                <div
+                  className={`absolute top-full left-0 mt-2 w-64 origin-top rounded-2xl border border-white/50 bg-white/70 p-2 shadow-lg backdrop-blur-xl transition-all duration-300 ease-out ${
+                    isServicesOpen
+                      ? 'pointer-events-auto opacity-100 translate-y-0 scale-100'
+                      : 'pointer-events-none opacity-0 -translate-y-2 scale-95'
+                  }`}
+                >
+                  <div className="overflow-hidden rounded-xl bg-white/40 shadow-inner">
                     {services.map((service) => (
                       <Link
                         key={service.path}
                         to={service.path}
                         onClick={() => handleNavLinkClick(service.path, () => setIsServicesOpen(false))}
-                        className="block px-4 py-2 text-jet transition-colors hover:bg-light-gray hover:text-celestial-blue-1"
+                        className="block px-4 py-2 text-jet transition-colors hover:bg-white/60 hover:text-celestial-blue-1"
                       >
                         {service.name}
                       </Link>
                     ))}
                   </div>
-                )}
+                </div>
               </div>
 
               <Link
@@ -242,20 +246,26 @@ const Header: React.FC = () => {
                         />
                       </button>
 
-                      {isMobileServicesOpen && (
-                        <div className="mt-2 ml-4 space-y-2 border-l-2 border-ash-gray/30 pl-4">
+                      <div
+                        className={`grid overflow-hidden transition-all duration-300 ease-out ${
+                          isMobileServicesOpen
+                            ? 'mt-2 ml-4 grid-rows-[1fr] opacity-100'
+                            : 'ml-4 grid-rows-[0fr] opacity-0'
+                        }`}
+                      >
+                        <div className="space-y-2 border-l-2 border-white/50 pl-4">
                           {services.map((service) => (
                             <Link
                               key={service.path}
                               to={service.path}
                               onClick={() => handleNavLinkClick(service.path, closeMobileMenu)}
-                              className="block py-1 font-medium text-jet hover:text-celestial-blue-1"
+                              className="block py-1 font-medium text-jet transition-colors hover:text-celestial-blue-1"
                             >
                               {service.name}
                             </Link>
                           ))}
                         </div>
-                      )}
+                      </div>
                     </div>
 
                     <Link
