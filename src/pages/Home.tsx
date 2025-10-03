@@ -281,7 +281,7 @@ const testimonials = [
   };
 
   return (
-    <div className="pt-32 sm:pt-36 lg:pt-40">
+    <div>
       <SEO
         title="Commercial Cleaning Brisbane | MOG Cleaning"
         description="Professional commercial cleaning services for offices, gyms, medical facilities, education, hospitality, and retail businesses across Brisbane."
@@ -291,7 +291,7 @@ const testimonials = [
         jsonLd={[businessSchema, websiteSchema, breadcrumbSchema]}
       />
 
-      <section className="relative overflow-hidden text-white">
+      <section className="relative overflow-hidden text-white pt-32 sm:pt-36 lg:pt-40">
         <div className="absolute inset-0">
           <img
             src="/images/office-cleaning-background.jpg"
@@ -321,7 +321,8 @@ const testimonials = [
                   Book Your Site Assessment
                 </Link>
                 <Link
-                  to="/services"
+                  to="/#services"
+                  onClick={scrollToServices}
                   className="inline-flex items-center justify-center rounded-full border border-white/40 px-6 py-3 font-semibold text-white transition hover:border-white hover:bg-white/10"
                 >
                   View Industry Programs
