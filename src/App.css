@@ -130,6 +130,34 @@ h1, h2, h3, h4, h5, h6 {
   @apply max-w-7xl mx-auto;
 }
 
+:root {
+  --hero-vertical-padding: clamp(4.75rem, 8vw + 1.5rem, 8.5rem);
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --hero-vertical-padding: clamp(4.5rem, 10vw + 1.25rem, 7.5rem);
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --hero-vertical-padding: clamp(4rem, 12vw + 1rem, 6.5rem);
+  }
+}
+
+.hero-section-spacing {
+  padding-block: var(--hero-vertical-padding);
+}
+
+.hero-content-area {
+  min-height: calc(100vh - var(--hero-vertical-padding));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
 .gradient-bg {
   background: linear-gradient(135deg, #0da1e1 0%, #32b1e8 50%, #05b0f9 100%);
 }

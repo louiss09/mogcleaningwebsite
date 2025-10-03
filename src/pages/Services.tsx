@@ -91,8 +91,8 @@ const Services: React.FC = () => {
         jsonLd={serviceCatalogSchema}
       />
       
-      <section className="gradient-bg text-white section-padding">
-        <div className="container-max">
+      <section className="gradient-bg text-white hero-section-spacing px-4 sm:px-6 lg:px-8">
+        <div className="container-max hero-content-area">
           <div className="max-w-4xl mx-auto text-center animate-fade-in">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Commercial Cleaning Services</h1>
             <p className="text-xl md:text-2xl text-blue-100 font-light">
