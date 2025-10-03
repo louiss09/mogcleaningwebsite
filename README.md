@@ -13,6 +13,12 @@ Set the following environment variables on the server that runs `php/contact.php
 
 The PHP endpoint will throw a runtime error if any of these are missing, which keeps secrets out of version control.
 
+Optional overrides are available when you need to change the addressing without touching the code:
+
+- `MAIL_FROM_ADDRESS` / `MAIL_FROM_NAME` – defaults to the SMTP username and "MOG Clean Website". Configure this if the
+  authenticated mailbox differs from the desired From header (for example, `info@mogcleaning.com.au`).
+- `MAIL_TO_ADDRESS` / `MAIL_TO_NAME` – defaults to `quotes@mogcleaning.com.au` and "MOG Cleaning".
+
 ### Front-end Contact Endpoint
 During local development or when deploying the static site separately from the PHP endpoint, set `VITE_CONTACT_ENDPOINT` in a `.env` file or your hosting provider's environment settings so the React app knows where to post contact form submissions. It defaults to `/contact.php` when unset.
 
