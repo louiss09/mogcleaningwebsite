@@ -171,7 +171,7 @@ const testimonials = [
       />
 
       <section
-        className="relative hero-section-spacing px-4 sm:px-6 lg:px-8 text-white overflow-hidden min-h-[70vh]"
+        className="relative hero-section-spacing px-4 sm:px-6 lg:px-8 text-white overflow-hidden"
         style={{
           backgroundImage: "url('/images/medical-cleaning-background.jpg')",
           backgroundSize: 'cover',

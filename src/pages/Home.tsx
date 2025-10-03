@@ -291,7 +291,7 @@ const testimonials = [
         jsonLd={[businessSchema, websiteSchema, breadcrumbSchema]}
       />
 
-      <section className="relative overflow-hidden text-white hero-section-spacing min-h-[70vh]">
+      <section className="relative overflow-hidden text-white hero-section-spacing">
         <div className="absolute inset-0">
           <img
             src="/images/office-cleaning-background.jpg"
