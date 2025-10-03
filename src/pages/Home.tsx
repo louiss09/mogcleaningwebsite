@@ -281,7 +281,7 @@ const testimonials = [
   };
 
   return (
-    <div className="pt-20">
+    <div>
       <SEO
         title="Commercial Cleaning Brisbane | MOG Cleaning"
         description="Professional commercial cleaning services for offices, gyms, medical facilities, education, hospitality, and retail businesses across Brisbane."
@@ -291,49 +291,74 @@ const testimonials = [
         jsonLd={[businessSchema, websiteSchema, breadcrumbSchema]}
       />
 
-      <section className="relative gradient-bg text-white overflow-hidden">
-        <div className="absolute inset-0 bg-black/60"></div>
-        <div className="relative container-max section-padding">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="animate-slide-in-left">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-white drop-shadow-lg">
-                Brisbane Commercial Cleaning That Protects Your Reputation
-              </h1>
-              <p className="text-xl md:text-2xl mb-8 text-white font-medium drop-shadow-md max-w-2xl">
-                Trusted by offices, gyms, clinics, educators and hospitality venues across Brisbane. Our vetted team delivers
-                consistent, audit-ready cleans so your staff, clients and compliance checks are always impressed.
-              </p>
+      <section className="relative overflow-hidden text-white py-20 sm:py-24 lg:py-28">
+        <div className="absolute inset-0">
+          <img
+            src="/images/office-cleaning-background.jpg"
+            alt="Detail-focused commercial cleaner polishing an office workstation"
+            className="h-full w-full object-cover"
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-br from-charcoal/95 via-charcoal/85 to-celestial-blue-2/70"></div>
+        <div className="absolute -left-24 top-1/2 h-80 w-80 -translate-y-1/2 rounded-full bg-fresh-green/25 blur-3xl"></div>
+        <div className="absolute -right-24 bottom-0 h-[22rem] w-[22rem] rounded-full bg-celestial-blue-1/35 blur-3xl"></div>
 
-              <div className="flex flex-wrap gap-4 mb-8">
-                <div className="flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
-                  <Shield className="w-5 h-5 mr-2 text-fresh-green" />
-                  <span className="text-sm font-medium">Fully Insured</span>
-                </div>
-                <div className="flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
-                  <CheckCircle className="w-5 h-5 mr-2 text-fresh-green" />
-                  <span className="text-sm font-medium">Police Checked</span>
-                </div>
-                <div className="flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
-                  <Star className="w-5 h-5 mr-2 text-fresh-green" />
-                  <span className="text-sm font-medium">5-Star Client Rating</span>
-                </div>
+        <div className="relative container-max px-6">
+          <div className="grid items-center gap-16 lg:grid-cols-[1.1fr_0.9fr]">
+            <div className="max-w-2xl justify-self-center text-center lg:justify-self-start lg:text-left">
+              <div className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-6 py-2 text-xs font-semibold uppercase tracking-[0.28em] backdrop-blur">
+                <Shield className="h-4 w-4 text-fresh-green" />
+                Trusted Brisbane Partner
               </div>
-
-              <div className="flex flex-col sm:flex-row gap-4">
+              <h1 className="mt-8 text-4xl font-bold leading-tight text-white drop-shadow-sm sm:text-[2.9rem] lg:text-6xl xl:text-7xl">
+                Your Commercial Cleaning Partner in Brisbane
+              </h1>
+              <p className="mt-6 text-lg text-white/90 sm:text-xl">
+                MOG Cleaning helps Brisbane businesses shine with tailored commercial cleaning solutions. Whether it’s daily office cleaning, gym maintenance, or medical-grade sanitisation, we deliver reliable service you can count on.
+              </p>
+              <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center lg:items-center lg:justify-start">
                 <Link to="/contact" className="btn-primary">
-                  Get My Free Quote
+                  Book Your Site Assessment
                 </Link>
-                <Link to="/process" className="btn-secondary">
-                  See Our Process
+                <Link
+                  to="/#services"
+                  onClick={scrollToServices}
+                  className="inline-flex items-center justify-center rounded-full border border-white/40 px-6 py-3 font-semibold text-white transition hover:border-white hover:bg-white/10"
+                >
+                  View Industry Programs
+                  <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
-                <Link to="/about" className="btn-secondary">
-                  Meet the Team
-                </Link>
+              </div>
+              <div className="mt-12 grid gap-6 border-t border-white/15 pt-8 sm:grid-cols-2 lg:grid-cols-3">
+                <div className="flex items-start gap-3 rounded-2xl bg-white/5 p-5 text-left">
+                  <Shield className="mt-1 h-6 w-6 shrink-0 text-fresh-green" />
+                  <div>
+                    <p className="font-semibold">Police-Checked Professionals</p>
+                    <p className="text-sm text-white/70">Fully insured Brisbane cleaners inducted to your site rules.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 rounded-2xl bg-white/5 p-5 text-left">
+                  <Clock className="mt-1 h-6 w-6 shrink-0 text-celestial-blue-1" />
+                  <div>
+                    <p className="font-semibold">After-Hours Availability</p>
+                    <p className="text-sm text-white/70">Flexible rosters for office, gym and hospitality peak times.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 rounded-2xl bg-white/5 p-5 text-left sm:col-span-2 lg:col-span-1">
+                  <Star className="mt-1 h-6 w-6 shrink-0 text-fresh-green" />
+                  <div>
+                    <p className="font-semibold">5-Star Client Reviews</p>
+                    <p className="text-sm text-white/70">Quarterly QA surveys across 60+ South East Queensland sites.</p>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className="animate-slide-in-right">
-              <QuoteForm className="max-w-md lg:max-w-xl xl:max-w-2xl mx-auto lg:mx-0 bg-white/95 backdrop-blur-sm" />
+            <div className="relative mx-auto w-full max-w-md lg:mx-0 lg:max-w-xl">
+              <div className="absolute -top-12 left-1/2 hidden -translate-x-1/2 rounded-full border border-white/30 bg-white/20 px-5 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-white/90 backdrop-blur sm:flex">
+                Start in 5–7 Days
+              </div>
+              <QuoteForm className="relative z-[1]" />
             </div>
           </div>
         </div>
