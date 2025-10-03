@@ -19,6 +19,7 @@ import QuoteForm from '../components/QuoteForm';
 import SEO from '../components/SEO';
 import TestimonialCarousel from '../components/TestimonialCarousel';
 import { useScrollToSection } from '../hooks/useScrollToSection';
+import FAQAccordion from '../components/FAQAccordion';
 
 const Home: React.FC = () => {
   const services = [
@@ -174,6 +175,34 @@ const testimonials = [
       step: '04',
       title: 'Quality Assurance',
       description: 'Supervisors complete audits, review KPIs with you and adjust scope as needs evolve.',
+    },
+  ];
+
+  const faqs = [
+    {
+      question: 'How quickly can you start cleaning our site?',
+      answer:
+        'After your quote is accepted we can schedule onboarding within 5–7 business days. This includes a site walkthrough, inductions for your dedicated crew and confirmation of access requirements so the first clean runs smoothly.',
+    },
+    {
+      question: 'Do you bring all cleaning products and equipment?',
+      answer:
+        'Yes. Our teams arrive with commercial-grade equipment, colour-coded microfibre systems and TGA-approved disinfectants. We can also use client-supplied consumables if you have specific brand standards or sustainability policies to follow.',
+    },
+    {
+      question: 'Can cleans happen outside of trading hours?',
+      answer:
+        'Absolutely. Evening, overnight and early-morning schedules are part of our standard service. We coordinate with your security and facilities teams to make sure access, alarms and lock-up procedures are followed every visit.',
+    },
+    {
+      question: 'How do you maintain consistent quality?',
+      answer:
+        'Every account has a supervisor who performs regular audits, uses photo checklists and meets with you quarterly to review KPIs. Any issues trigger corrective actions within the same shift or the next scheduled visit.',
+    },
+    {
+      question: 'Are you covered for insurance and compliance?',
+      answer:
+        'We hold full public liability insurance, workers compensation, up-to-date police checks and industry-specific certifications. All documentation is provided during onboarding and kept ready for your compliance records.',
     },
   ];
 
@@ -458,6 +487,18 @@ const testimonials = [
               Learn More About Our Process
             </Link>
           </div>
+        </div>
+      </section>
+
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white border-t border-ash-gray/20">
+        <div className="container-max">
+          <div className="text-center mb-14 animate-fade-in">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-charcoal">Frequently Asked Questions</h2>
+            <p className="text-lg md:text-xl text-jet max-w-3xl mx-auto">
+              Straightforward answers about onboarding, scheduling and the compliance standards we bring to Brisbane facilities.
+            </p>
+          </div>
+          <FAQAccordion faqs={faqs} className="max-w-4xl mx-auto" />
         </div>
       </section>
 

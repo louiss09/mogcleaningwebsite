@@ -105,10 +105,10 @@ const FAQStack: React.FC<FAQStackProps> = ({
             data-state={position}
             style={{
               '--stack-index': index,
-              display: index === activeIndex ? 'block' : 'none', // Only show active
             } as React.CSSProperties & { '--stack-index': number }}
             tabIndex={0}
             aria-current={index === activeIndex}
+            aria-hidden={index !== activeIndex}
           >
             <div className="faq-card__glow" aria-hidden="true" />
             <h3 className={questionClassName}>{faq.question}</h3>
