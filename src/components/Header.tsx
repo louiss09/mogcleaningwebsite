@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Phone, Menu, X, ChevronDown, Instagram } from 'lucide-react';
 
-const mobileMenuAnimationDuration = 220;
+const mobileMenuAnimationDuration = 300;
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -75,212 +75,260 @@ const Header: React.FC = () => {
 
   return (
     <header
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-lg py-2' : 'bg-white/95 backdrop-blur-sm py-4'
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        isScrolled ? 'py-3' : 'py-6'
       }`}
     >
-      <div className="container-max">
-        <div className="flex items-center justify-between">
-          <Link
-            to="/"
-            className="flex items-center space-x-2"
-            onClick={() => handleNavLinkClick('/')}
-          >
-            <div className="w-10 h-10 rounded-lg flex items-center justify-center">
-              <img src="/logo.svg" alt="MOG Cleaning Logo" className="w-8 h-8" />
-            </div>
-            <div>
-              <h2 className="text-xl font-bold text-charcoal">MOG Cleaning</h2>
-              <p className="text-xs text-jet">Commercial Cleaning Services</p>
-            </div>
-          </Link>
-
-          <nav className="hidden lg:flex items-center space-x-8">
+      <div className="px-4">
+        <div
+          className={`container-max mx-auto flex flex-col rounded-[32px] border bg-white/60 px-6 py-3 shadow-lg backdrop-blur-xl transition-all duration-300 ${
+            isScrolled ? 'border-white/60 shadow-xl' : 'border-white/30'
+          }`}
+        >
+          <div className="flex items-center justify-between gap-6">
             <Link
               to="/"
-              className={`font-medium transition-colors hover:text-celestial-blue-1 ${
-                location.pathname === '/' ? 'text-celestial-blue-1' : 'text-jet'
-              }`}
+              className="flex items-center gap-3"
               onClick={() => handleNavLinkClick('/')}
             >
-              Home
-            </Link>
-            <Link
-              to="/about"
-              className={`font-medium transition-colors hover:text-celestial-blue-1 ${
-                location.pathname === '/about' ? 'text-celestial-blue-1' : 'text-jet'
-              }`}
-              onClick={() => handleNavLinkClick('/about')}
-            >
-              About Us
+              <div className="h-12 w-12 rounded-full border border-white/50 bg-white/70 p-2 shadow-sm backdrop-blur">
+                <img src="/logo.svg" alt="MOG Cleaning Logo" className="w-full h-full object-contain" />
+              </div>
+              <div className="leading-tight">
+                <h2 className="text-lg font-semibold text-charcoal">MOG Cleaning</h2>
+                <p className="text-xs text-jet/80">Commercial Cleaning Services</p>
+              </div>
             </Link>
 
-            <div className="relative">
-              <button
-                onClick={() => setIsServicesOpen(!isServicesOpen)}
-                className={`flex items-center font-medium transition-colors hover:text-celestial-blue-1 ${
-                  location.pathname.startsWith('/services') ? 'text-celestial-blue-1' : 'text-jet'
-                }`}
-              >
-                Services
-                <ChevronDown className="ml-1 w-4 h-4" />
-              </button>
-
-              {isServicesOpen && (
-                <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-ash-gray/30 py-2">
-                  {services.map((service) => (
-                    <Link
-                      key={service.path}
-                      to={service.path}
-                      onClick={() => handleNavLinkClick(service.path, () => setIsServicesOpen(false))}
-                      className="block px-4 py-2 text-jet hover:bg-light-gray hover:text-celestial-blue-1 transition-colors"
-                    >
-                      {service.name}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            <Link
-              to="/process"
-              className={`font-medium transition-colors hover:text-celestial-blue-1 ${
-                location.pathname === '/process' ? 'text-celestial-blue-1' : 'text-jet'
-              }`}
-              onClick={() => handleNavLinkClick('/process')}
-            >
-              Our Process
-            </Link>
-            <Link
-              to="/contact"
-              className={`font-medium transition-colors hover:text-celestial-blue-1 ${
-                location.pathname === '/contact' ? 'text-celestial-blue-1' : 'text-jet'
-              }`}
-              onClick={() => handleNavLinkClick('/contact')}
-            >
-              Contact
-            </Link>
-          </nav>
-
-          <div className="hidden md:flex items-center space-x-4">
-            <a
-              href="tel:+61411820650"
-              className="flex items-center text-charcoal hover:text-celestial-blue-1 transition-colors"
-            >
-              <Phone className="w-4 h-4 mr-2" />
-              <span className="font-semibold">0411 820 650</span>
-            </a>
-            <a
-              href="https://instagram.com/mogclean"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-charcoal hover:text-celestial-blue-1 transition-colors"
-              aria-label="MOG Cleaning on Instagram"
-            >
-              <Instagram className="w-5 h-5" />
-            </a>
-            <Link to="/contact" className="btn-primary" onClick={() => handleNavLinkClick('/contact')}>
-              Get Free Quote
-            </Link>
-          </div>
-
-          <button
-            onClick={toggleMobileMenu}
-            className="lg:hidden p-2 text-jet hover:text-celestial-blue-1 transition-colors"
-            aria-label="Toggle navigation menu"
-            aria-expanded={isMenuOpen}
-          >
-            <div className={`hamburger-icon ${isMenuOpen ? 'rotate' : ''}`}>
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </div>
-          </button>
-        </div>
-
-        {isMenuVisible && (
-          <div className={`lg:hidden overflow-hidden transition-all duration-200 ease-in-out ${
-            isMenuOpen ? 'max-h-[800px] opacity-100 animate-slide-down' : 'max-h-0 opacity-0 animate-menu-slide-up'
-          } mt-4 border-t border-ash-gray/30`}
-          >
-            <div className="flex flex-col space-y-4 mt-4 px-4 pb-4">
+            <nav className="hidden lg:flex items-center gap-6">
               <Link
                 to="/"
-                className="text-jet hover:text-celestial-blue-1 font-medium"
-                onClick={() => handleNavLinkClick('/', closeMobileMenu)}
+                className="font-medium text-jet transition-colors hover:text-celestial-blue-1"
+                onClick={() => handleNavLinkClick('/')}
               >
                 Home
               </Link>
               <Link
                 to="/about"
-                className="text-jet hover:text-celestial-blue-1 font-medium"
-                onClick={() => handleNavLinkClick('/about', closeMobileMenu)}
+                className={`font-medium transition-colors hover:text-celestial-blue-1 ${
+                  location.pathname === '/about' ? 'text-celestial-blue-1' : 'text-jet'
+                }`}
+                onClick={() => handleNavLinkClick('/about')}
               >
-                About Us
+                About
               </Link>
 
-              <div>
+              <div className="relative">
                 <button
-                  onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
-                  className={`flex items-center justify-between w-full text-left font-medium transition-colors hover:text-celestial-blue-1 ${
+                  onClick={() => setIsServicesOpen(!isServicesOpen)}
+                  className={`flex items-center font-medium transition-colors hover:text-celestial-blue-1 ${
                     location.pathname.startsWith('/services') ? 'text-celestial-blue-1' : 'text-jet'
                   }`}
-                >
+                  >
                   Services
-                  <ChevronDown
-                    className={`w-4 h-4 transition-transform duration-200 ${
-                      isMobileServicesOpen ? 'rotate-180' : ''
-                    }`}
-                  />
+                  <ChevronDown className="ml-1 w-4 h-4" />
                 </button>
 
-                {isMobileServicesOpen && (
-                  <div className="mt-2 ml-4 space-y-2 border-l-2 border-ash-gray/30 pl-4">
+                <div
+                  className={`absolute left-0 top-full mt-1 w-64 origin-top transition-all duration-300 ease-out ${
+                    isServicesOpen
+                      ? 'pointer-events-auto opacity-100 translate-y-0 scale-100'
+                      : 'pointer-events-none opacity-0 -translate-y-1 scale-95'
+                  }`}
+                >
+                  <div
+                    className={`overflow-hidden rounded-[28px] border border-white/50 bg-white/70 shadow-lg backdrop-blur-xl transition-colors duration-300 ${
+                      isServicesOpen ? 'ring-1 ring-white/40' : 'ring-0'
+                    }`}
+                  >
                     {services.map((service) => (
                       <Link
                         key={service.path}
                         to={service.path}
-                        onClick={() => handleNavLinkClick(service.path, closeMobileMenu)}
-                        className="block text-jet hover:text-celestial-blue-1 font-medium py-1"
+                        onClick={() => handleNavLinkClick(service.path, () => setIsServicesOpen(false))}
+                        className="block px-4 py-2 text-jet transition-colors hover:bg-white/80 hover:text-celestial-blue-1"
                       >
                         {service.name}
                       </Link>
                     ))}
                   </div>
-                )}
+                </div>
               </div>
 
               <Link
                 to="/process"
-                className="text-jet hover:text-celestial-blue-1 font-medium"
-                onClick={() => handleNavLinkClick('/process', closeMobileMenu)}
+                className={`font-medium transition-colors hover:text-celestial-blue-1 ${
+                  location.pathname === '/process' ? 'text-celestial-blue-1' : 'text-jet'
+                }`}
+                onClick={() => handleNavLinkClick('/process')}
               >
-                Our Process
+                Process
               </Link>
               <Link
                 to="/contact"
-                className="text-jet hover:text-celestial-blue-1 font-medium"
-                onClick={() => handleNavLinkClick('/contact', closeMobileMenu)}
+                className={`font-medium transition-colors hover:text-celestial-blue-1 ${
+                  location.pathname === '/contact' ? 'text-celestial-blue-1' : 'text-jet'
+                }`}
+                onClick={() => handleNavLinkClick('/contact')}
               >
                 Contact
               </Link>
-              <div className="pt-4 border-t border-ash-gray/30">
-                <a
-                  href="tel:+61411820650"
-                  className="flex items-center text-charcoal mb-4 hover:text-celestial-blue-1 transition-colors"
-                >
-                  <Phone className="w-4 h-4 mr-2" />
-                  <span className="font-semibold">0411 820 650</span>
-                </a>
-                <Link
-                  to="/contact"
-                  className="btn-primary block text-center"
-                  onClick={() => handleNavLinkClick('/contact', closeMobileMenu)}
-                >
-                  Get Free Quote
-                </Link>
+            </nav>
+
+            <div className="hidden md:flex items-center gap-3">
+              <a
+                href="tel:+61411820650"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/50 bg-white/60 text-charcoal/80 backdrop-blur transition-colors hover:border-celestial-blue-1 hover:text-celestial-blue-1"
+                aria-label="Call MOG Cleaning"
+              >
+                <Phone className="h-5 w-5" />
+              </a>
+              <a
+                href="https://instagram.com/mogclean"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/50 bg-white/60 text-charcoal/80 backdrop-blur transition-colors hover:border-celestial-blue-1 hover:text-celestial-blue-1"
+                aria-label="MOG Cleaning on Instagram"
+              >
+                <Instagram className="h-5 w-5" />
+              </a>
+              <Link to="/contact" className="btn-primary" onClick={() => handleNavLinkClick('/contact')}>
+                Get Free Quote
+              </Link>
+            </div>
+
+            <button
+              onClick={toggleMobileMenu}
+              className="lg:hidden rounded-full border border-white/60 bg-white/80 p-2 text-jet shadow-sm transition-colors hover:border-celestial-blue-1 hover:text-celestial-blue-1"
+              aria-label="Toggle navigation menu"
+              aria-expanded={isMenuOpen}
+            >
+              <div className={`hamburger-icon ${isMenuOpen ? 'rotate' : ''}`}>
+                {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              </div>
+            </button>
+          </div>
+
+          <div className="lg:hidden">
+            <div
+              className={`grid overflow-hidden transition-all duration-300 ease-out ${
+                isMenuOpen
+                  ? 'pointer-events-auto grid-rows-[1fr] opacity-100'
+                  : 'pointer-events-none grid-rows-[0fr] opacity-0'
+              }`}
+            >
+              <div className="overflow-hidden">
+                {isMenuVisible && (
+                  <div className="flex flex-col space-y-4 border-t border-white/50 pt-4">
+                    <Link
+                      to="/"
+                      className="font-medium text-jet hover:text-celestial-blue-1"
+                      onClick={() => handleNavLinkClick('/', closeMobileMenu)}
+                    >
+                      Home
+                    </Link>
+                    <Link
+                      to="/about"
+                      className="font-medium text-jet hover:text-celestial-blue-1"
+                      onClick={() => handleNavLinkClick('/about', closeMobileMenu)}
+                    >
+                      About
+                    </Link>
+
+                    <div>
+                      <button
+                        onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
+                        className={`flex w-full items-center justify-between text-left font-medium transition-colors hover:text-celestial-blue-1 ${
+                          location.pathname.startsWith('/services') ? 'text-celestial-blue-1' : 'text-jet'
+                        }`}
+                      >
+                        Services
+                        <ChevronDown
+                          className={`h-4 w-4 transition-transform duration-200 ${
+                            isMobileServicesOpen ? 'rotate-180' : ''
+                          }`}
+                        />
+                      </button>
+
+                      <div
+                        className={`grid overflow-hidden transition-all duration-300 ease-out ${
+                          isMobileServicesOpen
+                            ? 'pointer-events-auto grid-rows-[1fr] opacity-100'
+                            : 'pointer-events-none grid-rows-[0fr] opacity-0'
+                        }`}
+                      >
+                        <div
+                          className={`overflow-hidden rounded-[28px] border border-white/50 bg-white/65 shadow-lg backdrop-blur-xl transition-all duration-300 ${
+                            isMobileServicesOpen
+                              ? 'mt-3 translate-y-0 opacity-100'
+                              : 'mt-0 -translate-y-2 opacity-0'
+                          }`}
+                        >
+                          <div className="flex flex-col">
+                            {services.map((service, index) => (
+                              <Link
+                                key={service.path}
+                                to={service.path}
+                                onClick={() => handleNavLinkClick(service.path, closeMobileMenu)}
+                                className={`px-4 py-3 font-medium text-jet transition-colors hover:bg-white/75 hover:text-celestial-blue-1 ${
+                                  index === 0 ? 'pt-4' : ''
+                                } ${index === services.length - 1 ? 'pb-4' : ''} ${
+                                  index !== services.length - 1 ? 'border-b border-white/40' : ''
+                                }`}
+                              >
+                                {service.name}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <Link
+                      to="/process"
+                      className="font-medium text-jet hover:text-celestial-blue-1"
+                      onClick={() => handleNavLinkClick('/process', closeMobileMenu)}
+                    >
+                      Process
+                    </Link>
+                    <Link
+                      to="/contact"
+                      className="font-medium text-jet hover:text-celestial-blue-1"
+                      onClick={() => handleNavLinkClick('/contact', closeMobileMenu)}
+                    >
+                      Contact
+                    </Link>
+                    <div className="flex items-center gap-3 border-t border-white/50 pt-4">
+                      <a
+                        href="tel:+61411820650"
+                        className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/50 bg-white/60 text-charcoal/80 backdrop-blur transition-colors hover:border-celestial-blue-1 hover:text-celestial-blue-1"
+                        aria-label="Call MOG Cleaning"
+                      >
+                        <Phone className="h-5 w-5" />
+                      </a>
+                      <a
+                        href="https://instagram.com/mogclean"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/50 bg-white/60 text-charcoal/80 backdrop-blur transition-colors hover:border-celestial-blue-1 hover:text-celestial-blue-1"
+                        aria-label="MOG Cleaning on Instagram"
+                      >
+                        <Instagram className="h-5 w-5" />
+                      </a>
+                      <Link
+                        to="/contact"
+                        className="btn-primary block text-center"
+                        onClick={() => handleNavLinkClick('/contact', closeMobileMenu)}
+                      >
+                        Get Free Quote
+                      </Link>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
-        )}
+        </div>
       </div>
     </header>
   );
