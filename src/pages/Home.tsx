@@ -291,7 +291,7 @@ const testimonials = [
         jsonLd={[businessSchema, websiteSchema, breadcrumbSchema]}
       />
 
-      <section className="relative overflow-hidden text-white pt-32 sm:pt-36 lg:pt-40">
+      <section className="relative overflow-hidden text-white py-20 sm:py-24 lg:py-28">
         <div className="absolute inset-0">
           <img
             src="/images/office-cleaning-background.jpg"
@@ -303,7 +303,7 @@ const testimonials = [
         <div className="absolute -left-24 top-1/2 h-80 w-80 -translate-y-1/2 rounded-full bg-fresh-green/25 blur-3xl"></div>
         <div className="absolute -right-24 bottom-0 h-[22rem] w-[22rem] rounded-full bg-celestial-blue-1/35 blur-3xl"></div>
 
-        <div className="relative container-max px-6 pb-24 pt-20 sm:pb-28 sm:pt-24 lg:pb-32 lg:pt-28">
+        <div className="relative container-max px-6">
           <div className="grid items-center gap-16 lg:grid-cols-[1.1fr_0.9fr]">
             <div className="max-w-2xl justify-self-center text-center lg:justify-self-start lg:text-left">
               <div className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-6 py-2 text-xs font-semibold uppercase tracking-[0.28em] backdrop-blur">
@@ -311,10 +311,10 @@ const testimonials = [
                 Trusted Brisbane Partner
               </div>
               <h1 className="mt-8 text-4xl font-bold leading-tight text-white drop-shadow-sm sm:text-[2.9rem] lg:text-6xl xl:text-7xl">
-                Brisbane Commercial Cleaning That Keeps You Inspection Ready
+                Your Commercial Cleaning Partner in Brisbane
               </h1>
               <p className="mt-6 text-lg text-white/90 sm:text-xl">
-                MOG Cleaning partners with high-traffic offices, medical clinics, gyms and hospitality venues to deliver reliable, compliance-first presentation every day.
+                MOG Cleaning helps Brisbane businesses shine with tailored commercial cleaning solutions. Whether it’s daily office cleaning, gym maintenance, or medical-grade sanitisation, we deliver reliable service you can count on.
               </p>
               <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center lg:items-center lg:justify-start">
                 <Link to="/contact" className="btn-primary">
