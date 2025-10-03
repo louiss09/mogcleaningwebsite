@@ -65,13 +65,18 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
     exit;
 }
 
-$name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING) ?? '';
-$email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL) ?? '';
-$message = filter_input(INPUT_POST, 'message', FILTER_SANITIZE_STRING) ?? '';
-$phone = filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_STRING) ?? '';
+$name = trim(strip_tags((string) (filter_input(INPUT_POST, 'name', FILTER_UNSAFE_RAW) ?? '')));
+$email = trim((string) (filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL) ?? ''));
+$message = trim(strip_tags((string) (filter_input(INPUT_POST, 'message', FILTER_UNSAFE_RAW) ?? '')));
+$phone = trim(strip_tags((string) (filter_input(INPUT_POST, 'phone', FILTER_UNSAFE_RAW) ?? '')));
 
 if ($name === '' || $email === '' || $message === '') {
     echo json_encode(['success' => false, 'message' => 'All fields are required']);
+    exit;
+}
+
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    echo json_encode(['success' => false, 'message' => 'Please provide a valid email address.']);
     exit;
 }
 
@@ -83,13 +88,37 @@ try {
     $mail->SMTPAuth = true;
     $mail->Username = SMTP_USER;
     $mail->Password = SMTP_PASS;
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+
+    $securePreference = defined('SMTP_SECURE') ? strtolower((string) SMTP_SECURE) : '';
+    if ($securePreference === 'none') {
+        $mail->SMTPSecure = false;
+        $mail->SMTPAutoTLS = false;
+    } else {
+        $mail->SMTPAutoTLS = true;
+        if ($securePreference === 'ssl' || $securePreference === 'smtps') {
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+        } elseif ($securePreference === 'tls' || $securePreference === 'starttls') {
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        } elseif (SMTP_PORT === 465) {
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+        } else {
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        }
+    }
+
     $mail->Port = SMTP_PORT;
 
-    $mail->setFrom(SMTP_USER, 'MOG Clean Website');
-    $mail->addAddress('quotes@mogcleaning.com.au', 'MOG Cleaning');
+    $fromAddress = defined('MAIL_FROM_ADDRESS') ? (string) MAIL_FROM_ADDRESS : SMTP_USER;
+    $fromName = defined('MAIL_FROM_NAME') ? (string) MAIL_FROM_NAME : 'MOG Clean Website';
+    $toAddress = defined('MAIL_TO_ADDRESS') ? (string) MAIL_TO_ADDRESS : 'quotes@mogcleaning.com.au';
+    $toName = defined('MAIL_TO_NAME') ? (string) MAIL_TO_NAME : 'MOG Cleaning';
+
+    $mail->setFrom($fromAddress, $fromName);
+    $mail->Sender = $fromAddress;
+    $mail->addAddress($toAddress, $toName);
     $mail->addReplyTo($email, $name);
 
+    $mail->CharSet = 'UTF-8';
     $mail->isHTML(false);
     $mail->Subject = 'New Contact Form Submission';
 
@@ -121,7 +150,7 @@ try {
         . "From: {$name} <{$email}>" . PHP_EOL
         . 'Phone: ' . ($phone !== '' ? $phone : 'N/A') . PHP_EOL
         . 'Message: ' . $message . PHP_EOL
-        . 'Error: ' . $mail->ErrorInfo . PHP_EOL
+        . 'Error: ' . $exception->getMessage() . ' | SMTP: ' . $mail->ErrorInfo . PHP_EOL
         . str_repeat('-', 50) . PHP_EOL;
 
     file_put_contents($logFile, $logMessage, FILE_APPEND);
