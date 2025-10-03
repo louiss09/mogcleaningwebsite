@@ -12,7 +12,7 @@ import {
 import SEO from '../../components/SEO';
 import ServiceSidebar from '../../components/ServiceSidebar';
 import QuoteForm from '../../components/QuoteForm';
-import FAQStack from '../../components/FAQStack';
+import FAQAccordion from '../../components/FAQAccordion';
 import TestimonialCarousel from '../../components/TestimonialCarousel';
 
 const OfficesCleaning: React.FC = () => {
@@ -281,10 +281,11 @@ const testimonials = [
             </p>
           </div>
 
-          <FAQStack
-            items={faqs}
+          <FAQAccordion
+            faqs={faqs}
             className="faq-stack-services"
-            questionClassName="text-xl font-semibold text-charcoal mb-3"
+            cardClassName="text-left"
+            questionClassName="text-xl font-semibold text-charcoal"
             answerClassName="text-jet leading-relaxed"
           />
         </div>

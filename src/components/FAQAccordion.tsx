@@ -1,4 +1,4 @@
-import React from 'react';
+  import React from 'react';
 import { ChevronDown } from 'lucide-react';
 
 type FAQ = {
@@ -10,9 +10,19 @@ type FAQAccordionProps = {
   faqs: FAQ[];
   className?: string;
   defaultOpenIndex?: number | null;
+  cardClassName?: string;
+  questionClassName?: string;
+  answerClassName?: string;
 };
 
-const FAQAccordion: React.FC<FAQAccordionProps> = ({ faqs, className = '', defaultOpenIndex = 0 }) => {
+const FAQAccordion: React.FC<FAQAccordionProps> = ({
+  faqs,
+  className = '',
+  defaultOpenIndex = 0,
+  cardClassName = '',
+  questionClassName = '',
+  answerClassName = '',
+}) => {
   const contentRefs = React.useRef<(HTMLDivElement | null)[]>([]);
   const [heights, setHeights] = React.useState<number[]>([]);
   const [activeIndex, setActiveIndex] = React.useState<number | null>(
@@ -78,7 +88,11 @@ const FAQAccordion: React.FC<FAQAccordionProps> = ({ faqs, className = '', defau
         const maxHeight = isOpen ? heights[index] ?? measuredHeight : 0;
 
         return (
-          <article key={faq.question} className="faq-accordion-card" data-open={isOpen}>
+          <article
+            key={faq.question}
+            className={`faq-accordion-card ${cardClassName}`.trim()}
+            data-open={isOpen}
+          >
             <button
               type="button"
               className="faq-accordion-trigger"
@@ -87,7 +101,7 @@ const FAQAccordion: React.FC<FAQAccordionProps> = ({ faqs, className = '', defau
               aria-controls={`faq-panel-${index}`}
               id={`faq-trigger-${index}`}
             >
-              <span className="faq-accordion-question">{faq.question}</span>
+              <span className={`faq-accordion-question ${questionClassName}`.trim()}>{faq.question}</span>
               <span className="faq-accordion-icon" aria-hidden="true">
                 <ChevronDown size={22} strokeWidth={2.4} />
               </span>
@@ -105,7 +119,7 @@ const FAQAccordion: React.FC<FAQAccordionProps> = ({ faqs, className = '', defau
                   contentRefs.current[index] = node;
                 }}
               >
-                <p>{faq.answer}</p>
+                <p className={answerClassName}>{faq.answer}</p>
               </div>
             </div>
           </article>

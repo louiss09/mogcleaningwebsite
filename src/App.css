@@ -277,7 +277,6 @@ h1, h2, h3, h4, h5, h6 {
   max-width: 46rem;
   margin-left: auto;
   margin-right: auto;
-  --stack-gap: 54px;
 }
 
 .faq-card {
@@ -358,7 +357,7 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 22px;
   border: 1px solid rgba(203, 212, 194, 0.6);
   box-shadow: 0 24px 48px -32px rgba(11, 86, 118, 0.22);
-  padding: 1.5rem 1.75rem;
+  padding: 2rem 2.25rem;
   transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
@@ -427,7 +426,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .faq-accordion-card[data-open='true'] .faq-accordion-answer {
   opacity: 1;
-  padding-top: 1rem;
+  padding-top: 1.25rem;
+  padding-bottom: 0.25rem;
 }
 
 .faq-accordion-answer-inner {
@@ -437,4 +437,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .faq-accordion-answer-inner p {
   margin: 0;
+}
+
+@media (max-width: 640px) {
+  .faq-accordion-card {
+    padding: 1.75rem 1.5rem;
+  }
 }

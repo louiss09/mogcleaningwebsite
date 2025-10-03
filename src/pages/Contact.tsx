@@ -1,7 +1,7 @@
 ﻿import React from 'react';
 import { Phone, Mail, MapPin, Clock, MessageCircle } from 'lucide-react';
 import SEO from '../components/SEO';
-import FAQStack from '../components/FAQStack';
+import FAQAccordion from '../components/FAQAccordion';
 import QuoteForm from '../components/QuoteForm';
 
 const Contact: React.FC = () => {
@@ -309,11 +309,10 @@ const Contact: React.FC = () => {
             </p>
           </div>
 
-          <FAQStack
-            items={faqs}
+          <FAQAccordion
+            faqs={faqs}
             className="max-w-4xl mx-auto"
-            cardClassName="text-left"
-            questionClassName="text-xl font-semibold text-celestial-blue-1 mb-3"
+            questionClassName="text-xl font-semibold text-celestial-blue-1"
             answerClassName="text-gray-600 leading-relaxed"
           />
 
