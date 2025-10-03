@@ -1,0 +1,32 @@
+name: Deploy Vite site to cPanel
+
+on:
+  push:
+    branches:
+      - main  # or master
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install deps and build
+        run: |
+          npm ci
+          npm run build
+
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+        with:
+          server: ${{ secrets.CPANEL_HOST }}
+          username: ${{ secrets.CPANEL_USER }}
+          password: ${{ secrets.CPANEL_PASS }}
+          server-dir: ${{ secrets.CPANEL_PATH }}   # e.g. /public_html/
+          local-dir: ./dist/                      # uploads dist contents, not the folder
