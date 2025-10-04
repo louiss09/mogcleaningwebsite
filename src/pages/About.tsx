@@ -1,21 +1,50 @@
-﻿import React from 'react';
-import AnimatedCounter from '../components/AnimatedCounter';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { Shield, Users, Award, Clock } from 'lucide-react';
+import { Shield, Users, Award, Clock, Sparkles, HeartHandshake } from 'lucide-react';
+import AnimatedCounter from '../components/AnimatedCounter';
 import { useScrollToSection } from '../hooks/useScrollToSection';
 import SEO from '../components/SEO';
+import PageHero from '../components/PageHero';
 
 const About: React.FC = () => {
   const scrollToServices = useScrollToSection('services');
+
   const stats = [
     { value: 500, suffix: '+', label: 'Happy Clients', icon: Users },
     { value: 5, suffix: '+', label: 'Years Experience', icon: Clock },
     { value: 100, suffix: '%', label: 'Satisfaction Rate', icon: Award },
-    { value: 24, suffix: '/7', label: 'Emergency Service', icon: Shield },
+    { value: 24, suffix: '/7', label: 'Emergency Support', icon: Shield },
   ];
 
-  const pageTitle = 'About MOG Cleaning | Brisbane Commercial Cleaning Experts';
-  const pageDescription = 'Discover the story behind MOG Cleaning and how our Brisbane commercial cleaning specialists deliver dependable, high-quality cleaning for local businesses.';
+  const values = [
+    {
+      icon: Shield,
+      title: 'Reliability First',
+      description: 'We turn up when promised, follow your site rules to the letter and document every clean for transparency.',
+    },
+    {
+      icon: Users,
+      title: 'People Powered',
+      description: 'Our Brisbane-based team receives continual training, PPE refreshers and mentoring from experienced supervisors.',
+    },
+    {
+      icon: Award,
+      title: 'Quality Obsessed',
+      description: 'Detailed checklists, photographic reporting and KPI reviews keep standards consistently high across every site.',
+    },
+    {
+      icon: HeartHandshake,
+      title: 'Partnership Mindset',
+      description: 'We build long-term relationships with facility managers and owners to support evolving cleaning needs.',
+    },
+  ];
+
+  const storyPoints = [
+    'Started to solve inconsistent commercial cleaning for Brisbane businesses in 2019.',
+    'Grew from a small after-hours crew to a full-service, multi-sector team across the metro region.',
+    'Invest heavily in training, induction and compliance so every cleaner represents your brand professionally.',
+  ];
+
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
@@ -23,201 +52,173 @@ const About: React.FC = () => {
     url: 'https://mogcleaning.com.au/about',
     logo: 'https://mogcleaning.com.au/logo.svg',
     sameAs: ['https://www.instagram.com/mogclean'],
-    contactPoint: [{
-      '@type': 'ContactPoint',
-      telephone: '+61 411 820 650',
-      contactType: 'customer service',
-      areaServed: 'AU',
-      availableLanguage: ['English'],
-    }],
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        telephone: '+61 411 820 650',
+        contactType: 'customer service',
+        areaServed: 'AU',
+        availableLanguage: ['English'],
+      },
+    ],
   };
 
   return (
-    <div className="pt-20">
+    <div>
       <SEO
-        title={pageTitle}
-        description={pageDescription}
+        title="About MOG Cleaning | Brisbane Commercial Cleaning Experts"
+        description="Discover the story behind MOG Cleaning and how our Brisbane commercial cleaning specialists deliver dependable, high-quality cleaning for local businesses."
         type="article"
         jsonLd={organizationSchema}
       />
-      <section className="subtle-hero section-padding">
-        <div className="container-max">
-          <div className="max-w-4xl mx-auto text-center animate-fade-in">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">About MOG Cleaning</h1>
-            <p className="text-xl md:text-2xl text-gray-700">
-              Your trusted partner for professional commercial cleaning services across Brisbane.
-              Built on reliability, professionalism, and long-term relationships.
+
+      <PageHero
+        backgroundImage="/brisbane2.jpg"
+        variant="photo"
+        align="center"
+        className="hero-extra-top"
+        eyebrow="About MOG Cleaning"
+        eyebrowIcon={Sparkles}
+        title={
+          <>
+            People-first cleaning teams
+            <br />
+            trusted across Brisbane
+          </>
+        }
+        description="We’re a Brisbane-founded team of supervisors and cleaners who deliver consistent, accountable results for the workplaces you rely on."
+        actions={
+          <>
+            <Link to="/contact" className="btn-primary">
+              Meet with our team
+            </Link>
+            <Link to="/#services" onClick={scrollToServices} className="btn-ghost">
+              Explore services
+            </Link>
+          </>
+        }
+      />
+
+      <section className="section-shell">
+        <div className="container-max mx-auto grid gap-12 lg:grid-cols-2 lg:items-center">
+          <div className="space-y-6">
+            <div className="section-heading" data-align="left">
+              <span className="section-heading__eyebrow">Our story</span>
+              <h2 className="section-heading__title">Building a trustworthy cleaning partner for Brisbane</h2>
+              <p className="section-heading__description">
+                We launched MOG Cleaning after seeing too many businesses struggle with inconsistent results, revolving door crews and
+                poor communication. Today we deliver tailored programs backed by transparent reporting and friendly, reliable people.
+              </p>
+            </div>
+            <ul className="space-y-4 text-jet/80">
+              {storyPoints.map((point) => (
+                <li key={point} className="flex items-start gap-3">
+                  <span className="mt-1 h-2 w-2 rounded-full bg-celestial-blue-1"></span>
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="flex flex-wrap gap-4 pt-2">
+              <Link to="/#services" onClick={scrollToServices} className="btn-secondary">
+                Explore Services
+              </Link>
+              <Link to="/process" className="btn-primary">
+                How We Onboard
+              </Link>
+            </div>
+          </div>
+          <div className="glass-panel" data-variant="frost">
+            <img
+              src="/brisbane.jpg"
+              alt="Professional cleaning team in Brisbane"
+              className="h-full w-full rounded-[32px] object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="section-shell section-shell--muted">
+        <div className="container-max mx-auto">
+          <div className="section-heading">
+            <span className="section-heading__eyebrow">By the numbers</span>
+            <h2 className="section-heading__title">Growing with Brisbane businesses</h2>
+            <p className="section-heading__description">
+              Our success is measured in lasting relationships, spotless facilities and the trust of hundreds of local clients.
             </p>
           </div>
-        </div>
-      </section>
-
-      <section className="section-padding">
-        <div className="container-max">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="animate-slide-in-left">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Story</h2>
-              <div className="space-y-6 text-gray-600">
-                <p className="text-lg">
-                  MOG Cleaning was founded with a simple mission: to provide Brisbane businesses with 
-                  reliable, professional commercial cleaning services they can truly depend on.
-                </p>
-                <p>
-                  After witnessing too many businesses struggle with inconsistent cleaning services, 
-                  unreliable contractors, and subpar results, we knew there had to be a better way. 
-                  We built our company on the principles that matter most to business owners: reliability, 
-                  professionalism, and attention to detail.
-                </p>
-                <p>
-                  Today, we proudly serve hundreds of businesses across Brisbane, from small offices to 
-                  large commercial facilities. Our team of trained, police-checked professionals delivers 
-                  consistent results that help businesses create clean, healthy environments for their 
-                  employees and customers.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                  <Link to="/#services" onClick={scrollToServices} className="btn-secondary">
-                    Explore Our Services
-                  </Link>
-                  <Link to="/contact" className="btn-primary">
-                    Request a Quote
-                  </Link>
+          <div className="stat-grid" data-columns="4">
+            {stats.map((stat) => (
+              <div key={stat.label} className="stat-card" data-align="center">
+                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-celestial-blue-1/12 text-celestial-blue-1">
+                  <stat.icon className="h-7 w-7" />
                 </div>
-              </div>
-            </div>
-            <div className="animate-slide-in-right">
-              <img src="/brisbane2.jpg" alt="Professional cleaning team" className="rounded-xl shadow-lg w-full" loading="lazy" decoding="async" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="section-padding bg-gray-50">
-        <div className="container-max">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center animate-slide-up" style={{ animationDelay: `${index * 0.1}s` }}>
-                <div className="w-16 h-16 bg-gradient-to-br from-celestial-blue-1 to-celestial-blue-2 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <stat.icon className="w-8 h-8 text-white" />
-                </div>
-                <AnimatedCounter value={stat.value} suffix={stat.suffix} className="text-3xl md:text-4xl font-bold text-charcoal mb-2" />
-                <div className="text-jet font-medium">{stat.label}</div>
+                <AnimatedCounter value={stat.value} suffix={stat.suffix} className="stat-card__value" />
+                <div className="stat-card__label">{stat.label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section-padding">
-        <div className="container-max">
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Core Values</h2>
-            <p className="text-xl text-jet max-w-3xl mx-auto">
-              These values guide everything we do and help us build lasting relationships with our clients.
+      <section className="section-shell">
+        <div className="container-max mx-auto">
+          <div className="section-heading">
+            <span className="section-heading__eyebrow">What we stand for</span>
+            <h2 className="section-heading__title">Values that guide every clean</h2>
+            <p className="section-heading__description">
+              These principles shape our hiring, training and the way we care for your facilities every day.
             </p>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center animate-slide-up">
-              <div className="w-20 h-20 bg-gradient-to-br from-celestial-blue-1 to-celestial-blue-2 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <Shield className="w-10 h-10 text-white" />
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {values.map((value) => (
+              <div key={value.title} className="feature-grid-card">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-celestial-blue-1/12 text-celestial-blue-1">
+                  <value.icon className="h-7 w-7" />
+                </div>
+                <h3 className="text-xl font-semibold text-charcoal">{value.title}</h3>
+                <p className="text-jet/80 leading-relaxed">{value.description}</p>
               </div>
-              <h3 className="text-xl font-semibold mb-4">Reliability</h3>
-              <p className="text-jet">
-                We show up when promised and deliver consistent results every time.
-              </p>
-            </div>
-
-            <div className="text-center animate-slide-up" style={{ animationDelay: '0.1s' }}>
-              <div className="w-20 h-20 bg-gradient-to-br from-fresh-green to-celestial-blue-2 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <Users className="w-10 h-10 text-white" />
-              </div>
-              <h3 className="text-xl font-semibold mb-4">Professionalism</h3>
-              <p className="text-jet">
-                Trained staff, proper uniforms, and courteous service at all times.
-              </p>
-            </div>
-
-            <div className="text-center animate-slide-up" style={{ animationDelay: '0.2s' }}>
-              <div className="w-20 h-20 bg-gradient-to-br from-celestial-blue-1 to-celestial-blue-2 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <Award className="w-10 h-10 text-white" />
-              </div>
-              <h3 className="text-xl font-semibold mb-4">Quality</h3>
-              <p className="text-jet">
-                Attention to detail and high standards in every aspect of our service.
-              </p>
-            </div>
-
-            <div className="text-center animate-slide-up" style={{ animationDelay: '0.3s' }}>
-              <div className="w-20 h-20 bg-gradient-to-br from-fresh-green to-celestial-blue-2 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <Clock className="w-10 h-10 text-white" />
-              </div>
-              <h3 className="text-xl font-semibold mb-4">Commitment</h3>
-              <p className="text-jet">
-                Building long-term relationships through consistent, dependable service.
-              </p>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-    
-
-      <section className="section-padding">
-        <div className="container-max">
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Why Brisbane Businesses Choose Us</h2>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="animate-slide-in-left">
-              <img 
-                src="/brisbane.jpg" 
-                alt="Professional office cleaning"
-                className="rounded-xl shadow-lg w-full"
-              />
-            </div>
-            <div className="animate-slide-in-right">
-              <div className="space-y-6">
-                <div className="flex items-start">
-                  <div className="w-12 h-12 bg-celestial-blue-1 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                    <Shield className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2">Fully Insured & Police Checked</h3>
-                    <p className="text-jet">All our staff undergo thorough background checks and we carry comprehensive insurance coverage.</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="w-12 h-12 bg-celestial-blue-1 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                    <Users className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2">Trained Professional Team</h3>
-                    <p className="text-jet">Our cleaners receive ongoing training in the latest cleaning techniques and safety protocols.</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="w-12 h-12 bg-celestial-blue-1 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                    <Award className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2">Quality Guarantee</h3>
-                    <p className="text-jet">If you're not completely satisfied, we'll return and re-clean at no additional cost.</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="w-12 h-12 bg-celestial-blue-1 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                    <Clock className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2">Flexible Scheduling</h3>
-                    <p className="text-jet">We work around your business hours to minimize disruption to your operations.</p>
-                  </div>
-                </div>
+      <section className="section-shell section-shell--muted">
+        <div className="container-max mx-auto grid gap-12 lg:grid-cols-2 lg:items-center">
+          <div className="glass-panel p-10" data-variant="frost">
+            <h3 className="text-2xl font-semibold text-charcoal">Why Brisbane chooses MOG Cleaning</h3>
+            <p className="mt-4 text-jet/80 leading-relaxed">
+              Facility managers stay with us because we combine detailed cleaning with proactive communication and fast support when
+              needs change. We collaborate with your team to protect your brand every day.
+            </p>
+            <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div>
+                <p className="font-semibold text-charcoal">Rapid response support</p>
+                <p className="text-jet/70 text-sm">After-hours assistance for spills, events and surprise inspections.</p>
               </div>
+              <div>
+                <p className="font-semibold text-charcoal">Transparent reporting</p>
+                <p className="text-jet/70 text-sm">Photo logs and checklists delivered after every scheduled clean.</p>
+              </div>
+            </div>
+          </div>
+          <div className="space-y-6">
+            <div className="section-heading" data-align="left">
+              <span className="section-heading__eyebrow">Our commitment</span>
+              <h2 className="section-heading__title">A partner invested in your presentation</h2>
+              <p className="section-heading__description">
+                We treat your facility like our own, aligning with your brand standards and communicating every step of the way.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-4">
+              <Link to="/process" className="btn-secondary">
+                View Our Process
+              </Link>
+              <Link to="/contact" className="btn-primary">
+                Book a Consultation
+              </Link>
             </div>
           </div>
         </div>
@@ -227,4 +228,3 @@ const About: React.FC = () => {
 };
 
 export default About;
-

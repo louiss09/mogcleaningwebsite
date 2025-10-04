@@ -1,160 +1,167 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useScrollToSection } from '../hooks/useScrollToSection';
-import { Phone, Mail, MapPin, Clock } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Instagram } from 'lucide-react';
 
 const Footer: React.FC = () => {
   const scrollToServices = useScrollToSection('services');
+  const scrollToTestimonials = useScrollToSection('testimonials');
+  const currentYear = new Date().getFullYear();
+
+  const companyLinks = [
+    { label: 'Home', to: '/' },
+    { label: 'About', to: '/about' },
+    { label: 'Our Process', to: '/process' },
+    { label: 'Contact', to: '/contact' },
+  ];
+
+  const serviceLinks = [
+    { label: 'Office Cleaning', to: '/services/offices' },
+    { label: 'Fitness Centres', to: '/services/fitness' },
+    { label: 'Medical Facilities', to: '/services/health' },
+    { label: 'Educational', to: '/services/education' },
+    { label: 'Hospitality', to: '/services/hospitality' },
+    { label: 'Retail Spaces', to: '/services/retail' },
+  ];
+
+  const resourceLinks: Array<{ label: string; to: string; onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void }>
+    = [
+      { label: 'Industry Programs', to: '/#services', onClick: scrollToServices },
+      { label: 'Client Testimonials', to: '/#testimonials', onClick: scrollToTestimonials },
+      { label: 'Onboarding FAQs', to: '/process' },
+      { label: 'Request a Quote', to: '/contact' },
+    ];
+
   return (
-    <footer className="bg-charcoal text-white">
-      <div className="container-max section-padding">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div>
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
-                <img src="/logo.svg" alt="MOG Cleaning Logo" className="w-8 h-8" />
+    <footer className="site-footer">
+      <div className="site-footer__gradient" aria-hidden="true"></div>
+      <div className="site-footer__glow site-footer__glow--one" aria-hidden="true"></div>
+      <div className="site-footer__glow site-footer__glow--two" aria-hidden="true"></div>
+      <div className="site-footer__container container-max px-6">
+        <div className="site-footer__primary">
+          <div className="site-footer__brand-card">
+            <div className="site-footer__brand-heading">
+              <div className="site-footer__logo"> 
+                <img src="/logo.svg" alt="MOG Cleaning logo" loading="lazy" decoding="async" />
               </div>
               <div>
-                <h3 className="text-xl font-bold text-white">MOG Cleaning</h3>
-                <p className="text-ash-gray text-sm">Commercial Services</p>
+                <p className="site-footer__eyebrow">Brisbane Commercial Cleaning</p>
+                <h2 className="site-footer__title">MOG Cleaning</h2>
+                <p className="site-footer__subtitle">
+                  Reliable, glass-finish cleaning programs that keep your workplace inspection ready every day.
+                </p>
               </div>
             </div>
-            <p className="text-ash-gray mb-4">
-              Professional commercial cleaning services across Brisbane. Reliable, consistent,
-              and detail-focused cleaning for businesses.
-            </p>
-            <div className="space-y-2">
-              <div className="flex items-center text-ash-gray">
-                <Phone className="w-4 h-4 mr-2" />
-                <span>0411 820 650</span>
+            <div className="site-footer__contact-list">
+              <a href="tel:+61411820650" className="site-footer__contact-item">
+                <span className="site-footer__contact-icon">
+                  <Phone className="h-4 w-4" />
+                </span>
+                0411 820 650
+              </a>
+              <a href="mailto:info@mogcleaning.com.au" className="site-footer__contact-item">
+                <span className="site-footer__contact-icon">
+                  <Mail className="h-4 w-4" />
+                </span>
+                info@mogcleaning.com.au
+              </a>
+              <div className="site-footer__contact-item" aria-label="Service area">
+                <span className="site-footer__contact-icon">
+                  <MapPin className="h-4 w-4" />
+                </span>
+                Brisbane Metro &amp; South East Queensland
               </div>
-              <div className="flex items-center text-ash-gray">
-                <Mail className="w-4 h-4 mr-2" />
-                <span>info@mogcleaning.com.au</span>
+              <div className="site-footer__contact-item" aria-label="Operating hours">
+                <span className="site-footer__contact-icon">
+                  <Clock className="h-4 w-4" />
+                </span>
+                Mon–Fri 7:00am–6:00pm · 24/7 rapid response
               </div>
-              <div className="flex items-center text-ash-gray">
-                <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                </svg>
-                <a href="https://instagram.com/mogclean" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-                  @mogclean
-                </a>
-              </div>
+            </div>
+            <div className="site-footer__social">
+              <a
+                href="https://instagram.com/mogclean"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="site-footer__social-link"
+              >
+                <Instagram className="h-4 w-4" />
+                <span>@mogclean</span>
+              </a>
             </div>
           </div>
 
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/" className="text-ash-gray hover:text-white transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" className="text-ash-gray hover:text-white transition-colors">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link to="/#services" onClick={scrollToServices} className="text-ash-gray hover:text-white transition-colors">
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link to="/process" className="text-ash-gray hover:text-white transition-colors">
-                  Our Process
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-ash-gray hover:text-white transition-colors">
-                  Contact Us
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Our Services</h4>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/services/offices" className="text-ash-gray hover:text-white transition-colors">
-                  Office Cleaning
-                </Link>
-              </li>
-              <li>
-                <Link to="/services/fitness" className="text-ash-gray hover:text-white transition-colors">
-                  Fitness Centers
-                </Link>
-              </li>
-              <li>
-                <Link to="/services/health" className="text-ash-gray hover:text-white transition-colors">
-                  Medical Facilities
-                </Link>
-              </li>
-              <li>
-                <Link to="/services/education" className="text-ash-gray hover:text-white transition-colors">
-                  Educational Institutions
-                </Link>
-              </li>
-              <li>
-                <Link to="/services/hospitality" className="text-ash-gray hover:text-white transition-colors">
-                  Hospitality
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Get In Touch</h4>
-            <div className="space-y-4">
-              <div className="flex items-start">
-                <MapPin className="w-5 h-5 mr-3 text-celestial-blue-1 flex-shrink-0 mt-0.5" />
-                <div>
-                  <p className="text-ash-gray">Brisbane Metro Area</p>
-                  <p className="text-ash-gray">Queensland, Australia</p>
-                </div>
-              </div>
-
-              <div className="flex items-start">
-                <Clock className="w-5 h-5 mr-3 text-celestial-blue-1 flex-shrink-0 mt-0.5" />
-                <div>
-                  <p className="text-ash-gray">Mon - Fri: 7:00 AM - 6:00 PM</p>
-                  <p className="text-ash-gray">Emergency services available</p>
-                </div>
-              </div>
-
-              <Link to="/contact" className="inline-block btn-primary mt-4">
-                Request Free Quote
-              </Link>
+          <div className="site-footer__links">
+            <div className="site-footer__link-group">
+              <h3 className="site-footer__group-title">Company</h3>
+              <ul className="site-footer__link-list">
+                {companyLinks.map((link) => (
+                  <li key={link.label}>
+                    <Link to={link.to} className="site-footer__link">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="site-footer__link-group">
+              <h3 className="site-footer__group-title">Services</h3>
+              <ul className="site-footer__link-list">
+                {serviceLinks.map((link) => (
+                  <li key={link.label}>
+                    <Link to={link.to} className="site-footer__link">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="site-footer__link-group">
+              <h3 className="site-footer__group-title">Support</h3>
+              <ul className="site-footer__link-list">
+                {resourceLinks.map((link) => (
+                  <li key={link.label}>
+                    <Link to={link.to} onClick={link.onClick} className="site-footer__link">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-jet mt-12 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-ash-gray mb-4 md:mb-0">
-              &copy; 2025 MOG Cleaning. All rights reserved.
-            </p>
-            <div className="flex space-x-6 text-ash-gray text-sm">
-              <span>- Fully Insured</span>
-              <span>- Police Checked</span>
-              <span>- 5+ Years Experience</span>
-            </div>
-          </div>
-          <div className="text-center mt-4 pt-4 border-t border-jet">
-            <p className="text-ash-gray text-sm">
-              Designed by{' '}
-              <a
-                href="https://zip-it.com.au"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-celestial-blue-1 hover:text-white transition-colors"
-              >
-                ZIP IT Solutions
-              </a>
+        <div className="site-footer__cta">
+          <div className="site-footer__cta-copy">
+            <p className="site-footer__cta-eyebrow">Ready when you are</p>
+            <h3>Schedule a walkthrough &amp; tailored quote</h3>
+            <p>
+              Share your facility needs and we&apos;ll respond within 24 hours with pricing, scope and onboarding details.
             </p>
           </div>
+          <div className="site-footer__cta-actions">
+            <Link to="/contact" className="btn-primary">
+              Book a walkthrough
+            </Link>
+            <a href="tel:+61411820650" className="site-footer__cta-call">
+              Call 0411 820 650
+            </a>
+          </div>
+        </div>
+
+        <div className="site-footer__meta">
+          <p className="site-footer__copyright">&copy; {currentYear} MOG Cleaning. All rights reserved.</p>
+          <div className="site-footer__meta-list">
+            <span>Fully insured</span>
+            <span>Police-checked teams</span>
+            <span>After-hours support</span>
+          </div>
+          <p className="site-footer__credits">
+            Designed by{' '}
+            <a href="https://zip-it.com.au" target="_blank" rel="noopener noreferrer">
+              ZIP IT Solutions
+            </a>
+          </p>
         </div>
       </div>
     </footer>

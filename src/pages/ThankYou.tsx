@@ -1,100 +1,105 @@
-﻿import React from 'react';
-import { CheckCircle, Phone, Mail, ArrowRight, Home } from 'lucide-react';
-import { useScrollToSection } from '../hooks/useScrollToSection';
+import React from 'react';
+import { CheckCircle, Phone, Mail, ArrowRight, Home, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
+import { useScrollToSection } from '../hooks/useScrollToSection';
 
 const ThankYou: React.FC = () => {
   const scrollToServices = useScrollToSection('services');
   const pageTitle = 'Thank You | MOG Cleaning';
-  const pageDescription = 'Thanks for contacting MOG Cleaning. We will be in touch within 24 hours to schedule your site assessment and commercial cleaning proposal.';
+  const pageDescription =
+    'Thanks for contacting MOG Cleaning. We will be in touch within 24 hours to schedule your site assessment and commercial cleaning proposal.';
 
   return (
-    <div className="pt-24 pb-20 px-4 sm:px-6 lg:px-8">
-      <SEO
-        title={pageTitle}
-        description={pageDescription}
-        robots="noindex,nofollow"
-        type="article"
-      />
-      <div className="container-max max-w-3xl mx-auto">
-        <div className="bg-white rounded-2xl shadow-lg border border-ash-gray/30 p-8 md:p-10">
-          <div className="flex items-center justify-center mb-6">
-            <CheckCircle className="w-12 h-12 text-teal-500" />
-          </div>
+    <div>
+      <SEO title={pageTitle} description={pageDescription} robots="noindex,nofollow" type="article" />
 
-          <h1 className="text-3xl md:text-4xl font-bold text-center text-charcoal mb-4">
-            Thank You! Your Request Has Been Received
-          </h1>
-
-          <p className="text-center text-jet mb-8">
-            We appreciate you considering MOG Cleaning for your cleaning needs. Your request is now with our team.
-          </p>
-
-          <div className="bg-light-gray/60 border border-ash-gray/40 rounded-xl p-5 mb-10">
-            <p className="text-sm text-charcoal">
-              <strong>Important:</strong> Please check your inbox (and your spam/junk folder) for our email. Sometimes first-time messages may end up there.
+      <section className="section-shell section-shell--muted">
+        <div className="container-max mx-auto max-w-4xl">
+          <div className="glass-panel p-10" data-variant="frost">
+            <div className="mx-auto mb-8 flex h-16 w-16 items-center justify-center rounded-full bg-celestial-blue-1/15 text-celestial-blue-1">
+              <CheckCircle className="h-9 w-9" />
+            </div>
+            <h1 className="text-center text-3xl font-bold text-charcoal md:text-4xl">
+              Thank you! Your request has been received
+            </h1>
+            <p className="mt-4 text-center text-jet/80">
+              We appreciate you considering MOG Cleaning. Our team will be in touch within 24 hours (Mon–Fri) to organise your site walkthrough.
             </p>
-          </div>
 
-          <div className="border-t border-ash-gray/30 my-8" />
-
-          <h2 className="text-2xl font-semibold text-charcoal mb-4 flex items-center">What Happens Next</h2>
-          <ol className="space-y-4 text-jet list-decimal list-inside mb-8">
-            <li>
-              <p className="font-semibold">We'll Contact You</p>
-              <p className="text-jet/80">Within 24 hours (Mon-Fri), one of our team members will reach out to arrange a convenient time for your site walkthrough.</p>
-            </li>
-            <li>
-              <p className="font-semibold">Site Walkthrough</p>
-              <p className="text-jet/80">We'll visit your premises to assess the space, discuss your requirements, and ensure we fully understand your needs.</p>
-            </li>
-            <li>
-              <p className="font-semibold">Personalised Quote</p>
-              <p className="text-jet/80">After the walkthrough, we'll prepare a tailored cleaning proposal and send it directly to you.</p>
-            </li>
-            <li>
-              <p className="font-semibold">Scheduling Your Clean</p>
-              <p className="text-jet/80">Once you approve the quote, we'll lock in your first service and handle the rest.</p>
-            </li>
-          </ol>
-
-          <div className="border-t border-ash-gray/30 my-8" />
-
-          <h3 className="text-xl font-semibold text-charcoal mb-3">Need to Speak With Us Sooner?</h3>
-          <div className="bg-white rounded-xl border border-ash-gray/40 p-5 mb-8">
-            <p className="mb-2">We're here to help.</p>
-            <div className="space-y-2">
-              <a href="tel:+61411820650" className="inline-flex items-center text-celestial-blue-1 hover:text-teal-600 transition-colors">
-                <Phone className="w-4 h-4 mr-2" /> Call us on 0411 820 650
-              </a>
-              <a href="mailto:quotes@mogcleaning.com.au" className="inline-flex items-center text-celestial-blue-1 hover:text-teal-600 transition-colors">
-                <Mail className="w-4 h-4 mr-2" /> Or email us at quotes@mogcleaning.com.au
-              </a>
+            <div className="mt-8 rounded-2xl border border-celestial-blue-1/15 bg-white/80 p-6">
+              <p className="text-sm text-charcoal">
+                <strong>Important:</strong> Please check your inbox and spam folder for our email confirmation. First-time messages may be filtered.
+              </p>
             </div>
-          </div>
 
-          <div className="border-t border-ash-gray/30 my-8" />
-
-          <div className="text-center">
-            <p className="text-jet mb-6">While you wait, feel free to explore our services or learn more about us.</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/#services" onClick={scrollToServices} className="btn-primary inline-flex items-center justify-center">
-                View Our Services
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Link>
-              <Link to="/about" className="btn-secondary inline-flex items-center justify-center">
-                About Us
-              </Link>
+            <div className="mt-10 border-t border-ash-gray/40 pt-8">
+              <h2 className="text-2xl font-semibold text-charcoal">What happens next</h2>
+              <ol className="mt-6 space-y-4 text-jet/80">
+                <li>
+                  <p className="font-semibold text-charcoal">We’ll contact you</p>
+                  <p>Within 24 hours our team will reach out to schedule a convenient time for your walkthrough.</p>
+                </li>
+                <li>
+                  <p className="font-semibold text-charcoal">On-site assessment</p>
+                  <p>We visit, note compliance requirements and gather everything needed for your tailored scope.</p>
+                </li>
+                <li>
+                  <p className="font-semibold text-charcoal">Personalised quote</p>
+                  <p>You receive a detailed proposal outlining inclusions, schedule options and pricing.</p>
+                </li>
+                <li>
+                  <p className="font-semibold text-charcoal">Kick-off & onboarding</p>
+                  <p>Once approved, we finalise scheduling, inductions and launch your cleaning program.</p>
+                </li>
+              </ol>
             </div>
-            <div className="mt-6">
-              <Link to="/" className="inline-flex items-center text-jet hover:text-celestial-blue-1 transition-colors">
-                <Home className="w-4 h-4 mr-2" /> Back to Home
+
+            <div className="mt-10 rounded-2xl border border-celestial-blue-1/15 bg-white/85 p-6">
+              <h3 className="text-xl font-semibold text-charcoal">Need to speak with us sooner?</h3>
+              <p className="mt-2 text-jet/80">We’re here to help with urgent requests or questions.</p>
+              <div className="mt-4 flex flex-col gap-2 text-celestial-blue-1">
+                <a href="tel:+61411820650" className="inline-flex items-center gap-2 hover:text-fresh-green transition-colors">
+                  <Phone className="h-4 w-4" /> Call 0411 820 650
+                </a>
+                <a href="mailto:quotes@mogcleaning.com.au" className="inline-flex items-center gap-2 hover:text-fresh-green transition-colors">
+                  <Mail className="h-4 w-4" /> Email quotes@mogcleaning.com.au
+                </a>
+              </div>
+            </div>
+
+            <div className="mt-10 border-t border-ash-gray/40 pt-8 text-center">
+              <p className="text-jet/80">While you wait, explore our services or learn more about the team behind MOG Cleaning.</p>
+              <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                <Link to="/#services" onClick={scrollToServices} className="btn-primary">
+                  View our services
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+                <Link to="/about" className="btn-secondary">
+                  Meet the team
+                </Link>
+              </div>
+              <Link to="/" className="mt-6 inline-flex items-center gap-2 text-celestial-blue-1 hover:text-fresh-green transition-colors">
+                <Home className="h-4 w-4" /> Back to home
               </Link>
             </div>
           </div>
         </div>
-      </div>
+      </section>
+
+      <section className="section-shell section-shell--dark">
+        <div className="container-max mx-auto text-center">
+          <div className="mx-auto max-w-3xl space-y-6">
+            <span className="pill-chip bg-white/10 text-white">
+              <Sparkles className="h-4 w-4" /> Brisbane businesses trust MOG Cleaning
+            </span>
+            <h2 className="section-heading__title text-white">We look forward to partnering with you</h2>
+            <p className="section-heading__description text-white/80">
+              From corporate offices to medical facilities, our team delivers reliable cleaning programs tailored to your site.
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
