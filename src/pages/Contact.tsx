@@ -152,7 +152,7 @@ const Contact: React.FC = () => {
         jsonLd={[localBusinessSchema, contactPageSchema, faqSchema]}
       />
       <section
-        className="relative hero-section-spacing px-4 sm:px-6 lg:px-8 text-white overflow-hidden"
+        className="relative hero-section-spacing hero-extra-top px-4 sm:px-6 lg:px-8 text-white overflow-hidden"
         style={{
           backgroundImage: "url('/images/accounting-background.jpg')",
           backgroundSize: 'cover',
