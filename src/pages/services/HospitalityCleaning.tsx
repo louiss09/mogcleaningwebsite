@@ -159,7 +159,7 @@ const testimonials = [
   };
 
   return (
-    <div className="pt-20">
+    <div>
       <SEO
         title={pageTitle}
         description={pageDescription}
@@ -171,16 +171,16 @@ const testimonials = [
       />
 
       <section
-        className="relative py-20 px-4 sm:px-6 lg:px-8 text-white overflow-hidden"
+        className="relative hero-section-spacing px-4 sm:px-6 lg:px-8 text-white overflow-hidden"
         style={{
           backgroundImage: "url('/images/hotel-cleaning-background.jpg')",
           backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundPosition: 'center top',
           backgroundRepeat: 'no-repeat',
         }}
       >
         <div className="absolute inset-0 bg-black/60"></div>
-        <div className="relative container-max">
+        <div className="relative container-max hero-content-area">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="animate-slide-in-left">
               <div className="flex items-center mb-6">

@@ -142,7 +142,7 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <div className="pt-20">
+    <div>
       <SEO
         title={pageTitle}
         description={pageDescription}
@@ -152,7 +152,7 @@ const Contact: React.FC = () => {
         jsonLd={[localBusinessSchema, contactPageSchema, faqSchema]}
       />
       <section
-        className="relative py-20 px-4 sm:px-6 lg:px-8 text-white overflow-hidden"
+        className="relative hero-section-spacing hero-extra-top px-4 sm:px-6 lg:px-8 text-white overflow-hidden"
         style={{
           backgroundImage: "url('/images/accounting-background.jpg')",
           backgroundSize: 'cover',
@@ -325,8 +325,8 @@ const Contact: React.FC = () => {
         </div>
       </section>
 
-      <section className="gradient-bg text-white section-padding">
-        <div className="container-max text-center">
+      <section className="gradient-bg text-white hero-section-spacing px-4 sm:px-6 lg:px-8">
+        <div className="container-max text-center hero-content-area">
           <div className="max-w-4xl mx-auto animate-fade-in">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               Ready to Experience the Difference?

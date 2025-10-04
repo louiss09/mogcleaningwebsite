@@ -33,15 +33,15 @@ const About: React.FC = () => {
   };
 
   return (
-    <div className="pt-20">
+    <div>
       <SEO
         title={pageTitle}
         description={pageDescription}
         type="article"
         jsonLd={organizationSchema}
       />
-      <section className="subtle-hero section-padding">
-        <div className="container-max">
+      <section className="subtle-hero hero-section-spacing hero-extra-top px-4 sm:px-6 lg:px-8">
+        <div className="container-max hero-content-area">
           <div className="max-w-4xl mx-auto text-center animate-fade-in">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">About MOG Cleaning</h1>
             <p className="text-xl md:text-2xl text-gray-700">
