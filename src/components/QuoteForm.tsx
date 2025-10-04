@@ -68,94 +68,115 @@ const QuoteForm: React.FC<QuoteFormProps> = ({
     });
   };
 
+  const inputClasses =
+    'w-full rounded-xl border border-ash-gray/60 bg-white/90 px-4 py-3 text-charcoal shadow-sm transition-all placeholder:text-jet/60 focus:border-celestial-blue-1 focus:outline-none focus:ring-4 focus:ring-celestial-blue-1/25';
+
   return (
-    <div className={`bg-white rounded-xl shadow-lg p-8 ${className}`}>
-      <h3 className="text-2xl font-bold text-charcoal mb-2">{title}</h3>
-      <p className="text-jet mb-6">{subtitle}</p>
+    <div
+      className={`relative overflow-hidden rounded-[32px] border border-white/50 bg-white/95 p-8 shadow-[0_35px_60px_-25px_rgba(15,23,42,0.55)] backdrop-blur ${className}`}
+    >
+      <div className="pointer-events-none absolute -top-28 right-0 h-48 w-48 rounded-full bg-celestial-blue-1/25 blur-3xl"></div>
+      <div className="pointer-events-none absolute -bottom-16 left-6 h-40 w-40 rounded-full bg-fresh-green/20 blur-3xl"></div>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
-        <div>
-          <label htmlFor="name" className="block text-sm font-medium text-charcoal mb-2">
-            Full Name *
-          </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            required
-            value={formData.name}
-            onChange={handleChange}
-            className="w-full px-4 py-3 border border-ash-gray rounded-lg focus:ring-4 focus:ring-celestial-blue-1/30 focus:border-celestial-blue-1 outline-none transition-all text-charcoal placeholder:text-jet/60 bg-white"
-            placeholder="Your full name"
-          />
-        </div>
-
-        <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-charcoal mb-2">
-            Phone Number *
-          </label>
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            required
-            value={formData.phone}
-            onChange={handleChange}
-            className="w-full px-4 py-3 border border-ash-gray rounded-lg focus:ring-4 focus:ring-celestial-blue-1/30 focus:border-celestial-blue-1 outline-none transition-all text-charcoal placeholder:text-jet/60 bg-white"
-            placeholder="0411 820 650"
-          />
-        </div>
-
-        <div>
-          <label htmlFor="email" className="block text-sm font-medium text-charcoal mb-2">
-            Email Address *
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            required
-            value={formData.email}
-            onChange={handleChange}
-            className="w-full px-4 py-3 border border-ash-gray rounded-lg focus:ring-4 focus:ring-celestial-blue-1/30 focus:border-celestial-blue-1 outline-none transition-all text-charcoal placeholder:text-jet/60 bg-white"
-            placeholder="your.email@company.com"
-          />
-        </div>
-
-        <div>
-          <label htmlFor="message" className="block text-sm font-medium text-charcoal mb-2">
-            Tell Us About Your Cleaning Needs
-          </label>
-          <textarea
-            id="message"
-            name="message"
-            rows={4}
-            value={formData.message}
-            onChange={handleChange}
-            className="w-full px-4 py-3 border border-ash-gray rounded-lg focus:ring-4 focus:ring-celestial-blue-1/30 focus:border-celestial-blue-1 outline-none transition-all resize-none text-charcoal placeholder:text-jet/60 bg-white"
-            placeholder="Brief description of your facility type, size, frequency needed, etc."
-          ></textarea>
-        </div>
-
-        {error && (
-          <div className="text-red-600 text-sm bg-red-50 border border-red-200 rounded-lg p-3">
-            {error}
+      <div className="relative">
+        <div className="flex flex-col items-center gap-5 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
+          <div>
+            <h3 className="text-2xl font-bold text-charcoal">{title}</h3>
+            <p className="text-sm text-jet/80 sm:text-base">{subtitle}</p>
           </div>
-        )}
+          <div className="inline-flex items-center justify-center gap-2 rounded-full border border-ash-gray/40 bg-white/85 px-5 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-charcoal/70 shadow-sm sm:self-center">
+            <span className="whitespace-nowrap">24hr Reply</span>
+          </div>
+        </div>
 
-        <button
-          type="submit"
-          disabled={loading}
-          className={`w-full btn-primary flex items-center justify-center ${loading ? 'opacity-70 cursor-not-allowed' : ''}`}
-        >
-          <Send className="w-4 h-4 mr-2" />
-          {loading ? 'Sending...' : 'Get My Free Quote'}
-        </button>
-      </form>
+        <form onSubmit={handleSubmit} className="mt-10 space-y-6">
+          <div className="grid gap-6 sm:grid-cols-2">
+            <div>
+              <label htmlFor="name" className="mb-2 block text-sm font-semibold text-charcoal">
+                Full Name *
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                value={formData.name}
+                onChange={handleChange}
+                className={inputClasses}
+                placeholder="Your full name"
+              />
+            </div>
 
-      <p className="text-xs text-jet/70 mt-4 text-center">
-        We respect your privacy and never share your information with third parties.
-      </p>
+            <div>
+              <label htmlFor="phone" className="mb-2 block text-sm font-semibold text-charcoal">
+                Phone Number *
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                required
+                value={formData.phone}
+                onChange={handleChange}
+                className={inputClasses}
+                placeholder="0411 820 650"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label htmlFor="email" className="mb-2 block text-sm font-semibold text-charcoal">
+              Email Address *
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              value={formData.email}
+              onChange={handleChange}
+              className={inputClasses}
+              placeholder="your.email@company.com"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="message" className="mb-2 block text-sm font-semibold text-charcoal">
+              Tell Us About Your Cleaning Needs
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              rows={4}
+              value={formData.message}
+              onChange={handleChange}
+              className={`${inputClasses} resize-none`}
+              placeholder="Facility type, approximate size, frequency required, any compliance notes."
+            ></textarea>
+          </div>
+
+          {error && (
+            <div className="rounded-xl border border-red-200 bg-red-50 p-3 text-sm text-red-600">
+              {error}
+            </div>
+          )}
+
+          <button
+            type="submit"
+            disabled={loading}
+            className={`btn-primary flex w-full items-center justify-center gap-2 rounded-2xl py-3 text-base font-semibold shadow-lg shadow-celestial-blue-1/30 transition ${
+              loading ? 'cursor-not-allowed opacity-70' : ''
+            }`}
+          >
+            <Send className="h-4 w-4" />
+            {loading ? 'Sending…' : 'Get My Free Quote'}
+          </button>
+        </form>
+
+        <p className="mt-6 text-center text-xs text-jet/70">
+          We respect your privacy and never share your information with third parties.
+        </p>
+      </div>
     </div>
   );
 };
