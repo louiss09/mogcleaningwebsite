@@ -15,6 +15,7 @@ import FAQAccordion from '../../components/FAQAccordion';
 import TestimonialCarousel from '../../components/TestimonialCarousel';
 import PageHero from '../../components/PageHero';
 import QuoteSection from '../../components/QuoteSection';
+import HeroHighlightBand from '../../components/HeroHighlightBand';
 
 const EducationCleaning: React.FC = () => {
   const inclusions = [
@@ -120,24 +121,6 @@ const EducationCleaning: React.FC = () => {
     },
   ];
 
-  const heroFeatures = [
-    {
-      icon: GraduationCap,
-      title: 'Education specialists',
-      description: 'Crews experienced with classrooms, labs, libraries and student amenities across Brisbane.',
-    },
-    {
-      icon: Users,
-      title: 'Leadership-friendly reporting',
-      description: 'Checklists and photos delivered to principals, business managers and facility coordinators.',
-    },
-    {
-      icon: Phone,
-      title: 'Holiday deep cleans',
-      description: 'Plan floor restoration and high dusting during term breaks without stretching your staff.',
-    },
-  ];
-
   const pageTitle = 'Education Cleaning Brisbane | School & Childcare Cleaners';
   const pageDescription =
     'Education cleaning for Brisbane schools, childcare centres and training colleges. Low-tox products, flexible scheduling and reporting for leadership teams.';
@@ -238,21 +221,7 @@ const EducationCleaning: React.FC = () => {
         badges={heroBadges}
       />
 
-      <section className="hero-highlight-band">
-        <div className="container-max px-6">
-          <div className="hero-highlight-band__grid">
-            {heroHighlights.map((feature) => (
-              <div key={feature.title} className="hero-highlight-card">
-                <div className="hero-highlight-card__icon">
-                  <feature.icon className="h-5 w-5" />
-                </div>
-                <div className="hero-highlight-card__title">{feature.title}</div>
-                <p>{feature.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </PageHero>
+      <HeroHighlightBand items={heroHighlights} />
 
       <QuoteSection
         eyebrow="Supportive onboarding"

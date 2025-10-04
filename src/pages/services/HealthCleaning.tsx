@@ -15,6 +15,7 @@ import FAQAccordion from '../../components/FAQAccordion';
 import TestimonialCarousel from '../../components/TestimonialCarousel';
 import PageHero from '../../components/PageHero';
 import QuoteSection from '../../components/QuoteSection';
+import HeroHighlightBand from '../../components/HeroHighlightBand';
 
 const HealthCleaning: React.FC = () => {
   const inclusions = [
@@ -220,21 +221,7 @@ const HealthCleaning: React.FC = () => {
         badges={heroBadges}
       />
 
-      <section className="hero-highlight-band">
-        <div className="container-max px-6">
-          <div className="hero-highlight-band__grid">
-            {heroHighlights.map((feature) => (
-              <div key={feature.title} className="hero-highlight-card">
-                <div className="hero-highlight-card__icon">
-                  <feature.icon className="h-5 w-5" />
-                </div>
-                <div className="hero-highlight-card__title">{feature.title}</div>
-                <p>{feature.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </PageHero>
+      <HeroHighlightBand items={heroHighlights} />
 
       <QuoteSection
         eyebrow="Clinical onboarding"

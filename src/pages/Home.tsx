@@ -21,6 +21,7 @@ import TestimonialCarousel from '../components/TestimonialCarousel';
 import { useScrollToSection } from '../hooks/useScrollToSection';
 import FAQAccordion from '../components/FAQAccordion';
 import PageHero from '../components/PageHero';
+import HeroHighlightBand from '../components/HeroHighlightBand';
 
 const Home: React.FC = () => {
   const scrollToServices = useScrollToSection('services');
@@ -349,21 +350,7 @@ const Home: React.FC = () => {
         badges={heroBadges}
       />
 
-      <section className="hero-highlight-band">
-        <div className="container-max px-6">
-          <div className="hero-highlight-band__grid">
-            {heroHighlights.map((feature) => (
-              <div key={feature.title} className="hero-highlight-card">
-                <div className="hero-highlight-card__icon">
-                  <feature.icon className="h-5 w-5" />
-                </div>
-                <div className="hero-highlight-card__title">{feature.title}</div>
-                <p>{feature.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <HeroHighlightBand items={heroHighlights} />
 
       <section className="section-shell section-shell--muted" id="testimonials">
         <div className="container-max mx-auto">

@@ -15,6 +15,7 @@ import FAQAccordion from '../../components/FAQAccordion';
 import TestimonialCarousel from '../../components/TestimonialCarousel';
 import PageHero from '../../components/PageHero';
 import QuoteSection from '../../components/QuoteSection';
+import HeroHighlightBand from '../../components/HeroHighlightBand';
 
 const FitnessCleaning: React.FC = () => {
   const inclusions = [
@@ -120,24 +121,6 @@ const FitnessCleaning: React.FC = () => {
     },
   ];
 
-  const heroFeatures = [
-    {
-      icon: Dumbbell,
-      title: 'Gym-specific specialists',
-      description: 'Cleaners trained in equipment disassembly, sweat management and change-room hygiene.',
-    },
-    {
-      icon: Users,
-      title: 'Member experience focus',
-      description: 'Fresh fragrances, clutter-free reception areas and spotless amenities keep members impressed.',
-    },
-    {
-      icon: Phone,
-      title: 'Rapid spill response',
-      description: 'On-call crews for sweat spills, biohazards or last-minute class timetable changes.',
-    },
-  ];
-
   const pageTitle = 'Gym & Fitness Centre Cleaning Brisbane | MOG Cleaning';
   const pageDescription =
     'Keep your Brisbane gym spotless with specialised fitness centre cleaning. Equipment sanitising, locker room deep cleans and flexible schedules from MOG Cleaning.';
@@ -238,21 +221,7 @@ const FitnessCleaning: React.FC = () => {
         badges={heroBadges}
       />
 
-      <section className="hero-highlight-band">
-        <div className="container-max px-6">
-          <div className="hero-highlight-band__grid">
-            {heroHighlights.map((feature) => (
-              <div key={feature.title} className="hero-highlight-card">
-                <div className="hero-highlight-card__icon">
-                  <feature.icon className="h-5 w-5" />
-                </div>
-                <div className="hero-highlight-card__title">{feature.title}</div>
-                <p>{feature.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </PageHero>
+      <HeroHighlightBand items={heroHighlights} />
 
       <QuoteSection
         eyebrow="Fast onboarding"

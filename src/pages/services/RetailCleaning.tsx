@@ -15,6 +15,7 @@ import FAQAccordion from '../../components/FAQAccordion';
 import TestimonialCarousel from '../../components/TestimonialCarousel';
 import PageHero from '../../components/PageHero';
 import QuoteSection from '../../components/QuoteSection';
+import HeroHighlightBand from '../../components/HeroHighlightBand';
 
 const RetailCleaning: React.FC = () => {
   const inclusions = [
@@ -120,24 +121,6 @@ const RetailCleaning: React.FC = () => {
     },
   ];
 
-  const heroFeatures = [
-    {
-      icon: ShoppingBag,
-      title: 'Retail presentation experts',
-      description: 'Crews experienced with fashion, beauty, tech and food retailers across Brisbane centres.',
-    },
-    {
-      icon: Users,
-      title: 'Customer-friendly experience',
-      description: 'Fresh fitting rooms, streak-free glass and spotless POS keep shoppers buying.',
-    },
-    {
-      icon: Phone,
-      title: 'Rapid rollout support',
-      description: 'On-call cleaners for overnight floor sets, pop-ups and campaign launches.',
-    },
-  ];
-
   const pageTitle = 'Retail Cleaning Brisbane | Store & Shopping Centre Cleaners';
   const pageDescription =
     'Retail and showroom cleaning for Brisbane brands. Impeccable sales floors, fresh fitting rooms and after-hours crews that protect your customer experience.';
@@ -238,21 +221,7 @@ const RetailCleaning: React.FC = () => {
         badges={heroBadges}
       />
 
-      <section className="hero-highlight-band">
-        <div className="container-max px-6">
-          <div className="hero-highlight-band__grid">
-            {heroHighlights.map((feature) => (
-              <div key={feature.title} className="hero-highlight-card">
-                <div className="hero-highlight-card__icon">
-                  <feature.icon className="h-5 w-5" />
-                </div>
-                <div className="hero-highlight-card__title">{feature.title}</div>
-                <p>{feature.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <HeroHighlightBand items={heroHighlights} />
 
       <QuoteSection
         eyebrow="Store-ready crews"
