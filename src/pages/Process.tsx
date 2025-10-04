@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, Eye, Play, CheckCircle, ArrowRight } from 'lucide-react';
+import { Phone, Eye, Play, CheckCircle, ArrowRight, ClipboardCheck, Sparkles } from 'lucide-react';
 import SEO from '../components/SEO';
+import PageHero from '../components/PageHero';
 
 const Process: React.FC = () => {
   const steps = [
@@ -9,50 +10,61 @@ const Process: React.FC = () => {
       number: '01',
       icon: Phone,
       title: 'Request Quote',
-      description: "Contact us via phone or our online form. We'll discuss your cleaning needs, facility size, and schedule requirements.",
+      description:
+        "Share your facility details and preferred schedule via phone or our online form. We'll map a tailored, obligation-free proposal.",
       details: [
         'Initial consultation call',
         'Facility type and size assessment',
         'Cleaning frequency discussion',
-        'Special requirements noted',
+        'Special requirements captured',
       ],
     },
     {
       number: '02',
       icon: Eye,
       title: 'Site Visit & Plan',
-      description: 'We visit your facility for a detailed assessment and create a customized cleaning plan tailored to your specific needs.',
+      description:
+        'We visit your facility for a detailed walkthrough and create a customised cleaning plan aligned with your compliance needs.',
       details: [
-        'Comprehensive facility walkthrough',
-        'Custom cleaning checklist created',
-        'Detailed quote provided',
-        'Service agreement finalized',
+        'Comprehensive walkthrough',
+        'Risk assessment & SWMS updates',
+        'Detailed quote & scope delivered',
+        'Service agreement confirmed',
       ],
     },
     {
       number: '03',
       icon: Play,
       title: 'Cleaning Begins',
-      description: 'Our trained professionals start your regular cleaning schedule with meticulous attention to detail and consistency.',
+      description:
+        'Your dedicated crew launches the schedule with inductions, presentation standards and consumable management in place.',
       details: [
-        'Team introduction and orientation',
-        'First cleaning service completed',
-        'Regular schedule commences',
-        'Initial feedback collected',
+        'Team introduction & orientation',
+        'First service with supervisor on-site',
+        'Consumables & equipment prepared',
+        'Ongoing schedule confirmed',
       ],
     },
     {
       number: '04',
       icon: CheckCircle,
       title: 'Quality Assurance',
-      description: "Ongoing monitoring, regular inspections, and feedback systems ensure we consistently exceed your expectations.",
+      description:
+        'We maintain standards with supervisor audits, feedback loops and continual improvement meetings with your team.',
       details: [
         'Regular quality inspections',
         'Client feedback sessions',
-        'Continuous improvement',
-        'Long-term relationship building',
+        'Photo reporting & KPI reviews',
+        'Program refinements as needs evolve',
       ],
     },
+  ];
+
+  const milestones = [
+    { label: 'Day 1', description: 'Quote request & consultation', icon: Phone },
+    { label: 'Day 3', description: 'On-site assessment completed', icon: Eye },
+    { label: 'Week 1', description: 'First clean & schedule launch', icon: Play },
+    { label: 'Ongoing', description: 'Audit-ready reporting delivered', icon: ClipboardCheck },
   ];
 
   const pageTitle = 'Commercial Cleaning Process Brisbane | MOG Cleaning';
@@ -77,11 +89,7 @@ const Process: React.FC = () => {
     name: 'How to start commercial cleaning with MOG Cleaning',
     description: pageDescription,
     totalTime: 'P7D',
-    supply: [
-      'Cleaning requirements summary',
-      'Site walkthrough',
-      'Customized cleaning plan',
-    ],
+    supply: ['Cleaning requirements summary', 'Site walkthrough', 'Customized cleaning plan'],
     tool: ['Professional cleaning team', 'Eco-friendly products'],
     step: howToSteps,
   };
@@ -106,7 +114,7 @@ const Process: React.FC = () => {
   };
 
   return (
-    <div className="pt-20">
+    <div>
       <SEO
         title={pageTitle}
         description={pageDescription}
@@ -114,156 +122,143 @@ const Process: React.FC = () => {
         keywords={['cleaning process Brisbane', 'commercial cleaning steps', 'how to start office cleaning service']}
         jsonLd={[breadcrumbSchema, howToSchema]}
       />
-      <section className="subtle-hero section-padding">
-        <div className="container-max">
-          <div className="max-w-4xl mx-auto text-center animate-fade-in">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Simple Process</h1>
-            <p className="text-xl md:text-2xl text-gray-700">
-              From initial contact to ongoing service, we make professional commercial cleaning simple,
-              transparent, and stress-free for Brisbane businesses.
+
+      <PageHero
+        backgroundImage="/images/office-cleaning-background.jpg"
+        className="hero-extra-top"
+        align="center"
+        overlay="slate"
+        eyebrow="Our process"
+        eyebrowIcon={Sparkles}
+        title="From first call to audit-ready reporting"
+        description="We follow a proven onboarding roadmap that keeps your cleaning program transparent, responsive and stress-free."
+        actions={
+          <>
+            <Link to="/contact" className="btn-primary">
+              Start the process
+            </Link>
+            <Link to="/#services" className="btn-ghost">
+              Explore services
+              <ArrowRight className="h-5 w-5" />
+            </Link>
+          </>
+        }
+      />
+
+      <section className="section-shell">
+        <div className="container-max mx-auto">
+          <div className="section-heading">
+            <span className="section-heading__eyebrow">Step-by-step</span>
+            <h2 className="section-heading__title">A transparent onboarding journey</h2>
+            <p className="section-heading__description">
+              Every stage is designed to understand your facility, launch seamlessly and maintain the standards your business requires.
             </p>
           </div>
-        </div>
-      </section>
-
-      <section className="section-padding">
-        <div className="container-max">
-          <div className="space-y-24">
-            {steps.map((step, index) => (
-              <div key={step.number} className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div className={`animate-slide-in-left ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
-                  <div className="flex items-start mb-6">
-                    <div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-teal-600 rounded-2xl flex items-center justify-center mr-6 flex-shrink-0">
-                      <step.icon className="w-8 h-8 text-white" />
-                    </div>
-                    <div>
-                      <div className="text-6xl font-bold text-gray-200 mb-2">{step.number}</div>
-                      <h2 className="text-3xl md:text-4xl font-bold mb-4">{step.title}</h2>
-                    </div>
-                  </div>
-
-                  <p className="text-lg text-gray-600 mb-8">{step.description}</p>
-
-                  <ul className="space-y-3">
-                    {step.details.map((detail) => (
-                      <li key={detail} className="flex items-center">
-                        <ArrowRight className="w-5 h-5 text-teal-500 mr-3 flex-shrink-0" />
-                        <span className="text-gray-700">{detail}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className={`animate-slide-in-right ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-                  <div className="bg-gray-100 rounded-2xl p-12 text-center">
-                    <div className="w-32 h-32 bg-gradient-to-br from-blue-900 to-blue-800 rounded-full flex items-center justify-center mx-auto mb-8">
-                      <span className="text-4xl font-bold text-white">{step.number}</span>
-                    </div>
-                    <h3 className="text-2xl font-bold mb-4">{step.title}</h3>
-                    <p className="text-gray-600">
-                      {index === 0 && 'Get started with a simple phone call or online form submission.'}
-                      {index === 1 && 'We assess your facility and create a personalized cleaning plan.'}
-                      {index === 2 && 'Professional cleaning services begin according to your schedule.'}
-                      {index === 3 && 'Continuous quality monitoring ensures exceptional results.'}
-                    </p>
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+            {steps.map((step) => (
+              <div key={step.number} className="process-step">
+                <div className="flex items-center gap-4">
+                  <span className="pill-chip" data-variant="emerald">
+                    Step {step.number}
+                  </span>
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-celestial-blue-1/12 text-celestial-blue-1">
+                    <step.icon className="h-6 w-6" />
                   </div>
                 </div>
+                <h3 className="text-2xl font-semibold text-charcoal">{step.title}</h3>
+                <p className="text-jet/80 leading-relaxed">{step.description}</p>
+                <ul className="mt-4 space-y-2 text-jet/70 text-sm">
+                  {step.details.map((detail) => (
+                    <li key={detail} className="flex items-start gap-2">
+                      <span className="mt-2 h-1.5 w-1.5 rounded-full bg-celestial-blue-1"></span>
+                      <span>{detail}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Remaining content unchanged */}
-      <section className="section-padding bg-gray-50">
-        <div className="container-max">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 animate-fade-in">
-            <div className="text-center animate-slide-up">
-              <div className="w-20 h-20 bg-gradient-to-br from-teal-500 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-bold text-lg">Day 1</span>
-              </div>
-              <h3 className="text-lg font-semibold mb-2">Initial Contact</h3>
-              <p className="text-gray-600">Quote request and consultation call</p>
-            </div>
-            <div className="text-center animate-slide-up" style={{ animationDelay: '0.1s' }}>
-              <div className="w-20 h-20 bg-gradient-to-br from-blue-900 to-blue-800 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-bold text-lg">Day 2-3</span>
-              </div>
-              <h3 className="text-lg font-semibold mb-2">Site Assessment</h3>
-              <p className="text-gray-600">Facility visit and customized plan</p>
-            </div>
-            <div className="text-center animate-slide-up" style={{ animationDelay: '0.2s' }}>
-              <div className="w-20 h-20 bg-gradient-to-br from-teal-500 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-bold text-lg">Week 1</span>
-              </div>
-              <h3 className="text-lg font-semibold mb-2">Service Begins</h3>
-              <p className="text-gray-600">First cleaning and schedule start</p>
-            </div>
-            <div className="text-center animate-slide-up" style={{ animationDelay: '0.3s' }}>
-              <div className="w-20 h-20 bg-gradient-to-br from-blue-900 to-blue-800 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-bold text-lg">Ongoing</span>
-              </div>
-              <h3 className="text-lg font-semibold mb-2">Quality Monitoring</h3>
-              <p className="text-gray-600">Regular inspections and feedback</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="section-padding">
-        <div className="container-max">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="animate-slide-in-left">
-              <h2 className="text-3xl md:text-4xl font-bold mb-8">Why Our Process Works</h2>
-              <div className="space-y-6">
-                <div>
-                  <h3 className="text-xl font-semibold mb-2">Thorough Assessment</h3>
-                  <p className="text-gray-600">
-                    We take time to understand your specific needs, ensuring our service is perfectly tailored to your facility.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold mb-2">Customized Solutions</h3>
-                  <p className="text-gray-600">
-                    No cookie-cutter approaches. Each cleaning plan is designed specifically for your business requirements.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold mb-2">Consistent Communication</h3>
-                  <p className="text-gray-600">
-                    Regular check-ins and feedback sessions ensure we're always meeting your expectations.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold mb-2">Continuous Improvement</h3>
-                  <p className="text-gray-600">
-                    We constantly refine our processes based on feedback and industry best practices.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="animate-slide-in-right">
-              <img
-                src="https://images.pexels.com/photos/4099368/pexels-photo-4099368.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Professional cleaning consultation" className="rounded-xl shadow-lg w-full" loading="lazy" decoding="async"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="section-padding bg-gray-50">
-        <div className="container-max text-center">
-          <div className="max-w-4xl mx-auto animate-fade-in">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Ready to Get Started?
-            </h2>
-            <p className="text-xl mb-8 text-gray-700">
-              Take the first step toward reliable, professional commercial cleaning.
-              Contact us today for your free consultation and customized quote.
+      <section className="section-shell section-shell--muted">
+        <div className="container-max mx-auto">
+          <div className="section-heading">
+            <span className="section-heading__eyebrow">Timeline</span>
+            <h2 className="section-heading__title">What happens in the first week</h2>
+            <p className="section-heading__description">
+              From first enquiry to ongoing QA visits, you always know what to expect and who to contact.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact" className="btn-primary bg-teal-500 hover:bg-teal-600">
-                Start the Process
+          </div>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {milestones.map((milestone) => (
+              <div key={milestone.label} className="feature-grid-card">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-celestial-blue-1/12 text-celestial-blue-1">
+                  <milestone.icon className="h-6 w-6" />
+                </div>
+                <h3 className="text-xl font-semibold text-charcoal">{milestone.label}</h3>
+                <p className="text-jet/80 leading-relaxed">{milestone.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-shell">
+        <div className="container-max mx-auto grid gap-12 lg:grid-cols-2 lg:items-center">
+          <div className="glass-panel p-10" data-variant="frost">
+            <h3 className="text-2xl font-semibold text-charcoal">Why our process works</h3>
+            <p className="mt-4 text-jet/80 leading-relaxed">
+              We invest in understanding your facility, documenting every requirement and communicating openly. That means no surprises for you or your team.
+            </p>
+            <ul className="mt-6 space-y-3 text-jet/80">
+              <li className="flex items-start gap-3">
+                <span className="mt-1.5 h-2 w-2 rounded-full bg-celestial-blue-1"></span>
+                Thorough site inductions for every cleaner.
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="mt-1.5 h-2 w-2 rounded-full bg-celestial-blue-1"></span>
+                Supervisor audits with photographic reporting.
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="mt-1.5 h-2 w-2 rounded-full bg-celestial-blue-1"></span>
+                Quarterly reviews to adapt to trading hours or new compliance needs.
+              </li>
+            </ul>
+          </div>
+          <div className="space-y-6">
+            <div className="section-heading" data-align="left">
+              <span className="section-heading__eyebrow">Partnership mindset</span>
+              <h2 className="section-heading__title">A cleaning team that feels in-house</h2>
+              <p className="section-heading__description">
+                We communicate with facilities managers, operations teams and tenants like colleagues, not contractors, so your standards stay protected.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-4">
+              <Link to="/about" className="btn-secondary">
+                Meet the team
+              </Link>
+              <Link to="/contact" className="btn-primary">
+                Schedule a walkthrough
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section-shell section-shell--dark">
+        <div className="container-max mx-auto text-center">
+          <div className="mx-auto max-w-3xl space-y-6">
+            <span className="pill-chip bg-white/10 text-white">
+              <Sparkles className="h-4 w-4" /> Ready when you are
+            </span>
+            <h2 className="section-heading__title text-white">Let’s build your cleaning program</h2>
+            <p className="section-heading__description text-white/80">
+              Book a consultation to receive a tailored scope, launch plan and onboarding timeline for your facility.
+            </p>
+            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
+              <Link to="/contact" className="btn-primary">
+                Request a consultation
               </Link>
               <a href="tel:+61411820650" className="btn-secondary">
                 Call 0411 820 650
