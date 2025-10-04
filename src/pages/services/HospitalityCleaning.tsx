@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   Hotel,
@@ -7,13 +7,14 @@ import {
   Users,
   CheckCircle,
   ArrowRight,
-  Phone
+  Phone,
+  Sparkles,
 } from 'lucide-react';
 import SEO from '../../components/SEO';
-import ServiceSidebar from '../../components/ServiceSidebar';
 import QuoteForm from '../../components/QuoteForm';
 import FAQAccordion from '../../components/FAQAccordion';
 import TestimonialCarousel from '../../components/TestimonialCarousel';
+import PageHero from '../../components/PageHero';
 
 const HospitalityCleaning: React.FC = () => {
   const inclusions = [
@@ -42,7 +43,7 @@ const HospitalityCleaning: React.FC = () => {
     {
       icon: Clock,
       title: 'Work Around Your Roster',
-      description: 'Overnight turnovers, split shifts and rapid response crews timed with check-in, service and event schedules.',
+      description: 'Overnight turnovers, split shifts and rapid response crews timed with check-in, service and events.',
     },
     {
       icon: CheckCircle,
@@ -51,19 +52,22 @@ const HospitalityCleaning: React.FC = () => {
     },
   ];
 
-const testimonials = [
+  const testimonials = [
     {
-      quote: 'Night audit receives photos after each turnover and guest rooms feel fresh without heavy fragrances. Housekeeping knows arrivals will see polished bathrooms and linen.',
+      quote:
+        'Night audit receives photos after each turnover and guest rooms feel fresh without heavy fragrances. Housekeeping trusts arrivals will see polished bathrooms and linen.',
       name: 'Front Office Manager',
       role: 'Brisbane Hotel',
     },
     {
-      quote: 'Bar tops, pass areas and dining floors gleam after service. The team alerts us to maintenance issues before diners notice a thing.',
+      quote:
+        'Bar tops, pass areas and dining floors gleam after service. The team alerts us to maintenance issues before diners notice a thing.',
       name: 'Food & Beverage Manager',
       role: 'Brisbane Restaurant',
     },
     {
-      quote: 'Conference spaces are reset overnight with clean carpets and balanced airflow. Chefs mention the prep areas stay safe for early shifts.',
+      quote:
+        'Conference spaces are reset overnight with clean carpets and balanced airflow. Chefs mention the prep areas stay safe for early shifts.',
       name: 'Operations Manager',
       role: 'Brisbane Conference Venue',
     },
@@ -73,7 +77,7 @@ const testimonials = [
     {
       question: 'Can you work alongside our in-house housekeeping team?',
       answer:
-        'Yes. We agree on handover notes, shared checklists and radio channels so our crew supports, not duplicates, your existing housekeeping roster.',
+        'Yes. We agree on handover notes, shared checklists and radio channels so our crew supports, not duplicates, your existing roster.',
     },
     {
       question: 'Do you handle commercial kitchens to council requirements?',
@@ -99,8 +103,27 @@ const testimonials = [
     { icon: CheckCircle, label: 'Photo reports every shift' },
   ];
 
+  const heroFeatures = [
+    {
+      icon: Hotel,
+      title: 'Hospitality specialists',
+      description: 'Crews trained for guest rooms, restaurants, bars and event spaces across Brisbane venues.',
+    },
+    {
+      icon: Users,
+      title: 'Back & front of house support',
+      description: 'From kitchens to concierge desks we care for every guest touchpoint and BOH corridor.',
+    },
+    {
+      icon: Phone,
+      title: 'Rapid changeover teams',
+      description: 'On-call support for late check-outs, surprise VIPs or back-to-back functions.',
+    },
+  ];
+
   const pageTitle = 'Hospitality Cleaning Brisbane | Hotel & Venue Cleaning Services';
-  const pageDescription = 'Professional hospitality cleaning for Brisbane hotels, restaurants, bars and event venues. Overnight crews, food-safe practices and detailed reporting that keep guests returning.';
+  const pageDescription =
+    'Professional hospitality cleaning for Brisbane hotels, restaurants, bars and event venues. Overnight crews, food-safe practices and detailed reporting that keep guests returning.';
   const serviceUrl = 'https://mogcleaning.com.au/services/hospitality';
 
   const serviceSchema = {
@@ -165,164 +188,148 @@ const testimonials = [
         description={pageDescription}
         type="service"
         image="/images/hotel-cleaning-background.jpg"
-        imageAlt="Housekeeper making a hotel bed in Brisbane"
-        keywords={['hospitality cleaning Brisbane', 'hotel cleaning services', 'restaurant cleaners Brisbane']}
+        imageAlt="Hospitality cleaner preparing a venue"
+        keywords={['hospitality cleaning Brisbane', 'hotel cleaners', 'restaurant cleaning services']}
         jsonLd={[breadcrumbSchema, serviceSchema]}
       />
 
-      <section
-        className="relative hero-section-spacing px-4 sm:px-6 lg:px-8 text-white overflow-hidden"
-        style={{
-          backgroundImage: "url('/images/hotel-cleaning-background.jpg')",
-          backgroundSize: 'cover',
-          backgroundPosition: 'center top',
-          backgroundRepeat: 'no-repeat',
-        }}
+      <PageHero
+        backgroundImage="/images/hotel-cleaning-background.jpg"
+        overlay="slate"
+        eyebrow="Hospitality cleaning"
+        eyebrowIcon={Hotel}
+        title="Hotels, restaurants and venues ready for every guest"
+        description="From late check-outs to back-to-back functions, our Brisbane hospitality crews keep your spaces pristine and compliant."
+        actions={
+          <>
+            <Link to="/contact" className="btn-primary">
+              Schedule a walkthrough
+            </Link>
+            <Link to="/process" className="btn-ghost">
+              See onboarding steps
+              <ArrowRight className="h-5 w-5" />
+            </Link>
+          </>
+        }
+        badges={heroBadges}
+        features={heroFeatures}
       >
-        <div className="absolute inset-0 bg-black/60"></div>
-        <div className="relative container-max hero-content-area">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="animate-slide-in-left">
-              <div className="flex items-center mb-6">
-                <Hotel className="w-12 h-12 text-fresh-green mr-4" />
-                <span className="text-fresh-green font-semibold text-lg">Hospitality Cleaning Brisbane</span>
-              </div>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white drop-shadow-lg">
-                Hotel, Restaurant & Venue Cleaning That Keeps Guests Returning
-              </h1>
-              <p className="text-xl mb-6 text-white/90 drop-shadow-md">
-                Partner with crews who understand housekeeping schedules, food safety requirements and late-night turnovers. We support hotels, bars and event spaces across Brisbane.
-              </p>
-              <div className="flex flex-wrap gap-3 mb-8">
-                {heroBadges.map((badge) => (
-                  <span key={badge.label} className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-sm font-medium text-white backdrop-blur">
-                    <badge.icon className="h-4 w-4 text-fresh-green" />
-                    {badge.label}
-                  </span>
-                ))}
-              </div>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link to="/contact" className="btn-primary bg-fresh-green hover:bg-fresh-green/90">
-                  Book a Site Walkthrough
-                </Link>
-                <a href="tel:+61411820650" className="btn-secondary border-white text-white hover:bg-white hover:text-charcoal">
-                  <Phone className="w-5 h-5 mr-2" /> Call 0411 820 650
-                </a>
-              </div>
-            </div>
-
-            <div className="animate-slide-in-right">
-              <QuoteForm className="max-w-md lg:max-w-xl xl:max-w-2xl mx-auto lg:mx-0 bg-white/95 backdrop-blur-sm" />
-            </div>
-          </div>
+        <div className="flex flex-col items-center gap-5 lg:items-stretch">
+          <span className="pill-chip" data-variant="emerald">
+            <Clock className="h-4 w-4" /> Overnight turnovers available
+          </span>
+          <QuoteForm className="relative z-[1]" />
         </div>
-      </section>
+      </PageHero>
 
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="container-max grid grid-cols-1 lg:grid-cols-[2fr,1fr] gap-10">
-          <div className="bg-white rounded-2xl shadow-lg p-8 md:p-10">
-            <h2 className="text-3xl font-bold text-charcoal mb-6">Hospitality Cleaning Inclusions</h2>
-            <p className="text-lg text-jet mb-6">
-              Choose the tasks that protect your guest experience, food safety standards and event turnover times. Here is what Brisbane venues trust us with every shift.
-            </p>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {inclusions.map((service) => (
-                <li key={service} className="flex items-start gap-3">
-                  <ShieldCheck className="w-5 h-5 mt-1 text-fresh-green shrink-0" />
-                  <span className="text-charcoal leading-relaxed">{service}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <ServiceSidebar title="Hospitality Cleaning" description={pageDescription} />
-        </div>
-      </section>
-
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-light-gray">
-        <div className="container-max">
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Why Hospitality Teams Choose Us</h2>
-            <p className="text-xl text-jet max-w-3xl mx-auto">
-              We work in lockstep with your front office, food and beverage and events teams so every guest touchpoint looks and feels ready.
+      <section className="section-shell">
+        <div className="container-max mx-auto">
+          <div className="section-heading">
+            <span className="section-heading__eyebrow">Why venues choose us</span>
+            <h2 className="section-heading__title">Create five-star impressions front and back of house</h2>
+            <p className="section-heading__description">
+              We partner with hospitality leaders to keep guest experiences flawless while supporting your in-house teams.
             </p>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {benefits.map((benefit, index) => (
-              <div key={benefit.title} className="bg-white rounded-2xl shadow-md p-8 text-center animate-slide-up" style={{ animationDelay: `${index * 0.1}s` }}>
-                <benefit.icon className="w-10 h-10 mx-auto text-celestial-blue-1 mb-6" />
-                <h3 className="text-xl font-semibold text-charcoal mb-4">{benefit.title}</h3>
-                <p className="text-jet leading-relaxed">{benefit.description}</p>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {benefits.map((benefit) => (
+              <div key={benefit.title} className="feature-grid-card">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-celestial-blue-1/12 text-celestial-blue-1">
+                  <benefit.icon className="h-7 w-7" />
+                </div>
+                <h3 className="text-xl font-semibold text-charcoal">{benefit.title}</h3>
+                <p className="text-jet/80 leading-relaxed">{benefit.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white border-y border-ash-gray/20">
-        <div className="container-max">
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">What Brisbane Hospitality Clients Say</h2>
-            <p className="text-xl text-jet max-w-3xl mx-auto">
-              Honest feedback from the hotels, restaurants and venues who rely on us every week.
+      <section className="section-shell section-shell--muted">
+        <div className="container-max mx-auto">
+          <div className="section-heading">
+            <span className="section-heading__eyebrow">Hospitality inclusions</span>
+            <h2 className="section-heading__title">A scope that covers every guest touchpoint</h2>
+            <p className="section-heading__description">
+              From rooms and restaurants to back-of-house corridors, our documented checklist keeps service seamless.
             </p>
           </div>
-
-          <TestimonialCarousel testimonials={testimonials} className="mx-auto max-w-5xl" />
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+            {inclusions.map((inclusion) => (
+              <div key={inclusion} className="service-item p-6">
+                <p className="text-charcoal font-medium">{inclusion}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-light-gray">
-        <div className="container-max">
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Hospitality Cleaning FAQs</h2>
-            <p className="text-xl text-jet max-w-3xl mx-auto">
-              Practical answers for general managers, food and beverage leads and housekeeping teams across Brisbane.
+      <section className="section-shell">
+        <div className="container-max mx-auto">
+          <div className="section-heading">
+            <span className="section-heading__eyebrow">Client feedback</span>
+            <h2 className="section-heading__title">Brisbane hospitality partners</h2>
+            <p className="section-heading__description">
+              Hear from hotels and venues that rely on MOG Cleaning to impress guests and support their teams.
             </p>
           </div>
-
-          <FAQAccordion
-            faqs={faqs}
-            className="faq-stack-services"
-            cardClassName="text-left"
-            questionClassName="text-xl font-semibold text-charcoal"
-            answerClassName="text-jet leading-relaxed"
-          />
+          <TestimonialCarousel testimonials={testimonials} className="mx-auto max-w-4xl" />
         </div>
       </section>
 
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="container-max">
-          <div className="text-center mb-10 animate-fade-in">
-            <h2 className="text-3xl font-bold text-charcoal mb-4">Explore More Cleaning Programs</h2>
-            <p className="text-lg text-jet">Build a multi-site support plan with our wider specialist services.</p>
+      <section className="section-shell section-shell--muted">
+        <div className="container-max mx-auto">
+          <div className="section-heading">
+            <span className="section-heading__eyebrow">Explore more services</span>
+            <h2 className="section-heading__title">Support every part of your venue</h2>
+            <p className="section-heading__description">
+              Combine hospitality cleaning with other MOG programs to streamline your facilities management.
+            </p>
           </div>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {relatedLinks.map((link) => (
-              <Link key={link.name} to={link.path} className="px-5 py-3 rounded-full border border-celestial-blue-1 text-celestial-blue-1 font-medium hover:bg-celestial-blue-1 hover:text-white transition">
-                {link.name}
-                <ArrowRight className="w-4 h-4 ml-2 inline" />
+              <Link key={link.name} to={link.path} className="feature-grid-card">
+                <h3 className="text-xl font-semibold text-charcoal">{link.name}</h3>
+                <span className="link-arrow">
+                  View service
+                  <ArrowRight className="h-4 w-4" />
+                </span>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-light-gray">
-        <div className="container-max text-center">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Need a Hospitality Cleaning Partner?</h2>
-            <p className="text-xl text-jet mb-8">
-              Book a walkthrough with our Brisbane team. We will map a cleaning program that supports housekeeping, F&B and events without disrupting guests.
+      <section className="section-shell">
+        <div className="container-max mx-auto">
+          <div className="section-heading">
+            <span className="section-heading__eyebrow">FAQs</span>
+            <h2 className="section-heading__title">Hospitality cleaning questions</h2>
+            <p className="section-heading__description">
+              Learn how we integrate with your team, meet council requirements and handle quick changeovers.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          </div>
+          <FAQAccordion faqs={faqs} className="max-w-4xl mx-auto" />
+        </div>
+      </section>
+
+      <section className="section-shell section-shell--dark">
+        <div className="container-max mx-auto text-center">
+          <div className="mx-auto max-w-3xl space-y-6">
+            <span className="pill-chip bg-white/10 text-white">
+              <Sparkles className="h-4 w-4" /> Trusted by Brisbane hospitality venues
+            </span>
+            <h2 className="section-heading__title text-white">Ready for five-star presentation?</h2>
+            <p className="section-heading__description text-white/80">
+              Book a consultation to receive a tailored hospitality cleaning scope, schedule and quote within 24 hours.
+            </p>
+            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
               <Link to="/contact" className="btn-primary">
-                Get My Tailored Quote
+                Request a quote
               </Link>
-              <Link to="/process" className="btn-secondary">
-                See How Onboarding Works
-              </Link>
+              <a href="tel:+61411820650" className="btn-secondary">
+                Call 0411 820 650
+              </a>
             </div>
           </div>
         </div>
@@ -332,10 +339,3 @@ const testimonials = [
 };
 
 export default HospitalityCleaning;
-
-
-
-
-
-
-
