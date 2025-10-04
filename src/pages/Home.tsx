@@ -450,6 +450,11 @@ const Home: React.FC = () => {
                     </div>
                   </div>
                 </div>
+                <p className="text-lg text-jet leading-relaxed">{service.description}</p>
+                <span className="link-arrow">
+                  View program
+                  <ArrowRight className="h-4 w-4" />
+                </span>
               </Link>
             ))}
           </div>

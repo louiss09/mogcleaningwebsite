@@ -234,7 +234,7 @@ const HospitalityCleaning: React.FC = () => {
             ))}
           </div>
         </div>
-      </section>
+      </PageHero>
 
       <QuoteSection
         eyebrow="Guest-ready crews"

@@ -120,6 +120,24 @@ const RetailCleaning: React.FC = () => {
     },
   ];
 
+  const heroFeatures = [
+    {
+      icon: ShoppingBag,
+      title: 'Retail presentation experts',
+      description: 'Crews experienced with fashion, beauty, tech and food retailers across Brisbane centres.',
+    },
+    {
+      icon: Users,
+      title: 'Customer-friendly experience',
+      description: 'Fresh fitting rooms, streak-free glass and spotless POS keep shoppers buying.',
+    },
+    {
+      icon: Phone,
+      title: 'Rapid rollout support',
+      description: 'On-call cleaners for overnight floor sets, pop-ups and campaign launches.',
+    },
+  ];
+
   const pageTitle = 'Retail Cleaning Brisbane | Store & Shopping Centre Cleaners';
   const pageDescription =
     'Retail and showroom cleaning for Brisbane brands. Impeccable sales floors, fresh fitting rooms and after-hours crews that protect your customer experience.';

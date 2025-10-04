@@ -234,7 +234,7 @@ const HealthCleaning: React.FC = () => {
             ))}
           </div>
         </div>
-      </section>
+      </PageHero>
 
       <QuoteSection
         eyebrow="Clinical onboarding"

@@ -120,6 +120,24 @@ const EducationCleaning: React.FC = () => {
     },
   ];
 
+  const heroFeatures = [
+    {
+      icon: GraduationCap,
+      title: 'Education specialists',
+      description: 'Crews experienced with classrooms, labs, libraries and student amenities across Brisbane.',
+    },
+    {
+      icon: Users,
+      title: 'Leadership-friendly reporting',
+      description: 'Checklists and photos delivered to principals, business managers and facility coordinators.',
+    },
+    {
+      icon: Phone,
+      title: 'Holiday deep cleans',
+      description: 'Plan floor restoration and high dusting during term breaks without stretching your staff.',
+    },
+  ];
+
   const pageTitle = 'Education Cleaning Brisbane | School & Childcare Cleaners';
   const pageDescription =
     'Education cleaning for Brisbane schools, childcare centres and training colleges. Low-tox products, flexible scheduling and reporting for leadership teams.';
@@ -234,7 +252,7 @@ const EducationCleaning: React.FC = () => {
             ))}
           </div>
         </div>
-      </section>
+      </PageHero>
 
       <QuoteSection
         eyebrow="Supportive onboarding"

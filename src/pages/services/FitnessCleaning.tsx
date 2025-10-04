@@ -120,6 +120,24 @@ const FitnessCleaning: React.FC = () => {
     },
   ];
 
+  const heroFeatures = [
+    {
+      icon: Dumbbell,
+      title: 'Gym-specific specialists',
+      description: 'Cleaners trained in equipment disassembly, sweat management and change-room hygiene.',
+    },
+    {
+      icon: Users,
+      title: 'Member experience focus',
+      description: 'Fresh fragrances, clutter-free reception areas and spotless amenities keep members impressed.',
+    },
+    {
+      icon: Phone,
+      title: 'Rapid spill response',
+      description: 'On-call crews for sweat spills, biohazards or last-minute class timetable changes.',
+    },
+  ];
+
   const pageTitle = 'Gym & Fitness Centre Cleaning Brisbane | MOG Cleaning';
   const pageDescription =
     'Keep your Brisbane gym spotless with specialised fitness centre cleaning. Equipment sanitising, locker room deep cleans and flexible schedules from MOG Cleaning.';
@@ -234,7 +252,7 @@ const FitnessCleaning: React.FC = () => {
             ))}
           </div>
         </div>
-      </section>
+      </PageHero>
 
       <QuoteSection
         eyebrow="Fast onboarding"
