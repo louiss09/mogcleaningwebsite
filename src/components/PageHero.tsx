@@ -9,18 +9,22 @@ interface HeroBadge {
 interface HeroFeature {
   icon?: LucideIcon;
   title: string;
-  description: string;
+  description?: string;
 }
 
+type HeroVariant = 'centered' | 'photo';
+type HeroAlign = 'left' | 'center';
+
 interface PageHeroProps {
-  title: string;
+  title: React.ReactNode;
   description: string;
   backgroundImage?: string;
   backgroundPosition?: string;
   eyebrow?: string;
   eyebrowIcon?: LucideIcon;
-  align?: 'left' | 'center';
+  align?: HeroAlign;
   overlay?: 'blue' | 'teal' | 'slate';
+  variant?: HeroVariant;
   actions?: React.ReactNode;
   badges?: HeroBadge[];
   features?: HeroFeature[];
@@ -28,94 +32,92 @@ interface PageHeroProps {
   children?: React.ReactNode;
 }
 
-const overlayVariantMap: Record<NonNullable<PageHeroProps['overlay']>, string> = {
-  blue: 'page-hero__overlay',
-  teal: 'page-hero__overlay',
-  slate: 'page-hero__overlay',
-};
-
-const overlayDataVariant: Record<NonNullable<PageHeroProps['overlay']>, 'blue' | 'teal' | 'slate'> = {
-  blue: 'blue',
-  teal: 'teal',
-  slate: 'slate',
+const themeMap: Record<string, string> = {
+  blue: 'spruce',
+  teal: 'evergreen',
+  slate: 'charcoal',
 };
 
 const PageHero: React.FC<PageHeroProps> = ({
   title,
   description,
   backgroundImage,
-  backgroundPosition = 'center top',
+  backgroundPosition = 'center',
   eyebrow,
   eyebrowIcon: EyebrowIcon,
-  align = 'left',
+  align,
   overlay = 'blue',
+  variant = 'centered',
   actions,
   badges,
   features,
   className = '',
   children,
 }) => {
-  const hasAside = Boolean(children);
-  const copyAlign = align === 'center' && !hasAside ? 'center' : 'left';
+  const resolvedAlign: HeroAlign = align ?? (variant === 'centered' ? 'center' : 'left');
+  const resolvedTheme = themeMap[overlay] ?? 'spruce';
+  const showBackdrop = variant === 'photo' && backgroundImage;
 
   return (
-    <section className={`page-hero hero-section-spacing ${className}`.trim()}>
-      <div className="page-hero__media" aria-hidden={backgroundImage ? undefined : true}>
-        {backgroundImage ? (
+    <section
+      className={`hero-shell hero-section-spacing ${className}`.trim()}
+      data-theme={resolvedTheme}
+      data-align={resolvedAlign}
+      data-variant={variant}
+      data-has-image={showBackdrop ? 'true' : 'false'}
+    >
+      {showBackdrop && (
+        <div className="hero-shell__backdrop" aria-hidden="true">
           <img src={backgroundImage} alt="" style={{ objectPosition: backgroundPosition }} />
-        ) : (
-          <div className="page-hero__overlay" data-variant={overlayDataVariant[overlay]} />
-        )}
-      </div>
-      {backgroundImage && (
-        <div className={overlayVariantMap[overlay]} data-variant={overlayDataVariant[overlay]} aria-hidden="true" />
+        </div>
       )}
-      <div className="page-hero__pattern" aria-hidden="true" />
-      <div className="page-hero__container container-max px-6">
-        <div className="page-hero__layout" data-aside={hasAside ? 'true' : 'false'}>
-          <div className="page-hero__copy" data-align={copyAlign}>
+
+      <div className="hero-shell__container container-max px-6">
+        <div className="hero-shell__inner">
+          <div className="hero-shell__copy" data-align={resolvedAlign}>
             {eyebrow && (
               <span className="hero-eyebrow">
                 {EyebrowIcon && <EyebrowIcon className="h-4 w-4" />}
                 {eyebrow}
               </span>
             )}
-            <h1 className="page-hero__title">{title}</h1>
-            <p className="page-hero__description">{description}</p>
-            {actions && <div className="page-hero__actions">{actions}</div>}
+
+            <h1 className="hero-shell__title">{title}</h1>
+            <p className="hero-shell__description">{description}</p>
+
+            {actions && <div className="hero-shell__actions">{actions}</div>}
+
             {badges && badges.length > 0 && (
-              <div className="page-hero__badges">
+              <div className="hero-shell__badges">
                 {badges.map((badge) => (
-                  <span key={badge.label} className="page-hero__badge">
+                  <span key={badge.label} className="hero-shell__badge">
                     {badge.icon && <badge.icon className="h-4 w-4" />}
                     {badge.label}
                   </span>
                 ))}
               </div>
             )}
+
             {features && features.length > 0 && (
-              <div className="page-hero__features">
+              <div className="hero-shell__features">
                 {features.map((feature) => (
-                  <div key={feature.title} className="page-hero__feature-card">
+                  <div key={feature.title} className="hero-shell__feature">
                     {feature.icon && (
-                      <div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-white/20">
-                        <feature.icon className="h-5 w-5 text-white" />
+                      <div className="hero-shell__feature-icon">
+                        <feature.icon className="h-5 w-5" />
                       </div>
                     )}
-                    <div>
-                      <h3>{feature.title}</h3>
-                      <p>{feature.description}</p>
+                    <div className="hero-shell__feature-copy">
+                      <span className="hero-shell__feature-title">{feature.title}</span>
+                      {feature.description && <p>{feature.description}</p>}
                     </div>
                   </div>
                 ))}
               </div>
             )}
+
+            {children && <div className="hero-shell__extra">{children}</div>}
           </div>
-          {hasAside && (
-            <div className="page-hero__aside" data-align={align === 'center' ? 'center' : undefined}>
-              {children}
-            </div>
-          )}
         </div>
       </div>
     </section>

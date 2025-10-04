@@ -124,14 +124,17 @@ const Process: React.FC = () => {
       />
 
       <PageHero
-        backgroundImage="/images/office-cleaning-background.jpg"
         className="hero-extra-top"
-        align="center"
-        overlay="slate"
         eyebrow="Our process"
         eyebrowIcon={Sparkles}
-        title="From first call to audit-ready reporting"
-        description="We follow a proven onboarding roadmap that keeps your cleaning program transparent, responsive and stress-free."
+        title={
+          <>
+            Onboard your cleaning program
+            <br />
+            with four focused steps
+          </>
+        }
+        description="Four clear steps to scope your facility, induct your crew and keep quality measurable from day one."
         actions={
           <>
             <Link to="/contact" className="btn-primary">

@@ -11,10 +11,10 @@ import {
   Sparkles,
 } from 'lucide-react';
 import SEO from '../../components/SEO';
-import QuoteForm from '../../components/QuoteForm';
 import FAQAccordion from '../../components/FAQAccordion';
 import TestimonialCarousel from '../../components/TestimonialCarousel';
 import PageHero from '../../components/PageHero';
+import QuoteSection from '../../components/QuoteSection';
 
 const EducationCleaning: React.FC = () => {
   const inclusions = [
@@ -98,9 +98,26 @@ const EducationCleaning: React.FC = () => {
   ];
 
   const heroBadges = [
-    { icon: ShieldCheck, label: 'Blue Card & child-safe inducted crew' },
-    { icon: Clock, label: 'Before-school, after-hours & holiday schedules' },
-    { icon: CheckCircle, label: 'Low-tox products with QA inspections' },
+    { icon: ShieldCheck, label: 'Blue Card inducted crews' },
+    { icon: CheckCircle, label: 'Low-tox, leadership-approved products' },
+  ];
+
+  const heroHighlights = [
+    {
+      icon: GraduationCap,
+      title: 'Education specialists',
+      description: 'Classrooms, labs, playgrounds and admin spaces cleaned to child-safe standards.',
+    },
+    {
+      icon: Users,
+      title: 'Leadership-friendly reporting',
+      description: 'Transparent updates for principals, business managers and facility teams.',
+    },
+    {
+      icon: Phone,
+      title: 'Holiday deep cleans',
+      description: 'Plan restorations, steam cleans and high dusting over school breaks.',
+    },
   ];
 
   const heroFeatures = [
@@ -195,11 +212,18 @@ const EducationCleaning: React.FC = () => {
 
       <PageHero
         backgroundImage="/images/classroom-cleaning-background.jpg"
-        overlay="blue"
+        variant="photo"
+        align="center"
         eyebrow="Education cleaning"
         eyebrowIcon={GraduationCap}
-        title="Schools and childcare centres kept parent-ready"
-        description="Child-safe cleaning programs keep Brisbane classrooms, playgrounds and amenities spotless for every student."
+        title={
+          <>
+            Healthy Brisbane learning spaces
+            <br />
+            kept ready for every lesson
+          </>
+        }
+        description="Create calm classrooms and spotless amenities with child-safe cleaning programs aligned to your timetable."
         actions={
           <>
             <Link to="/contact" className="btn-primary">
@@ -212,15 +236,36 @@ const EducationCleaning: React.FC = () => {
           </>
         }
         badges={heroBadges}
-        features={heroFeatures}
-      >
-        <div className="flex flex-col items-center gap-5 lg:items-stretch">
-          <span className="pill-chip" data-variant="emerald">
-            <Clock className="h-4 w-4" /> School holiday deep cleans
-          </span>
-          <QuoteForm className="relative z-[1]" />
+      />
+
+      <section className="hero-highlight-band">
+        <div className="container-max px-6">
+          <div className="hero-highlight-band__grid">
+            {heroHighlights.map((feature) => (
+              <div key={feature.title} className="hero-highlight-card">
+                <div className="hero-highlight-card__icon">
+                  <feature.icon className="h-5 w-5" />
+                </div>
+                <div className="hero-highlight-card__title">{feature.title}</div>
+                <p>{feature.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </PageHero>
+
+      <QuoteSection
+        eyebrow="Supportive onboarding"
+        title="Request your education cleaning quote"
+        description="Tell us about your classrooms, play areas and specialist spaces. We’ll map a low-tox cleaning program that keeps students safe and facilities inspection-ready."
+        bullets={[
+          'Blue Card accredited cleaning teams',
+          'On-site walkthrough before term start',
+          'Reporting aligned to school compliance',
+        ]}
+        formTitle="Tell us about your campus"
+        formSubtitle="We’ll respond within one business day with a tailored proposal."
+      />
 
       <section className="section-shell">
         <div className="container-max mx-auto">

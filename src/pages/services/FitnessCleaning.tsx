@@ -11,10 +11,10 @@ import {
   Sparkles,
 } from 'lucide-react';
 import SEO from '../../components/SEO';
-import QuoteForm from '../../components/QuoteForm';
 import FAQAccordion from '../../components/FAQAccordion';
 import TestimonialCarousel from '../../components/TestimonialCarousel';
 import PageHero from '../../components/PageHero';
+import QuoteSection from '../../components/QuoteSection';
 
 const FitnessCleaning: React.FC = () => {
   const inclusions = [
@@ -98,9 +98,26 @@ const FitnessCleaning: React.FC = () => {
   ];
 
   const heroBadges = [
-    { icon: ShieldCheck, label: 'Hospital-grade disinfectants & ATP testing' },
-    { icon: Clock, label: 'Split-shift cleans around class timetables' },
-    { icon: CheckCircle, label: 'Photo logs and compliance-ready reporting' },
+    { icon: ShieldCheck, label: 'Hospital-grade disinfectants' },
+    { icon: CheckCircle, label: 'Photo logs & QA reviews' },
+  ];
+
+  const heroHighlights = [
+    {
+      icon: Dumbbell,
+      title: 'Gym-specific specialists',
+      description: 'Sanitising plans for equipment, weights areas and functional zones.',
+    },
+    {
+      icon: Users,
+      title: 'Member-first amenities',
+      description: 'Fresh change rooms, steam rooms and reception touchpoints.',
+    },
+    {
+      icon: Phone,
+      title: 'Rapid spill response',
+      description: 'On-call support for sweat, biohazards and timetable changes.',
+    },
   ];
 
   const heroFeatures = [
@@ -195,11 +212,18 @@ const FitnessCleaning: React.FC = () => {
 
       <PageHero
         backgroundImage="/images/fitness-cleaning-background.jpg"
-        overlay="teal"
+        variant="photo"
+        align="center"
         eyebrow="Fitness centre cleaning"
         eyebrowIcon={Dumbbell}
-        title="Keep members training in spotless spaces"
-        description="Specialised Brisbane gym cleaners sanitise equipment, refresh change rooms and keep your studio audit ready."
+        title={
+          <>
+            Spotless Brisbane fitness studios
+            <br />
+            that keep members inspired
+          </>
+        }
+        description="Deliver a fresh, safe experience every session with routines built around your timetable, equipment mix and amenities."
         actions={
           <>
             <Link to="/contact" className="btn-primary">
@@ -212,15 +236,36 @@ const FitnessCleaning: React.FC = () => {
           </>
         }
         badges={heroBadges}
-        features={heroFeatures}
-      >
-        <div className="flex flex-col items-center gap-5 lg:items-stretch">
-          <span className="pill-chip" data-variant="emerald">
-            <Clock className="h-4 w-4" /> Start within 7 days
-          </span>
-          <QuoteForm className="relative z-[1]" />
+      />
+
+      <section className="hero-highlight-band">
+        <div className="container-max px-6">
+          <div className="hero-highlight-band__grid">
+            {heroHighlights.map((feature) => (
+              <div key={feature.title} className="hero-highlight-card">
+                <div className="hero-highlight-card__icon">
+                  <feature.icon className="h-5 w-5" />
+                </div>
+                <div className="hero-highlight-card__title">{feature.title}</div>
+                <p>{feature.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </PageHero>
+
+      <QuoteSection
+        eyebrow="Fast onboarding"
+        title="Request your gym cleaning quote"
+        description="Share your class schedule, floor plan and must-cover zones. We’ll send tailored pricing and onboarding steps within 24 hours."
+        bullets={[
+          'Equipment sanitising programs for every zone',
+          'Locker room and amenities specialists',
+          'Rapid spill and biohazard response on-call',
+        ]}
+        formTitle="Tell us about your facility"
+        formSubtitle="We’ll reply within one business day with a proposal."
+      />
 
       <section className="section-shell">
         <div className="container-max mx-auto">

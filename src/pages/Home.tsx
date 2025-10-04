@@ -16,7 +16,6 @@ import {
   Award,
   Sparkles,
 } from 'lucide-react';
-import QuoteForm from '../components/QuoteForm';
 import SEO from '../components/SEO';
 import TestimonialCarousel from '../components/TestimonialCarousel';
 import { useScrollToSection } from '../hooks/useScrollToSection';
@@ -26,28 +25,27 @@ import PageHero from '../components/PageHero';
 const Home: React.FC = () => {
   const scrollToServices = useScrollToSection('services');
 
-  const heroFeatures = [
+  const heroHighlights = [
     {
       icon: Shield,
-      title: 'Inducted Cleaning Crews',
-      description: 'Police-checked professionals who follow your site rules, inductions and WHS requirements every visit.',
+      title: 'Police-checked crews',
+      description: 'Every cleaner is inducted to your site standards before the first shift.',
     },
     {
       icon: Clock,
-      title: 'After-Hours Scheduling',
-      description: 'Evening, overnight and rapid-response cleans that work around your trade hours and building access.',
+      title: '24-hour responses',
+      description: 'Direct access to our operations team when schedules or needs change.',
     },
     {
-      icon: Star,
-      title: 'Audit-Ready Reporting',
-      description: 'Supervisor checklists, photo logs and KPI reviews that document every clean for compliance peace of mind.',
+      icon: Sparkles,
+      title: 'Presentation-first detailing',
+      description: 'Detail-driven routines that keep workspaces feeling calm, fresh and client-ready.',
     },
   ];
 
   const heroBadges = [
+    { icon: Award, label: 'Trusted by 60+ Brisbane sites' },
     { icon: Users, label: 'Dedicated site supervisors' },
-    { icon: CheckCircle, label: 'QA visits & corrective actions' },
-    { icon: Clock, label: '24hr quote response' },
   ];
 
   const trustSignals = [
@@ -323,33 +321,49 @@ const Home: React.FC = () => {
       />
 
       <PageHero
+        variant="photo"
         backgroundImage="/images/office-cleaning-background.jpg"
-        eyebrow="Trusted Brisbane Partner"
+        overlay="slate"
+        align="center"
+        eyebrow="Trusted Brisbane partner"
         eyebrowIcon={Shield}
-        title="Your Commercial Cleaning Partner in Brisbane"
-        description="MOG Cleaning helps Brisbane businesses shine with tailored commercial cleaning programs. From daily office presentation to medical-grade sanitisation, we deliver reliable service you can count on."
+        title={
+          <>
+            Your Commercial Cleaning Partner
+            <br />
+            in Brisbane
+          </>
+        }
+        description="Tailored programs for offices, gyms and clinics — delivered by vetted crews who keep every space calm, polished and client-ready."
         actions={
           <>
             <Link to="/contact" className="btn-primary">
-              Book a Site Assessment
+              Book a consultation
             </Link>
             <Link to="/#services" onClick={scrollToServices} className="btn-ghost">
-              Explore Industry Programs
+              Explore services
               <ArrowRight className="h-5 w-5" />
             </Link>
           </>
         }
         badges={heroBadges}
-        features={heroFeatures}
-      >
-        <div className="flex flex-col items-center gap-5 lg:items-stretch">
-          <span className="pill-chip" data-variant="emerald">
-            <Clock className="h-4 w-4" />
-            Start in 5–7 Days
-          </span>
-          <QuoteForm className="relative z-[1]" />
+      />
+
+      <section className="hero-highlight-band">
+        <div className="container-max px-6">
+          <div className="hero-highlight-band__grid">
+            {heroHighlights.map((feature) => (
+              <div key={feature.title} className="hero-highlight-card">
+                <div className="hero-highlight-card__icon">
+                  <feature.icon className="h-5 w-5" />
+                </div>
+                <div className="hero-highlight-card__title">{feature.title}</div>
+                <p>{feature.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </PageHero>
+      </section>
 
       <section className="section-shell section-shell--muted" id="testimonials">
         <div className="container-max mx-auto">
@@ -411,18 +425,29 @@ const Home: React.FC = () => {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
             {services.map((service) => (
               <Link key={service.name} to={service.path} className="service-card group">
-                <div className="relative overflow-hidden rounded-3xl">
-                  <img
-                    src={service.image}
-                    alt={`${service.name} cleaning in Brisbane`}
-                    className="h-48 w-full object-cover transition duration-500 group-hover:scale-105"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#051423]/80 via-[#051423]/20 to-transparent" aria-hidden="true" />
-                  <div className="absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-full bg-white/85 px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-charcoal/70 shadow">
-                    <service.icon className="h-4 w-4" />
-                    {service.name}
+                <div className="service-card__frame">
+                  <div className="service-card__surface">
+                    <div className="service-card__visual">
+                      <img
+                        src={service.image}
+                        alt={`${service.name} cleaning in Brisbane`}
+                        className="service-card__image"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <span className="service-card__label">
+                        <service.icon className="h-4 w-4" />
+                        {service.name}
+                      </span>
+                    </div>
+                    <div className="service-card__content">
+                      <h3 className="service-card__title">{service.name}</h3>
+                      <p className="service-card__description">{service.description}</p>
+                      <span className="service-card__cta">
+                        Explore program
+                        <ArrowRight className="h-4 w-4" />
+                      </span>
+                    </div>
                   </div>
                 </div>
                 <p className="text-lg text-jet leading-relaxed">{service.description}</p>

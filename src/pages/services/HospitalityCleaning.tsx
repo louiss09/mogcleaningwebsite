@@ -11,10 +11,10 @@ import {
   Sparkles,
 } from 'lucide-react';
 import SEO from '../../components/SEO';
-import QuoteForm from '../../components/QuoteForm';
 import FAQAccordion from '../../components/FAQAccordion';
 import TestimonialCarousel from '../../components/TestimonialCarousel';
 import PageHero from '../../components/PageHero';
+import QuoteSection from '../../components/QuoteSection';
 
 const HospitalityCleaning: React.FC = () => {
   const inclusions = [
@@ -98,26 +98,25 @@ const HospitalityCleaning: React.FC = () => {
   ];
 
   const heroBadges = [
-    { icon: ShieldCheck, label: 'Food-safe products & HACCP awareness' },
-    { icon: Clock, label: 'Overnight turnovers available' },
+    { icon: ShieldCheck, label: 'Food-safe, HACCP aware crews' },
     { icon: CheckCircle, label: 'Photo reports every shift' },
   ];
 
-  const heroFeatures = [
+  const heroHighlights = [
     {
       icon: Hotel,
       title: 'Hospitality specialists',
-      description: 'Crews trained for guest rooms, restaurants, bars and event spaces across Brisbane venues.',
+      description: 'Guest rooms, dining, bars and event spaces kept guest-ready.',
     },
     {
       icon: Users,
-      title: 'Back & front of house support',
-      description: 'From kitchens to concierge desks we care for every guest touchpoint and BOH corridor.',
+      title: 'Front and back of house support',
+      description: 'Coordinated routines for kitchens, concierge desks and amenities.',
     },
     {
       icon: Phone,
       title: 'Rapid changeover teams',
-      description: 'On-call support for late check-outs, surprise VIPs or back-to-back functions.',
+      description: 'On-call crews for late check-outs, VIP arrivals and events.',
     },
   ];
 
@@ -195,11 +194,18 @@ const HospitalityCleaning: React.FC = () => {
 
       <PageHero
         backgroundImage="/images/hotel-cleaning-background.jpg"
-        overlay="slate"
+        variant="photo"
+        align="center"
         eyebrow="Hospitality cleaning"
         eyebrowIcon={Hotel}
-        title="Hotels, restaurants and venues ready for every guest"
-        description="From late check-outs to back-to-back functions, our Brisbane hospitality crews keep your spaces pristine and compliant."
+        title={
+          <>
+            Hospitality venues in Brisbane
+            <br />
+            kept guest-ready every night
+          </>
+        }
+        description="Deliver immaculate rooms, dining spaces and event venues with crews who work around every service window."
         actions={
           <>
             <Link to="/contact" className="btn-primary">
@@ -212,15 +218,36 @@ const HospitalityCleaning: React.FC = () => {
           </>
         }
         badges={heroBadges}
-        features={heroFeatures}
-      >
-        <div className="flex flex-col items-center gap-5 lg:items-stretch">
-          <span className="pill-chip" data-variant="emerald">
-            <Clock className="h-4 w-4" /> Overnight turnovers available
-          </span>
-          <QuoteForm className="relative z-[1]" />
+      />
+
+      <section className="hero-highlight-band">
+        <div className="container-max px-6">
+          <div className="hero-highlight-band__grid">
+            {heroHighlights.map((feature) => (
+              <div key={feature.title} className="hero-highlight-card">
+                <div className="hero-highlight-card__icon">
+                  <feature.icon className="h-5 w-5" />
+                </div>
+                <div className="hero-highlight-card__title">{feature.title}</div>
+                <p>{feature.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </PageHero>
+
+      <QuoteSection
+        eyebrow="Guest-ready crews"
+        title="Request your hospitality cleaning quote"
+        description="Tell us about your rooms, service areas and event spaces. We’ll deliver a program that keeps both front and back of house presentation-ready."
+        bullets={[
+          'Overnight and split-shift scheduling',
+          'Food-safe cleaning products and protocols',
+          'Changeover teams for events and VIP arrivals',
+        ]}
+        formTitle="Tell us about your venue"
+        formSubtitle="We’ll respond within one business day with tailored pricing."
+      />
 
       <section className="section-shell">
         <div className="container-max mx-auto">

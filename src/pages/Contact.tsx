@@ -1,9 +1,9 @@
 import React from 'react';
-import { Phone, Mail, MapPin, Clock, MessageCircle, Sparkles } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, MessageCircle, Sparkles, ShieldCheck } from 'lucide-react';
 import SEO from '../components/SEO';
 import FAQAccordion from '../components/FAQAccordion';
-import QuoteForm from '../components/QuoteForm';
 import PageHero from '../components/PageHero';
+import QuoteSection from '../components/QuoteSection';
 
 const Contact: React.FC = () => {
   const contactMethods = [
@@ -162,13 +162,19 @@ const Contact: React.FC = () => {
 
       <PageHero
         backgroundImage="/images/accounting-background.jpg"
-        overlay="teal"
+        variant="photo"
         align="center"
         className="hero-extra-top"
         eyebrow="Contact"
         eyebrowIcon={Sparkles}
-        title="Get your free commercial cleaning quote"
-        description="Tell us about your facility and we’ll respond within 24 hours with a tailored scope, pricing and onboarding timeline."
+        title={
+          <>
+            Plan your Brisbane cleaning
+            <br />
+            program with our specialists
+          </>
+        }
+        description="Share your facility details and we’ll reply within a day with pricing, onboarding steps and a dedicated supervisor."
         actions={
           <>
             <a href="tel:+61411820650" className="btn-primary">
@@ -180,14 +186,24 @@ const Contact: React.FC = () => {
             </a>
           </>
         }
-      >
-        <div className="flex flex-col items-center gap-5 lg:items-stretch">
-          <span className="pill-chip" data-variant="emerald">
-            <Clock className="h-4 w-4" /> Replies within 24 hours
-          </span>
-          <QuoteForm className="relative z-[1]" />
-        </div>
-      </PageHero>
+        badges={[
+          { icon: Clock, label: 'Replies within 24 hours' },
+          { icon: ShieldCheck, label: 'Police-checked crews' },
+        ]}
+      />
+
+      <QuoteSection
+        eyebrow="Fast response"
+        title="Share your site details"
+        description="Use the form to tell us about your facility. We’ll review the requirements and respond with pricing, scope and onboarding steps."
+        bullets={[
+          'Tailored proposals for your industry',
+          'Dedicated supervisor for every site',
+          'Flexible scheduling across Brisbane',
+        ]}
+        formTitle="Tell us about your facility"
+        formSubtitle="We’ll reply within one business day with your tailored quote."
+      />
 
       <section className="section-shell">
         <div className="container-max mx-auto">

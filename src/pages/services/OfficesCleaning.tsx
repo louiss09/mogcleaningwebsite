@@ -12,10 +12,10 @@ import {
   Sparkles,
 } from 'lucide-react';
 import SEO from '../../components/SEO';
-import QuoteForm from '../../components/QuoteForm';
 import FAQAccordion from '../../components/FAQAccordion';
 import TestimonialCarousel from '../../components/TestimonialCarousel';
 import PageHero from '../../components/PageHero';
+import QuoteSection from '../../components/QuoteSection';
 
 const OfficesCleaning: React.FC = () => {
   const inclusions = [
@@ -99,26 +99,25 @@ const OfficesCleaning: React.FC = () => {
   ];
 
   const heroBadges = [
-    { icon: ShieldCheck, label: 'Certified cleaners & police checks' },
-    { icon: Clock, label: 'After-hours & same-day support' },
+    { icon: ShieldCheck, label: 'Inducted & police-checked crews' },
     { icon: CheckCircle, label: 'QA inspections with photo reports' },
   ];
 
-  const heroFeatures = [
+  const heroHighlights = [
     {
       icon: Users,
-      title: 'Dedicated office specialists',
-      description: 'Teams familiar with corporate security, hot-desking etiquette and presentation standards.',
+      title: 'Office specialists',
+      description: 'Teams who understand corporate access, presentation and executive areas.',
     },
     {
       icon: ClipboardCheck,
-      title: 'Documented scope of works',
-      description: 'Tailored cleaning schedules, consumable plans and KPI tracking before the first service.',
+      title: 'Documented scope',
+      description: 'Detailed checklists and KPI tracking for every workspace and floor.',
     },
     {
       icon: Phone,
       title: 'Rapid support line',
-      description: 'After-hours hotline for spill response, last-minute visits or inspection preparation.',
+      description: 'Direct escalation channel for last-minute board meetings or visitors.',
     },
   ];
 
@@ -196,11 +195,18 @@ const OfficesCleaning: React.FC = () => {
 
       <PageHero
         backgroundImage="/images/office-cleaning-background.jpg"
-        overlay="slate"
+        variant="photo"
+        align="center"
         eyebrow="Office cleaning"
         eyebrowIcon={Building2}
-        title="Corporate offices kept presentation ready"
-        description="Partner with Brisbane office cleaning specialists who deliver compliant, detail-focused presentation standards for every workspace."
+        title={
+          <>
+            Polished Brisbane workplaces
+            <br />
+            maintained by dedicated crews
+          </>
+        }
+        description="Keep executive suites, meeting rooms and shared spaces inspection-ready with a program built for your building and schedule."
         actions={
           <>
             <Link to="/contact" className="btn-primary">
@@ -213,15 +219,36 @@ const OfficesCleaning: React.FC = () => {
           </>
         }
         badges={heroBadges}
-        features={heroFeatures}
-      >
-        <div className="flex flex-col items-center gap-5 lg:items-stretch">
-          <span className="pill-chip" data-variant="emerald">
-            <Clock className="h-4 w-4" /> Launch within 5–7 days
-          </span>
-          <QuoteForm className="relative z-[1]" />
+      />
+
+      <section className="hero-highlight-band">
+        <div className="container-max px-6">
+          <div className="hero-highlight-band__grid">
+            {heroHighlights.map((feature) => (
+              <div key={feature.title} className="hero-highlight-card">
+                <div className="hero-highlight-card__icon">
+                  <feature.icon className="h-5 w-5" />
+                </div>
+                <div className="hero-highlight-card__title">{feature.title}</div>
+                <p>{feature.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </PageHero>
+      </section>
+
+      <QuoteSection
+        eyebrow="Start in days"
+        title="Request your office cleaning proposal"
+        description="Share your floor count, key access notes and current pain points. We’ll prepare a tailored scope, onboarding timeline and pricing within 24 hours."
+        bullets={[
+          'Site walkthrough before the first clean',
+          'Police-checked, uniformed crews',
+          'Supervisor QA visits with photo reports',
+        ]}
+        formTitle="Tell us about your office"
+        formSubtitle="We’ll respond within one business day with next steps."
+      />
 
       <section className="section-shell">
         <div className="container-max mx-auto">

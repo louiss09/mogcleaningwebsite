@@ -11,10 +11,10 @@ import {
   Sparkles,
 } from 'lucide-react';
 import SEO from '../../components/SEO';
-import QuoteForm from '../../components/QuoteForm';
 import FAQAccordion from '../../components/FAQAccordion';
 import TestimonialCarousel from '../../components/TestimonialCarousel';
 import PageHero from '../../components/PageHero';
+import QuoteSection from '../../components/QuoteSection';
 
 const HealthCleaning: React.FC = () => {
   const inclusions = [
@@ -98,26 +98,25 @@ const HealthCleaning: React.FC = () => {
   ];
 
   const heroBadges = [
-    { icon: ShieldCheck, label: 'NSQHS & RACGP-aligned protocols' },
-    { icon: Clock, label: 'After-hours & outbreak response crews' },
+    { icon: ShieldCheck, label: 'NSQHS & RACGP aligned' },
     { icon: CheckCircle, label: 'Audit-ready reporting packs' },
   ];
 
-  const heroFeatures = [
+  const heroHighlights = [
     {
       icon: Heart,
       title: 'Healthcare compliance experts',
-      description: 'Cleaners inducted on infection-control, confidentiality and patient experience protocols.',
+      description: 'Infection-control trained cleaners for surgeries, treatment rooms and waiting areas.',
     },
     {
       icon: Users,
       title: 'Dedicated clinical supervisors',
-      description: 'Site leads coordinate turnover times, dwell periods and consumable ordering with your team.',
+      description: 'Site leads coordinate consumables, turnover times and accreditation paperwork.',
     },
     {
       icon: Phone,
       title: 'Rapid outbreak support',
-      description: 'On-call crews deliver terminal cleans, PPE deployment and documentation for auditors.',
+      description: 'Escalation crews for terminal cleans and urgent infection-control needs.',
     },
   ];
 
@@ -195,11 +194,18 @@ const HealthCleaning: React.FC = () => {
 
       <PageHero
         backgroundImage="/images/medical-cleaning-background.jpg"
-        overlay="teal"
+        variant="photo"
+        align="center"
         eyebrow="Medical facility cleaning"
         eyebrowIcon={Heart}
-        title="Clinical environments kept accreditation ready"
-        description="Infection-control trained cleaners protect patients, clinicians and compliance standards across Brisbane healthcare facilities."
+        title={
+          <>
+            Medical-grade Brisbane clinics
+            <br />
+            maintained with clinical care
+          </>
+        }
+        description="Protect patients, practitioners and accreditation with infection-control trained crews and transparent reporting."
         actions={
           <>
             <Link to="/contact" className="btn-primary">
@@ -212,15 +218,36 @@ const HealthCleaning: React.FC = () => {
           </>
         }
         badges={heroBadges}
-        features={heroFeatures}
-      >
-        <div className="flex flex-col items-center gap-5 lg:items-stretch">
-          <span className="pill-chip" data-variant="emerald">
-            <Clock className="h-4 w-4" /> Rapid outbreak support
-          </span>
-          <QuoteForm className="relative z-[1]" />
+      />
+
+      <section className="hero-highlight-band">
+        <div className="container-max px-6">
+          <div className="hero-highlight-band__grid">
+            {heroHighlights.map((feature) => (
+              <div key={feature.title} className="hero-highlight-card">
+                <div className="hero-highlight-card__icon">
+                  <feature.icon className="h-5 w-5" />
+                </div>
+                <div className="hero-highlight-card__title">{feature.title}</div>
+                <p>{feature.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </PageHero>
+
+      <QuoteSection
+        eyebrow="Clinical onboarding"
+        title="Request your healthcare cleaning quote"
+        description="Share your practice layout, accreditation requirements and service frequency. We’ll prepare compliant scopes, pricing and onboarding steps within 24 hours."
+        bullets={[
+          'Infection-control trained cleaning crews',
+          'Documentation for NSQHS and RACGP audits',
+          'Rapid outbreak and terminal clean support',
+        ]}
+        formTitle="Tell us about your facility"
+        formSubtitle="We’ll respond within one business day with next steps."
+      />
 
       <section className="section-shell">
         <div className="container-max mx-auto">

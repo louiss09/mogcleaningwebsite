@@ -11,10 +11,10 @@ import {
   Sparkles,
 } from 'lucide-react';
 import SEO from '../../components/SEO';
-import QuoteForm from '../../components/QuoteForm';
 import FAQAccordion from '../../components/FAQAccordion';
 import TestimonialCarousel from '../../components/TestimonialCarousel';
 import PageHero from '../../components/PageHero';
+import QuoteSection from '../../components/QuoteSection';
 
 const RetailCleaning: React.FC = () => {
   const inclusions = [
@@ -98,9 +98,26 @@ const RetailCleaning: React.FC = () => {
   ];
 
   const heroBadges = [
-    { icon: ShieldCheck, label: 'Centre-compliant presentation standards' },
-    { icon: Clock, label: 'After-hours crews for rollouts & refits' },
-    { icon: CheckCircle, label: 'Visual merchandising friendly detailing' },
+    { icon: ShieldCheck, label: 'Centre-compliant presentation' },
+    { icon: CheckCircle, label: 'VM-friendly detailing crews' },
+  ];
+
+  const heroHighlights = [
+    {
+      icon: ShoppingBag,
+      title: 'Retail presentation experts',
+      description: 'Fashion, beauty, tech and food retailers supported daily.',
+    },
+    {
+      icon: Users,
+      title: 'Customer-friendly experience',
+      description: 'Fresh fitting rooms, streak-free glass and pristine POS areas.',
+    },
+    {
+      icon: Phone,
+      title: 'Rapid rollout support',
+      description: 'On-call cleaning for overnight floor sets, refits and pop-ups.',
+    },
   ];
 
   const heroFeatures = [
@@ -195,11 +212,18 @@ const RetailCleaning: React.FC = () => {
 
       <PageHero
         backgroundImage="/images/retail-cleaning-background.jpg"
-        overlay="blue"
+        variant="photo"
+        align="center"
         eyebrow="Retail cleaning"
         eyebrowIcon={ShoppingBag}
-        title="Retail spaces ready for every shopper"
-        description="Keep your Brisbane store immaculate with after-hours crews who understand merchandising, compliance and customer experience."
+        title={
+          <>
+            Retail experiences across Brisbane
+            <br />
+            presented with immaculate detail
+          </>
+        }
+        description="Maintain showroom shine and guest-ready amenities with crews who flex around product launches and trade windows."
         actions={
           <>
             <Link to="/contact" className="btn-primary">
@@ -212,15 +236,36 @@ const RetailCleaning: React.FC = () => {
           </>
         }
         badges={heroBadges}
-        features={heroFeatures}
-      >
-        <div className="flex flex-col items-center gap-5 lg:items-stretch">
-          <span className="pill-chip" data-variant="emerald">
-            <Clock className="h-4 w-4" /> After-hours crews available
-          </span>
-          <QuoteForm className="relative z-[1]" />
+      />
+
+      <section className="hero-highlight-band">
+        <div className="container-max px-6">
+          <div className="hero-highlight-band__grid">
+            {heroHighlights.map((feature) => (
+              <div key={feature.title} className="hero-highlight-card">
+                <div className="hero-highlight-card__icon">
+                  <feature.icon className="h-5 w-5" />
+                </div>
+                <div className="hero-highlight-card__title">{feature.title}</div>
+                <p>{feature.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </PageHero>
+      </section>
+
+      <QuoteSection
+        eyebrow="Store-ready crews"
+        title="Request your retail cleaning quote"
+        description="Share your store footprint, trading hours and merchandising priorities. We’ll send a tailored plan that keeps every display and fitting room pristine."
+        bullets={[
+          'After-hours and before-open schedules',
+          'Care for fixtures, POS and fitting rooms',
+          'Support for rollouts, refits and pop-ups',
+        ]}
+        formTitle="Tell us about your store"
+        formSubtitle="We’ll respond within one business day with your proposal."
+      />
 
       <section className="section-shell">
         <div className="container-max mx-auto">
