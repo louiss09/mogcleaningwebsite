@@ -114,7 +114,7 @@ const Process: React.FC = () => {
         keywords={['cleaning process Brisbane', 'commercial cleaning steps', 'how to start office cleaning service']}
         jsonLd={[breadcrumbSchema, howToSchema]}
       />
-      <section className="subtle-hero hero-section-spacing px-4 sm:px-6 lg:px-8">
+      <section className="subtle-hero hero-section-spacing hero-extra-top px-4 sm:px-6 lg:px-8">
         <div className="container-max hero-content-area">
           <div className="max-w-4xl mx-auto text-center animate-fade-in">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Simple Process</h1>
