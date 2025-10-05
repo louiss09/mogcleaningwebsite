@@ -2,123 +2,185 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   ShoppingBag,
-  ShieldCheck,
+  Tag,
+  Sparkles,
   Clock,
   Users,
   CheckCircle,
   ArrowRight,
-  Phone,
-  Sparkles,
+  ShieldCheck,
+  ClipboardList,
+  Package,
+  Camera,
 } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 import SEO from '../../components/SEO';
 import FAQAccordion from '../../components/FAQAccordion';
 import TestimonialCarousel from '../../components/TestimonialCarousel';
 import PageHero from '../../components/PageHero';
 import QuoteSection from '../../components/QuoteSection';
 import HeroHighlightBand from '../../components/HeroHighlightBand';
+import HowItWorks from '../../components/HowItWorks';
 
 const RetailCleaning: React.FC = () => {
-  const inclusions = [
-    'Daily sales floor detailing with fixture dusting and merchandising care',
-    'Change room, fitting area and mirror sanitising between trading sessions',
-    'Point-of-sale counter, EFTPOS and kiosk disinfection for customer touchpoints',
-    'Back-of-house stockroom organisation and sweep/vacuum rotations',
-    'Glass storefront, display cabinet and lightbox polishing',
-    'Restroom deep cleaning, consumable restocking and odour control',
-    'Hard floor scrubbing, buffing and entrance mat upkeep for high-traffic areas',
-    'Food court or cafe tenancy support including table resets and hygiene wipes',
-    'Waste, recycling and cardboard baler support with compliance documentation',
-  ];
+  type InfoCard = {
+    icon: LucideIcon;
+    title: string;
+    description: string;
+  };
 
-  const benefits = [
+  const heroHighlights: InfoCard[] = [
     {
-      icon: Users,
-      title: 'Convert Browsers into Buyers',
-      description: 'Spotless displays, mirrors and registers reinforce your brand and extend dwell time.',
+      icon: Sparkles,
+      title: 'Visual merchandising ready',
+      description: 'Displays, mirrors and fitting rooms stay pristine to convert browsing into sales.',
     },
     {
       icon: ShieldCheck,
-      title: 'Protect Health & Compliance',
-      description: 'Structured sanitation for food, fashion and beauty retailers aligned with council standards.',
+      title: 'Brand-standard presentation',
+      description: 'Boutiques and national retailers get consistent finishes across every store.',
     },
     {
       icon: Clock,
-      title: 'Trade-Ready Scheduling',
-      description: 'Overnight cleans, split shifts and rapid response crews adapt to delivery windows and VM installs.',
+      title: 'Flexible scheduling',
+      description: 'After-hours crews work around deliveries, stocktake and trading peaks.',
+    },
+  ];
+
+  const challenges: InfoCard[] = [
+    {
+      icon: ClipboardList,
+      title: 'Dusty shelves & fixtures',
+      description:
+        'Product displays quickly collect dust, dulling the impact of your visual merchandising.',
     },
     {
-      icon: CheckCircle,
-      title: 'Reporting You Can Share',
-      description: 'Photo logs, KPI summaries and issue escalation aligned with centre management expectations.',
+      icon: Package,
+      title: 'Back rooms overlooked',
+      description:
+        'Stockrooms become cluttered and unhygienic, slowing replenishment and online order fulfilment.',
     },
+    {
+      icon: Camera,
+      title: 'Inconsistent brand image',
+      description:
+        'Multi-site managers see different results store-to-store, making it hard to enforce standards.',
+    },
+  ];
+
+  const solutionCards: InfoCard[] = [
+    {
+      icon: Sparkles,
+      title: 'Sales floor shine',
+      description: 'Shelving, flooring and visual merchandising detailed nightly to keep shoppers inspired.',
+    },
+    {
+      icon: ShieldCheck,
+      title: 'Brand playbooks for every site',
+      description: 'Store-specific checklists, photo reporting and handover notes keep consistency high.',
+    },
+    {
+      icon: Clock,
+      title: 'Trading-friendly schedules',
+      description: 'Late-night, early-morning or split shifts ensure no disruption to staff or customers.',
+    },
+    {
+      icon: Users,
+      title: 'Supervisor partnership',
+      description: 'One contact manages stocktake nights, promo launches and rapid response call-outs.',
+    },
+  ];
+
+  const proofPoints: Array<InfoCard & { value: string }> = [
+    {
+      icon: Tag,
+      value: '+18%',
+      title: 'VM compliance uplift',
+      description: 'Retail partners report higher mystery shop scores after onboarding.',
+    },
+    {
+      icon: Clock,
+      value: '7 days',
+      title: 'Rollout window',
+      description: 'Multi-site launches scheduled within a week across South East Queensland.',
+    },
+    {
+      icon: Users,
+      value: '50+',
+      title: 'Stores serviced',
+      description: 'From flagship boutiques to high-volume big-box retailers.',
+    },
+  ];
+
+  const inclusions: string[] = [
+    'Sales floor detailing with dust-free fixtures and polished floors',
+    'Change room and restroom sanitising with consumable restocking',
+    'Glass, display case and mirror cleaning for streak-free presentation',
+    'Back-of-house storage and stockroom organisation support',
+    'High dusting for lighting, signage and visual merchandising',
+    'Periodic deep cleans, carpet care and window polishing',
   ];
 
   const testimonials = [
     {
       quote:
-        'Presentation matters in retail and MOG Cleaning delivers. Shelving, floors and glass sparkle when we open, and customers notice.',
-      name: 'Retail Store Manager',
-      role: 'Brisbane Boutique',
+        'Store presentation has improved dramatically. The team respects our displays and communicates issues quickly.',
+      name: 'Retail State Manager',
+      role: 'National Fashion Brand',
     },
     {
       quote:
-        'Fitting rooms stay inviting with mirrors polished and fragrance balanced. It helps our team maintain a premium experience.',
-      name: 'Retail Director',
-      role: 'Brisbane Fashion Precinct',
+        'Our change rooms and back-of-house areas have never looked better. The crew works around deliveries seamlessly.',
+      name: 'Store Manager',
+      role: 'Flagship Retail Store',
     },
     {
       quote:
-        'They reset counters after late deliveries and keep entry glass streak free. The store feels clean, professional and ready for trade.',
-      name: 'Centre Coordinator',
-      role: 'Brisbane Retail Precinct',
+        'Window displays remain streak free, even during busy promo periods. It supports our conversion goals.',
+      name: 'Marketing Lead',
+      role: 'Luxury Retailer',
     },
   ];
 
   const faqs = [
     {
-      question: 'Can you clean multiple stores across Brisbane?',
+      question: 'Do you service shopping centres and standalone stores?',
       answer:
-        'Yes. We service boutiques, shopping centre tenancies and pop-up activations with consolidated reporting for every location.',
+        'Yes. We work with large shopping centre retailers, boutiques and multi-site brands across Brisbane and South East Queensland.',
     },
     {
-      question: 'Do you work around late-night trade or floor set changes?',
+      question: 'Can you clean after trading hours?',
       answer:
-        'We schedule crews after trading, before VIP events or alongside visual merchandising resets so your store is immaculate before doors open.',
+        'Absolutely. Our crews operate after closing, before opening and during stocktake nights to keep stores ready without interrupting customers.',
     },
     {
-      question: 'Do you manage consumables and waste contracts?',
+      question: 'Do you provide consumable restocking?',
       answer:
-        'We can replenish restroom supplies, provide eco-aligned chemicals and handle cardboard or waste staging with compliant manifests.',
+        'We manage consumables for change rooms and restrooms, including paper goods, hand wash and sanitiser, tracked via your monthly report.',
     },
   ];
 
-  const relatedLinks = [
-    { name: 'Hospitality Venue Cleaning', path: '/services/hospitality' },
-    { name: 'Office & Corporate Cleaning', path: '/services/offices' },
-    { name: 'Book a Strategy Session', path: '/contact' },
-  ];
-
-  const heroHighlights = [
+  const relatedLinks: Array<{ name: string; path: string; description: string }> = [
     {
-      icon: ShoppingBag,
-      title: 'Retail presentation experts',
-      description: 'Fashion, beauty, tech and food retailers supported daily.',
+      name: 'Hospitality Venues',
+      path: '/services/hospitality',
+      description: 'Align your dining or bar spaces with retail brand standards.',
     },
     {
-      icon: Users,
-      title: 'Customer-friendly experience',
-      description: 'Fresh fitting rooms, streak-free glass and pristine POS areas.',
+      name: 'Office Support',
+      path: '/services/offices',
+      description: 'Keep HQ showrooms or support offices spotless alongside your stores.',
     },
     {
-      icon: Phone,
-      title: 'Rapid rollout support',
-      description: 'On-call cleaning for overnight floor sets, refits and pop-ups.',
+      name: 'Contact MOG Cleaning',
+      path: '/contact',
+      description: 'Book a rollout consultation and plan your next campaign clean.',
     },
   ];
 
-  const pageTitle = 'Retail Cleaning Brisbane | Store & Shopping Centre Cleaners';
+  const pageTitle = 'Retail & Showroom Cleaning Brisbane | MOG Cleaning';
   const pageDescription =
-    'Retail and showroom cleaning for Brisbane brands. Impeccable sales floors, fresh fitting rooms and after-hours crews that protect your customer experience.';
+    'Retail cleaning services that keep sales floors, fitting rooms and stockrooms immaculate with flexible schedules and brand-standard reporting.';
   const serviceUrl = 'https://mogcleaning.com.au/services/retail';
 
   const serviceSchema = {
@@ -138,42 +200,6 @@ const RetailCleaning: React.FC = () => {
     },
     description: pageDescription,
     url: serviceUrl,
-    hasOfferCatalog: {
-      '@type': 'OfferCatalog',
-      name: 'Retail cleaning inclusions',
-      itemListElement: inclusions.map((service) => ({
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: service,
-        },
-      })),
-    },
-    offers: {
-      '@type': 'Offer',
-      priceCurrency: 'AUD',
-      availability: 'https://schema.org/InStock',
-      url: 'https://mogcleaning.com.au/contact',
-    },
-  };
-
-  const breadcrumbSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Home',
-        item: 'https://mogcleaning.com.au/',
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: 'Retail Cleaning',
-        item: serviceUrl,
-      },
-    ],
   };
 
   return (
@@ -181,159 +207,192 @@ const RetailCleaning: React.FC = () => {
       <SEO
         title={pageTitle}
         description={pageDescription}
-        type="service"
+        type="article"
         image="/images/retail-cleaning-background.jpg"
-        imageAlt="Retail cleaner preparing a store"
-        keywords={['retail cleaning Brisbane', 'store cleaners', 'shopping centre cleaning services']}
-        jsonLd={[breadcrumbSchema, serviceSchema]}
+        imageAlt="Retail store being detailed after hours"
+        url={serviceUrl}
+        jsonLd={serviceSchema}
+        keywords={['retail cleaning Brisbane', 'store cleaning services', 'showroom cleaning company']}
       />
 
       <PageHero
+        align="left"
         backgroundImage="/images/retail-cleaning-background.jpg"
-        backgroundPosition="center 46%"
+        backgroundPosition="center 48%"
         overlay="charcoal"
-        align="center"
-        eyebrow="Retail cleaning"
+        eyebrow="Retail &amp; showrooms"
         eyebrowIcon={ShoppingBag}
-        title="Spotless retail spaces that convert every visit."
-        description="Maintain showroom shine and guest-ready amenities with crews who adapt around launches and trade."
+        title="Keep every store on-brand and spotless"
+        description="We protect the shopper experience with detailed cleaning that supports merchandising and conversion."
         actions={
-          <>
+          <div className="hero-minimal__cta-group">
             <Link to="/contact" className="btn-primary">
-              Book a site visit
+              Request a quote
             </Link>
-            <Link to="/process" className="btn-ghost">
-              See onboarding steps
-              <ArrowRight className="h-5 w-5" />
-            </Link>
-          </>
+            <a href="tel:+61411820650" className="btn-secondary">
+              Call 0411 820 650
+            </a>
+          </div>
         }
       />
 
       <HeroHighlightBand items={heroHighlights} />
 
-      <QuoteSection
-        eyebrow="Store-ready crews"
-        title="Request your retail cleaning quote"
-        description="Share your store footprint, trading hours and merchandising priorities. We’ll send a tailored plan that keeps every display and fitting room pristine."
-        bullets={[
-          'After-hours and before-open schedules',
-          'Care for fixtures, POS and fitting rooms',
-          'Support for rollouts, refits and pop-ups',
-        ]}
-        formTitle="Tell us about your store"
-        formSubtitle="We’ll respond within one business day with your proposal."
+      <section className="section-shell section-shell--muted" id="challenges">
+        <div className="container-max mx-auto">
+          <div className="section-heading" data-align="left">
+            <span className="section-heading__eyebrow">Pain points we remove</span>
+            <h2 className="section-heading__title">What slows retail teams down</h2>
+            <p className="section-heading__description">
+              We eliminate the cleaning gaps that dent brand perception, slow replenishment and hurt conversion.
+            </p>
+          </div>
+          <div className="feature-grid" data-columns="3">
+            {challenges.map((item) => (
+              <div key={item.title} className="feature-grid-card h-full">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-celestial-blue-1/12 text-celestial-blue-1">
+                  <item.icon className="h-6 w-6" aria-hidden="true" />
+                </div>
+                <h3 className="text-xl font-semibold text-charcoal">{item.title}</h3>
+                <p className="text-jet/80 leading-relaxed">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-shell" id="solutions">
+        <div className="container-max mx-auto">
+          <div className="section-heading" data-align="left">
+            <span className="section-heading__eyebrow">How we respond</span>
+            <h2 className="section-heading__title">Retail cleaning that amplifies your brand</h2>
+            <p className="section-heading__description">
+              From the sales floor to the stockroom, we align routines with your merchandising calendar and service expectations.
+            </p>
+          </div>
+          <div className="feature-grid" data-columns="4">
+            {solutionCards.map((item) => (
+              <div key={item.title} className="feature-grid-card h-full">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-fresh-green/15 text-fresh-green">
+                  <item.icon className="h-6 w-6" aria-hidden="true" />
+                </div>
+                <h3 className="text-xl font-semibold text-charcoal">{item.title}</h3>
+                <p className="text-jet/80 leading-relaxed">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-shell" id="proof">
+        <div className="container-max mx-auto">
+          <div className="section-heading">
+            <span className="section-heading__eyebrow">Proof &amp; reassurance</span>
+            <h2 className="section-heading__title">Metrics retail leaders track</h2>
+            <p className="section-heading__description">
+              Consistent reporting keeps head office confident every store is delivering the same experience.
+            </p>
+          </div>
+          <div className="stat-grid" data-columns="3">
+            {proofPoints.map((point) => (
+              <div key={point.title} className="stat-card" data-align="center">
+                <div className="stat-card__icon">
+                  <point.icon className="h-6 w-6" aria-hidden="true" />
+                </div>
+                <div className="stat-card__value">{point.value}</div>
+                <div className="stat-card__label">{point.title}</div>
+                <p className="stat-card__description">{point.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-shell section-shell--brand" id="inclusions">
+        <div className="container-max mx-auto">
+          <div className="section-heading" data-align="left">
+            <span className="section-heading__eyebrow">What&apos;s included</span>
+            <h2 className="section-heading__title">Retail cleaning checklist</h2>
+            <p className="section-heading__description">
+              Every visit covers these essentials with the option to layer in campaign-specific requirements.
+            </p>
+          </div>
+          <ul className="checklist-grid">
+            {inclusions.map((item) => (
+              <li key={item} className="checklist-grid__item">
+                <CheckCircle aria-hidden="true" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="section-shell" id="testimonials">
+        <div className="container-max mx-auto">
+          <div className="section-heading">
+            <span className="section-heading__eyebrow">Trusted by Brisbane retailers</span>
+            <h2 className="section-heading__title">Client stories</h2>
+            <p className="section-heading__description">
+              Retail operations teams choose MOG Cleaning for detail, communication and flexibility.
+            </p>
+          </div>
+          <TestimonialCarousel testimonials={testimonials} />
+        </div>
+      </section>
+
+      <HowItWorks
+        eyebrow="Onboarding roadmap"
+        title="Launch your retail cleaning rollout in four steps"
+        description="We capture store specifics, merchandising calendars and reporting needs before launch."
       />
 
-      <section className="section-shell">
-        <div className="container-max mx-auto">
-          <div className="section-heading">
-            <span className="section-heading__eyebrow">Why retailers choose us</span>
-            <h2 className="section-heading__title">Deliver flawless brand experiences</h2>
-            <p className="section-heading__description">
-              We keep sales floors, fitting rooms and back-of-house areas pristine so teams can focus on service and sales.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {benefits.map((benefit) => (
-              <div key={benefit.title} className="feature-grid-card">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-celestial-blue-1/12 text-celestial-blue-1">
-                  <benefit.icon className="h-7 w-7" />
-                </div>
-                <h3 className="text-xl font-semibold text-charcoal">{benefit.title}</h3>
-                <p className="text-jet/80 leading-relaxed">{benefit.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <QuoteSection
+        className="section-shell--muted"
+        eyebrow="Ready for a store refresh?"
+        title="Book a retail cleaning consultation"
+        description="Share your store formats, trading hours and campaign schedule so we can prepare a rollout plan."
+        bullets={[
+          'Store-specific playbooks and photo reporting',
+          'Flexible after-hours and stocktake support',
+          'Dedicated supervisor for multi-site communication',
+        ]}
+        formTitle="Request your retail cleaning quote"
+        formSubtitle="Tell us about your network and goals. We’ll respond within one business day."
+      />
 
-      <section className="section-shell section-shell--muted">
+      <section className="section-shell" id="faq">
         <div className="container-max mx-auto">
           <div className="section-heading">
-            <span className="section-heading__eyebrow">Retail inclusions</span>
-            <h2 className="section-heading__title">Every customer touchpoint covered</h2>
+            <span className="section-heading__eyebrow">FAQs</span>
+            <h2 className="section-heading__title">Retail cleaning questions answered</h2>
             <p className="section-heading__description">
-              Our documented checklist keeps your store sparkling from front window to stockroom.
+              Find out how we support retail teams, from shopping centres to boutiques and pop-ups.
             </p>
           </div>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            {inclusions.map((inclusion) => (
-              <div key={inclusion} className="service-item p-6">
-                <p className="text-charcoal font-medium">{inclusion}</p>
-              </div>
-            ))}
-          </div>
+          <FAQAccordion faqs={faqs} />
         </div>
       </section>
 
       <section className="section-shell">
         <div className="container-max mx-auto">
-          <div className="section-heading">
-            <span className="section-heading__eyebrow">Client feedback</span>
-            <h2 className="section-heading__title">Retailers who rely on us</h2>
+          <div className="section-heading" data-align="left">
+            <span className="section-heading__eyebrow">More ways we help</span>
+            <h2 className="section-heading__title">Coordinate every touchpoint</h2>
             <p className="section-heading__description">
-              Hear from Brisbane retail leaders who keep their stores immaculate with MOG Cleaning.
-            </p>
-          </div>
-          <TestimonialCarousel testimonials={testimonials} className="mx-auto max-w-4xl" />
-        </div>
-      </section>
-
-      <section className="section-shell section-shell--muted">
-        <div className="container-max mx-auto">
-          <div className="section-heading">
-            <span className="section-heading__eyebrow">Explore more services</span>
-            <h2 className="section-heading__title">Extend spotless presentation everywhere</h2>
-            <p className="section-heading__description">
-              Pair retail cleaning with other MOG programs to streamline facilities management across your brand.
+              Keep shoppers, diners and staff delighted across your entire footprint or reach out to plan next steps.
             </p>
           </div>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {relatedLinks.map((link) => (
-              <Link key={link.name} to={link.path} className="feature-grid-card">
-                <h3 className="text-xl font-semibold text-charcoal">{link.name}</h3>
-                <span className="link-arrow">
-                  View service
-                  <ArrowRight className="h-4 w-4" />
-                </span>
+              <Link key={link.name} to={link.path} className="feature-grid-card group">
+                <div className="flex items-center justify-between gap-6">
+                  <span className="text-lg font-semibold text-charcoal">{link.name}</span>
+                  <ArrowRight className="h-5 w-5 text-celestial-blue-1 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                </div>
+                <p className="text-sm leading-relaxed text-jet/80">{link.description}</p>
               </Link>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section-shell">
-        <div className="container-max mx-auto">
-          <div className="section-heading">
-            <span className="section-heading__eyebrow">FAQs</span>
-            <h2 className="section-heading__title">Retail cleaning questions</h2>
-            <p className="section-heading__description">
-              Find out how we manage multi-site programs, late-night trade and consumables for your stores.
-            </p>
-          </div>
-          <FAQAccordion faqs={faqs} className="max-w-4xl mx-auto" />
-        </div>
-      </section>
-
-      <section className="section-shell section-shell--dark">
-        <div className="container-max mx-auto text-center">
-          <div className="mx-auto max-w-3xl space-y-6">
-            <span className="pill-chip bg-white/10 text-white">
-              <Sparkles className="h-4 w-4" /> Trusted by Brisbane retailers
-            </span>
-            <h2 className="section-heading__title text-white">Ready for showroom-perfect presentation?</h2>
-            <p className="section-heading__description text-white/80">
-              Schedule a walkthrough and receive a tailored retail cleaning scope, schedule and quote within 24 hours.
-            </p>
-            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
-              <Link to="/contact" className="btn-primary">
-                Request a quote
-              </Link>
-              <a href="tel:+61411820650" className="btn-secondary">
-                Call 0411 820 650
-              </a>
-            </div>
           </div>
         </div>
       </section>

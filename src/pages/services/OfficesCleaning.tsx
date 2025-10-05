@@ -10,48 +10,115 @@ import {
   Phone,
   ClipboardCheck,
   Sparkles,
+  ClipboardList,
+  Presentation,
 } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 import SEO from '../../components/SEO';
 import FAQAccordion from '../../components/FAQAccordion';
 import TestimonialCarousel from '../../components/TestimonialCarousel';
 import PageHero from '../../components/PageHero';
 import QuoteSection from '../../components/QuoteSection';
 import HeroHighlightBand from '../../components/HeroHighlightBand';
+import HowItWorks from '../../components/HowItWorks';
 
 const OfficesCleaning: React.FC = () => {
-  const inclusions = [
-    'Daily and weekly presentation cleans aligned to your office hours',
-    'Desk, workstation and hot-desk sanitising with detail on shared equipment',
-    'Boardroom and meeting room resets including AV wipes and table dressing',
-    'Kitchen, break room and staff amenity hygiene with appliance detailing',
-    'Reception, lobby and client lounge presentation with dust-free surfaces',
-    'Washroom deep cleaning, consumable restocking and touchpoint disinfection',
-    'Hard floor mopping, buffing and entry mat maintenance for high-traffic zones',
-    'Carpet vacuuming, spot treatments and soft furnishing dusting',
-    'Waste, recycling and confidential bin rotation with consumable management',
-  ];
+  type InfoCard = {
+    icon: LucideIcon;
+    title: string;
+    description: string;
+  };
 
-  const benefits = [
+  const heroHighlights: InfoCard[] = [
     {
       icon: Users,
-      title: 'Support Staff Productivity',
-      description: 'Healthy, tidy workspaces reduce sick days and keep your team focused on the work that matters.',
+      title: 'Support productive teams',
+      description: 'Healthy, tidy workspaces reduce sick days and keep your staff focused.',
     },
     {
       icon: ShieldCheck,
-      title: 'Impress Clients & Stakeholders',
-      description: 'Reception areas, boardrooms and lifts stay presentation ready for every visitor walkthrough.',
+      title: 'Impress every visitor',
+      description: 'Reception, boardrooms and lifts stay presentation ready for stakeholders.',
     },
     {
       icon: Clock,
-      title: 'Zero-Disruption Scheduling',
-      description: 'After-hours cleans, weekend support and rapid response crews when trading hours shift.',
+      title: 'Zero-disruption scheduling',
+      description: 'After-hours crews and rapid responses flex around hybrid workplace hours.',
+    },
+  ];
+
+  const challenges: InfoCard[] = [
+    {
+      icon: ClipboardList,
+      title: 'Desks still dusty at 9am',
+      description:
+        'Teams arrive to messy workstations and lose time tidying instead of starting the day strong.',
     },
     {
-      icon: CheckCircle,
-      title: 'Accountable Reporting',
-      description: 'Supervisor checklists, photo reporting and KPI reviews keep every visit measurable.',
+      icon: Clock,
+      title: 'Slow turnaround on issues',
+      description:
+        'Overflowing bins or spills linger because your current provider takes days to respond.',
     },
+    {
+      icon: Presentation,
+      title: 'Embarrassing client walkthroughs',
+      description:
+        'Boardrooms and reception areas aren’t inspection ready when executives arrive unexpectedly.',
+    },
+  ];
+
+  const solutionCards: InfoCard[] = [
+    {
+      icon: Sparkles,
+      title: 'Detail-first daily resets',
+      description: 'Workstations, collaboration zones and breakout spaces restored before the first meeting.',
+    },
+    {
+      icon: ShieldCheck,
+      title: 'Compliance-ready onboarding',
+      description: 'Insurance, SWMS, inductions and security protocols handled prior to launch.',
+    },
+    {
+      icon: Clock,
+      title: 'Flexible cadence',
+      description: 'Nightly, alternate-day or weekend rotations plus rapid-response crews when plans change.',
+    },
+    {
+      icon: ClipboardCheck,
+      title: 'Accountable reporting',
+      description: 'Supervisors deliver photo checklists, KPI reviews and monthly performance summaries.',
+    },
+  ];
+
+  const proofPoints: Array<InfoCard & { value: string }> = [
+    {
+      icon: Sparkles,
+      value: '94%',
+      title: 'Staff satisfaction rating',
+      description: 'Employees report cleaner workspaces and fewer hygiene complaints after onboarding.',
+    },
+    {
+      icon: Clock,
+      value: '30 min',
+      title: 'Average response window',
+      description: 'Issues raised during business hours receive an acknowledgement within thirty minutes.',
+    },
+    {
+      icon: Phone,
+      value: '24/7',
+      title: 'Operations support line',
+      description: 'Reach supervisors anytime to adjust schedules, add services or report incidents.',
+    },
+  ];
+
+  const inclusions: string[] = [
+    'Desk and workstation sanitising including hot-desk rotations',
+    'Boardroom and meeting room resets with AV touchpoint cleaning',
+    'Kitchen, breakout and amenity detailing with consumable management',
+    'Reception and lobby presentation including glass, plants and décor',
+    'Washroom deep cleaning, touchpoint disinfection and odour control',
+    'Hard floor care, carpet vacuuming and high-traffic spot treatments',
   ];
 
   const testimonials = [
@@ -93,33 +160,27 @@ const OfficesCleaning: React.FC = () => {
     },
   ];
 
-  const relatedLinks = [
-    { name: 'Medical Facility Cleaning', path: '/services/health' },
-    { name: 'Retail & Showroom Cleaning', path: '/services/retail' },
-    { name: 'About MOG Cleaning', path: '/about' },
-  ];
-
-  const heroHighlights = [
+  const relatedLinks: Array<{ name: string; path: string; description: string }> = [
     {
-      icon: Users,
-      title: 'Office specialists',
-      description: 'Teams who understand corporate access, presentation and executive areas.',
+      name: 'Medical Facilities',
+      path: '/services/health',
+      description: 'Extend consistent cleaning standards to your clinical or wellness areas.',
     },
     {
-      icon: ClipboardCheck,
-      title: 'Documented scope',
-      description: 'Detailed checklists and KPI tracking for every workspace and floor.',
+      name: 'Retail & Showroom',
+      path: '/services/retail',
+      description: 'Keep customer-facing spaces aligned with your corporate experience.',
     },
     {
-      icon: Phone,
-      title: 'Rapid support line',
-      description: 'Direct escalation channel for last-minute board meetings or visitors.',
+      name: 'About MOG Cleaning',
+      path: '/about',
+      description: 'Learn more about the team, training and supervisors behind every program.',
     },
   ];
 
-  const pageTitle = 'Office Cleaning Brisbane | Professional Commercial Office Cleaners';
+  const pageTitle = 'Office Cleaning Brisbane | MOG Cleaning';
   const pageDescription =
-    'Professional office cleaning in Brisbane tailored for corporate offices, coworking spaces, and business centres. Flexible schedules, trained staff, and consistent quality.';
+    'Office cleaning services in Brisbane with presentation-ready workspaces, flexible scheduling and accountable reporting.';
   const serviceUrl = 'https://mogcleaning.com.au/services/offices';
 
   const serviceSchema = {
@@ -139,42 +200,6 @@ const OfficesCleaning: React.FC = () => {
     },
     description: pageDescription,
     url: serviceUrl,
-    hasOfferCatalog: {
-      '@type': 'OfferCatalog',
-      name: 'Office cleaning inclusions',
-      itemListElement: inclusions.map((service) => ({
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: service,
-        },
-      })),
-    },
-    offers: {
-      '@type': 'Offer',
-      priceCurrency: 'AUD',
-      availability: 'https://schema.org/InStock',
-      url: 'https://mogcleaning.com.au/contact',
-    },
-  };
-
-  const breadcrumbSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Home',
-        item: 'https://mogcleaning.com.au/',
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: 'Office Cleaning',
-        item: serviceUrl,
-      },
-    ],
   };
 
   return (
@@ -182,159 +207,192 @@ const OfficesCleaning: React.FC = () => {
       <SEO
         title={pageTitle}
         description={pageDescription}
-        type="service"
+        type="article"
         image="/images/office-cleaning-background.jpg"
-        imageAlt="Clean Brisbane office workspace"
-        keywords={['office cleaning Brisbane', 'commercial office cleaners', 'corporate cleaning services Brisbane']}
-        jsonLd={[breadcrumbSchema, serviceSchema]}
+        imageAlt="Brisbane office being cleaned after hours"
+        url={serviceUrl}
+        jsonLd={serviceSchema}
+        keywords={['office cleaning Brisbane', 'commercial office cleaners', 'corporate cleaning services']}
       />
 
       <PageHero
+        align="left"
         backgroundImage="/images/office-cleaning-background.jpg"
-        backgroundPosition="center 42%"
+        backgroundPosition="center 36%"
         overlay="charcoal"
-        align="center"
-        eyebrow="Office cleaning"
+        eyebrow="Office programs"
         eyebrowIcon={Building2}
-        title="Dependable cleaning for Brisbane workplaces."
-        description="Keep suites, meeting rooms and breakout spaces inspection-ready with a program tuned to your building."
+        title="Keep every workspace inspection ready"
+        description="Reliable commercial cleaning that supports your hybrid teams, stakeholders and clients."
         actions={
-          <>
+          <div className="hero-minimal__cta-group">
             <Link to="/contact" className="btn-primary">
-              Book a walkthrough
+              Request a quote
             </Link>
-            <Link to="/process" className="btn-ghost">
-              See how onboarding works
-              <ArrowRight className="h-5 w-5" />
-            </Link>
-          </>
+            <a href="tel:+61411820650" className="btn-secondary">
+              Call 0411 820 650
+            </a>
+          </div>
         }
       />
 
       <HeroHighlightBand items={heroHighlights} />
 
-      <QuoteSection
-        eyebrow="Start in days"
-        title="Request your office cleaning proposal"
-        description="Share your floor count, key access notes and current pain points. We’ll prepare a tailored scope, onboarding timeline and pricing within 24 hours."
-        bullets={[
-          'Site walkthrough before the first clean',
-          'Police-checked, uniformed crews',
-          'Supervisor QA visits with photo reports',
-        ]}
-        formTitle="Tell us about your office"
-        formSubtitle="We’ll respond within one business day with next steps."
-      />
-
-      <section className="section-shell">
+      <section className="section-shell section-shell--muted" id="challenges">
         <div className="container-max mx-auto">
-          <div className="section-heading">
-            <span className="section-heading__eyebrow">Why businesses switch to us</span>
-            <h2 className="section-heading__title">Outcomes for your people and presentation</h2>
+          <div className="section-heading" data-align="left">
+            <span className="section-heading__eyebrow">Pain points we remove</span>
+            <h2 className="section-heading__title">What frustrates facilities teams</h2>
             <p className="section-heading__description">
-              We tailor programs that support productivity, impress stakeholders and keep your compliance documentation audit ready.
+              We eliminate the cleaning gaps that cause complaints, lost productivity and awkward client visits.
             </p>
           </div>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {benefits.map((benefit) => (
-              <div key={benefit.title} className="feature-grid-card">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-celestial-blue-1/12 text-celestial-blue-1">
-                  <benefit.icon className="h-7 w-7" />
+          <div className="feature-grid" data-columns="3">
+            {challenges.map((item) => (
+              <div key={item.title} className="feature-grid-card h-full">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-celestial-blue-1/12 text-celestial-blue-1">
+                  <item.icon className="h-6 w-6" aria-hidden="true" />
                 </div>
-                <h3 className="text-xl font-semibold text-charcoal">{benefit.title}</h3>
-                <p className="text-jet/80 leading-relaxed">{benefit.description}</p>
+                <h3 className="text-xl font-semibold text-charcoal">{item.title}</h3>
+                <p className="text-jet/80 leading-relaxed">{item.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section-shell section-shell--muted">
+      <section className="section-shell" id="solutions">
+        <div className="container-max mx-auto">
+          <div className="section-heading" data-align="left">
+            <span className="section-heading__eyebrow">How we respond</span>
+            <h2 className="section-heading__title">Office cleaning built for hybrid workplaces</h2>
+            <p className="section-heading__description">
+              We coordinate with your facilities team to keep every zone spotless and adaptable to changing schedules.
+            </p>
+          </div>
+          <div className="feature-grid" data-columns="4">
+            {solutionCards.map((item) => (
+              <div key={item.title} className="feature-grid-card h-full">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-fresh-green/15 text-fresh-green">
+                  <item.icon className="h-6 w-6" aria-hidden="true" />
+                </div>
+                <h3 className="text-xl font-semibold text-charcoal">{item.title}</h3>
+                <p className="text-jet/80 leading-relaxed">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-shell" id="proof">
         <div className="container-max mx-auto">
           <div className="section-heading">
-            <span className="section-heading__eyebrow">What’s included</span>
+            <span className="section-heading__eyebrow">Proof &amp; reassurance</span>
+            <h2 className="section-heading__title">Metrics facilities managers rely on</h2>
+            <p className="section-heading__description">
+              We measure satisfaction, responsiveness and communication so stakeholders stay informed.
+            </p>
+          </div>
+          <div className="stat-grid" data-columns="3">
+            {proofPoints.map((point) => (
+              <div key={point.title} className="stat-card" data-align="center">
+                <div className="stat-card__icon">
+                  <point.icon className="h-6 w-6" aria-hidden="true" />
+                </div>
+                <div className="stat-card__value">{point.value}</div>
+                <div className="stat-card__label">{point.title}</div>
+                <p className="stat-card__description">{point.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-shell section-shell--brand" id="inclusions">
+        <div className="container-max mx-auto">
+          <div className="section-heading" data-align="left">
+            <span className="section-heading__eyebrow">What&apos;s included</span>
             <h2 className="section-heading__title">Comprehensive office cleaning checklist</h2>
             <p className="section-heading__description">
-              Every visit follows a documented scope so reception, workspaces and amenities stay spotless without chasing your cleaners.
+              Core services you can rely on every visit, with space to add specialty tasks when needed.
             </p>
           </div>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            {inclusions.map((inclusion) => (
-              <div key={inclusion} className="service-item p-6">
-                <p className="text-charcoal font-medium">{inclusion}</p>
-              </div>
+          <ul className="checklist-grid">
+            {inclusions.map((item) => (
+              <li key={item} className="checklist-grid__item">
+                <CheckCircle aria-hidden="true" />
+                <span>{item}</span>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
-      <section className="section-shell">
+      <section className="section-shell" id="testimonials">
         <div className="container-max mx-auto">
           <div className="section-heading">
-            <span className="section-heading__eyebrow">Client stories</span>
-            <h2 className="section-heading__title">Brisbane offices that trust MOG Cleaning</h2>
+            <span className="section-heading__eyebrow">Trusted by Brisbane offices</span>
+            <h2 className="section-heading__title">Client stories</h2>
             <p className="section-heading__description">
-              Hear from corporate partners who rely on us for consistent presentation and responsive support.
+              Corporate teams stay with MOG Cleaning for reliable communication and measurable results.
             </p>
           </div>
-          <TestimonialCarousel testimonials={testimonials} className="mx-auto max-w-4xl" />
+          <TestimonialCarousel testimonials={testimonials} />
         </div>
       </section>
 
-      <section className="section-shell section-shell--muted">
-        <div className="container-max mx-auto">
-          <div className="section-heading">
-            <span className="section-heading__eyebrow">Need something else?</span>
-            <h2 className="section-heading__title">Explore related programs</h2>
-            <p className="section-heading__description">
-              We service a wide range of commercial environments with the same responsive, accountable approach.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-            {relatedLinks.map((link) => (
-              <Link key={link.name} to={link.path} className="feature-grid-card">
-                <h3 className="text-xl font-semibold text-charcoal">{link.name}</h3>
-                <span className="link-arrow">
-                  View service
-                  <ArrowRight className="h-4 w-4" />
-                </span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+      <HowItWorks
+        eyebrow="Onboarding roadmap"
+        title="Launch your office cleaning program in four steps"
+        description="We align expectations, documentation and schedules before the first clean."
+      />
 
-      <section className="section-shell">
+      <QuoteSection
+        className="section-shell--muted"
+        eyebrow="Ready for a better office experience?"
+        title="Book a walkthrough for your workplace"
+        description="Tell us about your floors, staff count and service frequency so we can prepare a tailored proposal."
+        bullets={[
+          'Hybrid workplace scheduling expertise',
+          'Dedicated supervisor and reporting cadence',
+          'Flexible scope for executive and shared spaces',
+        ]}
+        formTitle="Request your office cleaning quote"
+        formSubtitle="Share your site details and priorities. We’ll respond within one business day."
+      />
+
+      <section className="section-shell" id="faq">
         <div className="container-max mx-auto">
           <div className="section-heading">
             <span className="section-heading__eyebrow">FAQs</span>
             <h2 className="section-heading__title">Office cleaning questions answered</h2>
             <p className="section-heading__description">
-              Learn more about onboarding, consumables and our rapid-response support for Brisbane offices.
+              Learn how we work with facilities teams, manage consumables and support urgent requests.
             </p>
           </div>
-          <FAQAccordion faqs={faqs} className="max-w-4xl mx-auto" />
+          <FAQAccordion faqs={faqs} />
         </div>
       </section>
 
-      <section className="section-shell section-shell--dark">
-        <div className="container-max mx-auto text-center">
-          <div className="mx-auto max-w-3xl space-y-6">
-            <span className="pill-chip bg-white/10 text-white">
-              <Sparkles className="h-4 w-4" /> Trusted by Brisbane offices
-            </span>
-            <h2 className="section-heading__title text-white">Ready for a spotless workplace?</h2>
-            <p className="section-heading__description text-white/80">
-              Book a walkthrough and receive a tailored scope, pricing and onboarding plan within 24 hours.
+      <section className="section-shell">
+        <div className="container-max mx-auto">
+          <div className="section-heading" data-align="left">
+            <span className="section-heading__eyebrow">More ways we help</span>
+            <h2 className="section-heading__title">Keep momentum across your portfolio</h2>
+            <p className="section-heading__description">
+              Pair your office program with other facilities or learn more about our team before you book.
             </p>
-            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
-              <Link to="/contact" className="btn-primary">
-                Request a quote
+          </div>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+            {relatedLinks.map((link) => (
+              <Link key={link.name} to={link.path} className="feature-grid-card group">
+                <div className="flex items-center justify-between gap-6">
+                  <span className="text-lg font-semibold text-charcoal">{link.name}</span>
+                  <ArrowRight className="h-5 w-5 text-celestial-blue-1 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                </div>
+                <p className="text-sm leading-relaxed text-jet/80">{link.description}</p>
               </Link>
-              <a href="tel:+61411820650" className="btn-secondary">
-                Call 0411 820 650
-              </a>
-            </div>
+            ))}
           </div>
         </div>
       </section>

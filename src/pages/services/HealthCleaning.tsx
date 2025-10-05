@@ -2,130 +2,192 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   Heart,
+  Stethoscope,
   ShieldCheck,
   Clock,
   Users,
   CheckCircle,
   ArrowRight,
-  Phone,
   Sparkles,
+  ClipboardList,
+  Syringe,
+  FileWarning,
 } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 import SEO from '../../components/SEO';
 import FAQAccordion from '../../components/FAQAccordion';
 import TestimonialCarousel from '../../components/TestimonialCarousel';
 import PageHero from '../../components/PageHero';
 import QuoteSection from '../../components/QuoteSection';
 import HeroHighlightBand from '../../components/HeroHighlightBand';
+import HowItWorks from '../../components/HowItWorks';
 
 const HealthCleaning: React.FC = () => {
-  const inclusions = [
-    'Clinical touchpoint disinfection aligned with QHealth and RACGP guidance',
-    'Consult room, treatment bay and theatre sanitising with dwell times recorded',
-    "Waiting room, reception and children's area presentation including upholstery cleaning",
-    'Sterilisation support including instrument reprocessing coordination and storage hygiene',
-    'Pathology, dental and imaging room turnover with waste segregation checks',
-    'Washroom and staff amenities deep cleaning with infection-control consumables',
-    'Floor care for vinyl, epoxy and carpet tiles with slip-resistant finishes',
-    'Biohazard and sharps waste coordination with compliant manifests',
-    'Out-of-hours terminal cleans for outbreak response and accreditation audits',
-  ];
+  type InfoCard = {
+    icon: LucideIcon;
+    title: string;
+    description: string;
+  };
 
-  const benefits = [
+  const heroHighlights: InfoCard[] = [
     {
       icon: ShieldCheck,
-      title: 'Compliance Built In',
-      description: 'Detailed scopes referencing NSQHS, RACGP and healthcare requirements for audits and accreditation.',
-    },
-    {
-      icon: Users,
-      title: 'Protect Patients & Staff',
-      description: 'Infection-control trained cleaners reduce cross-contamination and support patient confidence.',
+      title: 'Compliance-first teams',
+      description: 'Infection control trained cleaners with police checks and medical inductions.',
     },
     {
       icon: Clock,
-      title: 'Minimal Disruption',
-      description: 'After-hours cleans, surgical turnovers and rapid response teams keep clinics running on schedule.',
+      title: 'Rapid clinical response',
+      description: 'Support for spills, outbreaks and procedure turnovers within tight windows.',
     },
     {
-      icon: CheckCircle,
-      title: 'Trackable Quality',
-      description: 'Audit-ready reporting with checklists, ATP testing options and incident logs delivered after each visit.',
+      icon: Sparkles,
+      title: 'Patient-ready presentation',
+      description: 'Waiting rooms, reception counters and bathrooms that reassure on arrival.',
     },
+  ];
+
+  const challenges: InfoCard[] = [
+    {
+      icon: ClipboardList,
+      title: 'Critical touchpoints missed',
+      description:
+        'Dust on reception counters or fingerprints on treatment chairs erodes patient confidence instantly.',
+    },
+    {
+      icon: Syringe,
+      title: 'Poor infection control',
+      description:
+        'Household products and no zoning between clinical and admin areas raise cross-contamination risks.',
+    },
+    {
+      icon: FileWarning,
+      title: 'Incomplete compliance records',
+      description:
+        'Accreditation visits stall when cleaners can’t supply inductions, SWMS, MSDS or audit logs.',
+    },
+  ];
+
+  const solutionCards: InfoCard[] = [
+    {
+      icon: ShieldCheck,
+      title: 'Documented infection control',
+      description: 'TGA-approved products, PPE and zoning protocols aligned with QHealth and RACGP standards.',
+    },
+    {
+      icon: Clock,
+      title: 'Turnovers timed to appointments',
+      description: 'Teams coordinate with practice managers to prepare rooms between patients without delays.',
+    },
+    {
+      icon: Users,
+      title: 'Named clinical supervisors',
+      description: 'Dedicated contacts deliver photo reports, respond to incidents and manage audit readiness.',
+    },
+    {
+      icon: Stethoscope,
+      title: 'Patient experience focus',
+      description: 'Reception, bathrooms and staff areas remain calm, organised and confidence-inspiring.',
+    },
+  ];
+
+  const proofPoints: Array<InfoCard & { value: string }> = [
+    {
+      icon: ShieldCheck,
+      value: '100%',
+      title: 'Inducted medical crews',
+      description: 'Police checks, vaccinations and compliance training verified before day one.',
+    },
+    {
+      icon: Clock,
+      value: '2 hrs',
+      title: 'Average urgent response',
+      description: 'Outbreak cleans or biohazard incidents addressed within a two-hour window.',
+    },
+    {
+      icon: Users,
+      value: '45+',
+      title: 'Healthcare sites supported',
+      description: 'GP clinics, specialists and allied health practices across South East Queensland.',
+    },
+  ];
+
+  const inclusions: string[] = [
+    'Treatment room turnovers with TGA-approved disinfectants',
+    'Zoned cleaning separating clinical, admin and staff areas',
+    'Waiting room and reception presentation with touchpoint focus',
+    'Sterilisation bay detailing and spill management support',
+    'Medical waste coordination and consumable restocking',
+    'Air filtration, vent dusting and bathroom sanitising',
   ];
 
   const testimonials = [
     {
       quote:
-        'Treatment rooms smell neutral and surfaces stay sterile throughout the day. Their team understands our compliance requirements and it shows.',
+        'MOG Cleaning understands the compliance demands of our medical centre. They communicate proactively and keep every room ready for patients.',
       name: 'Practice Manager',
-      role: 'Brisbane GP Clinic',
+      role: 'Multi-site GP Clinic',
     },
     {
       quote:
-        'Recovery bays and waiting areas are dust free before doors open. They flag consumables early so we are never caught short.',
-      name: 'Director of Nursing',
-      role: 'Brisbane Day Hospital',
-    },
-    {
-      quote:
-        'Sharps stations, sinks and rails present spotless at every inspection. Our clinicians trust MOG Cleaning to hold the standard.',
+        'The team follows strict zoning and handover protocols. We feel confident recommending them to other specialists.',
       name: 'Clinical Director',
-      role: 'Brisbane Allied Health Centre',
+      role: 'Specialist Healthcare Group',
+    },
+    {
+      quote:
+        'Accreditation used to cause stress. Now all documentation, SWMS and chemical registers are provided in minutes.',
+      name: 'Operations Lead',
+      role: 'Allied Health Network',
     },
   ];
 
   const faqs = [
     {
-      question: 'Do you follow specific infection-control standards?',
+      question: 'Do you follow infection control guidelines?',
       answer:
-        'Yes. Our cleaners are trained on NSQHS, RACGP and aged-care standards. We provide SWMS, chemical registers and SDS files as part of onboarding.',
+        'Yes. Our teams complete infection control training, follow QHealth standards and document every product used for traceability.',
     },
     {
-      question: 'Can you assist during outbreak or terminal cleans?',
+      question: 'Can you work around patient schedules?',
       answer:
-        'We have rapid response teams for infection control events. We supply PPE, manage waste streams and provide reports suitable for health authorities.',
+        'We clean before opening, after closing and in-between appointments to minimise disruption. Rapid response crews support urgent sanitisation.',
     },
     {
-      question: 'How do you handle sensitive equipment and privacy?',
+      question: 'Do you provide proof of compliance?',
       answer:
-        'Team members sign confidentiality agreements, undergo police checks and follow documented procedures for handling clinical records and equipment.',
+        'We supply police checks, insurance, SWMS, inductions and chemical registers as part of onboarding and keep them updated.',
     },
   ];
 
-  const relatedLinks = [
-    { name: 'Office & Corporate Cleaning', path: '/services/offices' },
-    { name: 'Education Facility Cleaning', path: '/services/education' },
-    { name: 'About Our Team', path: '/about' },
-  ];
-
-  const heroHighlights = [
+  const relatedLinks: Array<{ name: string; path: string; description: string }> = [
     {
-      icon: Heart,
-      title: 'Healthcare compliance experts',
-      description: 'Infection-control trained cleaners for surgeries, treatment rooms and waiting areas.',
+      name: 'Office Programs',
+      path: '/services/offices',
+      description: 'Support your head office or corporate clinic with the same accountable approach.',
     },
     {
-      icon: Users,
-      title: 'Dedicated clinical supervisors',
-      description: 'Site leads coordinate consumables, turnover times and accreditation paperwork.',
+      name: 'Education Facilities',
+      path: '/services/education',
+      description: 'See how we care for campuses that also demand strict hygiene controls.',
     },
     {
-      icon: Phone,
-      title: 'Rapid outbreak support',
-      description: 'Escalation crews for terminal cleans and urgent infection-control needs.',
+      name: 'Contact MOG Cleaning',
+      path: '/contact',
+      description: 'Book a walkthrough and receive compliance documentation for your review.',
     },
   ];
 
-  const pageTitle = 'Medical Facility Cleaning Brisbane | Clinic & Healthcare Cleaners';
+  const pageTitle = 'Medical & Healthcare Cleaning Brisbane | MOG Cleaning';
   const pageDescription =
-    'Medical-grade cleaning for Brisbane clinics, dental surgeries and allied health facilities. Infection-control trained teams, compliant reporting and flexible scheduling.';
+    'Clinical cleaning services for Brisbane healthcare providers with infection control, rapid response support and audit-ready reporting.';
   const serviceUrl = 'https://mogcleaning.com.au/services/health';
 
   const serviceSchema = {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: 'Medical Facility Cleaning Services',
-    serviceType: 'Healthcare Cleaning',
+    name: 'Healthcare Cleaning Services',
+    serviceType: 'Medical Cleaning',
     areaServed: {
       '@type': 'City',
       name: 'Brisbane',
@@ -138,42 +200,6 @@ const HealthCleaning: React.FC = () => {
     },
     description: pageDescription,
     url: serviceUrl,
-    hasOfferCatalog: {
-      '@type': 'OfferCatalog',
-      name: 'Medical cleaning inclusions',
-      itemListElement: inclusions.map((service) => ({
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: service,
-        },
-      })),
-    },
-    offers: {
-      '@type': 'Offer',
-      priceCurrency: 'AUD',
-      availability: 'https://schema.org/InStock',
-      url: 'https://mogcleaning.com.au/contact',
-    },
-  };
-
-  const breadcrumbSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Home',
-        item: 'https://mogcleaning.com.au/',
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: 'Medical Facility Cleaning',
-        item: serviceUrl,
-      },
-    ],
   };
 
   return (
@@ -181,159 +207,192 @@ const HealthCleaning: React.FC = () => {
       <SEO
         title={pageTitle}
         description={pageDescription}
-        type="service"
+        type="article"
         image="/images/medical-cleaning-background.jpg"
-        imageAlt="Healthcare cleaner sanitising a treatment room"
-        keywords={['medical cleaning Brisbane', 'clinic cleaners', 'healthcare cleaning services']}
-        jsonLd={[breadcrumbSchema, serviceSchema]}
+        imageAlt="Medical treatment room being disinfected"
+        url={serviceUrl}
+        jsonLd={serviceSchema}
+        keywords={['medical cleaning Brisbane', 'healthcare cleaning services', 'infection control cleaning']}
       />
 
       <PageHero
+        align="left"
         backgroundImage="/images/medical-cleaning-background.jpg"
         backgroundPosition="center 38%"
         overlay="charcoal"
-        align="center"
-        eyebrow="Medical facility cleaning"
+        eyebrow="Healthcare facilities"
         eyebrowIcon={Heart}
-        title="Clinical-grade cleaning for Brisbane practices."
-        description="Protect patients, practitioners and accreditation with infection-control crews and transparent reporting."
+        title="Keep every patient space compliant"
+        description="Specialist medical cleaning programs that protect patients, practitioners and your accreditation."
         actions={
-          <>
+          <div className="hero-minimal__cta-group">
             <Link to="/contact" className="btn-primary">
-              Book a compliance walkthrough
+              Request a quote
             </Link>
-            <Link to="/process" className="btn-ghost">
-              See our onboarding
-              <ArrowRight className="h-5 w-5" />
-            </Link>
-          </>
+            <a href="tel:+61411820650" className="btn-secondary">
+              Call 0411 820 650
+            </a>
+          </div>
         }
       />
 
       <HeroHighlightBand items={heroHighlights} />
 
-      <QuoteSection
-        eyebrow="Clinical onboarding"
-        title="Request your healthcare cleaning quote"
-        description="Share your practice layout, accreditation requirements and service frequency. We’ll prepare compliant scopes, pricing and onboarding steps within 24 hours."
-        bullets={[
-          'Infection-control trained cleaning crews',
-          'Documentation for NSQHS and RACGP audits',
-          'Rapid outbreak and terminal clean support',
-        ]}
-        formTitle="Tell us about your facility"
-        formSubtitle="We’ll respond within one business day with next steps."
+      <section className="section-shell section-shell--muted" id="challenges">
+        <div className="container-max mx-auto">
+          <div className="section-heading" data-align="left">
+            <span className="section-heading__eyebrow">Pain points we remove</span>
+            <h2 className="section-heading__title">Where medical cleaning often breaks down</h2>
+            <p className="section-heading__description">
+              We solve the recurring frustrations that put accreditation, patient trust and staff morale at risk.
+            </p>
+          </div>
+          <div className="feature-grid" data-columns="3">
+            {challenges.map((item) => (
+              <div key={item.title} className="feature-grid-card h-full">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-celestial-blue-1/12 text-celestial-blue-1">
+                  <item.icon className="h-6 w-6" aria-hidden="true" />
+                </div>
+                <h3 className="text-xl font-semibold text-charcoal">{item.title}</h3>
+                <p className="text-jet/80 leading-relaxed">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-shell" id="solutions">
+        <div className="container-max mx-auto">
+          <div className="section-heading" data-align="left">
+            <span className="section-heading__eyebrow">How we respond</span>
+            <h2 className="section-heading__title">Clinical cleaning built for accreditation</h2>
+            <p className="section-heading__description">
+              Our playbook covers infection control, reporting and communication so your team can focus on patient care.
+            </p>
+          </div>
+          <div className="feature-grid" data-columns="4">
+            {solutionCards.map((item) => (
+              <div key={item.title} className="feature-grid-card h-full">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-fresh-green/15 text-fresh-green">
+                  <item.icon className="h-6 w-6" aria-hidden="true" />
+                </div>
+                <h3 className="text-xl font-semibold text-charcoal">{item.title}</h3>
+                <p className="text-jet/80 leading-relaxed">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-shell" id="proof">
+        <div className="container-max mx-auto">
+          <div className="section-heading">
+            <span className="section-heading__eyebrow">Proof &amp; reassurance</span>
+            <h2 className="section-heading__title">Compliance metrics that matter</h2>
+            <p className="section-heading__description">
+              Track response times, crew training and documentation so you’re always audit ready.
+            </p>
+          </div>
+          <div className="stat-grid" data-columns="3">
+            {proofPoints.map((point) => (
+              <div key={point.title} className="stat-card" data-align="center">
+                <div className="stat-card__icon">
+                  <point.icon className="h-6 w-6" aria-hidden="true" />
+                </div>
+                <div className="stat-card__value">{point.value}</div>
+                <div className="stat-card__label">{point.title}</div>
+                <p className="stat-card__description">{point.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-shell section-shell--brand" id="inclusions">
+        <div className="container-max mx-auto">
+          <div className="section-heading" data-align="left">
+            <span className="section-heading__eyebrow">What&apos;s included</span>
+            <h2 className="section-heading__title">Healthcare cleaning checklist</h2>
+            <p className="section-heading__description">
+              Tailor the scope to your practice while keeping these compliance essentials every visit.
+            </p>
+          </div>
+          <ul className="checklist-grid">
+            {inclusions.map((item) => (
+              <li key={item} className="checklist-grid__item">
+                <CheckCircle aria-hidden="true" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="section-shell" id="testimonials">
+        <div className="container-max mx-auto">
+          <div className="section-heading">
+            <span className="section-heading__eyebrow">Trusted by Brisbane practitioners</span>
+            <h2 className="section-heading__title">Client stories</h2>
+            <p className="section-heading__description">
+              Medical leaders partner with MOG Cleaning for reliable communication and compliance support.
+            </p>
+          </div>
+          <TestimonialCarousel testimonials={testimonials} />
+        </div>
+      </section>
+
+      <HowItWorks
+        eyebrow="Onboarding roadmap"
+        title="Launch your clinical cleaning program in four steps"
+        description="We capture compliance requirements, documentation and schedules before a single shift."
       />
 
-      <section className="section-shell">
-        <div className="container-max mx-auto">
-          <div className="section-heading">
-            <span className="section-heading__eyebrow">Why clinics choose us</span>
-            <h2 className="section-heading__title">Protection for patients, teams and accreditation</h2>
-            <p className="section-heading__description">
-              We align cleaning protocols with your infection-control procedures, delivering peace of mind for practice managers and clinicians alike.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {benefits.map((benefit) => (
-              <div key={benefit.title} className="feature-grid-card">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-celestial-blue-1/12 text-celestial-blue-1">
-                  <benefit.icon className="h-7 w-7" />
-                </div>
-                <h3 className="text-xl font-semibold text-charcoal">{benefit.title}</h3>
-                <p className="text-jet/80 leading-relaxed">{benefit.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <QuoteSection
+        className="section-shell--muted"
+        eyebrow="Need compliant support?"
+        title="Request a healthcare cleaning consultation"
+        description="Tell us about your practice size, modalities and accreditation requirements so we can prepare a detailed proposal."
+        bullets={[
+          'Infection control trained, police-checked crews',
+          'Comprehensive documentation pack for audits',
+          'Rapid response support for spills and outbreaks',
+        ]}
+        formTitle="Request your healthcare cleaning quote"
+        formSubtitle="Share your clinic layout and compliance needs. We’ll respond within one business day."
+      />
 
-      <section className="section-shell section-shell--muted">
+      <section className="section-shell" id="faq">
         <div className="container-max mx-auto">
           <div className="section-heading">
-            <span className="section-heading__eyebrow">Healthcare checklist</span>
-            <h2 className="section-heading__title">Every zone covered by documented scopes</h2>
+            <span className="section-heading__eyebrow">FAQs</span>
+            <h2 className="section-heading__title">Healthcare cleaning questions answered</h2>
             <p className="section-heading__description">
-              From theatres and imaging rooms to waiting areas and staff amenities, every inclusion is recorded for your compliance files.
+              Learn how we integrate with your clinical team and maintain strict infection control standards.
             </p>
           </div>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            {inclusions.map((inclusion) => (
-              <div key={inclusion} className="service-item p-6">
-                <p className="text-charcoal font-medium">{inclusion}</p>
-              </div>
-            ))}
-          </div>
+          <FAQAccordion faqs={faqs} />
         </div>
       </section>
 
       <section className="section-shell">
         <div className="container-max mx-auto">
-          <div className="section-heading">
-            <span className="section-heading__eyebrow">Clinical partners</span>
-            <h2 className="section-heading__title">Healthcare providers who rely on us</h2>
+          <div className="section-heading" data-align="left">
+            <span className="section-heading__eyebrow">More ways we help</span>
+            <h2 className="section-heading__title">Expand support across your network</h2>
             <p className="section-heading__description">
-              Hear from practices and day hospitals that trust MOG Cleaning to uphold clinical standards.
-            </p>
-          </div>
-          <TestimonialCarousel testimonials={testimonials} className="mx-auto max-w-4xl" />
-        </div>
-      </section>
-
-      <section className="section-shell section-shell--muted">
-        <div className="container-max mx-auto">
-          <div className="section-heading">
-            <span className="section-heading__eyebrow">Related services</span>
-            <h2 className="section-heading__title">Support across your wider facility</h2>
-            <p className="section-heading__description">
-              Pair medical cleaning with other MOG programs to keep every part of your organisation spotless.
+              Combine medical cleaning with other facilities or speak to our team about onboarding multiple sites.
             </p>
           </div>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {relatedLinks.map((link) => (
-              <Link key={link.name} to={link.path} className="feature-grid-card">
-                <h3 className="text-xl font-semibold text-charcoal">{link.name}</h3>
-                <span className="link-arrow">
-                  View service
-                  <ArrowRight className="h-4 w-4" />
-                </span>
+              <Link key={link.name} to={link.path} className="feature-grid-card group">
+                <div className="flex items-center justify-between gap-6">
+                  <span className="text-lg font-semibold text-charcoal">{link.name}</span>
+                  <ArrowRight className="h-5 w-5 text-celestial-blue-1 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                </div>
+                <p className="text-sm leading-relaxed text-jet/80">{link.description}</p>
               </Link>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section-shell">
-        <div className="container-max mx-auto">
-          <div className="section-heading">
-            <span className="section-heading__eyebrow">FAQs</span>
-            <h2 className="section-heading__title">Healthcare cleaning questions</h2>
-            <p className="section-heading__description">
-              Learn how we approach infection control, terminal cleans and sensitive equipment handling.
-            </p>
-          </div>
-          <FAQAccordion faqs={faqs} className="max-w-4xl mx-auto" />
-        </div>
-      </section>
-
-      <section className="section-shell section-shell--dark">
-        <div className="container-max mx-auto text-center">
-          <div className="mx-auto max-w-3xl space-y-6">
-            <span className="pill-chip bg-white/10 text-white">
-              <Sparkles className="h-4 w-4" /> Trusted by Brisbane healthcare teams
-            </span>
-            <h2 className="section-heading__title text-white">Ready for audit-ready medical cleaning?</h2>
-            <p className="section-heading__description text-white/80">
-              Schedule a walkthrough and receive a tailored scope, compliance documentation and quote within 24 hours.
-            </p>
-            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
-              <Link to="/contact" className="btn-primary">
-                Request a quote
-              </Link>
-              <a href="tel:+61411820650" className="btn-secondary">
-                Call 0411 820 650
-              </a>
-            </div>
           </div>
         </div>
       </section>
