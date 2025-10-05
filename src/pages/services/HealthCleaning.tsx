@@ -136,6 +136,40 @@ const HealthCleaning: React.FC = () => {
     },
   ];
 
+  const complianceFrameworks = [
+    {
+      label: 'Infection control ready',
+      description: 'QHealth-aligned procedures, PPE and documented zoning plans for every clinic wing.',
+    },
+    {
+      label: 'Auditable reporting',
+      description: 'Digital logs for SWMS, inductions, chemical registers and waste manifests.',
+    },
+    {
+      label: 'Credentialled crews',
+      description: 'Vaccination records, police checks and hospital-grade training verified prior to site access.',
+    },
+  ];
+
+  const clinicalSpaces = [
+    {
+      name: 'General practice & allied health',
+      detail: 'Treatment rooms, consult spaces and waiting areas with zoned protocols.',
+    },
+    {
+      name: 'Day surgery & procedure suites',
+      detail: 'Turnover cleans, theatre deep cleans and sterilisation bay detailing.',
+    },
+    {
+      name: 'Dental & specialist clinics',
+      detail: 'Chairside sanitisation, suction line maintenance and lab support spaces.',
+    },
+    {
+      name: 'Community health hubs',
+      detail: 'Shared amenities, outreach rooms and admin offices supported with flexible rosters.',
+    },
+  ];
+
   const pageTitle = 'Medical & Healthcare Cleaning Brisbane | MOG Cleaning';
   const pageDescription =
     'Healthcare cleaning in Brisbane for clinics, medical centres and allied health practices. Infection control protocols, zoning and compliance-ready documentation.';
@@ -231,6 +265,38 @@ const HealthCleaning: React.FC = () => {
 
       <HeroHighlightBand items={heroHighlights} />
 
+      <section className="section-shell section-shell--muted" id="compliance">
+        <div className="container-max mx-auto grid gap-8 lg:grid-cols-[1.15fr_1fr] lg:items-center">
+          <div className="space-y-6">
+            <div className="section-heading" data-align="left">
+              <span className="section-heading__eyebrow">Clinical governance</span>
+              <h2 className="section-heading__title">Proof you can hand straight to auditors</h2>
+              <p className="section-heading__description">
+                Every healthcare partnership begins with a compliance pack covering inductions, SWMS, insurances and infection control procedures specific to your modalities.
+              </p>
+            </div>
+            <ul className="space-y-4 text-jet/80">
+              <li className="flex items-start gap-3">
+                <ShieldCheck className="mt-1 h-5 w-5 text-celestial-blue-1" />
+                <span>Site-specific zoning maps covering public, clinical and sterile areas.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <ClipboardList className="mt-1 h-5 w-5 text-celestial-blue-1" />
+                <span>Daily, weekly and monthly checklists with sign-off visibility for practice managers.</span>
+              </li>
+            </ul>
+          </div>
+          <div className="grid gap-4">
+            {complianceFrameworks.map((item) => (
+              <div key={item.label} className="glass-panel space-y-2 rounded-3xl p-6" data-variant="frost">
+                <p className="text-sm font-semibold uppercase tracking-wide text-celestial-blue-1/70">{item.label}</p>
+                <p className="text-charcoal text-lg font-semibold">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="section-shell" id="pain-points">
         <div className="container-max mx-auto">
           <div className="section-heading">
@@ -258,7 +324,7 @@ const HealthCleaning: React.FC = () => {
         <div className="container-max mx-auto grid gap-12 lg:grid-cols-2 lg:items-center">
           <div className="glass-panel" data-variant="frost">
             <img
-              src="/images/medical-cleaning-detail.jpg"
+              src="/images/medical-cleaning-background.jpg"
               alt="Healthcare cleaner preparing a treatment room"
               className="h-full w-full rounded-[32px] object-cover"
               loading="lazy"
@@ -299,6 +365,31 @@ const HealthCleaning: React.FC = () => {
         </div>
       </section>
 
+      <section className="section-shell" id="clinical-spaces">
+        <div className="container-max mx-auto grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:items-center">
+          <div className="space-y-6">
+            <div className="section-heading" data-align="left">
+              <span className="section-heading__eyebrow">Clinical coverage</span>
+              <h2 className="section-heading__title">Programs tailored to your modality mix</h2>
+              <p className="section-heading__description">
+                Each facility receives a bespoke scope of works that aligns with practitioner schedules, treatment types and accreditation needs.
+              </p>
+            </div>
+            <Link to="/contact" className="btn-secondary w-full max-w-xs">
+              Schedule a site discovery
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            {clinicalSpaces.map((space) => (
+              <div key={space.name} className="rounded-[32px] border border-white/40 bg-white p-8 shadow-sm">
+                <h3 className="text-2xl font-semibold text-charcoal">{space.name}</h3>
+                <p className="mt-3 text-jet/80 leading-relaxed">{space.detail}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <HowItWorks
         eyebrow="Implementation"
         title="Four steps to a compliant healthcare cleaning program"
@@ -315,7 +406,7 @@ const HealthCleaning: React.FC = () => {
           'Audit-ready documentation supplied',
         ]}
         formTitle="Tell us about your clinic"
-        formSubtitle="We’ll respond within one business day with next steps."
+        formSubtitle="A healthcare onboarding specialist will respond within one business day."
       />
 
       <section className="section-shell" id="benefits">
@@ -373,7 +464,18 @@ const HealthCleaning: React.FC = () => {
         </div>
       </section>
 
-      <FAQAccordion faqs={faqs} className="max-w-4xl mx-auto section-shell" />
+      <section className="section-shell" id="faqs">
+        <div className="container-max mx-auto">
+          <div className="section-heading">
+            <span className="section-heading__eyebrow">FAQs</span>
+            <h2 className="section-heading__title">Healthcare cleaning FAQs</h2>
+            <p className="section-heading__description">
+              Understand our infection control processes, compliance documentation and response times before you engage us.
+            </p>
+          </div>
+          <FAQAccordion faqs={faqs} className="max-w-4xl mx-auto" />
+        </div>
+      </section>
 
       <section className="section-shell section-shell--muted" id="related">
         <div className="container-max mx-auto">

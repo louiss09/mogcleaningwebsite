@@ -138,6 +138,40 @@ const OfficesCleaning: React.FC = () => {
     },
   ];
 
+  const workplaceRhythms = [
+    {
+      name: 'Before 7am',
+      description: 'Boardrooms, reception and executive offices detailed before leadership arrives.',
+    },
+    {
+      name: 'Lunchtime refresh',
+      description: 'Kitchenettes, breakout spaces and bathrooms reset during hybrid team overlap.',
+    },
+    {
+      name: 'After-hours detail',
+      description: 'Full floor presentation with desk sanitising, bin rotations and AV wipe-downs.',
+    },
+  ];
+
+  const officePrograms = [
+    {
+      title: 'Executive & client floors',
+      copy: 'High-touch presentation for boardrooms, lounges and private offices with premium finishes.',
+    },
+    {
+      title: 'Hybrid work hubs',
+      copy: 'Hot desks, collaboration zones and phone booths sanitised between booking rotations.',
+    },
+    {
+      title: 'Support areas & logistics',
+      copy: 'Mail rooms, loading docks and storage areas organised to keep operations flowing.',
+    },
+    {
+      title: 'Facilities & wellness zones',
+      copy: 'End-of-trip, wellness rooms and training spaces maintained for employee wellbeing.',
+    },
+  ];
+
   const pageTitle = 'Office Cleaning Brisbane | Professional Commercial Office Cleaners';
   const pageDescription =
     'Professional office cleaning in Brisbane tailored for corporate offices, coworking spaces, and business centres. Flexible schedules, trained staff, and consistent quality.';
@@ -233,6 +267,38 @@ const OfficesCleaning: React.FC = () => {
 
       <HeroHighlightBand items={heroHighlights} />
 
+      <section className="section-shell" id="workplace-rhythm">
+        <div className="container-max mx-auto grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:items-center">
+          <div className="space-y-6">
+            <div className="section-heading" data-align="left">
+              <span className="section-heading__eyebrow">Daily cadence</span>
+              <h2 className="section-heading__title">Cleaning schedules that mirror hybrid work patterns</h2>
+              <p className="section-heading__description">
+                We plot rosters around desk bookings, visitor arrivals and critical meetings so spaces stay presentation ready without disrupting productivity.
+              </p>
+            </div>
+            <ul className="space-y-4 text-jet/80">
+              <li className="flex items-start gap-3">
+                <Clock className="mt-1 h-5 w-5 text-celestial-blue-1" />
+                <span>Flexible shift options for early birds, day porters and overnight detail crews.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <Users className="mt-1 h-5 w-5 text-celestial-blue-1" />
+                <span>Alignment with building management and security for seamless access.</span>
+              </li>
+            </ul>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-3">
+            {workplaceRhythms.map((rhythm) => (
+              <div key={rhythm.name} className="rounded-[32px] border border-white/40 bg-white p-6 text-center shadow-sm">
+                <h3 className="text-lg font-semibold text-charcoal">{rhythm.name}</h3>
+                <p className="mt-2 text-sm text-jet/80 leading-relaxed">{rhythm.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="section-shell" id="pain-points">
         <div className="container-max mx-auto">
           <div className="section-heading">
@@ -260,7 +326,7 @@ const OfficesCleaning: React.FC = () => {
         <div className="container-max mx-auto grid gap-12 lg:grid-cols-2 lg:items-center">
           <div className="glass-panel" data-variant="frost">
             <img
-              src="/images/cleaning-team.jpg"
+              src="/images/office-cleaning-background.jpg"
               alt="Office cleaners detailing a Brisbane boardroom"
               className="h-full w-full rounded-[32px] object-cover"
               loading="lazy"
@@ -301,6 +367,26 @@ const OfficesCleaning: React.FC = () => {
         </div>
       </section>
 
+      <section className="section-shell section-shell--muted" id="office-programs">
+        <div className="container-max mx-auto">
+          <div className="section-heading">
+            <span className="section-heading__eyebrow">Workplace zones</span>
+            <h2 className="section-heading__title">Playbooks for every corner of your office</h2>
+            <p className="section-heading__description">
+              Each zone receives a purpose-built checklist, from executive floors to end-of-trip facilities, so nothing is overlooked.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            {officePrograms.map((program) => (
+              <div key={program.title} className="rounded-[32px] bg-white p-8 shadow-sm">
+                <h3 className="text-2xl font-semibold text-charcoal">{program.title}</h3>
+                <p className="mt-3 text-jet/80 leading-relaxed">{program.copy}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <HowItWorks
         eyebrow="Your onboarding path"
         title="Four steps from quote request to quality assured cleaning"
@@ -317,7 +403,7 @@ const OfficesCleaning: React.FC = () => {
           'Supervisor QA visits with photo reports',
         ]}
         formTitle="Tell us about your office"
-        formSubtitle="We’ll respond within one business day with next steps."
+        formSubtitle="Your dedicated workplace contact will reach out within one business day."
       />
 
       <section className="section-shell" id="benefits">
@@ -375,7 +461,18 @@ const OfficesCleaning: React.FC = () => {
         </div>
       </section>
 
-      <FAQAccordion faqs={faqs} className="max-w-4xl mx-auto section-shell" />
+      <section className="section-shell" id="faqs">
+        <div className="container-max mx-auto">
+          <div className="section-heading">
+            <span className="section-heading__eyebrow">FAQs</span>
+            <h2 className="section-heading__title">Office cleaning FAQs</h2>
+            <p className="section-heading__description">
+              Find out how we onboard security, manage keys and document every shift before confirming your contract.
+            </p>
+          </div>
+          <FAQAccordion faqs={faqs} className="max-w-4xl mx-auto" />
+        </div>
+      </section>
 
       <section className="section-shell section-shell--muted" id="related">
         <div className="container-max mx-auto">

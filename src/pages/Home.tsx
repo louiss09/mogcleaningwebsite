@@ -463,7 +463,7 @@ const Home: React.FC = () => {
             <span className="section-heading__eyebrow">Services</span>
             <h2 className="section-heading__title">Pick your pathway to a spotless facility</h2>
             <p className="section-heading__description">
-              Choose the program tailored to your industry. Each page continues the funnel with specifics, results and pricing steps.
+              Choose the program tailored to your industry. Each page highlights the specifics, results and pricing guidance you need.
             </p>
           </div>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
@@ -483,7 +483,7 @@ const Home: React.FC = () => {
                   </span>
                 </div>
                 <div className="service-card__body">
-                  <span className="service-card__eyebrow">Next step in the funnel</span>
+                  <span className="service-card__eyebrow">Tailored program</span>
                   <h3 className="service-card__title">{service.name}</h3>
                   <p className="service-card__description">{service.description}</p>
                   <span className="service-card__cta">
@@ -545,7 +545,7 @@ const Home: React.FC = () => {
       <section className="section-shell section-shell--muted" id="next-steps">
         <div className="container-max mx-auto">
           <div className="section-heading">
-            <span className="section-heading__eyebrow">Keep moving through the funnel</span>
+            <span className="section-heading__eyebrow">Keep the momentum going</span>
             <h2 className="section-heading__title">Choose your next best step</h2>
             <p className="section-heading__description">
               Dive deeper into our services, meet the people behind the brand or see exactly how onboarding unfolds.

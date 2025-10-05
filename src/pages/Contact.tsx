@@ -168,7 +168,7 @@ const Contact: React.FC = () => {
         className="hero-extra-top"
         eyebrow="Contact"
         eyebrowIcon={Sparkles}
-        title="Fast, tailored quotes that move you to the next funnel step."
+        title="Fast, tailored quotes that keep your operations moving."
         description="Share your facility details and we’ll reply within 24 hours with pricing, onboarding dates and your dedicated supervisor."
         actions={
           <>

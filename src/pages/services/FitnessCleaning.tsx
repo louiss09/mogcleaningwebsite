@@ -135,6 +135,40 @@ const FitnessCleaning: React.FC = () => {
     },
   ];
 
+  const memberJourney = [
+    {
+      title: 'Pre-dawn reset',
+      description: 'Equipment sanitised, cardio screens polished and bins cleared before the first 5am class.',
+    },
+    {
+      title: 'Midday refresh',
+      description: 'Changerooms deodorised, towels replenished and mirrors detailed between peak waves.',
+    },
+    {
+      title: 'Evening turnover',
+      description: 'Studios reset, sweat marks removed and mats sanitised ready for the late-night crew.',
+    },
+  ];
+
+  const studioPrograms = [
+    {
+      name: 'Strength & cardio floors',
+      detail: 'Wipe-down schedules for benches, plates and cardio consoles with anti-corrosion products.',
+    },
+    {
+      name: 'Group fitness & reformer studios',
+      detail: 'Between-class resets for mats, reformers and props plus ventilation purges.',
+    },
+    {
+      name: 'Aquatic & recovery zones',
+      detail: 'Pool deck sweeping, spa wipe-downs and treatment room sanitisation with moisture-resistant chemicals.',
+    },
+    {
+      name: 'Reception & retail',
+      detail: 'Point-of-sale touchpoints sanitised with merch displays, supplement bars and consultation rooms presentation ready.',
+    },
+  ];
+
   const pageTitle = 'Gym & Fitness Centre Cleaning Brisbane | MOG Cleaning';
   const pageDescription =
     'Gym cleaning services in Brisbane that keep equipment sanitised, changerooms fresh and members confident. Flexible schedules, odour control and compliance-ready reporting.';
@@ -230,6 +264,32 @@ const FitnessCleaning: React.FC = () => {
 
       <HeroHighlightBand items={heroHighlights} />
 
+      <section className="section-shell" id="member-journey">
+        <div className="container-max mx-auto">
+          <div className="section-heading">
+            <span className="section-heading__eyebrow">Member experience lens</span>
+            <h2 className="section-heading__title">We clean in rhythm with your daily traffic peaks</h2>
+            <p className="section-heading__description">
+              Timetables, casual entries and PT sessions all influence how we stage our crews so members notice constant freshness.
+            </p>
+          </div>
+          <ol className="flex flex-col gap-6 md:flex-row md:gap-8">
+            {memberJourney.map((phase, index) => (
+              <li
+                key={phase.title}
+                className="flex-1 rounded-[32px] border border-white/40 bg-white p-6 shadow-sm"
+              >
+                <span className="text-sm font-semibold uppercase tracking-wide text-celestial-blue-1/70">
+                  Step {index + 1}
+                </span>
+                <h3 className="mt-3 text-2xl font-semibold text-charcoal">{phase.title}</h3>
+                <p className="mt-3 text-jet/80 leading-relaxed">{phase.description}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
       <section className="section-shell" id="pain-points">
         <div className="container-max mx-auto">
           <div className="section-heading">
@@ -294,6 +354,26 @@ const FitnessCleaning: React.FC = () => {
                 Call 0411 820 650
               </a>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section-shell section-shell--muted" id="programs">
+        <div className="container-max mx-auto">
+          <div className="section-heading">
+            <span className="section-heading__eyebrow">Spaces we transform</span>
+            <h2 className="section-heading__title">Tailored programs for every area of your club</h2>
+            <p className="section-heading__description">
+              From reformer studios to pool decks, each zone receives a dedicated checklist, chemical plan and inspection cycle.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            {studioPrograms.map((program) => (
+              <div key={program.name} className="rounded-[32px] bg-white p-8 shadow-sm">
+                <h3 className="text-2xl font-semibold text-charcoal">{program.name}</h3>
+                <p className="mt-3 text-jet/80 leading-relaxed">{program.detail}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -372,7 +452,18 @@ const FitnessCleaning: React.FC = () => {
         </div>
       </section>
 
-      <FAQAccordion faqs={faqs} className="max-w-4xl mx-auto section-shell" />
+      <section className="section-shell" id="faqs">
+        <div className="container-max mx-auto">
+          <div className="section-heading">
+            <span className="section-heading__eyebrow">FAQs</span>
+            <h2 className="section-heading__title">Fitness cleaning FAQs</h2>
+            <p className="section-heading__description">
+              Learn how we coordinate after-hours cleans, equipment sanitising and membership area resets for your venue.
+            </p>
+          </div>
+          <FAQAccordion faqs={faqs} className="max-w-4xl mx-auto" />
+        </div>
+      </section>
 
       <section className="section-shell section-shell--muted" id="related">
         <div className="container-max mx-auto">

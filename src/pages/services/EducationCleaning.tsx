@@ -136,6 +136,40 @@ const EducationCleaning: React.FC = () => {
     },
   ];
 
+  const scheduleHighlights = [
+    {
+      label: '5:00am – 7:30am',
+      description: 'Before-school reset covering classrooms, admin areas and drop-off zones.',
+    },
+    {
+      label: '10:30am – 2:00pm',
+      description: 'Daytime touch-ups for bathrooms, lunchrooms and high-traffic corridors.',
+    },
+    {
+      label: 'School holidays',
+      description: 'Deep cleans, floor scrubs and window detailing while students are away.',
+    },
+  ];
+
+  const campusZones = [
+    {
+      title: 'Learning spaces',
+      copy: 'Classrooms, libraries and laboratories with attention to technology, desks and teaching tools.',
+    },
+    {
+      title: 'Community hubs',
+      copy: 'Assembly halls, gyms and performing arts venues prepared for events and parent evenings.',
+    },
+    {
+      title: 'Outdoor zones',
+      copy: 'Playgrounds, sports courts and outdoor eating areas maintained with litter sweeps and pressure cleaning.',
+    },
+    {
+      title: 'Support areas',
+      copy: 'Administration, sick bays and staff rooms organised with consumables topped up before every shift.',
+    },
+  ];
+
   const pageTitle = 'School & Education Cleaning Brisbane | MOG Cleaning';
   const pageDescription =
     'School cleaning services in Brisbane covering classrooms, playgrounds and specialist facilities. Child-safe products, flexible scheduling and transparent reporting.';
@@ -231,6 +265,42 @@ const EducationCleaning: React.FC = () => {
 
       <HeroHighlightBand items={heroHighlights} />
 
+      <section className="section-shell section-shell--muted" id="schedule">
+        <div className="container-max mx-auto grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-center">
+          <div className="space-y-6">
+            <div className="section-heading" data-align="left">
+              <span className="section-heading__eyebrow">Term-time rhythm</span>
+              <h2 className="section-heading__title">Cleaning windows tuned to the school day</h2>
+              <p className="section-heading__description">
+                Rosters are planned around bells, assemblies and extracurricular bookings so every area feels freshly reset when students arrive.
+              </p>
+            </div>
+            <ul className="space-y-4 text-jet/80">
+              <li className="flex items-start gap-3">
+                <CheckCircle className="mt-1 h-5 w-5 text-celestial-blue-1" />
+                <span>Dedicated leads for junior, senior and specialist precincts with tailored scopes.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="mt-1 h-5 w-5 text-celestial-blue-1" />
+                <span>Live communication channel when repairs, spills or outbreaks are identified.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="mt-1 h-5 w-5 text-celestial-blue-1" />
+                <span>Additional crews allocated for open days, sports carnivals and exam blocks.</span>
+              </li>
+            </ul>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {scheduleHighlights.map((item) => (
+              <div key={item.label} className="glass-panel h-full space-y-2 rounded-3xl p-6" data-variant="frost">
+                <p className="text-sm font-semibold uppercase tracking-wide text-celestial-blue-1/70">{item.label}</p>
+                <p className="text-charcoal text-lg font-semibold">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="section-shell" id="pain-points">
         <div className="container-max mx-auto">
           <div className="section-heading">
@@ -258,7 +328,7 @@ const EducationCleaning: React.FC = () => {
         <div className="container-max mx-auto grid gap-12 lg:grid-cols-2 lg:items-center">
           <div className="glass-panel" data-variant="frost">
             <img
-              src="/images/education-cleaning-detail.jpg"
+              src="/images/classroom-cleaning-background.jpg"
               alt="Cleaner sanitising classroom desks"
               className="h-full w-full rounded-[32px] object-cover"
               loading="lazy"
@@ -299,6 +369,26 @@ const EducationCleaning: React.FC = () => {
         </div>
       </section>
 
+      <section className="section-shell section-shell--muted" id="campus-zones">
+        <div className="container-max mx-auto">
+          <div className="section-heading">
+            <span className="section-heading__eyebrow">Campus coverage</span>
+            <h2 className="section-heading__title">Each learning zone gets its own playbook</h2>
+            <p className="section-heading__description">
+              Crew rotations are structured by zone so classrooms, grounds and specialist facilities all receive the attention they need.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            {campusZones.map((zone) => (
+              <div key={zone.title} className="rounded-[32px] border border-white/40 bg-white p-8 shadow-sm">
+                <h3 className="text-2xl font-semibold text-charcoal">{zone.title}</h3>
+                <p className="mt-3 text-jet/80 leading-relaxed">{zone.copy}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <HowItWorks
         eyebrow="Implementation"
         title="Four steps to launch your education cleaning program"
@@ -308,14 +398,14 @@ const EducationCleaning: React.FC = () => {
       <QuoteSection
         eyebrow="Start planning"
         title="Request your school cleaning proposal"
-        description="Share your campus size, cleaning frequency and key concerns. We’ll provide a tailored scope, pricing and timeline within 24 hours."
+        description="Share your campus size, learning precincts and key concerns. Our proposals outline labour allocations, inspection cadence and onboarding timelines."
         bullets={[
           'Child-safe, low-tox products',
           'Holiday deep clean scheduling',
           'Dedicated supervisor communication',
         ]}
         formTitle="Tell us about your school"
-        formSubtitle="We’ll respond within one business day with next steps."
+        formSubtitle="An education specialist will respond within one business day."
       />
 
       <section className="section-shell" id="benefits">
@@ -373,7 +463,18 @@ const EducationCleaning: React.FC = () => {
         </div>
       </section>
 
-      <FAQAccordion faqs={faqs} className="max-w-4xl mx-auto section-shell" />
+      <section className="section-shell" id="faqs">
+        <div className="container-max mx-auto">
+          <div className="section-heading">
+            <span className="section-heading__eyebrow">FAQs</span>
+            <h2 className="section-heading__title">Education cleaning questions answered</h2>
+            <p className="section-heading__description">
+              Get clarity on scheduling, safety checks and onboarding before you book your campus walkthrough.
+            </p>
+          </div>
+          <FAQAccordion faqs={faqs} className="max-w-4xl mx-auto" />
+        </div>
+      </section>
 
       <section className="section-shell section-shell--muted" id="related">
         <div className="container-max mx-auto">

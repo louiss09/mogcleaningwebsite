@@ -136,6 +136,40 @@ const HospitalityCleaning: React.FC = () => {
     },
   ];
 
+  const serviceWindows = [
+    {
+      name: 'After last seating',
+      detail: 'Dining rooms, bars and restrooms detailed between dinner close and breakfast prep.',
+    },
+    {
+      name: 'Split-shift resets',
+      detail: 'Lunchtime touchpoints refreshed before evening service resumes.',
+    },
+    {
+      name: 'Event turnovers',
+      detail: 'Rapid crews flip ballrooms, conference rooms and marquees between bookings.',
+    },
+  ];
+
+  const venueBoards = [
+    {
+      title: 'Hotels & resorts',
+      body: 'Lobby ambience, guest corridors and lifts presented to five-star standards with discreet overnight crews.',
+    },
+    {
+      title: 'Restaurants & bars',
+      body: 'Front-of-house sparkle, kitchen degreasing and pass coordination to keep reviews glowing.',
+    },
+    {
+      title: 'Event & function centres',
+      body: 'Room flips, chair/table polishing and AV wipe-downs completed on precise timelines.',
+    },
+    {
+      title: 'Clubs & entertainment venues',
+      body: 'Gaming floors, lounges and amenities maintained with security aware teams.',
+    },
+  ];
+
   const pageTitle = 'Hospitality & Venue Cleaning Brisbane | MOG Cleaning';
   const pageDescription =
     'Hospitality cleaning services for hotels, restaurants and venues in Brisbane. Front-of-house presentation, kitchen compliance and rapid event turnarounds.';
@@ -231,6 +265,30 @@ const HospitalityCleaning: React.FC = () => {
 
       <HeroHighlightBand items={heroHighlights} />
 
+      <section className="section-shell" id="service-windows">
+        <div className="container-max mx-auto overflow-hidden rounded-[40px] bg-gradient-to-r from-charcoal to-jet p-8 text-white md:p-12">
+          <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
+            <div className="max-w-xl space-y-4">
+              <span className="pill-chip bg-white/10 text-white">Service windows</span>
+              <h2 className="text-3xl font-semibold leading-tight md:text-4xl">
+                Crews operate when your guests and chefs need us most
+              </h2>
+              <p className="text-white/80">
+                From first seating to last call, our scheduling team builds rosters that protect ambience, food safety and review scores.
+              </p>
+            </div>
+            <div className="grid flex-1 gap-4 md:grid-cols-3">
+              {serviceWindows.map((window) => (
+                <div key={window.name} className="rounded-3xl bg-white/10 p-6 backdrop-blur">
+                  <h3 className="text-lg font-semibold">{window.name}</h3>
+                  <p className="mt-2 text-sm text-white/80">{window.detail}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="section-shell" id="pain-points">
         <div className="container-max mx-auto">
           <div className="section-heading">
@@ -258,7 +316,7 @@ const HospitalityCleaning: React.FC = () => {
         <div className="container-max mx-auto grid gap-12 lg:grid-cols-2 lg:items-center">
           <div className="glass-panel" data-variant="frost">
             <img
-              src="/images/hotel-service.jpg"
+              src="/images/hotel-cleaning-background.jpg"
               alt="Cleaner preparing a hospitality venue"
               className="h-full w-full rounded-[32px] object-cover"
               loading="lazy"
@@ -299,6 +357,26 @@ const HospitalityCleaning: React.FC = () => {
         </div>
       </section>
 
+      <section className="section-shell section-shell--muted" id="venue-boards">
+        <div className="container-max mx-auto">
+          <div className="section-heading">
+            <span className="section-heading__eyebrow">Venue playbooks</span>
+            <h2 className="section-heading__title">A tailored approach for every hospitality concept</h2>
+            <p className="section-heading__description">
+              Whether you manage a luxury lobby or a bustling function centre, we build a cleaning storyboard that mirrors the experience you promise guests.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            {venueBoards.map((board) => (
+              <div key={board.title} className="rounded-[32px] border border-white/40 bg-white p-8 shadow-sm">
+                <h3 className="text-2xl font-semibold text-charcoal">{board.title}</h3>
+                <p className="mt-3 text-jet/80 leading-relaxed">{board.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <HowItWorks
         eyebrow="How onboarding works"
         title="Four steps to hospitality-ready cleaning"
@@ -315,7 +393,7 @@ const HospitalityCleaning: React.FC = () => {
           'Rapid event turnaround crews',
         ]}
         formTitle="Tell us about your venue"
-        formSubtitle="We’ll be in touch within one business day."
+        formSubtitle="A hospitality specialist will confirm next steps within one business day."
       />
 
       <section className="section-shell" id="benefits">
@@ -373,7 +451,18 @@ const HospitalityCleaning: React.FC = () => {
         </div>
       </section>
 
-      <FAQAccordion faqs={faqs} className="max-w-4xl mx-auto section-shell" />
+      <section className="section-shell" id="faqs">
+        <div className="container-max mx-auto">
+          <div className="section-heading">
+            <span className="section-heading__eyebrow">FAQs</span>
+            <h2 className="section-heading__title">Hospitality cleaning FAQs</h2>
+            <p className="section-heading__description">
+              Discover how we coordinate front-of-house presentation, kitchen hygiene and event support without disrupting guest service.
+            </p>
+          </div>
+          <FAQAccordion faqs={faqs} className="max-w-4xl mx-auto" />
+        </div>
+      </section>
 
       <section className="section-shell section-shell--muted" id="related">
         <div className="container-max mx-auto">

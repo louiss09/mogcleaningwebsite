@@ -136,6 +136,40 @@ const RetailCleaning: React.FC = () => {
     },
   ];
 
+  const seasonalMoments = [
+    {
+      label: 'New collection launch',
+      detail: 'Overnight crews refresh windows, fixtures and fitting rooms before unveiling new ranges.',
+    },
+    {
+      label: 'Mid-season sale',
+      detail: 'Additional touchpoints for signage, promo tables and high-traffic change rooms.',
+    },
+    {
+      label: 'Holiday trading',
+      detail: 'Extended-hour rosters and day-porters keeping queues and surfaces immaculate.',
+    },
+  ];
+
+  const retailSupport = [
+    {
+      name: 'Flagship & concept stores',
+      description: 'Large-format spaces with multiple display zones, event activations and VIP areas.',
+    },
+    {
+      name: 'Boutique retailers',
+      description: 'Detail cleaning for premium fittings, delicate materials and limited storage back rooms.',
+    },
+    {
+      name: 'Shopping centre tenancies',
+      description: 'Coordinated access with centre management, waste docks and security requirements.',
+    },
+    {
+      name: 'Automotive & lifestyle showrooms',
+      description: 'High-gloss flooring, product plinths and customer lounges maintained for high-value purchases.',
+    },
+  ];
+
   const pageTitle = 'Retail & Showroom Cleaning Brisbane | MOG Cleaning';
   const pageDescription =
     'Retail cleaning for boutiques, shopping centre stores and showrooms across Brisbane. Pristine displays, spotless change rooms and efficient back-of-house support.';
@@ -231,6 +265,26 @@ const RetailCleaning: React.FC = () => {
 
       <HeroHighlightBand items={heroHighlights} />
 
+      <section className="section-shell" id="seasonal-moments">
+        <div className="container-max mx-auto">
+          <div className="section-heading">
+            <span className="section-heading__eyebrow">Retail calendar</span>
+            <h2 className="section-heading__title">Programs that flex with your promotional moments</h2>
+            <p className="section-heading__description">
+              We build calendars that align with floor set changes, sales periods and extended trade so your store always looks launch ready.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+            {seasonalMoments.map((moment) => (
+              <div key={moment.label} className="rounded-[32px] border border-white/40 bg-white p-8 shadow-sm">
+                <h3 className="text-xl font-semibold text-charcoal">{moment.label}</h3>
+                <p className="mt-3 text-jet/80 leading-relaxed">{moment.detail}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="section-shell" id="pain-points">
         <div className="container-max mx-auto">
           <div className="section-heading">
@@ -258,7 +312,7 @@ const RetailCleaning: React.FC = () => {
         <div className="container-max mx-auto grid gap-12 lg:grid-cols-2 lg:items-center">
           <div className="glass-panel" data-variant="frost">
             <img
-              src="/images/retail-cleaning-detail.jpg"
+              src="/images/retail-cleaning-background.jpg"
               alt="Cleaner wiping down retail display"
               className="h-full w-full rounded-[32px] object-cover"
               loading="lazy"
@@ -299,6 +353,26 @@ const RetailCleaning: React.FC = () => {
         </div>
       </section>
 
+      <section className="section-shell section-shell--muted" id="retail-support">
+        <div className="container-max mx-auto">
+          <div className="section-heading">
+            <span className="section-heading__eyebrow">Store formats</span>
+            <h2 className="section-heading__title">Support for every retail footprint</h2>
+            <p className="section-heading__description">
+              From boutique laneway stores to flagship showrooms, each site receives procedures specific to its fixtures, finishes and foot traffic.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            {retailSupport.map((item) => (
+              <div key={item.name} className="rounded-[32px] bg-white p-8 shadow-sm">
+                <h3 className="text-2xl font-semibold text-charcoal">{item.name}</h3>
+                <p className="mt-3 text-jet/80 leading-relaxed">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <HowItWorks
         eyebrow="Implementation"
         title="Four steps to launch your retail cleaning program"
@@ -315,7 +389,7 @@ const RetailCleaning: React.FC = () => {
           'Support for visual merchandising resets',
         ]}
         formTitle="Tell us about your store"
-        formSubtitle="We’ll respond within one business day with next steps."
+        formSubtitle="Your retail account manager will respond within one business day."
       />
 
       <section className="section-shell" id="benefits">
@@ -373,7 +447,18 @@ const RetailCleaning: React.FC = () => {
         </div>
       </section>
 
-      <FAQAccordion faqs={faqs} className="max-w-4xl mx-auto section-shell" />
+      <section className="section-shell" id="faqs">
+        <div className="container-max mx-auto">
+          <div className="section-heading">
+            <span className="section-heading__eyebrow">FAQs</span>
+            <h2 className="section-heading__title">Retail cleaning FAQs</h2>
+            <p className="section-heading__description">
+              See how we handle opening routines, promotional changeovers and national reporting before you book your walkthrough.
+            </p>
+          </div>
+          <FAQAccordion faqs={faqs} className="max-w-4xl mx-auto" />
+        </div>
+      </section>
 
       <section className="section-shell section-shell--muted" id="related">
         <div className="container-max mx-auto">

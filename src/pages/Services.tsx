@@ -138,8 +138,8 @@ const Services: React.FC = () => {
         overlay="charcoal"
         eyebrow="Services"
         eyebrowIcon={Sparkles}
-        title="Every service is a step closer to your tailored program."
-        description="Choose the industry pathway that matches your facility. Each page continues the funnel with pain points, proof and next steps."
+        title="Every service is shaped around your facility."
+        description="Choose the industry pathway that matches your facility. Each page dives into pain points, proof and the steps to get started."
         actions={
           <>
             <Link to="/contact" className="btn-primary">
@@ -160,7 +160,7 @@ const Services: React.FC = () => {
             <span className="section-heading__eyebrow">Explore by industry</span>
             <h2 className="section-heading__title">Pick the service page that matches your needs</h2>
             <p className="section-heading__description">
-              Each service page is designed as the next funnel step—showing proof, process and conversion-focused calls to action for your industry.
+              Each service page is designed to show proof, outline the process and give you clear ways to book for your industry.
             </p>
           </div>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
@@ -180,7 +180,7 @@ const Services: React.FC = () => {
                   </span>
                 </div>
                 <div className="service-card__body">
-                  <span className="service-card__eyebrow">Next step</span>
+                  <span className="service-card__eyebrow">Industry spotlight</span>
                   <h3 className="service-card__title">{service.name}</h3>
                   <p className="service-card__description">{service.description}</p>
                   <ul className="service-card__list">
