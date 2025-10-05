@@ -45,9 +45,9 @@ const HowItWorks: React.FC<HowItWorksProps> = ({
           <h2 className="section-heading__title">{title}</h2>
           <p className="section-heading__description">{description}</p>
         </div>
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4" data-motion-stagger="true">
           {defaultSteps.map((step) => (
-            <div key={step.title} className="feature-grid-card h-full">
+            <div key={step.title} className="feature-grid-card h-full motion-child">
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-celestial-blue-1/12 text-celestial-blue-1">
                 <step.icon className="h-6 w-6" aria-hidden="true" />
               </div>
