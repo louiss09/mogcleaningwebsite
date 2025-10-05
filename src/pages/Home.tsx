@@ -428,36 +428,28 @@ const Home: React.FC = () => {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
             {services.map((service) => (
               <Link key={service.name} to={service.path} className="service-card group">
-                <div className="service-card__frame">
-                  <div className="service-card__surface">
-                    <div className="service-card__visual">
-                      <img
-                        src={service.image}
-                        alt={`${service.name} cleaning in Brisbane`}
-                        className="service-card__image"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                      <span className="service-card__label">
-                        <service.icon className="h-4 w-4" />
-                        {service.name}
-                      </span>
-                    </div>
-                    <div className="service-card__content">
-                      <h3 className="service-card__title">{service.name}</h3>
-                      <p className="service-card__description">{service.description}</p>
-                      <span className="service-card__cta">
-                        Explore program
-                        <ArrowRight className="h-4 w-4" />
-                      </span>
-                    </div>
-                  </div>
+                <div className="service-card__visual">
+                  <img
+                    src={service.image}
+                    alt={`${service.name} cleaning in Brisbane`}
+                    className="service-card__image"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span className="service-card__badge">
+                    <service.icon className="h-4 w-4" aria-hidden="true" />
+                    {service.name}
+                  </span>
                 </div>
-                <p className="text-lg text-jet leading-relaxed">{service.description}</p>
-                <span className="link-arrow">
-                  View program
-                  <ArrowRight className="h-4 w-4" />
-                </span>
+                <div className="service-card__body">
+                  <span className="service-card__eyebrow">Sector program</span>
+                  <h3 className="service-card__title">{service.name}</h3>
+                  <p className="service-card__description">{service.description}</p>
+                  <span className="service-card__cta">
+                    Explore program
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </span>
+                </div>
               </Link>
             ))}
           </div>
