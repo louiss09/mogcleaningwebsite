@@ -218,7 +218,7 @@ const HealthCleaning: React.FC = () => {
       <PageHero
         align="left"
         backgroundImage="/images/medical-cleaning-background.jpg"
-        backgroundPosition="center 38%"
+        backgroundPosition="center 45%"
         overlay="charcoal"
         eyebrow="Healthcare facilities"
         eyebrowIcon={Heart}
