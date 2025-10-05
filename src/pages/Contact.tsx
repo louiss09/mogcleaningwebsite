@@ -169,9 +169,7 @@ const Contact: React.FC = () => {
         eyebrow="Contact"
         eyebrowIcon={Sparkles}
         title="Fast, tailored quotes that keep your operations moving."
-        mobileTitle="Fast, tailored quotes for your facility."
         description="Share your facility details and we’ll reply within 24 hours with pricing, onboarding dates and your dedicated supervisor."
-        mobileDescription="Share your facility details and we’ll reply within 24 hours with pricing and onboarding dates."
         actions={
           <>
             <a href="tel:+61411820650" className="btn-primary">

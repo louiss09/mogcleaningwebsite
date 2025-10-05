@@ -173,6 +173,34 @@ const HealthCleaning: React.FC = () => {
     },
   ];
 
+  const featureTickerItems = [
+    {
+      icon: CheckCircle,
+      title: 'Week-one clinical audit',
+      description: 'Risk assessment, zoning map and documentation capture completed within days.',
+    },
+    {
+      icon: ShieldCheck,
+      title: 'Zoned protocols & PPE',
+      description: 'Colour-coded systems and PPE compliance maintained across clinical, admin and public areas.',
+    },
+    {
+      icon: Clock,
+      title: 'Rapid response crews',
+      description: 'On-call support for urgent turnovers, outbreaks and spill management.',
+    },
+    {
+      icon: FileWarning,
+      title: 'Audit-ready reporting',
+      description: 'SWMS, inductions and chemical registers updated and accessible at any time.',
+    },
+    {
+      icon: Sparkles,
+      title: 'Patient-first presentation',
+      description: 'Waiting rooms and consult spaces reset to reassure every visitor.',
+    },
+  ];
+
   const clinicalSpaces = [
     {
       name: 'General practice & allied health',
@@ -272,9 +300,7 @@ const HealthCleaning: React.FC = () => {
         eyebrow="Healthcare cleaning"
         eyebrowIcon={Heart}
         title="Keep every clinic space patient-ready and audit confident."
-        mobileTitle="Patient-ready, audit-safe clinics."
         description="Infection-control trained crews who align with your compliance requirements and deliver spotless clinical environments."
-        mobileDescription="Infection-control crews align with your compliance and keep clinics spotless."
         actions={
           <>
             <Link to="/contact" className="btn-primary">
@@ -311,6 +337,8 @@ const HealthCleaning: React.FC = () => {
           </div>
         </div>
       </section>
+
+      <FeatureTicker items={featureTickerItems} />
 
       <HowItWorks
         eyebrow="How onboarding works"

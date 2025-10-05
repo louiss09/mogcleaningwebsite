@@ -173,6 +173,34 @@ const OfficesCleaning: React.FC = () => {
     },
   ];
 
+  const featureTickerItems = [
+    {
+      icon: CheckCircle,
+      title: 'Week-one discovery',
+      description: 'Walkthrough, scope build and stakeholder alignment completed in days.',
+    },
+    {
+      icon: Users,
+      title: 'Named supervisors',
+      description: 'Dedicated crew leads for every floor plate and specialist zone.',
+    },
+    {
+      icon: Clock,
+      title: 'Hybrid-ready scheduling',
+      description: 'Rhythms that align with early starts, lunch peaks and after-hours resets.',
+    },
+    {
+      icon: ClipboardCheck,
+      title: 'Documented QA',
+      description: 'Photo reporting, KPI reviews and transparent visit tracking.',
+    },
+    {
+      icon: Sparkles,
+      title: 'High-touch finishes',
+      description: 'Boardrooms, reception and amenities detailed before leadership arrives.',
+    },
+  ];
+
   const officePrograms = [
     {
       title: 'Executive & client floors',
@@ -272,9 +300,7 @@ const OfficesCleaning: React.FC = () => {
         eyebrow="Office cleaning"
         eyebrowIcon={Building2}
         title="Brisbane offices that look investor-ready every morning."
-        mobileTitle="Investor-ready Brisbane offices."
         description="Keep suites, meeting rooms and breakout spaces inspection-ready with a program tuned to your building."
-        mobileDescription="Suites, meeting rooms and breakout spaces stay inspection-ready on your schedule."
         actions={
           <>
             <Link to="/contact" className="btn-primary">
@@ -312,6 +338,8 @@ const OfficesCleaning: React.FC = () => {
           </div>
         </div>
       </section>
+
+      <FeatureTicker items={featureTickerItems} />
 
       <HowItWorks
         eyebrow="How we onboard"

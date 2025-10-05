@@ -172,6 +172,34 @@ const FitnessCleaning: React.FC = () => {
     },
   ];
 
+  const featureTickerItems = [
+    {
+      icon: CheckCircle,
+      title: 'Hygiene audit complete',
+      description: 'Chemical selection and compliance checks aligned to your brand within week one.',
+    },
+    {
+      icon: Users,
+      title: 'Zone-specific crews',
+      description: 'Dedicated teams for cardio, strength, studios and amenities for faster resets.',
+    },
+    {
+      icon: Timer,
+      title: 'Timetable-matched rosters',
+      description: 'Schedules mirror peak classes, comps and 24/7 access windows.',
+    },
+    {
+      icon: SprayCan,
+      title: 'Documented disinfecting',
+      description: 'Photo logs and chemical registers ready for franchise and council reviews.',
+    },
+    {
+      icon: Droplets,
+      title: 'Odour control routines',
+      description: 'Ventilation cleaning and deodorising keep changerooms fresh around the clock.',
+    },
+  ];
+
   const studioPrograms = [
     {
       name: 'Strength & cardio floors',
@@ -271,9 +299,7 @@ const FitnessCleaning: React.FC = () => {
         eyebrow="Fitness cleaning"
         eyebrowIcon={Dumbbell}
         title="Keep members motivated with spotless, sweat-free spaces."
-        mobileTitle="Spotless, sweat-free gym spaces."
         description="Specialist gym cleaners who protect your brand reputation, support compliance and keep every touchpoint fresh."
-        mobileDescription="Specialist crews protect your brand, compliance and every touchpoint."
         actions={
           <>
             <Link to="/contact" className="btn-primary">
@@ -310,6 +336,8 @@ const FitnessCleaning: React.FC = () => {
           </div>
         </div>
       </section>
+
+      <FeatureTicker items={featureTickerItems} />
 
       <HowItWorks
         eyebrow="How onboarding works"
