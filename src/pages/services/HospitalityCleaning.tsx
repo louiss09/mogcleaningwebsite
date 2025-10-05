@@ -98,11 +98,6 @@ const HospitalityCleaning: React.FC = () => {
     { name: 'About MOG Cleaning', path: '/about' },
   ];
 
-  const heroBadges = [
-    { icon: ShieldCheck, label: 'Food-safe, HACCP aware crews' },
-    { icon: CheckCircle, label: 'Photo reports every shift' },
-  ];
-
   const heroHighlights = [
     {
       icon: Hotel,
@@ -195,18 +190,13 @@ const HospitalityCleaning: React.FC = () => {
 
       <PageHero
         backgroundImage="/images/hotel-cleaning-background.jpg"
-        variant="photo"
+        backgroundPosition="center 45%"
+        overlay="charcoal"
         align="center"
         eyebrow="Hospitality cleaning"
         eyebrowIcon={Hotel}
-        title={
-          <>
-            Hospitality venues in Brisbane
-            <br />
-            kept guest-ready every night
-          </>
-        }
-        description="Deliver immaculate rooms, dining spaces and event venues with crews who work around every service window."
+        title="Immaculate venues ready for every guest."
+        description="Deliver flawless rooms, dining spaces and event venues with crews who flex to every service window."
         actions={
           <>
             <Link to="/contact" className="btn-primary">
@@ -218,7 +208,6 @@ const HospitalityCleaning: React.FC = () => {
             </Link>
           </>
         }
-        badges={heroBadges}
       />
 
       <HeroHighlightBand items={heroHighlights} />

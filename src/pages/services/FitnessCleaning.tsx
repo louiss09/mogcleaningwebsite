@@ -98,11 +98,6 @@ const FitnessCleaning: React.FC = () => {
     { name: 'Read About Our Process', path: '/process' },
   ];
 
-  const heroBadges = [
-    { icon: ShieldCheck, label: 'Hospital-grade disinfectants' },
-    { icon: CheckCircle, label: 'Photo logs & QA reviews' },
-  ];
-
   const heroHighlights = [
     {
       icon: Dumbbell,
@@ -195,18 +190,13 @@ const FitnessCleaning: React.FC = () => {
 
       <PageHero
         backgroundImage="/images/fitness-cleaning-background.jpg"
-        variant="photo"
+        backgroundPosition="center 40%"
+        overlay="charcoal"
         align="center"
         eyebrow="Fitness centre cleaning"
         eyebrowIcon={Dumbbell}
-        title={
-          <>
-            Spotless Brisbane fitness studios
-            <br />
-            that keep members inspired
-          </>
-        }
-        description="Deliver a fresh, safe experience every session with routines built around your timetable, equipment mix and amenities."
+        title="Fresh, energising gyms and fitness studios."
+        description="Deliver a crisp, safe experience every session with routines shaped to your timetable and equipment mix."
         actions={
           <>
             <Link to="/contact" className="btn-primary">
@@ -218,7 +208,6 @@ const FitnessCleaning: React.FC = () => {
             </Link>
           </>
         }
-        badges={heroBadges}
       />
 
       <HeroHighlightBand items={heroHighlights} />
