@@ -2,129 +2,190 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   Dumbbell,
-  ShieldCheck,
-  Clock,
+  Droplets,
+  Timer,
   Users,
   CheckCircle,
   ArrowRight,
-  Phone,
   Sparkles,
+  ShieldCheck,
+  SprayCan,
+  ClipboardList,
 } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 import SEO from '../../components/SEO';
 import FAQAccordion from '../../components/FAQAccordion';
 import TestimonialCarousel from '../../components/TestimonialCarousel';
 import PageHero from '../../components/PageHero';
 import QuoteSection from '../../components/QuoteSection';
 import HeroHighlightBand from '../../components/HeroHighlightBand';
+import HowItWorks from '../../components/HowItWorks';
 
 const FitnessCleaning: React.FC = () => {
-  const inclusions = [
-    'Equipment sanitising between sessions focusing on high-touch cardio and strength gear',
-    'Locker room, shower and amenities deep cleaning with mould prevention',
-    'Sauna, steam and recovery zone hygiene checks aligned to council compliance',
-    'Group studio and reformer mat disinfecting with sweat and odour control',
-    'Functional training zones, sled tracks and turf sweeps with disinfectant treatments',
-    'Reception, member lounge and retail area presentation including glass and counters',
-    'Daily waste, towel bin and laundry staging with odour neutralising solutions',
-    'Air quality support with vent dusting and filter change reminders for facility managers',
-    'Emergency spill, sweat and biohazard response with documented procedures',
+  type InfoCard = {
+    icon: LucideIcon;
+    title: string;
+    description: string;
+  };
+
+  const heroHighlights: InfoCard[] = [
+    {
+      icon: Droplets,
+      title: 'Sweat-neutralising routines',
+      description: 'Deodorising and antibacterial treatments tailored to changerooms and studios.',
+    },
+    {
+      icon: Timer,
+      title: 'Schedule flexibility',
+      description: 'Crews operate around late closes, early opens and weekend competitions.',
+    },
+    {
+      icon: Sparkles,
+      title: 'Equipment-safe products',
+      description: 'Gym-friendly solutions that protect rubber flooring, chrome and upholstery.',
+    },
   ];
 
-  const benefits = [
+  const challenges: InfoCard[] = [
+    {
+      icon: ClipboardList,
+      title: 'Equipment still greasy after cleans',
+      description:
+        'Members complain about sweat residue and fingerprints on benches, cardio consoles and mats.',
+    },
+    {
+      icon: Droplets,
+      title: 'Changeroom odours return fast',
+      description:
+        'Poorly ventilated lockers and showers trap moisture without antibacterial deodorising routines.',
+    },
+    {
+      icon: SprayCan,
+      title: 'No proof for franchise audits',
+      description:
+        'National brands and councils ask for chemical registers, SWMS and evidence that sanitising actually happened.',
+    },
+  ];
+
+  const solutionCards: InfoCard[] = [
     {
       icon: ShieldCheck,
-      title: 'Protect Member Health',
-      description: 'Hospital-grade disinfectants and ATP testing keep bacteria off shared equipment and mats.',
+      title: 'Hospital-grade hygiene',
+      description: 'Colour-coded tools and TGA-approved disinfectants keep shared equipment safe to touch.',
+    },
+    {
+      icon: Timer,
+      title: 'Crewed around your timetable',
+      description: 'Morning resets, midday refreshes and overnight details align with class and member traffic.',
     },
     {
       icon: Users,
-      title: 'Boost Member Retention',
-      description: 'Fresh-smelling change rooms and spotless studios keep members renewing and referring.',
+      title: 'Supervisor accountability',
+      description: 'A named contact manages reporting, consumables and rapid responses for spills or incidents.',
     },
     {
-      icon: Clock,
-      title: 'Class-Friendly Scheduling',
-      description: 'Split crews work pre-dawn, between classes and overnight to keep your timetable uninterrupted.',
+      icon: Sparkles,
+      title: 'Member-ready presentation',
+      description: 'Front desk, lounge and retail displays stay spotless so the experience matches your brand promise.',
+    },
+  ];
+
+  const proofPoints: Array<InfoCard & { value: string }> = [
+    {
+      icon: Dumbbell,
+      value: '12 min',
+      title: 'Average class turnover',
+      description: 'Studios reset between sessions without delaying instructors or members.',
     },
     {
-      icon: CheckCircle,
-      title: 'Transparent Compliance',
-      description: 'Receive photo logs and sanitising schedules you can share with council inspectors and members.',
+      icon: Timer,
+      value: '24/7',
+      title: 'Rapid response window',
+      description: 'Urgent spills or inspection prep handled within a day, even on weekends.',
     },
+    {
+      icon: Users,
+      value: '40+',
+      title: 'Fitness sites serviced',
+      description: 'Boutique studios and national franchises rely on our inducted gym crews.',
+    },
+  ];
+
+  const inclusions: string[] = [
+    'Daily disinfecting of cardio, strength and functional zones',
+    'Locker room, bathroom and shower sanitising with odour control',
+    'Studio resets for reformer, yoga and group fitness spaces',
+    'Front desk, lounge and retail presentation',
+    'Towel service coordination and consumable restocking',
+    'Scheduled deep cleans for rubber flooring and high-touch mats',
   ];
 
   const testimonials = [
     {
       quote:
-        'Our weights floor and locker rooms stay spotless even between peak classes. Members regularly comment on how fresh the facility feels.',
-      name: 'Studio Owner',
-      role: 'Brisbane Fitness Studio',
+        'Our members constantly comment on how fresh the gym smells. Equipment is spotless and the changerooms are maintained better than ever.',
+      name: 'Gym Owner',
+      role: 'Boutique Fitness Studio',
     },
     {
       quote:
-        'The crew arrives before dawn, wipes every touch point, and leaves the air smelling clean without overpowering scents.',
-      name: 'Club Manager',
-      role: '24/7 Gym Brisbane',
+        'We run classes back-to-back and need fast turnovers. MOG Cleaning’s crew works around our timetable without disrupting instructors.',
+      name: 'Studio Manager',
+      role: 'Pilates & Barre Studio',
     },
     {
       quote:
-        'They document each disinfectant cycle for turf, cardio and reformer zones. Passing hygiene audits has become stress free.',
-      name: 'Regional Manager',
-      role: 'Queensland Fitness Network',
+        'Council inspections are a breeze now. The documentation and chemical registers are always up to date.',
+      name: 'Franchise Operations Lead',
+      role: 'National Gym Brand',
     },
   ];
 
   const faqs = [
     {
-      question: 'Can you clean while classes are running?',
+      question: 'Can you clean during off-peak windows?',
       answer:
-        'Yes. We structure mini-cleans between sessions and overnight deep cleans so equipment, mirrors and floors are ready for every booking.',
+        'Yes. We schedule around your class timetable, offering early morning, midday lull and overnight cleans so members always arrive to a fresh space.',
     },
     {
-      question: 'Do you manage towel service and consumables?',
+      question: 'Do you manage sweat odour control?',
       answer:
-        'We can collect used towels, stage laundry, restock amenities and maintain retail areas. Everything is logged in your monthly report.',
+        'We implement ventilation cleaning, deodorising treatments and antibacterial products that neutralise odours without overpowering fragrances.',
     },
     {
-      question: 'What about high-risk areas like saunas or cold plunge rooms?',
+      question: 'How do you handle shared equipment hygiene?',
       answer:
-        'Our teams follow moisture and temperature protocols with specialised products to prevent mould, odours and slip hazards.',
+        'Our colour-coded system separates cardio, strength and studio equipment. We disinfect between sessions and provide photo documentation for franchise audits.',
     },
   ];
 
-  const relatedLinks = [
-    { name: 'Health & Medical Facility Cleaning', path: '/services/health' },
-    { name: 'Hospitality Venue Cleaning', path: '/services/hospitality' },
-    { name: 'Read About Our Process', path: '/process' },
-  ];
-
-  const heroHighlights = [
+  const relatedLinks: Array<{ name: string; path: string; description: string }> = [
     {
-      icon: Dumbbell,
-      title: 'Gym-specific specialists',
-      description: 'Sanitising plans for equipment, weights areas and functional zones.',
+      name: 'Hospitality Venues',
+      path: '/services/hospitality',
+      description: 'See how we handle fast turnarounds for venues with heavy foot traffic.',
     },
     {
-      icon: Users,
-      title: 'Member-first amenities',
-      description: 'Fresh change rooms, steam rooms and reception touchpoints.',
+      name: 'Office Programs',
+      path: '/services/offices',
+      description: 'Support your corporate head office or HQ alongside the gym.',
     },
     {
-      icon: Phone,
-      title: 'Rapid spill response',
-      description: 'On-call support for sweat, biohazards and timetable changes.',
+      name: 'Contact MOG Cleaning',
+      path: '/contact',
+      description: 'Book a walkthrough or request documentation for your next audit.',
     },
   ];
 
   const pageTitle = 'Gym & Fitness Centre Cleaning Brisbane | MOG Cleaning';
   const pageDescription =
-    'Keep your Brisbane gym spotless with specialised fitness centre cleaning. Equipment sanitising, locker room deep cleans and flexible schedules from MOG Cleaning.';
+    'Gym cleaning services in Brisbane that keep equipment sanitised, changerooms fresh and members confident. Flexible schedules, odour control and compliance-ready reporting.';
   const serviceUrl = 'https://mogcleaning.com.au/services/fitness';
 
   const serviceSchema = {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: 'Gym and Fitness Centre Cleaning',
+    name: 'Fitness Centre Cleaning Services',
     serviceType: 'Gym Cleaning',
     areaServed: {
       '@type': 'City',
@@ -138,42 +199,6 @@ const FitnessCleaning: React.FC = () => {
     },
     description: pageDescription,
     url: serviceUrl,
-    hasOfferCatalog: {
-      '@type': 'OfferCatalog',
-      name: 'Fitness centre cleaning inclusions',
-      itemListElement: inclusions.map((service) => ({
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: service,
-        },
-      })),
-    },
-    offers: {
-      '@type': 'Offer',
-      priceCurrency: 'AUD',
-      availability: 'https://schema.org/InStock',
-      url: 'https://mogcleaning.com.au/contact',
-    },
-  };
-
-  const breadcrumbSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Home',
-        item: 'https://mogcleaning.com.au/',
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: 'Fitness Centre Cleaning',
-        item: serviceUrl,
-      },
-    ],
   };
 
   return (
@@ -181,159 +206,192 @@ const FitnessCleaning: React.FC = () => {
       <SEO
         title={pageTitle}
         description={pageDescription}
-        type="service"
+        type="article"
         image="/images/fitness-cleaning-background.jpg"
-        imageAlt="Gym cleaner sanitising equipment"
-        keywords={['gym cleaning Brisbane', 'fitness centre cleaning', 'health club cleaners Brisbane']}
-        jsonLd={[breadcrumbSchema, serviceSchema]}
+        imageAlt="Brisbane gym equipment being sanitised"
+        url={serviceUrl}
+        jsonLd={serviceSchema}
+        keywords={['gym cleaning Brisbane', 'fitness centre cleaning', 'studio cleaning services']}
       />
 
       <PageHero
+        align="left"
         backgroundImage="/images/fitness-cleaning-background.jpg"
-        backgroundPosition="center 40%"
+        backgroundPosition="center 48%"
         overlay="charcoal"
-        align="center"
-        eyebrow="Fitness centre cleaning"
+        eyebrow="Fitness centres"
         eyebrowIcon={Dumbbell}
-        title="Fresh, energising gyms and fitness studios."
-        description="Deliver a crisp, safe experience every session with routines shaped to your timetable and equipment mix."
+        title="Keep members confident every workout"
+        description="We manage the sweat, odours and fast turnovers so your team can focus on coaching and retention."
         actions={
-          <>
+          <div className="hero-minimal__cta-group">
             <Link to="/contact" className="btn-primary">
-              Request a site visit
+              Request a quote
             </Link>
-            <Link to="/process" className="btn-ghost">
-              See onboarding steps
-              <ArrowRight className="h-5 w-5" />
-            </Link>
-          </>
+            <a href="tel:+61411820650" className="btn-secondary">
+              Call 0411 820 650
+            </a>
+          </div>
         }
       />
 
       <HeroHighlightBand items={heroHighlights} />
 
-      <QuoteSection
-        eyebrow="Fast onboarding"
-        title="Request your gym cleaning quote"
-        description="Share your class schedule, floor plan and must-cover zones. We’ll send tailored pricing and onboarding steps within 24 hours."
-        bullets={[
-          'Equipment sanitising programs for every zone',
-          'Locker room and amenities specialists',
-          'Rapid spill and biohazard response on-call',
-        ]}
-        formTitle="Tell us about your facility"
-        formSubtitle="We’ll reply within one business day with a proposal."
+      <section className="section-shell section-shell--muted" id="challenges">
+        <div className="container-max mx-auto">
+          <div className="section-heading" data-align="left">
+            <span className="section-heading__eyebrow">Pain points we remove</span>
+            <h2 className="section-heading__title">What slows gym teams down</h2>
+            <p className="section-heading__description">
+              From boutique studios to 24/7 franchises, we tackle the hygiene frustrations that impact member satisfaction.
+            </p>
+          </div>
+          <div className="feature-grid" data-columns="3">
+            {challenges.map((item) => (
+              <div key={item.title} className="feature-grid-card h-full">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-celestial-blue-1/12 text-celestial-blue-1">
+                  <item.icon className="h-6 w-6" aria-hidden="true" />
+                </div>
+                <h3 className="text-xl font-semibold text-charcoal">{item.title}</h3>
+                <p className="text-jet/80 leading-relaxed">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-shell" id="solutions">
+        <div className="container-max mx-auto">
+          <div className="section-heading" data-align="left">
+            <span className="section-heading__eyebrow">How we respond</span>
+            <h2 className="section-heading__title">Programs that match your member flow</h2>
+            <p className="section-heading__description">
+              We design daily routines, mid-shift refreshes and deep cleans around your timetable so the facility always feels new.
+            </p>
+          </div>
+          <div className="feature-grid" data-columns="4">
+            {solutionCards.map((item) => (
+              <div key={item.title} className="feature-grid-card h-full">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-fresh-green/15 text-fresh-green">
+                  <item.icon className="h-6 w-6" aria-hidden="true" />
+                </div>
+                <h3 className="text-xl font-semibold text-charcoal">{item.title}</h3>
+                <p className="text-jet/80 leading-relaxed">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-shell" id="proof">
+        <div className="container-max mx-auto">
+          <div className="section-heading">
+            <span className="section-heading__eyebrow">Proof &amp; reassurance</span>
+            <h2 className="section-heading__title">Member-focused metrics we deliver</h2>
+            <p className="section-heading__description">
+              Reporting and turnaround times keep franchise leaders, coaches and members aligned on cleanliness.
+            </p>
+          </div>
+          <div className="stat-grid" data-columns="3">
+            {proofPoints.map((point) => (
+              <div key={point.title} className="stat-card" data-align="center">
+                <div className="stat-card__icon">
+                  <point.icon className="h-6 w-6" aria-hidden="true" />
+                </div>
+                <div className="stat-card__value">{point.value}</div>
+                <div className="stat-card__label">{point.title}</div>
+                <p className="stat-card__description">{point.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-shell section-shell--brand" id="inclusions">
+        <div className="container-max mx-auto">
+          <div className="section-heading" data-align="left">
+            <span className="section-heading__eyebrow">What&apos;s included</span>
+            <h2 className="section-heading__title">Gym &amp; studio cleaning checklist</h2>
+            <p className="section-heading__description">
+              Each service is built to protect equipment, reduce odours and keep members happy from entry to exit.
+            </p>
+          </div>
+          <ul className="checklist-grid">
+            {inclusions.map((item) => (
+              <li key={item} className="checklist-grid__item">
+                <CheckCircle aria-hidden="true" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="section-shell" id="testimonials">
+        <div className="container-max mx-auto">
+          <div className="section-heading">
+            <span className="section-heading__eyebrow">Trusted by gyms across Brisbane</span>
+            <h2 className="section-heading__title">Client stories</h2>
+            <p className="section-heading__description">
+              Hear how studios and clubs keep memberships growing with a consistently clean environment.
+            </p>
+          </div>
+          <TestimonialCarousel testimonials={testimonials} />
+        </div>
+      </section>
+
+      <HowItWorks
+        eyebrow="Onboarding roadmap"
+        title="Launch your gym cleaning program in four steps"
+        description="Our process locks in scope, documentation and schedules before the first session."
       />
 
-      <section className="section-shell">
-        <div className="container-max mx-auto">
-          <div className="section-heading">
-            <span className="section-heading__eyebrow">Why gyms choose us</span>
-            <h2 className="section-heading__title">Standards that protect your reputation</h2>
-            <p className="section-heading__description">
-              From boutique studios to 24/7 clubs, we deliver reliable crews who understand sweat management, member comfort and compliance.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {benefits.map((benefit) => (
-              <div key={benefit.title} className="feature-grid-card">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-celestial-blue-1/12 text-celestial-blue-1">
-                  <benefit.icon className="h-7 w-7" />
-                </div>
-                <h3 className="text-xl font-semibold text-charcoal">{benefit.title}</h3>
-                <p className="text-jet/80 leading-relaxed">{benefit.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <QuoteSection
+        className="section-shell--muted"
+        eyebrow="Ready to refresh your facility?"
+        title="Book a walkthrough for your fitness space"
+        description="Tell us about your zones, timetable and member volume so we can design the ideal program."
+        bullets={[
+          'Colour-coded, equipment-safe cleaning systems',
+          'Flexible scheduling around classes and 24/7 access',
+          'Compliance-ready documentation for audits',
+        ]}
+        formTitle="Request your gym cleaning quote"
+        formSubtitle="Share your class schedule and any franchise requirements. We’ll be in touch within one business day."
+      />
 
-      <section className="section-shell section-shell--muted">
-        <div className="container-max mx-auto">
-          <div className="section-heading">
-            <span className="section-heading__eyebrow">Gym cleaning checklist</span>
-            <h2 className="section-heading__title">Everything your members touch is covered</h2>
-            <p className="section-heading__description">
-              Our documented inclusions keep cardio, strength, recovery and amenity spaces safe, fresh and ready for the next class.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            {inclusions.map((inclusion) => (
-              <div key={inclusion} className="service-item p-6">
-                <p className="text-charcoal font-medium">{inclusion}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section-shell">
-        <div className="container-max mx-auto">
-          <div className="section-heading">
-            <span className="section-heading__eyebrow">Client feedback</span>
-            <h2 className="section-heading__title">Fitness operators who partner with us</h2>
-            <p className="section-heading__description">
-              Hear from studios and gyms that rely on MOG Cleaning for spotless spaces and responsive support.
-            </p>
-          </div>
-          <TestimonialCarousel testimonials={testimonials} className="mx-auto max-w-4xl" />
-        </div>
-      </section>
-
-      <section className="section-shell section-shell--muted">
-        <div className="container-max mx-auto">
-          <div className="section-heading">
-            <span className="section-heading__eyebrow">Other services</span>
-            <h2 className="section-heading__title">Need cleaners for another facility?</h2>
-            <p className="section-heading__description">
-              Explore our other commercial programs delivered with the same care and communication.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-            {relatedLinks.map((link) => (
-              <Link key={link.name} to={link.path} className="feature-grid-card">
-                <h3 className="text-xl font-semibold text-charcoal">{link.name}</h3>
-                <span className="link-arrow">
-                  View service
-                  <ArrowRight className="h-4 w-4" />
-                </span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section-shell">
+      <section className="section-shell" id="faq">
         <div className="container-max mx-auto">
           <div className="section-heading">
             <span className="section-heading__eyebrow">FAQs</span>
             <h2 className="section-heading__title">Fitness cleaning questions answered</h2>
             <p className="section-heading__description">
-              Learn how we handle scheduling, consumables and compliance across busy Brisbane gyms.
+              Explore how we handle shared equipment, odour control and compliance expectations in detail.
             </p>
           </div>
-          <FAQAccordion faqs={faqs} className="max-w-4xl mx-auto" />
+          <FAQAccordion items={faqs} />
         </div>
       </section>
 
-      <section className="section-shell section-shell--dark">
-        <div className="container-max mx-auto text-center">
-          <div className="mx-auto max-w-3xl space-y-6">
-            <span className="pill-chip bg-white/10 text-white">
-              <Sparkles className="h-4 w-4" /> Trusted by Brisbane gyms
-            </span>
-            <h2 className="section-heading__title text-white">Ready for a cleaner training environment?</h2>
-            <p className="section-heading__description text-white/80">
-              Book a walkthrough today and receive a tailored fitness centre cleaning scope and quote within 24 hours.
+      <section className="section-shell">
+        <div className="container-max mx-auto">
+          <div className="section-heading" data-align="left">
+            <span className="section-heading__eyebrow">More ways we help</span>
+            <h2 className="section-heading__title">Keep momentum across your network</h2>
+            <p className="section-heading__description">
+              Pair your fitness program with other facility support or connect with us directly to plan next steps.
             </p>
-            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
-              <Link to="/contact" className="btn-primary">
-                Request a quote
+          </div>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+            {relatedLinks.map((link) => (
+              <Link key={link.name} to={link.path} className="feature-grid-card group">
+                <div className="flex items-center justify-between gap-6">
+                  <span className="text-lg font-semibold text-charcoal">{link.name}</span>
+                  <ArrowRight className="h-5 w-5 text-celestial-blue-1 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                </div>
+                <p className="text-sm leading-relaxed text-jet/80">{link.description}</p>
               </Link>
-              <a href="tel:+61411820650" className="btn-secondary">
-                Call 0411 820 650
-              </a>
-            </div>
+            ))}
           </div>
         </div>
       </section>
