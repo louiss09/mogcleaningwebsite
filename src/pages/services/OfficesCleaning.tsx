@@ -99,11 +99,6 @@ const OfficesCleaning: React.FC = () => {
     { name: 'About MOG Cleaning', path: '/about' },
   ];
 
-  const heroBadges = [
-    { icon: ShieldCheck, label: 'Inducted & police-checked crews' },
-    { icon: CheckCircle, label: 'QA inspections with photo reports' },
-  ];
-
   const heroHighlights = [
     {
       icon: Users,
@@ -196,17 +191,11 @@ const OfficesCleaning: React.FC = () => {
 
       <PageHero
         backgroundImage="/images/office-cleaning-background.jpg"
-        variant="photo"
+        overlay="charcoal"
         align="center"
         eyebrow="Office cleaning"
         eyebrowIcon={Building2}
-        title={
-          <>
-            Polished Brisbane workplaces
-            <br />
-            maintained by dedicated crews
-          </>
-        }
+        title="Dependable cleaning for Brisbane workplaces."
         description="Keep executive suites, meeting rooms and shared spaces inspection-ready with a program built for your building and schedule."
         actions={
           <>
@@ -219,7 +208,6 @@ const OfficesCleaning: React.FC = () => {
             </Link>
           </>
         }
-        badges={heroBadges}
       />
 
       <HeroHighlightBand items={heroHighlights} />

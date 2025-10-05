@@ -98,11 +98,6 @@ const HealthCleaning: React.FC = () => {
     { name: 'About Our Team', path: '/about' },
   ];
 
-  const heroBadges = [
-    { icon: ShieldCheck, label: 'NSQHS & RACGP aligned' },
-    { icon: CheckCircle, label: 'Audit-ready reporting packs' },
-  ];
-
   const heroHighlights = [
     {
       icon: Heart,
@@ -195,17 +190,11 @@ const HealthCleaning: React.FC = () => {
 
       <PageHero
         backgroundImage="/images/medical-cleaning-background.jpg"
-        variant="photo"
+        overlay="charcoal"
         align="center"
         eyebrow="Medical facility cleaning"
         eyebrowIcon={Heart}
-        title={
-          <>
-            Medical-grade Brisbane clinics
-            <br />
-            maintained with clinical care
-          </>
-        }
+        title="Clinical-grade cleaning for Brisbane practices."
         description="Protect patients, practitioners and accreditation with infection-control trained crews and transparent reporting."
         actions={
           <>
@@ -218,7 +207,6 @@ const HealthCleaning: React.FC = () => {
             </Link>
           </>
         }
-        badges={heroBadges}
       />
 
       <HeroHighlightBand items={heroHighlights} />

@@ -162,18 +162,12 @@ const Contact: React.FC = () => {
 
       <PageHero
         backgroundImage="/images/accounting-background.jpg"
-        variant="photo"
+        overlay="charcoal"
         align="center"
         className="hero-extra-top"
         eyebrow="Contact"
         eyebrowIcon={Sparkles}
-        title={
-          <>
-            Plan your Brisbane cleaning
-            <br />
-            program with our specialists
-          </>
-        }
+        title="Plan your Brisbane cleaning program with our specialists."
         description="Share your facility details and we’ll reply within a day with pricing, onboarding steps and a dedicated supervisor."
         actions={
           <>
@@ -186,10 +180,6 @@ const Contact: React.FC = () => {
             </a>
           </>
         }
-        badges={[
-          { icon: Clock, label: 'Replies within 24 hours' },
-          { icon: ShieldCheck, label: 'Police-checked crews' },
-        ]}
       />
 
       <QuoteSection
