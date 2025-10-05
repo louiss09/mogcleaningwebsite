@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, Mail, MapPin, Clock, MessageCircle, Sparkles, ShieldCheck } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, MessageCircle, Sparkles } from 'lucide-react';
 import SEO from '../components/SEO';
 import FAQAccordion from '../components/FAQAccordion';
 import PageHero from '../components/PageHero';
@@ -9,7 +9,7 @@ const Contact: React.FC = () => {
   const contactMethods = [
     {
       icon: Phone,
-      title: 'Phone',
+      title: 'Call us',
       details: '0411 820 650',
       subtext: 'Mon–Fri 7am – 6pm',
       action: 'tel:+61411820650',
@@ -23,14 +23,14 @@ const Contact: React.FC = () => {
     },
     {
       icon: MessageCircle,
-      title: 'Emergency Line',
+      title: 'SMS / WhatsApp',
       details: '0411 820 650',
-      subtext: '24/7 rapid response',
-      action: 'tel:+61411820650',
+      subtext: 'Rapid responses for urgent cleans',
+      action: 'sms:+61411820650',
     },
     {
       icon: MapPin,
-      title: 'Service Area',
+      title: 'Service area',
       details: 'Brisbane Metro',
       subtext: 'All suburbs covered',
       action: null,
@@ -168,41 +168,36 @@ const Contact: React.FC = () => {
         className="hero-extra-top"
         eyebrow="Contact"
         eyebrowIcon={Sparkles}
-        title="Plan your Brisbane cleaning program with our specialists."
-        description="Tell us about your facility and we’ll reply within a day with pricing, onboarding and support."
+        title="Fast, tailored quotes that keep your operations moving."
+        description="Share your facility details and we’ll reply within 24 hours with pricing, onboarding dates and your dedicated supervisor."
         actions={
           <>
             <a href="tel:+61411820650" className="btn-primary">
               Call 0411 820 650
             </a>
-            <a href="mailto:info@mogcleaning.com.au" className="btn-ghost">
+            <a href="mailto:info@mogcleaning.com.au" className="btn-secondary">
               Email our team
-              <Mail className="h-5 w-5" />
             </a>
           </>
         }
       />
 
       <QuoteSection
-        eyebrow="Fast response"
-        title="Share your site details"
+        eyebrow="Start here"
+        title="Tell us about your facility"
         description="Use the form to tell us about your facility. We’ll review the requirements and respond with pricing, scope and onboarding steps."
-        bullets={[
-          'Tailored proposals for your industry',
-          'Dedicated supervisor for every site',
-          'Flexible scheduling across Brisbane',
-        ]}
-        formTitle="Tell us about your facility"
-        formSubtitle="We’ll reply within one business day with your tailored quote."
+        bullets={['Tailored proposals for your industry', 'Dedicated supervisor for every site', 'Flexible scheduling across Brisbane']}
+        formTitle="Request your tailored quote"
+        formSubtitle="We’ll reply within one business day with your proposal."
       />
 
       <section className="section-shell">
         <div className="container-max mx-auto">
           <div className="section-heading">
-            <span className="section-heading__eyebrow">Reach out</span>
+            <span className="section-heading__eyebrow">Prefer to talk right now?</span>
             <h2 className="section-heading__title">Choose how you’d like to connect</h2>
             <p className="section-heading__description">
-              Call, email or request a callback. Our Brisbane-based team is ready to support your commercial cleaning needs.
+              Call, email or send a quick message. Our Brisbane-based team is ready to support your commercial cleaning needs.
             </p>
           </div>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
@@ -239,6 +234,47 @@ const Contact: React.FC = () => {
       <section className="section-shell section-shell--muted">
         <div className="container-max mx-auto">
           <div className="section-heading">
+            <span className="section-heading__eyebrow">What happens after you enquire</span>
+            <h2 className="section-heading__title">From first contact to ongoing support</h2>
+            <p className="section-heading__description">
+              Every enquiry moves through a structured process so you know exactly what to expect next.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+            <div className="feature-grid-card">
+              <span className="pill-chip" data-variant="emerald">
+                Step 01
+              </span>
+              <h3 className="text-xl font-semibold text-charcoal">Share your details</h3>
+              <p className="text-jet/80 leading-relaxed">
+                Provide your facility type, size, current frustrations and timing requirements via the form or phone.
+              </p>
+            </div>
+            <div className="feature-grid-card">
+              <span className="pill-chip" data-variant="emerald">
+                Step 02
+              </span>
+              <h3 className="text-xl font-semibold text-charcoal">Site walkthrough</h3>
+              <p className="text-jet/80 leading-relaxed">
+                We schedule an on-site visit to capture access, compliance and scope details before finalising your proposal.
+              </p>
+            </div>
+            <div className="feature-grid-card">
+              <span className="pill-chip" data-variant="emerald">
+                Step 03
+              </span>
+              <h3 className="text-xl font-semibold text-charcoal">Proposal & onboarding</h3>
+              <p className="text-jet/80 leading-relaxed">
+                Receive pricing, schedule and supervisor introductions, then confirm your start date for the first clean.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section-shell section-shell--muted">
+        <div className="container-max mx-auto">
+          <div className="section-heading">
             <span className="section-heading__eyebrow">Frequently asked</span>
             <h2 className="section-heading__title">Need more details before you book?</h2>
             <p className="section-heading__description">
@@ -246,6 +282,28 @@ const Contact: React.FC = () => {
             </p>
           </div>
           <FAQAccordion faqs={faqs} className="max-w-4xl mx-auto" />
+        </div>
+      </section>
+
+      <section className="section-shell section-shell--dark">
+        <div className="container-max mx-auto text-center">
+          <div className="mx-auto max-w-3xl space-y-6">
+            <span className="pill-chip bg-white/10 text-white">
+              <Sparkles className="h-4 w-4" /> Fast, responsive support
+            </span>
+            <h2 className="section-heading__title text-white">Ready to start your cleaning program?</h2>
+            <p className="section-heading__description text-white/80">
+              Reach out today and we’ll deliver your tailored proposal, onboarding schedule and supervisor introduction within 24 hours.
+            </p>
+            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
+              <a href="tel:+61411820650" className="btn-primary">
+                Call 0411 820 650
+              </a>
+              <a href="mailto:info@mogcleaning.com.au" className="btn-secondary">
+                Email our team
+              </a>
+            </div>
+          </div>
         </div>
       </section>
     </div>

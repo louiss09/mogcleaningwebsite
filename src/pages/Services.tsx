@@ -8,13 +8,16 @@ import {
   Hotel,
   ShoppingBag,
   ArrowRight,
+  Sparkles,
   Shield,
   Clock,
   Users,
-  Sparkles,
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import PageHero from '../components/PageHero';
+import HeroHighlightBand from '../components/HeroHighlightBand';
+import QuoteSection from '../components/QuoteSection';
+import HowItWorks from '../components/HowItWorks';
 
 const Services: React.FC = () => {
   const services = [
@@ -25,7 +28,7 @@ const Services: React.FC = () => {
       description:
         'Presentation-ready office spaces with workstation sanitising, meeting room resets and amenity care for corporate teams.',
       image: '/images/office-cleaning-background.jpg',
-      highlights: ['Daily/weekly schedules', 'Desk & shared space sanitising', 'Meeting room presentation'],
+      highlights: ['Executive suite detailing', 'Boardroom resets', 'Desk & workstation care'],
     },
     {
       icon: Dumbbell,
@@ -33,7 +36,7 @@ const Services: React.FC = () => {
       path: '/services/fitness',
       description: 'Equipment sanitising, odour control and locker room detailing to keep members returning.',
       image: '/images/fitness-cleaning-background.jpg',
-      highlights: ['Equipment disinfecting', 'Locker room deep cleans', 'Sweat & odour control'],
+      highlights: ['Equipment disinfecting', 'Locker room hygiene', 'Odour neutralisation'],
     },
     {
       icon: Heart,
@@ -41,58 +44,49 @@ const Services: React.FC = () => {
       path: '/services/health',
       description: 'Clinical-grade disinfection, zoning and waiting room presentation aligned to QHealth standards.',
       image: '/images/medical-cleaning-background.jpg',
-      highlights: ['Medical-grade disinfection', 'Treatment room turnover', 'Biohazard waste handling'],
+      highlights: ['Treatment room turnover', 'Zoned cleaning protocols', 'Compliance-ready reporting'],
     },
     {
       icon: GraduationCap,
-      name: 'Educational',
+      name: 'Education',
       path: '/services/education',
-      description: 'Low-tox classroom cleaning, playground tidying and scheduled deep cleans for schools and childcare.',
+      description: 'Low-tox classroom cleaning, playground detailing and holiday deep cleans for schools and childcare.',
       image: '/images/classroom-cleaning-background.jpg',
-      highlights: ['Classroom hygiene', 'Library & lab care', 'Playground presentation'],
+      highlights: ['Child-safe products', 'Holiday deep cleans', 'Playground presentation'],
     },
     {
       icon: Hotel,
       name: 'Hospitality',
       path: '/services/hospitality',
-      description: 'Front-of-house sparkle, kitchen compliance and fast turnarounds between events and seatings.',
+      description: 'Front-of-house sparkle, kitchen compliance and rapid event turnarounds.',
       image: '/images/hotel-cleaning-background.jpg',
-      highlights: ['Guest area detailing', 'Commercial kitchen cleans', 'Event turnaround support'],
+      highlights: ['HACCP-aligned cleaning', 'Event turnaround crews', 'Guest-ready presentation'],
     },
     {
       icon: ShoppingBag,
       name: 'Retail Spaces',
       path: '/services/retail',
-      description: 'Dust-free displays, immaculate fitting rooms and after-hours cleans that protect the shopper experience.',
+      description: 'Dust-free displays, pristine change rooms and efficient back-of-house support.',
       image: '/images/retail-cleaning-background.jpg',
-      highlights: ['Display & stockroom care', 'Fitting room sanitising', 'After-hours scheduling'],
+      highlights: ['Visual merchandising care', 'Change room sanitising', 'After-hours cleans'],
     },
   ];
 
-  const inclusions = [
+  const differentiators = [
     {
-      title: 'Professional Equipment',
-      description: 'Commercial-grade tools, HEPA filtration and eco-friendly products for spotless finishes.',
+      icon: Shield,
+      title: 'Industry specialists',
+      description: 'Dedicated crews per sector ensure your standards and compliance needs are always met.',
     },
     {
-      title: 'Flexible Scheduling',
-      description: 'Daily, weekly or ad-hoc cleans to match trading hours, events and seasonal needs.',
+      icon: Clock,
+      title: 'Responsive scheduling',
+      description: 'After-hours, overnight and rapid-response support keeps your operations running smoothly.',
     },
     {
-      title: 'Quality Assurance',
-      description: 'Supervisor audits, photo reporting and KPI reviews so every clean meets your standards.',
-    },
-    {
-      title: 'Trained & Vetted Staff',
-      description: 'Uniformed, police-checked cleaners who complete site-specific inductions and PPE refreshers.',
-    },
-    {
-      title: 'Full Insurance Cover',
-      description: 'Comprehensive liability coverage and up-to-date compliance documentation supplied on onboarding.',
-    },
-    {
-      title: 'Rapid Support',
-      description: '24/7 assistance for spill clean-ups, emergency disinfection or last-minute presentation cleans.',
+      icon: Users,
+      title: 'Supervisor accountability',
+      description: 'Named supervisors deliver photo reports, KPI reviews and proactive communication.',
     },
   ];
 
@@ -144,27 +138,29 @@ const Services: React.FC = () => {
         overlay="charcoal"
         eyebrow="Services"
         eyebrowIcon={Sparkles}
-        title="Programs built for every Brisbane facility."
-        description="Pick a ready-to-run program, then tune the scope, schedule and reporting to your site."
+        title="Every service is shaped around your facility."
+        description="Choose the industry pathway that matches your facility. Each page dives into pain points, proof and the steps to get started."
         actions={
           <>
             <Link to="/contact" className="btn-primary">
-              Book a consultation
+              Get a quote
             </Link>
-            <Link to="/process" className="btn-ghost">
-              See how onboarding works
-            </Link>
+            <a href="tel:+61411820650" className="btn-secondary">
+              Call 0411 820 650
+            </a>
           </>
         }
       />
 
+      <HeroHighlightBand items={differentiators} />
+
       <section className="section-shell">
         <div className="container-max mx-auto">
           <div className="section-heading">
-            <span className="section-heading__eyebrow">Industry expertise</span>
-            <h2 className="section-heading__title">Choose the program that matches your facility</h2>
+            <span className="section-heading__eyebrow">Explore by industry</span>
+            <h2 className="section-heading__title">Pick the service page that matches your needs</h2>
             <p className="section-heading__description">
-              Each service includes a customised scope, onboarding plan and reporting cadence so you always know what happens and when.
+              Each service page is designed to show proof, outline the process and give you clear ways to book for your industry.
             </p>
           </div>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
@@ -184,7 +180,7 @@ const Services: React.FC = () => {
                   </span>
                 </div>
                 <div className="service-card__body">
-                  <span className="service-card__eyebrow">Program overview</span>
+                  <span className="service-card__eyebrow">Industry spotlight</span>
                   <h3 className="service-card__title">{service.name}</h3>
                   <p className="service-card__description">{service.description}</p>
                   <ul className="service-card__list">
@@ -193,7 +189,7 @@ const Services: React.FC = () => {
                     ))}
                   </ul>
                   <span className="service-card__cta">
-                    Explore program
+                    View service page
                     <ArrowRight className="h-4 w-4" aria-hidden="true" />
                   </span>
                 </div>
@@ -203,43 +199,42 @@ const Services: React.FC = () => {
         </div>
       </section>
 
-      <section className="section-shell section-shell--muted">
-        <div className="container-max mx-auto">
-          <div className="section-heading">
-            <span className="section-heading__eyebrow">Every program includes</span>
-            <h2 className="section-heading__title">Consistent standards across every visit</h2>
-            <p className="section-heading__description">
-              No matter the industry, you receive the same professionalism, communication and compliance documentation.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {inclusions.map((item) => (
-              <div key={item.title} className="feature-grid-card">
-                <h3 className="text-xl font-semibold text-charcoal">{item.title}</h3>
-                <p className="text-jet/80 leading-relaxed">{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <HowItWorks
+        eyebrow="What every program includes"
+        title="Four steps we follow no matter your industry"
+        description="From enquiry to launch, your experience stays consistent—so you always know the next action."
+      />
+
+      <QuoteSection
+        eyebrow="Ready to move forward?"
+        title="Tell us which services you need"
+        description="Combine multiple programs or focus on one facility. Either way we respond fast with pricing, onboarding dates and supervisor details."
+        bullets={[
+          'Mix-and-match industry programs',
+          'Dedicated supervisor for every site',
+          'Photo reporting and KPI reviews',
+        ]}
+        formTitle="Request your tailored proposal"
+        formSubtitle="Complete the form and we’ll call you within one business day."
+      />
 
       <section className="section-shell section-shell--dark">
         <div className="container-max mx-auto text-center">
           <div className="mx-auto max-w-3xl space-y-6">
             <span className="pill-chip bg-white/10 text-white">
-              <Sparkles className="h-4 w-4" /> Brisbane-wide coverage
+              <Sparkles className="h-4 w-4" /> End-to-end cleaning support
             </span>
-            <h2 className="section-heading__title text-white">Ready to craft your cleaning scope?</h2>
+            <h2 className="section-heading__title text-white">Need help choosing the right program?</h2>
             <p className="section-heading__description text-white/80">
-              Tell us about your facility and we’ll prepare a tailored scope, onboarding timeline and pricing within 24 hours.
+              Talk with our specialists and map the ideal combination of services for your facilities in a single conversation.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
               <Link to="/contact" className="btn-primary">
-                Request a tailored proposal
+                Get a quote
               </Link>
-              <Link to="/process" className="btn-secondary">
-                See how onboarding works
-              </Link>
+              <a href="tel:+61411820650" className="btn-secondary">
+                Call 0411 820 650
+              </a>
             </div>
           </div>
         </div>
