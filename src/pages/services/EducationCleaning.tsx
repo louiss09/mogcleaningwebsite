@@ -13,7 +13,6 @@ import {
   Trees,
   Brush,
 } from 'lucide-react';
-import type { LucideIcon } from 'lucide-react';
 import SEO from '../../components/SEO';
 import FAQAccordion from '../../components/FAQAccordion';
 import TestimonialCarousel from '../../components/TestimonialCarousel';
@@ -23,102 +22,55 @@ import HeroHighlightBand from '../../components/HeroHighlightBand';
 import HowItWorks from '../../components/HowItWorks';
 
 const EducationCleaning: React.FC = () => {
-  type InfoCard = {
-    icon: LucideIcon;
-    title: string;
-    description: string;
-  };
-
-  const heroHighlights: InfoCard[] = [
-    {
-      icon: BookOpen,
-      title: 'Education specialists',
-      description: 'Experienced crews for childcare, primary, secondary and tertiary campuses.',
-    },
-    {
-      icon: ShieldCheck,
-      title: 'Child-safe standards',
-      description: 'Low-tox products and strict compliance with your policies and ratios.',
-    },
-    {
-      icon: Clock,
-      title: 'Responsive support',
-      description: 'Rapid assistance during outbreaks, spills or unexpected events.',
-    },
+  const inclusions = [
+    'Daily classroom cleaning with desk, chair and technology sanitising',
+    'Library, science lab and specialist room detailing',
+    'Playground, tuckshop and canteen presentation',
+    'Toilet block deep cleaning with consumable management',
+    'Holiday deep cleans and floor maintenance programs',
+    'Disinfection protocols for outbreaks and high-risk seasons',
+    'Eco-friendly product options to suit school policies',
   ];
 
-  const challenges: InfoCard[] = [
-    {
-      icon: ClipboardList,
-      title: 'Classrooms still dusty before the bell',
-      description:
-        'Teachers waste prep time re-setting rooms because previous cleaners rush or skip the detail work.',
-    },
-    {
-      icon: Trees,
-      title: 'Outdoor spaces fall behind',
-      description:
-        'Playgrounds and lunch areas collect rubbish and hazards without a team that understands daily student use.',
-    },
-    {
-      icon: Brush,
-      title: 'Holiday deep cleans get missed',
-      description:
-        'Floors, carpets and blinds are overlooked during breaks, so term restarts never feel fresh or ready.',
-    },
-  ];
-
-  const solutionCards: InfoCard[] = [
+  const benefits = [
     {
       icon: ShieldCheck,
-      title: 'Child-first protocols',
-      description: 'Colour-coded tools, child-safe chemistry and inducted crews protect every age group.',
-    },
-    {
-      icon: Clock,
-      title: 'Schedules built around the school day',
-      description: 'Before-school resets, in-day touch-ups and holiday blitz cleans keep learning uninterrupted.',
+      title: 'Safe learning spaces',
+      description: 'Child-safe products and colour-coded systems protect students and staff.',
     },
     {
       icon: Users,
-      title: 'Dedicated campus supervisors',
-      description: 'Named supervisors manage communication, compliance paperwork and quality audits for you.',
-    },
-    {
-      icon: BookOpen,
-      title: 'Transparent reporting',
-      description: 'Photo logs, incident alerts and consumable tracking land in your inbox after every visit.',
-    },
-  ];
-
-  const proofPoints: Array<InfoCard & { value: string } > = [
-    {
-      icon: Sparkles,
-      value: '98%',
-      title: 'Teacher satisfaction',
-      description: 'Surveyed teaching teams rate classrooms presentation-ready when the bell rings.',
+      title: 'Community confidence',
+      description: 'Parents and teachers see spotless facilities that reflect your commitment to care.',
     },
     {
       icon: Clock,
-      value: '24 hrs',
-      title: 'Response to requests',
-      description: 'Outbreak or event support confirmed within a business day so you can reassure families fast.',
+      title: 'Flexible scheduling',
+      description: 'Before-school, after-hours and weekend support keeps learning uninterrupted.',
     },
     {
-      icon: GraduationCap,
-      value: '30+',
-      title: 'Campuses in SEQ',
-      description: 'Independent, public and childcare sites rely on our inducted education cleaning crews.',
+      icon: CheckCircle,
+      title: 'Transparent reporting',
+      description: 'Supervisors share photo logs, incident reports and consumable usage summaries.',
     },
   ];
 
-  const inclusions: string[] = [
-    'Daily classroom, admin and staff area resets',
-    'Library, lab and specialist room detailing',
-    'Playground, hall and outdoor zone upkeep',
-    'Consumable monitoring and replenishment',
-    'Holiday deep cleans and floor care programs',
-    'Rapid outbreak response and disinfection',
+  const painPoints = [
+    {
+      icon: ClipboardList,
+      title: 'Classrooms still dusty',
+      description: 'Students arrive to cluttered desks and whiteboards, leaving teachers to clean before lessons start.',
+    },
+    {
+      icon: Trees,
+      title: 'Play spaces neglected',
+      description: 'Outdoor areas and playground equipment collect debris, creating safety concerns.',
+    },
+    {
+      icon: Brush,
+      title: 'Holiday deep cleans missed',
+      description: 'Floors, carpets and blinds aren’t refreshed during term breaks, impacting longevity.',
+    },
   ];
 
   const testimonials = [
@@ -160,21 +112,61 @@ const EducationCleaning: React.FC = () => {
     },
   ];
 
-  const relatedLinks: Array<{ name: string; path: string; description: string }> = [
+  const relatedLinks = [
+    { name: 'Healthcare Cleaning', path: '/services/health' },
+    { name: 'Hospitality Cleaning', path: '/services/hospitality' },
+    { name: 'Contact MOG Cleaning', path: '/contact' },
+  ];
+
+  const heroHighlights = [
     {
-      name: 'Medical Facilities',
-      path: '/services/health',
-      description: 'See how we manage compliance-heavy clinical spaces with similar standards.',
+      icon: BookOpen,
+      title: 'Education specialists',
+      description: 'Experienced crews for childcare, primary, secondary and tertiary campuses.',
     },
     {
-      name: 'Hospitality Venues',
-      path: '/services/hospitality',
-      description: 'Discover our approach for high-traffic venues and rapid event turnarounds.',
+      icon: ShieldCheck,
+      title: 'Child-safe standards',
+      description: 'Low-tox products and strict compliance with your policies and ratios.',
     },
     {
-      name: 'Contact MOG Cleaning',
-      path: '/contact',
-      description: 'Start a conversation about your school calendar and onboarding timeline.',
+      icon: Clock,
+      title: 'Responsive support',
+      description: 'Rapid assistance during outbreaks, spills or unexpected events.',
+    },
+  ];
+
+  const scheduleHighlights = [
+    {
+      label: '5:00am – 7:30am',
+      description: 'Before-school reset covering classrooms, admin areas and drop-off zones.',
+    },
+    {
+      label: '10:30am – 2:00pm',
+      description: 'Daytime touch-ups for bathrooms, lunchrooms and high-traffic corridors.',
+    },
+    {
+      label: 'School holidays',
+      description: 'Deep cleans, floor scrubs and window detailing while students are away.',
+    },
+  ];
+
+  const campusZones = [
+    {
+      title: 'Learning spaces',
+      copy: 'Classrooms, libraries and laboratories with attention to technology, desks and teaching tools.',
+    },
+    {
+      title: 'Community hubs',
+      copy: 'Assembly halls, gyms and performing arts venues prepared for events and parent evenings.',
+    },
+    {
+      title: 'Outdoor zones',
+      copy: 'Playgrounds, sports courts and outdoor eating areas maintained with litter sweeps and pressure cleaning.',
+    },
+    {
+      title: 'Support areas',
+      copy: 'Administration, sick bays and staff rooms organised with consumables topped up before every shift.',
     },
   ];
 
@@ -200,6 +192,42 @@ const EducationCleaning: React.FC = () => {
     },
     description: pageDescription,
     url: serviceUrl,
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Education cleaning inclusions',
+      itemListElement: inclusions.map((item) => ({
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: item,
+        },
+      })),
+    },
+    offers: {
+      '@type': 'Offer',
+      priceCurrency: 'AUD',
+      availability: 'https://schema.org/InStock',
+      url: 'https://mogcleaning.com.au/contact',
+    },
+  };
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://mogcleaning.com.au/',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Education Cleaning',
+        item: serviceUrl,
+      },
+    ],
   };
 
   return (
@@ -207,192 +235,288 @@ const EducationCleaning: React.FC = () => {
       <SEO
         title={pageTitle}
         description={pageDescription}
-        type="article"
+        type="service"
         image="/images/classroom-cleaning-background.jpg"
-        imageAlt="Brisbane classroom prepared for the school day"
-        url={serviceUrl}
-        jsonLd={serviceSchema}
-        keywords={['school cleaning Brisbane', 'childcare cleaning', 'education cleaning services']}
+        imageAlt="Cleaner tidying a Brisbane classroom"
+        keywords={['school cleaning Brisbane', 'education cleaners', 'childcare cleaning services']}
+        jsonLd={[breadcrumbSchema, serviceSchema]}
       />
 
       <PageHero
-        align="left"
         backgroundImage="/images/classroom-cleaning-background.jpg"
-        backgroundPosition="center 32%"
+        backgroundPosition="center 44%"
         overlay="charcoal"
-        eyebrow="Education facilities"
+        align="center"
+        eyebrow="Education cleaning"
         eyebrowIcon={GraduationCap}
-        title="Keep every classroom learning-ready"
-        description="Purpose-built cleaning programs that reassure parents, protect students and help staff focus on teaching."
+        title="Learning environments that stay healthy and welcoming."
+        description="Reliable crews care for classrooms, playgrounds and specialist facilities with child-safe products."
         actions={
-          <div className="hero-minimal__cta-group">
+          <>
             <Link to="/contact" className="btn-primary">
-              Request a quote
+              Get a quote
             </Link>
             <a href="tel:+61411820650" className="btn-secondary">
               Call 0411 820 650
             </a>
-          </div>
+          </>
         }
       />
 
       <HeroHighlightBand items={heroHighlights} />
 
-      <section className="section-shell section-shell--muted" id="challenges">
-        <div className="container-max mx-auto">
-          <div className="section-heading" data-align="left">
-            <span className="section-heading__eyebrow">Common pain points</span>
-            <h2 className="section-heading__title">The issues we solve for school teams</h2>
-            <p className="section-heading__description">
-              From prep rooms to senior campuses, we remove the cleaning headaches that distract principals, business managers and facility staff.
-            </p>
+      <section className="section-shell section-shell--muted" id="schedule">
+        <div className="container-max mx-auto grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-center">
+          <div className="space-y-6">
+            <div className="section-heading" data-align="left">
+              <span className="section-heading__eyebrow">Term-time rhythm</span>
+              <h2 className="section-heading__title">Cleaning windows tuned to the school day</h2>
+              <p className="section-heading__description">
+                Rosters are planned around bells, assemblies and extracurricular bookings so every area feels freshly reset when students arrive.
+              </p>
+            </div>
+            <ul className="space-y-4 text-jet/80">
+              <li className="flex items-start gap-3">
+                <CheckCircle className="mt-1 h-5 w-5 text-celestial-blue-1" />
+                <span>Dedicated leads for junior, senior and specialist precincts with tailored scopes.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="mt-1 h-5 w-5 text-celestial-blue-1" />
+                <span>Live communication channel when repairs, spills or outbreaks are identified.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="mt-1 h-5 w-5 text-celestial-blue-1" />
+                <span>Additional crews allocated for open days, sports carnivals and exam blocks.</span>
+              </li>
+            </ul>
           </div>
-          <div className="feature-grid" data-columns="3">
-            {challenges.map((item) => (
-              <div key={item.title} className="feature-grid-card h-full">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-celestial-blue-1/12 text-celestial-blue-1">
-                  <item.icon className="h-6 w-6" aria-hidden="true" />
-                </div>
-                <h3 className="text-xl font-semibold text-charcoal">{item.title}</h3>
-                <p className="text-jet/80 leading-relaxed">{item.description}</p>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {scheduleHighlights.map((item) => (
+              <div key={item.label} className="glass-panel h-full space-y-2 rounded-3xl p-6" data-variant="frost">
+                <p className="text-sm font-semibold uppercase tracking-wide text-celestial-blue-1/70">{item.label}</p>
+                <p className="text-charcoal text-lg font-semibold">{item.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section-shell" id="solutions">
-        <div className="container-max mx-auto">
-          <div className="section-heading" data-align="left">
-            <span className="section-heading__eyebrow">How we respond</span>
-            <h2 className="section-heading__title">A cleaning playbook tailored to your bell times</h2>
-            <p className="section-heading__description">
-              Each program is mapped to your timetable, compliance requirements and community expectations so nothing slips through the cracks.
-            </p>
-          </div>
-          <div className="feature-grid" data-columns="4">
-            {solutionCards.map((item) => (
-              <div key={item.title} className="feature-grid-card h-full">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-fresh-green/15 text-fresh-green">
-                  <item.icon className="h-6 w-6" aria-hidden="true" />
-                </div>
-                <h3 className="text-xl font-semibold text-charcoal">{item.title}</h3>
-                <p className="text-jet/80 leading-relaxed">{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section-shell" id="proof">
+      <section className="section-shell" id="pain-points">
         <div className="container-max mx-auto">
           <div className="section-heading">
-            <span className="section-heading__eyebrow">Proof &amp; reassurance</span>
-            <h2 className="section-heading__title">Metrics principals and parents care about</h2>
+            <span className="section-heading__eyebrow">Why schools switch</span>
+            <h2 className="section-heading__title">Cleaning frustrations we eliminate</h2>
             <p className="section-heading__description">
-              Transparent reporting keeps your community informed and confident in the hygiene of every learning space.
+              From childcare centres to universities, education leaders choose MOG Cleaning when presentation, hygiene and communication need a reset.
             </p>
           </div>
-          <div className="stat-grid" data-columns="3">
-            {proofPoints.map((point) => (
-              <div key={point.title} className="stat-card" data-align="center">
-                <div className="stat-card__icon">
-                  <point.icon className="h-6 w-6" aria-hidden="true" />
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+            {painPoints.map((item) => (
+              <div key={item.title} className="feature-grid-card h-full">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-celestial-blue-1/12 text-celestial-blue-1">
+                  <item.icon className="h-6 w-6" />
                 </div>
-                <div className="stat-card__value">{point.value}</div>
-                <div className="stat-card__label">{point.title}</div>
-                <p className="stat-card__description">{point.description}</p>
+                <h3 className="text-xl font-semibold text-charcoal">{item.title}</h3>
+                <p className="text-jet/80 leading-relaxed">{item.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section-shell section-shell--brand" id="inclusions">
+      <section className="section-shell" id="solution">
+        <div className="container-max mx-auto grid gap-12 lg:grid-cols-2 lg:items-center">
+          <div className="glass-panel" data-variant="frost">
+            <img
+              src="/images/classroom-cleaning-background.jpg"
+              alt="Cleaner sanitising classroom desks"
+              className="h-full w-full rounded-[32px] object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div className="space-y-6">
+            <div className="section-heading" data-align="left">
+              <span className="section-heading__eyebrow">Our approach</span>
+              <h2 className="section-heading__title">A structured routine for every campus zone</h2>
+              <p className="section-heading__description">
+                We combine daily presentation, outbreak response and deep cleaning schedules so classrooms, halls and playgrounds stay ready for learning.
+              </p>
+            </div>
+            <ul className="space-y-4 text-jet/80">
+              <li className="flex items-start gap-3">
+                <CheckCircle className="h-5 w-5 text-celestial-blue-1" />
+                <span>Detailed scopes for classrooms, specialist rooms and administrative areas.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="h-5 w-5 text-celestial-blue-1" />
+                <span>Holiday deep cleans cover floors, windows, carpets and high dusting.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="h-5 w-5 text-celestial-blue-1" />
+                <span>Rapid communication when maintenance issues or incidents are spotted.</span>
+              </li>
+            </ul>
+            <div className="flex flex-wrap gap-4">
+              <Link to="/contact" className="btn-primary">
+                Book a school walkthrough
+              </Link>
+              <a href="tel:+61411820650" className="btn-secondary">
+                Call 0411 820 650
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section-shell section-shell--muted" id="campus-zones">
         <div className="container-max mx-auto">
-          <div className="section-heading" data-align="left">
-            <span className="section-heading__eyebrow">What&apos;s included</span>
-            <h2 className="section-heading__title">Education cleaning checklist</h2>
+          <div className="section-heading">
+            <span className="section-heading__eyebrow">Campus coverage</span>
+            <h2 className="section-heading__title">Each learning zone gets its own playbook</h2>
             <p className="section-heading__description">
-              Every program includes the following core tasks with the flexibility to add specialty services during busy periods.
+              Crew rotations are structured by zone so classrooms, grounds and specialist facilities all receive the attention they need.
             </p>
           </div>
-          <ul className="checklist-grid">
-            {inclusions.map((item) => (
-              <li key={item} className="checklist-grid__item">
-                <CheckCircle aria-hidden="true" />
-                <span>{item}</span>
-              </li>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            {campusZones.map((zone) => (
+              <div key={zone.title} className="rounded-[32px] border border-white/40 bg-white p-8 shadow-sm">
+                <h3 className="text-2xl font-semibold text-charcoal">{zone.title}</h3>
+                <p className="mt-3 text-jet/80 leading-relaxed">{zone.copy}</p>
+              </div>
             ))}
-          </ul>
+          </div>
+        </div>
+      </section>
+
+      <HowItWorks
+        eyebrow="Implementation"
+        title="Four steps to launch your education cleaning program"
+        description="A guided onboarding keeps school leadership confident from the first bell."
+      />
+
+      <QuoteSection
+        eyebrow="Start planning"
+        title="Request your school cleaning proposal"
+        description="Share your campus size, learning precincts and key concerns. Our proposals outline labour allocations, inspection cadence and onboarding timelines."
+        bullets={[
+          'Child-safe, low-tox products',
+          'Holiday deep clean scheduling',
+          'Dedicated supervisor communication',
+        ]}
+        formTitle="Tell us about your school"
+        formSubtitle="An education specialist will respond within one business day."
+      />
+
+      <section className="section-shell" id="benefits">
+        <div className="container-max mx-auto">
+          <div className="section-heading">
+            <span className="section-heading__eyebrow">Benefits</span>
+            <h2 className="section-heading__title">Why education leaders choose MOG Cleaning</h2>
+            <p className="section-heading__description">
+              We help facilities teams deliver safe, welcoming environments that showcase your school’s standards.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {benefits.map((benefit) => (
+              <div key={benefit.title} className="feature-grid-card">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-celestial-blue-1/12 text-celestial-blue-1">
+                  <benefit.icon className="h-7 w-7" />
+                </div>
+                <h3 className="text-xl font-semibold text-charcoal">{benefit.title}</h3>
+                <p className="text-jet/80 leading-relaxed">{benefit.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-shell section-shell--muted" id="inclusions">
+        <div className="container-max mx-auto">
+          <div className="section-heading">
+            <span className="section-heading__eyebrow">What’s included</span>
+            <h2 className="section-heading__title">Education cleaning checklist</h2>
+            <p className="section-heading__description">
+              Every service is backed by documented checklists covering classrooms, common areas and outdoor spaces.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+            {inclusions.map((inclusion) => (
+              <div key={inclusion} className="service-item p-6">
+                <p className="text-charcoal font-medium">{inclusion}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       <section className="section-shell" id="testimonials">
         <div className="container-max mx-auto">
           <div className="section-heading">
-            <span className="section-heading__eyebrow">Trusted by education leaders</span>
-            <h2 className="section-heading__title">Hear from Brisbane schools</h2>
+            <span className="section-heading__eyebrow">Results</span>
+            <h2 className="section-heading__title">What Brisbane education leaders say</h2>
             <p className="section-heading__description">
-              Principals and centre directors stay with MOG Cleaning because we communicate fast and deliver spotless results.
+              Hear from principals and facility managers who rely on MOG Cleaning to keep students safe and impressed.
             </p>
           </div>
-          <TestimonialCarousel testimonials={testimonials} />
+          <TestimonialCarousel testimonials={testimonials} className="mx-auto max-w-4xl" />
         </div>
       </section>
 
-      <HowItWorks
-        eyebrow="Onboarding roadmap"
-        title="Four steps to launch your school cleaning program"
-        description="From your quote request to the first bell, we guide you through a transparent, accountable process."
-      />
-
-      <QuoteSection
-        className="section-shell--muted"
-        eyebrow="Ready for a walkthrough?"
-        title="Let’s map your school cleaning plan"
-        description="Share your campus details and preferred schedule so we can prepare a tailored quote and onboarding timeline."
-        bullets={[
-          'Child-safe products and inducted crews',
-          'Flexible schedules across terms and holidays',
-          'Photo reporting and compliance documentation',
-        ]}
-        formTitle="Request your education cleaning quote"
-        formSubtitle="Tell us about your classrooms, enrolments and priorities. We’ll respond within one business day."
-      />
-
-      <section className="section-shell" id="faq">
+      <section className="section-shell" id="faqs">
         <div className="container-max mx-auto">
           <div className="section-heading">
             <span className="section-heading__eyebrow">FAQs</span>
             <h2 className="section-heading__title">Education cleaning questions answered</h2>
             <p className="section-heading__description">
-              Still curious about how we work with your staff and students? Explore the most common questions we receive.
+              Get clarity on scheduling, safety checks and onboarding before you book your campus walkthrough.
             </p>
           </div>
-          <FAQAccordion items={faqs} />
+          <FAQAccordion faqs={faqs} className="max-w-4xl mx-auto" />
         </div>
       </section>
 
-      <section className="section-shell">
+      <section className="section-shell section-shell--muted" id="related">
         <div className="container-max mx-auto">
-          <div className="section-heading" data-align="left">
-            <span className="section-heading__eyebrow">More ways we help</span>
-            <h2 className="section-heading__title">Explore other programs or get in touch</h2>
+          <div className="section-heading">
+            <span className="section-heading__eyebrow">Explore more programs</span>
+            <h2 className="section-heading__title">Consistent standards across your facilities</h2>
             <p className="section-heading__description">
-              Whether you manage multiple sites or need complementary services, these pages will keep the momentum going.
+              Extend MOG Cleaning across clinics, hospitality venues or administration offices for a unified experience.
             </p>
           </div>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {relatedLinks.map((link) => (
-              <Link key={link.name} to={link.path} className="feature-grid-card group">
-                <div className="flex items-center justify-between gap-6">
-                  <span className="text-lg font-semibold text-charcoal">{link.name}</span>
-                  <ArrowRight className="h-5 w-5 text-celestial-blue-1 transition-transform group-hover:translate-x-1" aria-hidden="true" />
-                </div>
-                <p className="text-sm leading-relaxed text-jet/80">{link.description}</p>
+              <Link key={link.name} to={link.path} className="feature-grid-card">
+                <h3 className="text-xl font-semibold text-charcoal">{link.name}</h3>
+                <span className="link-arrow">
+                  View service
+                  <ArrowRight className="h-4 w-4" />
+                </span>
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-shell section-shell--dark">
+        <div className="container-max mx-auto text-center">
+          <div className="mx-auto max-w-3xl space-y-6">
+            <span className="pill-chip bg-white/10 text-white">
+              <Sparkles className="h-4 w-4" /> Trusted by Brisbane schools
+            </span>
+            <h2 className="section-heading__title text-white">Ready to upgrade your campus presentation?</h2>
+            <p className="section-heading__description text-white/80">
+              Schedule a walkthrough and receive a detailed cleaning proposal within 24 hours.
+            </p>
+            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
+              <Link to="/contact" className="btn-primary">
+                Get a quote
+              </Link>
+              <a href="tel:+61411820650" className="btn-secondary">
+                Call 0411 820 650
+              </a>
+            </div>
           </div>
         </div>
       </section>
