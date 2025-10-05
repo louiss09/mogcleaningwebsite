@@ -190,12 +190,13 @@ const EducationCleaning: React.FC = () => {
 
       <PageHero
         backgroundImage="/images/classroom-cleaning-background.jpg"
+        backgroundPosition="center 44%"
         overlay="charcoal"
         align="center"
         eyebrow="Education cleaning"
         eyebrowIcon={GraduationCap}
         title="Safe, inspiring campuses across Brisbane."
-        description="Create calm classrooms and spotless amenities with child-safe cleaning programs aligned to your timetable."
+        description="Create calm classrooms and spotless amenities with child-safe programs aligned to your timetable."
         actions={
           <>
             <Link to="/contact" className="btn-primary">

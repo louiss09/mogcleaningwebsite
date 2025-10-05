@@ -162,13 +162,14 @@ const Contact: React.FC = () => {
 
       <PageHero
         backgroundImage="/images/accounting-background.jpg"
+        backgroundPosition="center 40%"
         overlay="charcoal"
         align="center"
         className="hero-extra-top"
         eyebrow="Contact"
         eyebrowIcon={Sparkles}
         title="Plan your Brisbane cleaning program with our specialists."
-        description="Share your facility details and we’ll reply within a day with pricing, onboarding steps and a dedicated supervisor."
+        description="Tell us about your facility and we’ll reply within a day with pricing, onboarding and support."
         actions={
           <>
             <a href="tel:+61411820650" className="btn-primary">

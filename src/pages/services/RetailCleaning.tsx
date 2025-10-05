@@ -190,12 +190,13 @@ const RetailCleaning: React.FC = () => {
 
       <PageHero
         backgroundImage="/images/retail-cleaning-background.jpg"
+        backgroundPosition="center 46%"
         overlay="charcoal"
         align="center"
         eyebrow="Retail cleaning"
         eyebrowIcon={ShoppingBag}
         title="Spotless retail spaces that convert every visit."
-        description="Maintain showroom shine and guest-ready amenities with crews who flex around product launches and trade windows."
+        description="Maintain showroom shine and guest-ready amenities with crews who adapt around launches and trade."
         actions={
           <>
             <Link to="/contact" className="btn-primary">

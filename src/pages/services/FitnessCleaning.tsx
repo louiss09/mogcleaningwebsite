@@ -190,12 +190,13 @@ const FitnessCleaning: React.FC = () => {
 
       <PageHero
         backgroundImage="/images/fitness-cleaning-background.jpg"
+        backgroundPosition="center 40%"
         overlay="charcoal"
         align="center"
         eyebrow="Fitness centre cleaning"
         eyebrowIcon={Dumbbell}
         title="Fresh, energising gyms and fitness studios."
-        description="Deliver a fresh, safe experience every session with routines built around your timetable, equipment mix and amenities."
+        description="Deliver a crisp, safe experience every session with routines shaped to your timetable and equipment mix."
         actions={
           <>
             <Link to="/contact" className="btn-primary">

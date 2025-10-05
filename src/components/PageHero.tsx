@@ -6,7 +6,7 @@ type HeroOverlay = 'slate' | 'spruce' | 'charcoal';
 
 interface PageHeroProps {
   title: React.ReactNode;
-  description?: string;
+  description?: React.ReactNode;
   backgroundImage: string;
   backgroundPosition?: string;
   eyebrow?: string;
@@ -48,8 +48,6 @@ const PageHero: React.FC<PageHeroProps> = ({
         <img src={backgroundImage} alt="" style={{ objectPosition: backgroundPosition }} />
       </div>
       <div className="hero-minimal__scrim" data-overlay={overlayTone} aria-hidden="true" />
-      <div className="hero-minimal__noise" aria-hidden="true" />
-
       <div className="hero-minimal__container container-max">
         <div className="hero-minimal__content" data-align={resolvedAlign}>
           {eyebrow && (

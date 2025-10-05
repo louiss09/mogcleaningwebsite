@@ -191,12 +191,13 @@ const OfficesCleaning: React.FC = () => {
 
       <PageHero
         backgroundImage="/images/office-cleaning-background.jpg"
+        backgroundPosition="center 42%"
         overlay="charcoal"
         align="center"
         eyebrow="Office cleaning"
         eyebrowIcon={Building2}
         title="Dependable cleaning for Brisbane workplaces."
-        description="Keep executive suites, meeting rooms and shared spaces inspection-ready with a program built for your building and schedule."
+        description="Keep suites, meeting rooms and breakout spaces inspection-ready with a program tuned to your building."
         actions={
           <>
             <Link to="/contact" className="btn-primary">

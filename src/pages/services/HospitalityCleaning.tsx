@@ -190,12 +190,13 @@ const HospitalityCleaning: React.FC = () => {
 
       <PageHero
         backgroundImage="/images/hotel-cleaning-background.jpg"
+        backgroundPosition="center 45%"
         overlay="charcoal"
         align="center"
         eyebrow="Hospitality cleaning"
         eyebrowIcon={Hotel}
         title="Immaculate venues ready for every guest."
-        description="Deliver immaculate rooms, dining spaces and event venues with crews who work around every service window."
+        description="Deliver flawless rooms, dining spaces and event venues with crews who flex to every service window."
         actions={
           <>
             <Link to="/contact" className="btn-primary">

@@ -190,12 +190,13 @@ const HealthCleaning: React.FC = () => {
 
       <PageHero
         backgroundImage="/images/medical-cleaning-background.jpg"
+        backgroundPosition="center 38%"
         overlay="charcoal"
         align="center"
         eyebrow="Medical facility cleaning"
         eyebrowIcon={Heart}
         title="Clinical-grade cleaning for Brisbane practices."
-        description="Protect patients, practitioners and accreditation with infection-control trained crews and transparent reporting."
+        description="Protect patients, practitioners and accreditation with infection-control crews and transparent reporting."
         actions={
           <>
             <Link to="/contact" className="btn-primary">

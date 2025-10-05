@@ -319,6 +319,7 @@ const Home: React.FC = () => {
       <PageHero
         className="hero-minimal--home"
         backgroundImage="/images/office-cleaning-background.jpg"
+        backgroundPosition="center 42%"
         overlay="charcoal"
         align="center"
         eyebrow="Trusted Brisbane partner"
@@ -329,17 +330,39 @@ const Home: React.FC = () => {
             <span className="hero-minimal__title-line">Partner in Brisbane</span>
           </>
         }
-        description="Tailored programs for offices, gyms and clinics delivered by vetted crews who keep every space calm, polished and client-ready."
-        actions={
+        description={
           <>
-            <Link to="/contact" className="btn-primary">
-              Book a consultation
-            </Link>
-            <Link to="/#services" onClick={scrollToServices} className="btn-ghost">
-              Explore services
-              <ArrowRight className="h-5 w-5" />
-            </Link>
+            Specialist crews for offices, gyms and clinics who keep every shift{' '}
+            <span className="text-gradient">polished and on-brand</span>.
           </>
+        }
+        actions={
+          <div className="hero-minimal__cta-group">
+            <div className="hero-minimal__cta-buttons">
+              <Link to="/contact" className="btn-primary btn-primary--elevated">
+                Book a consultation
+              </Link>
+              <Link to="/#services" onClick={scrollToServices} className="btn-ghost">
+                Explore services
+                <ArrowRight className="h-5 w-5" />
+              </Link>
+            </div>
+            <div className="hero-minimal__cta-note">
+              <Sparkles className="h-4 w-4" />
+              Site walkthrough & tailored quote within 24 hours
+            </div>
+            <div className="hero-minimal__assurances">
+              <span className="hero-minimal__assurance">
+                <Shield className="h-4 w-4" /> Fully insured crews
+              </span>
+              <span className="hero-minimal__assurance">
+                <Clock className="h-4 w-4" /> Flexible scheduling
+              </span>
+              <span className="hero-minimal__assurance">
+                <CheckCircle className="h-4 w-4" /> QA photo reports
+              </span>
+            </div>
+          </div>
         }
       />
 
