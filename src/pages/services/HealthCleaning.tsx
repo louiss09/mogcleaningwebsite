@@ -370,7 +370,7 @@ const HealthCleaning: React.FC = () => {
               Learn how we integrate with your clinical team and maintain strict infection control standards.
             </p>
           </div>
-          <FAQAccordion items={faqs} />
+          <FAQAccordion faqs={faqs} />
         </div>
       </section>
 
