@@ -370,7 +370,7 @@ const HospitalityCleaning: React.FC = () => {
               Understand how we integrate with your kitchen crew, concierge team and event coordinators.
             </p>
           </div>
-          <FAQAccordion faqs={faqs} />
+          <FAQAccordion items={faqs} />
         </div>
       </section>
 

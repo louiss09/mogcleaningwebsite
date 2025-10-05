@@ -370,7 +370,7 @@ const RetailCleaning: React.FC = () => {
               Find out how we support retail teams, from shopping centres to boutiques and pop-ups.
             </p>
           </div>
-          <FAQAccordion faqs={faqs} />
+          <FAQAccordion items={faqs} />
         </div>
       </section>
 

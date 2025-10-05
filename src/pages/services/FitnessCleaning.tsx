@@ -369,7 +369,7 @@ const FitnessCleaning: React.FC = () => {
               Explore how we handle shared equipment, odour control and compliance expectations in detail.
             </p>
           </div>
-          <FAQAccordion faqs={faqs} />
+          <FAQAccordion items={faqs} />
         </div>
       </section>
 
