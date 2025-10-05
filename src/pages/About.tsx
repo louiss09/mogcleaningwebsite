@@ -74,19 +74,14 @@ const About: React.FC = () => {
 
       <PageHero
         backgroundImage="/brisbane2.jpg"
-        variant="photo"
+        backgroundPosition="center 46%"
+        overlay="spruce"
         align="center"
         className="hero-extra-top"
         eyebrow="About MOG Cleaning"
         eyebrowIcon={Sparkles}
-        title={
-          <>
-            People-first cleaning teams
-            <br />
-            trusted across Brisbane
-          </>
-        }
-        description="We’re a Brisbane-founded team of supervisors and cleaners who deliver consistent, accountable results for the workplaces you rely on."
+        title="Meet the team behind MOG Cleaning."
+        description="Brisbane-born supervisors and cleaners who show up, communicate fast and protect every workspace."
         actions={
           <>
             <Link to="/contact" className="btn-primary">

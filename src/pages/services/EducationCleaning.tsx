@@ -98,11 +98,6 @@ const EducationCleaning: React.FC = () => {
     { name: 'Contact Our Team', path: '/contact' },
   ];
 
-  const heroBadges = [
-    { icon: ShieldCheck, label: 'Blue Card inducted crews' },
-    { icon: CheckCircle, label: 'Low-tox, leadership-approved products' },
-  ];
-
   const heroHighlights = [
     {
       icon: GraduationCap,
@@ -195,18 +190,13 @@ const EducationCleaning: React.FC = () => {
 
       <PageHero
         backgroundImage="/images/classroom-cleaning-background.jpg"
-        variant="photo"
+        backgroundPosition="center 44%"
+        overlay="charcoal"
         align="center"
         eyebrow="Education cleaning"
         eyebrowIcon={GraduationCap}
-        title={
-          <>
-            Healthy Brisbane learning spaces
-            <br />
-            kept ready for every lesson
-          </>
-        }
-        description="Create calm classrooms and spotless amenities with child-safe cleaning programs aligned to your timetable."
+        title="Safe, inspiring campuses across Brisbane."
+        description="Create calm classrooms and spotless amenities with child-safe programs aligned to your timetable."
         actions={
           <>
             <Link to="/contact" className="btn-primary">
@@ -218,7 +208,6 @@ const EducationCleaning: React.FC = () => {
             </Link>
           </>
         }
-        badges={heroBadges}
       />
 
       <HeroHighlightBand items={heroHighlights} />
