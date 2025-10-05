@@ -12,3 +12,20 @@
 .scroll-highlight {
   animation: scrollHighlightFade 1s ease-out;
 }
+
+@keyframes featureTickerScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.feature-ticker__track {
+  animation: featureTickerScroll 24s linear infinite;
+}
+
+.feature-ticker:hover .feature-ticker__track {
+  animation-play-state: paused;
+}
