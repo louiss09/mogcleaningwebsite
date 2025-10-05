@@ -98,11 +98,6 @@ const RetailCleaning: React.FC = () => {
     { name: 'Book a Strategy Session', path: '/contact' },
   ];
 
-  const heroBadges = [
-    { icon: ShieldCheck, label: 'Centre-compliant presentation' },
-    { icon: CheckCircle, label: 'VM-friendly detailing crews' },
-  ];
-
   const heroHighlights = [
     {
       icon: ShoppingBag,
@@ -195,17 +190,11 @@ const RetailCleaning: React.FC = () => {
 
       <PageHero
         backgroundImage="/images/retail-cleaning-background.jpg"
-        variant="photo"
+        overlay="charcoal"
         align="center"
         eyebrow="Retail cleaning"
         eyebrowIcon={ShoppingBag}
-        title={
-          <>
-            Retail experiences across Brisbane
-            <br />
-            presented with immaculate detail
-          </>
-        }
+        title="Spotless retail spaces that convert every visit."
         description="Maintain showroom shine and guest-ready amenities with crews who flex around product launches and trade windows."
         actions={
           <>
@@ -218,7 +207,6 @@ const RetailCleaning: React.FC = () => {
             </Link>
           </>
         }
-        badges={heroBadges}
       />
 
       <HeroHighlightBand items={heroHighlights} />

@@ -139,15 +139,11 @@ const Services: React.FC = () => {
 
       <PageHero
         className="hero-extra-top"
+        backgroundImage="/images/retail-cleaning-background.jpg"
+        overlay="charcoal"
         eyebrow="Services"
         eyebrowIcon={Sparkles}
-        title={
-          <>
-            Tailored cleaning programs
-            <br />
-            for Brisbane industries
-          </>
-        }
+        title="Programs built for every Brisbane facility."
         description="Select a ready-to-run program for your facility and tailor the scope, schedule and reporting cadence to match your operations."
         actions={
           <>
@@ -159,10 +155,6 @@ const Services: React.FC = () => {
             </Link>
           </>
         }
-        badges={[
-          { icon: Shield, label: 'Compliance-ready crews' },
-          { icon: Users, label: 'Dedicated supervisors' },
-        ]}
       />
 
       <section className="section-shell">

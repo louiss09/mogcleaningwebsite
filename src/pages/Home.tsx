@@ -44,11 +44,6 @@ const Home: React.FC = () => {
     },
   ];
 
-  const heroBadges = [
-    { icon: Award, label: 'Trusted by 60+ Brisbane sites' },
-    { icon: Users, label: 'Dedicated site supervisors' },
-  ];
-
   const trustSignals = [
     {
       icon: Star,
@@ -322,20 +317,19 @@ const Home: React.FC = () => {
       />
 
       <PageHero
-        variant="photo"
+        className="hero-minimal--home"
         backgroundImage="/images/office-cleaning-background.jpg"
-        overlay="slate"
+        overlay="charcoal"
         align="center"
         eyebrow="Trusted Brisbane partner"
         eyebrowIcon={Shield}
         title={
           <>
-            Your Commercial Cleaning Partner
-            <br />
-            in Brisbane
+            <span className="hero-minimal__title-line">Your Commercial Cleaning</span>
+            <span className="hero-minimal__title-line">Partner in Brisbane</span>
           </>
         }
-        description="Tailored programs for offices, gyms and clinics — delivered by vetted crews who keep every space calm, polished and client-ready."
+        description="Tailored programs for offices, gyms and clinics delivered by vetted crews who keep every space calm, polished and client-ready."
         actions={
           <>
             <Link to="/contact" className="btn-primary">
@@ -347,7 +341,6 @@ const Home: React.FC = () => {
             </Link>
           </>
         }
-        badges={heroBadges}
       />
 
       <HeroHighlightBand items={heroHighlights} />
