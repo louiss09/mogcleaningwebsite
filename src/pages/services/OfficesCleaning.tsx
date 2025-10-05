@@ -21,19 +21,53 @@ import QuoteSection from '../../components/QuoteSection';
 import HeroHighlightBand from '../../components/HeroHighlightBand';
 import HowItWorks from '../../components/HowItWorks';
 import StickyCTABar from '../../components/StickyCTABar';
+import ChecklistPreview from '../../components/ChecklistPreview';
 
 const OfficesCleaning: React.FC = () => {
-  const inclusions = [
-    'Daily and weekly presentation cleans aligned to your office hours',
-    'Desk, workstation and hot-desk sanitising with detail on shared equipment',
-    'Boardroom and meeting room resets including AV wipes and table dressing',
-    'Kitchen, break room and staff amenity hygiene with appliance detailing',
-    'Reception, lobby and client lounge presentation with dust-free surfaces',
-    'Washroom deep cleaning, consumable restocking and touchpoint disinfection',
-    'Hard floor mopping, buffing and entry mat maintenance for high-traffic zones',
-    'Carpet vacuuming, spot treatments and soft furnishing dusting',
-    'Waste, recycling and confidential bin rotation with consumable management',
+  const checklistPreview = [
+    {
+      icon: Users,
+      title: 'Workstations & collaboration',
+      description: 'Keep hybrid teams productive and healthy every day.',
+      items: [
+        'Desk, workstation and hot-desk sanitising aligned to your roster',
+        'Shared equipment, phones and touchpoints detailed between shifts',
+        'Breakout zones and collaboration spaces reset throughout the week',
+      ],
+    },
+    {
+      icon: Building2,
+      title: 'Client-facing areas',
+      description: 'Reception and boardrooms ready for every visitor.',
+      items: [
+        'Reception, lobby and lounge presentation with dust-free finishes',
+        'Boardroom and meeting room resets including AV wipe-downs',
+        'Entry glass, lifts and corridors polished to impress stakeholders',
+      ],
+    },
+    {
+      icon: Sparkles,
+      title: 'Kitchens & amenities',
+      description: 'Spaces your team rely on all day long.',
+      items: [
+        'Kitchen, break room and staff amenity hygiene with appliance detailing',
+        'Washroom deep cleaning with consumable restocking and touchpoint disinfection',
+        'End-of-trip and wellness spaces sanitised to support wellbeing',
+      ],
+    },
+    {
+      icon: ClipboardCheck,
+      title: 'Floors, waste & logistics',
+      description: 'Behind-the-scenes routines that keep your office effortless.',
+      items: [
+        'Hard floor mopping, buffing and entry mat maintenance for high-traffic zones',
+        'Carpet vacuuming, spot treatments and soft furnishing dusting',
+        'Waste, recycling and confidential bin rotation with consumable management',
+      ],
+    },
   ];
+
+  const checklistHighlights = checklistPreview.flatMap((group) => group.items);
 
   const benefits = [
     {
@@ -198,7 +232,7 @@ const OfficesCleaning: React.FC = () => {
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Office cleaning inclusions',
-      itemListElement: inclusions.map((service) => ({
+      itemListElement: checklistHighlights.map((service) => ({
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
@@ -412,24 +446,14 @@ const OfficesCleaning: React.FC = () => {
         </div>
       </section>
 
-      <section className="section-shell section-shell--muted" id="inclusions">
-        <div className="container-max mx-auto">
-          <div className="section-heading">
-            <span className="section-heading__eyebrow">What’s included</span>
-            <h2 className="section-heading__title">Comprehensive office cleaning checklist</h2>
-            <p className="section-heading__description">
-              Every visit follows a documented scope so reception, workspaces and amenities stay spotless without chasing your cleaners.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            {inclusions.map((inclusion) => (
-              <div key={inclusion} className="service-item p-6">
-                <p className="font-medium text-charcoal">{inclusion}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ChecklistPreview
+        id="inclusions"
+        eyebrow="What’s included"
+        title="Office cleaning preview"
+        description="A sample of the routines we tailor for corporate HQs, coworking hubs and towers."
+        note="This is a preview of common inclusions. After our walkthrough we document a checklist around your floors, access requirements and reporting cadence."
+        categories={checklistPreview}
+      />
 
       <section className="section-shell" id="faqs">
         <div className="container-max mx-auto">

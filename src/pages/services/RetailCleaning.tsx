@@ -21,17 +21,53 @@ import QuoteSection from '../../components/QuoteSection';
 import HeroHighlightBand from '../../components/HeroHighlightBand';
 import HowItWorks from '../../components/HowItWorks';
 import StickyCTABar from '../../components/StickyCTABar';
+import ChecklistPreview from '../../components/ChecklistPreview';
 
 const RetailCleaning: React.FC = () => {
-  const inclusions = [
-    'Sales floor detailing with dust-free fixtures and polished floors',
-    'Change room and restroom sanitising with consumable restocking',
-    'Glass, display case and mirror cleaning for streak-free presentation',
-    'Back-of-house storage and stockroom organisation support',
-    'High dusting for lighting, signage and visual merchandising',
-    'After-hours cleaning to protect shopper experiences',
-    'Periodic deep cleans, carpet care and window polishing',
+  const checklistPreview = [
+    {
+      icon: ShoppingBag,
+      title: 'Sales floor polish',
+      description: 'Keep displays and pathways camera-ready every day.',
+      items: [
+        'Shelving, fixtures and product plinths dusted and detailed',
+        'High-gloss floors vacuumed, mopped or buffed for a showroom shine',
+        'Glass, mirrors and display cases polished streak-free',
+      ],
+    },
+    {
+      icon: Sparkles,
+      title: 'Fitting rooms & amenities',
+      description: 'Spaces that turn browsers into buyers.',
+      items: [
+        'Change rooms sanitised and restocked with consumables',
+        'Restrooms cleaned with odour control and amenity checks',
+        'Fragrance-neutral treatments keep enclosed areas inviting',
+      ],
+    },
+    {
+      icon: Package,
+      title: 'Back-of-house & logistics',
+      description: 'Support replenishment, click-and-collect and deliveries.',
+      items: [
+        'Stockrooms organised with floors swept and benches sanitised',
+        'Waste dock coordination, recycling and cardboard breakdown',
+        'High dusting for lighting, signage and storage mezzanines',
+      ],
+    },
+    {
+      icon: Tag,
+      title: 'Trading rhythms & campaigns',
+      description: 'Flexible support for launches, sales and extended trading.',
+      items: [
+        'After-hours cleans aligned to trade and visual merchandising refreshes',
+        'Seasonal deep cleans, carpet care and window polishing',
+        'Day-porters or extra crews for sales events and holiday queues',
+      ],
+    },
   ];
+
+  const checklistHighlights = checklistPreview.flatMap((group) => group.items);
 
   const benefits = [
     {
@@ -196,7 +232,7 @@ const RetailCleaning: React.FC = () => {
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Retail cleaning inclusions',
-      itemListElement: inclusions.map((item) => ({
+      itemListElement: checklistHighlights.map((item) => ({
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
@@ -408,24 +444,14 @@ const RetailCleaning: React.FC = () => {
         </div>
       </section>
 
-      <section className="section-shell section-shell--muted" id="inclusions">
-        <div className="container-max mx-auto">
-          <div className="section-heading">
-            <span className="section-heading__eyebrow">What’s included</span>
-            <h2 className="section-heading__title">Retail cleaning checklist</h2>
-            <p className="section-heading__description">
-              Every visit follows a documented scope so displays, fitting rooms and back rooms stay ready to trade.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            {inclusions.map((inclusion) => (
-              <div key={inclusion} className="service-item p-6">
-                <p className="font-medium text-charcoal">{inclusion}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ChecklistPreview
+        id="inclusions"
+        eyebrow="What’s included"
+        title="Retail cleaning preview"
+        description="Highlights from the tailored programs we deliver for boutiques, multi-site retailers and showrooms."
+        note="This preview shows popular inclusions. After our walkthrough we build a checklist around your trading hours, merchandising calendar and back-of-house workflow."
+        categories={checklistPreview}
+      />
 
       <section className="section-shell" id="faqs">
         <div className="container-max mx-auto">

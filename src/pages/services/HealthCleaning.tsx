@@ -21,17 +21,53 @@ import QuoteSection from '../../components/QuoteSection';
 import HeroHighlightBand from '../../components/HeroHighlightBand';
 import HowItWorks from '../../components/HowItWorks';
 import StickyCTABar from '../../components/StickyCTABar';
+import ChecklistPreview from '../../components/ChecklistPreview';
 
 const HealthCleaning: React.FC = () => {
-  const inclusions = [
-    'Treatment room turnover with TGA-approved disinfectants',
-    'Waiting room presentation including touchpoint sanitising',
-    'Zoned cleaning protocols separating clinical and admin areas',
-    'Surgical suite and procedure room deep cleans',
-    'Medical waste coordination and sharps bin checks',
-    'Sterilisation bay detailing and spill management',
-    'Air filtration and vent dusting for improved IAQ',
+  const checklistPreview = [
+    {
+      icon: Stethoscope,
+      title: 'Clinical room turnovers',
+      description: 'Protect patients and practitioners between appointments.',
+      items: [
+        'Treatment beds, chairs and touchpoints sanitised with TGA-approved products',
+        'Zoned protocols separating clinical and admin areas',
+        'Procedure and consult rooms reset with fresh consumables',
+      ],
+    },
+    {
+      icon: Users,
+      title: 'Waiting & reception presentation',
+      description: 'Front-of-house spaces that build patient confidence.',
+      items: [
+        'Waiting room seating, counters and check-in screens disinfected',
+        'Glass, doors and high-touch surfaces polished throughout the day',
+        'Air filtration vents dusted to support healthy airflow',
+      ],
+    },
+    {
+      icon: Syringe,
+      title: 'Sterilisation & waste control',
+      description: 'Support your compliance and infection control protocols.',
+      items: [
+        'Sterilisation bay detailing and spill management',
+        'Sharps bin checks and medical waste coordination',
+        'Documentation updates for SWMS, chemical registers and audits',
+      ],
+    },
+    {
+      icon: ShieldCheck,
+      title: 'Enhanced support & deep cleans',
+      description: 'Specialised programs for higher-risk spaces.',
+      items: [
+        'Surgical suite and procedure room deep cleans scheduled after lists',
+        'Rapid response sanitisation for outbreaks or incidents',
+        'Custom reporting aligned with accreditation frameworks',
+      ],
+    },
   ];
+
+  const checklistHighlights = checklistPreview.flatMap((group) => group.items);
 
   const benefits = [
     {
@@ -196,7 +232,7 @@ const HealthCleaning: React.FC = () => {
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Healthcare cleaning inclusions',
-      itemListElement: inclusions.map((item) => ({
+      itemListElement: checklistHighlights.map((item) => ({
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
@@ -408,24 +444,14 @@ const HealthCleaning: React.FC = () => {
         </div>
       </section>
 
-      <section className="section-shell section-shell--muted" id="inclusions">
-        <div className="container-max mx-auto">
-          <div className="section-heading">
-            <span className="section-heading__eyebrow">What’s included</span>
-            <h2 className="section-heading__title">Healthcare cleaning checklist</h2>
-            <p className="section-heading__description">
-              Every visit follows strict infection control procedures and documentation so nothing is missed.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            {inclusions.map((inclusion) => (
-              <div key={inclusion} className="service-item p-6">
-                <p className="font-medium text-charcoal">{inclusion}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ChecklistPreview
+        id="inclusions"
+        eyebrow="What’s included"
+        title="Healthcare cleaning preview"
+        description="A look at the priorities we cover in medical, allied health and specialist clinics."
+        note="This preview covers frequent priorities. After our site visit we document a checklist aligned with your infection control and accreditation requirements."
+        categories={checklistPreview}
+      />
 
       <section className="section-shell" id="faqs">
         <div className="container-max mx-auto">

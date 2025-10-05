@@ -20,17 +20,53 @@ import QuoteSection from '../../components/QuoteSection';
 import HeroHighlightBand from '../../components/HeroHighlightBand';
 import HowItWorks from '../../components/HowItWorks';
 import StickyCTABar from '../../components/StickyCTABar';
+import ChecklistPreview from '../../components/ChecklistPreview';
 
 const FitnessCleaning: React.FC = () => {
-  const inclusions = [
-    'Daily equipment sanitising with focus on high-contact surfaces',
-    'Locker room and shower disinfecting with odour control treatments',
-    'Reception, retail and lounge presentation including mirrors and glass',
-    'Group fitness studio resets with mat and prop sanitising',
-    'Air handling vents dusting and deodorising',
-    'Towel service coordination and consumable restocking',
-    'Steam cleaning schedules for rubber flooring and high-traffic mats',
+  const checklistPreview = [
+    {
+      icon: Dumbbell,
+      title: 'Member floor reset',
+      description: 'Keep cardio and strength areas spotless between peak sessions.',
+      items: [
+        'Daily equipment sanitising focused on high-contact surfaces',
+        'Console screens, handles and benches polished to a streak-free finish',
+        'Steam cleaning rotations for rubber flooring and high-traffic mats',
+      ],
+    },
+    {
+      icon: Timer,
+      title: 'Studios & class changeovers',
+      description: 'Fast turnovers so every class walks into a fresh space.',
+      items: [
+        'Group fitness studios reset with mats and props sanitised',
+        'Pilates, yoga and reformer equipment disinfected between sessions',
+        'Air handling vents dusted and deodorised to keep airflow fresh',
+      ],
+    },
+    {
+      icon: Droplets,
+      title: 'Changerooms & amenities',
+      description: 'Moisture-prone zones that demand extra attention.',
+      items: [
+        'Locker rooms and showers disinfected with odour control treatments',
+        'Towel service coordination and consumable restocking',
+        'Mould prevention and moisture management for high-use areas',
+      ],
+    },
+    {
+      icon: Users,
+      title: 'Front-of-house experience',
+      description: 'Keep first impressions aligned with your brand.',
+      items: [
+        'Reception, retail and lounge presentation with glass and mirrors detailed',
+        'Daily waste removal and merchandising touch-ups',
+        'Compliance-ready documentation and chemical registers maintained',
+      ],
+    },
   ];
+
+  const checklistHighlights = checklistPreview.flatMap((group) => group.items);
 
   const benefits = [
     {
@@ -195,7 +231,7 @@ const FitnessCleaning: React.FC = () => {
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Fitness cleaning inclusions',
-      itemListElement: inclusions.map((item) => ({
+      itemListElement: checklistHighlights.map((item) => ({
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
@@ -407,24 +443,14 @@ const FitnessCleaning: React.FC = () => {
         </div>
       </section>
 
-      <section className="section-shell section-shell--muted" id="inclusions">
-        <div className="container-max mx-auto">
-          <div className="section-heading">
-            <span className="section-heading__eyebrow">What’s included</span>
-            <h2 className="section-heading__title">Fitness cleaning checklist</h2>
-            <p className="section-heading__description">
-              Every visit follows a documented scope so equipment, changerooms and studios stay immaculate.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            {inclusions.map((inclusion) => (
-              <div key={inclusion} className="service-item p-6">
-                <p className="font-medium text-charcoal">{inclusion}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ChecklistPreview
+        id="inclusions"
+        eyebrow="What’s included"
+        title="Fitness centre cleaning preview"
+        description="The essentials we cover to keep members happy, equipment protected and audits satisfied."
+        note="This preview showcases common requests. After our walkthrough we tailor the checklist to your timetable, zones and franchise requirements."
+        categories={checklistPreview}
+      />
 
       <section className="section-shell" id="faqs">
         <div className="container-max mx-auto">

@@ -21,17 +21,53 @@ import QuoteSection from '../../components/QuoteSection';
 import HeroHighlightBand from '../../components/HeroHighlightBand';
 import HowItWorks from '../../components/HowItWorks';
 import StickyCTABar from '../../components/StickyCTABar';
+import ChecklistPreview from '../../components/ChecklistPreview';
 
 const EducationCleaning: React.FC = () => {
-  const inclusions = [
-    'Daily classroom cleaning with desk, chair and technology sanitising',
-    'Library, science lab and specialist room detailing',
-    'Playground, tuckshop and canteen presentation',
-    'Toilet block deep cleaning with consumable management',
-    'Holiday deep cleans and floor maintenance programs',
-    'Disinfection protocols for outbreaks and high-risk seasons',
-    'Eco-friendly product options to suit school policies',
+  const checklistPreview = [
+    {
+      icon: BookOpen,
+      title: 'Classrooms & learning labs',
+      description: 'Daily resets that keep each space ready for the first bell.',
+      items: [
+        'Desk, chair and device sanitising before students arrive',
+        'Whiteboard, AV and shared equipment wipe-downs',
+        'Library, science and specialist room detailing',
+      ],
+    },
+    {
+      icon: Users,
+      title: 'Student amenities & staff areas',
+      description: 'Support spaces that feel fresh for teachers and students.',
+      items: [
+        'Toilet block deep cleans with consumable top-ups',
+        'Staff rooms and admin offices reset before the day',
+        'Sick bays and high-touch surfaces disinfected',
+      ],
+    },
+    {
+      icon: Trees,
+      title: 'Grounds & community spaces',
+      description: 'Shared zones parents and visitors notice first.',
+      items: [
+        'Playground, tuckshop and canteen presentation sweeps',
+        'Assembly halls, gyms and performing arts venues prepared for events',
+        'Outdoor eating areas maintained with litter removal',
+      ],
+    },
+    {
+      icon: Sparkles,
+      title: 'Program extras',
+      description: 'Seasonal and responsive support aligned to your calendar.',
+      items: [
+        'Holiday deep cleans and floor maintenance programs',
+        'Rapid outbreak response disinfecting',
+        'Eco-friendly product options aligned with school policies',
+      ],
+    },
   ];
+
+  const checklistHighlights = checklistPreview.flatMap((group) => group.items);
 
   const benefits = [
     {
@@ -196,7 +232,7 @@ const EducationCleaning: React.FC = () => {
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Education cleaning inclusions',
-      itemListElement: inclusions.map((item) => ({
+      itemListElement: checklistHighlights.map((item) => ({
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
@@ -408,24 +444,14 @@ const EducationCleaning: React.FC = () => {
         </div>
       </section>
 
-      <section className="section-shell section-shell--muted" id="inclusions">
-        <div className="container-max mx-auto">
-          <div className="section-heading">
-            <span className="section-heading__eyebrow">What’s included</span>
-            <h2 className="section-heading__title">Education cleaning checklist</h2>
-            <p className="section-heading__description">
-              Every visit follows a documented scope so classrooms, grounds and amenities stay spotless without reminders.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            {inclusions.map((inclusion) => (
-              <div key={inclusion} className="service-item p-6">
-                <p className="font-medium text-charcoal">{inclusion}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ChecklistPreview
+        id="inclusions"
+        eyebrow="What’s included"
+        title="Education cleaning preview"
+        description="Here’s how a typical program keeps your campus ready day after day."
+        note="This is a preview of common inclusions. After our walkthrough we tailor every checklist around your timetable, buildings and compliance needs."
+        categories={checklistPreview}
+      />
 
       <section className="section-shell" id="faqs">
         <div className="container-max mx-auto">

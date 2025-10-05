@@ -21,17 +21,53 @@ import QuoteSection from '../../components/QuoteSection';
 import HeroHighlightBand from '../../components/HeroHighlightBand';
 import HowItWorks from '../../components/HowItWorks';
 import StickyCTABar from '../../components/StickyCTABar';
+import ChecklistPreview from '../../components/ChecklistPreview';
 
 const HospitalityCleaning: React.FC = () => {
-  const inclusions = [
-    'Front-of-house detailing for lobbies, dining rooms and guest areas',
-    'Kitchen and back-of-house deep cleans meeting HACCP standards',
-    'Event turnover support with rapid reset crews',
-    'Function room setup, chair/table polishing and glassware detailing',
-    'Restroom hygiene with consumable management and odour control',
-    'High-dusting, window cleaning and floor maintenance schedules',
-    'After-hours and overnight cleans to protect guest experiences',
+  const checklistPreview = [
+    {
+      icon: Bell,
+      title: 'Guest arrival & public spaces',
+      description: 'First impressions across lobbies, corridors and amenities.',
+      items: [
+        'Lobby, reception and concierge areas detailed nightly',
+        'Guest corridors, lifts and entry glass polished',
+        'Restrooms sanitised with consumables managed and odour control in place',
+      ],
+    },
+    {
+      icon: Wine,
+      title: 'Dining & bar presentation',
+      description: 'Front-of-house experiences that keep reviews glowing.',
+      items: [
+        'Dining rooms, bars and lounges reset between seatings',
+        'Tabletop, glassware and décor polishing for premium finishes',
+        'Daytime touchpoints refreshed to support service teams',
+      ],
+    },
+    {
+      icon: Utensils,
+      title: 'Kitchens & back-of-house',
+      description: 'HACCP-aligned support for culinary teams.',
+      items: [
+        'Degreasing of cooklines, equipment and splashbacks',
+        'Floor scrubbing, drain maintenance and waste coordination',
+        'Compliance documentation for council and HACCP audits',
+      ],
+    },
+    {
+      icon: Clock,
+      title: 'Events & overnight programs',
+      description: 'Flexible crews for high-volume operations.',
+      items: [
+        'Rapid event turnovers with chair, table and AV resets',
+        'Overnight deep cleans to protect guest sleep and breakfast service',
+        'High-dusting, windows and specialty floor care scheduled off-peak',
+      ],
+    },
   ];
+
+  const checklistHighlights = checklistPreview.flatMap((group) => group.items);
 
   const benefits = [
     {
@@ -196,7 +232,7 @@ const HospitalityCleaning: React.FC = () => {
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Hospitality cleaning inclusions',
-      itemListElement: inclusions.map((item) => ({
+      itemListElement: checklistHighlights.map((item) => ({
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
@@ -408,24 +444,14 @@ const HospitalityCleaning: React.FC = () => {
         </div>
       </section>
 
-      <section className="section-shell section-shell--muted" id="inclusions">
-        <div className="container-max mx-auto">
-          <div className="section-heading">
-            <span className="section-heading__eyebrow">What’s included</span>
-            <h2 className="section-heading__title">Hospitality cleaning checklist</h2>
-            <p className="section-heading__description">
-              Every visit follows a documented scope so front-of-house sparkle and kitchen hygiene never slip.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            {inclusions.map((inclusion) => (
-              <div key={inclusion} className="service-item p-6">
-                <p className="font-medium text-charcoal">{inclusion}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ChecklistPreview
+        id="inclusions"
+        eyebrow="What’s included"
+        title="Hospitality cleaning preview"
+        description="Core routines we tailor for hotels, restaurants, clubs and event venues."
+        note="Consider this a preview of what we deliver. After a walkthrough we customise every checklist around your service windows, brand standards and compliance obligations."
+        categories={checklistPreview}
+      />
 
       <section className="section-shell" id="faqs">
         <div className="container-max mx-auto">
