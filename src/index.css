@@ -23,9 +23,5 @@
 }
 
 .feature-ticker__track {
-  animation: featureTickerScroll 24s linear infinite;
-}
-
-.feature-ticker:hover .feature-ticker__track {
-  animation-play-state: paused;
+  animation: featureTickerScroll 26s linear infinite;
 }

@@ -338,18 +338,7 @@ const RetailCleaning: React.FC = () => {
         </div>
       </section>
 
-      <section className="section-shell" id="plan">
-        <div className="container-max mx-auto space-y-6">
-          <div className="section-heading" data-align="center">
-            <span className="section-heading__eyebrow">Retail rhythms on display</span>
-            <h2 className="section-heading__title">The routines that keep stores launch ready</h2>
-            <p className="section-heading__description">
-              Explore a continuously rotating feature bar highlighting the touchpoints that protect your brand experience from dock to display.
-            </p>
-          </div>
-          <FeatureTicker items={featureTickerItems} />
-        </div>
-      </section>
+      <FeatureTicker items={featureTickerItems} />
 
       <HowItWorks
         eyebrow="How onboarding works"

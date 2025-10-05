@@ -337,18 +337,7 @@ const FitnessCleaning: React.FC = () => {
         </div>
       </section>
 
-      <section className="section-shell" id="plan">
-        <div className="container-max mx-auto space-y-6">
-          <div className="section-heading" data-align="center">
-            <span className="section-heading__eyebrow">Fitness program pulse</span>
-            <h2 className="section-heading__title">What keeps your club fresh around the clock</h2>
-            <p className="section-heading__description">
-              Track a rotating feature bar that calls out the routines maintaining spotless equipment, studios and amenities.
-            </p>
-          </div>
-          <FeatureTicker items={featureTickerItems} />
-        </div>
-      </section>
+      <FeatureTicker items={featureTickerItems} />
 
       <HowItWorks
         eyebrow="How onboarding works"

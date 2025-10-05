@@ -293,7 +293,7 @@ const HospitalityCleaning: React.FC = () => {
       />
 
       <PageHero
-        backgroundImage="/images/hospitality-cleaning-background.jpg"
+        backgroundImage="/images/hotel-cleaning-background.jpg"
         backgroundPosition="center"
         overlay="charcoal"
         align="center"
@@ -338,18 +338,7 @@ const HospitalityCleaning: React.FC = () => {
         </div>
       </section>
 
-      <section className="section-shell" id="plan">
-        <div className="container-max mx-auto space-y-6">
-          <div className="section-heading" data-align="center">
-            <span className="section-heading__eyebrow">Hospitality heartbeat</span>
-            <h2 className="section-heading__title">How we keep venues guest-ready</h2>
-            <p className="section-heading__description">
-              Glide through a rotating feature bar that spotlights the routines protecting guest experiences and kitchen compliance.
-            </p>
-          </div>
-          <FeatureTicker items={featureTickerItems} />
-        </div>
-      </section>
+      <FeatureTicker items={featureTickerItems} />
 
       <HowItWorks
         eyebrow="How onboarding works"

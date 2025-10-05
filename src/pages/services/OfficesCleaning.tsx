@@ -339,19 +339,7 @@ const OfficesCleaning: React.FC = () => {
         </div>
       </section>
 
-      <section className="section-shell" id="plan">
-        <div className="container-max mx-auto space-y-6">
-          <div className="section-heading" data-align="center">
-            <span className="section-heading__eyebrow">Always-on presentation</span>
-            <h2 className="section-heading__title">The office program leaders notice</h2>
-            <p className="section-heading__description">
-              A lightweight feature bar showcasing the routines that keep suites, meeting rooms and breakout zones inspection ready
-              every day.
-            </p>
-          </div>
-          <FeatureTicker items={featureTickerItems} />
-        </div>
-      </section>
+      <FeatureTicker items={featureTickerItems} />
 
       <HowItWorks
         eyebrow="How we onboard"

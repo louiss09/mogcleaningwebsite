@@ -293,7 +293,7 @@ const EducationCleaning: React.FC = () => {
       />
 
       <PageHero
-        backgroundImage="/images/school-cleaning-background.jpg"
+        backgroundImage="/images/classroom-cleaning-background.jpg"
         backgroundPosition="center"
         overlay="charcoal"
         align="center"
@@ -338,18 +338,7 @@ const EducationCleaning: React.FC = () => {
         </div>
       </section>
 
-      <section className="section-shell" id="plan">
-        <div className="container-max mx-auto space-y-6">
-          <div className="section-heading" data-align="center">
-            <span className="section-heading__eyebrow">Campus care in motion</span>
-            <h2 className="section-heading__title">See the routines keeping every wing ready</h2>
-            <p className="section-heading__description">
-              Watch a rotating highlight reel of the checkpoints that protect students, staff and community spaces every day.
-            </p>
-          </div>
-          <FeatureTicker items={featureTickerItems} />
-        </div>
-      </section>
+      <FeatureTicker items={featureTickerItems} />
 
       <HowItWorks
         eyebrow="How onboarding works"

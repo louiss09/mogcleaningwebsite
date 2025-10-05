@@ -293,7 +293,7 @@ const HealthCleaning: React.FC = () => {
       />
 
       <PageHero
-        backgroundImage="/images/healthcare-cleaning-background.jpg"
+        backgroundImage="/images/medical-cleaning-background.jpg"
         backgroundPosition="center"
         overlay="charcoal"
         align="center"
@@ -338,18 +338,7 @@ const HealthCleaning: React.FC = () => {
         </div>
       </section>
 
-      <section className="section-shell" id="plan">
-        <div className="container-max mx-auto space-y-6">
-          <div className="section-heading" data-align="center">
-            <span className="section-heading__eyebrow">Clinical confidence loop</span>
-            <h2 className="section-heading__title">See how we keep your facility audit ready</h2>
-            <p className="section-heading__description">
-              A continuous feature bar surfaces the safeguards that protect patients, staff and compliance every day.
-            </p>
-          </div>
-          <FeatureTicker items={featureTickerItems} />
-        </div>
-      </section>
+      <FeatureTicker items={featureTickerItems} />
 
       <HowItWorks
         eyebrow="How onboarding works"
