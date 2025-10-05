@@ -170,33 +170,33 @@ const Services: React.FC = () => {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             {services.map((service) => (
               <Link key={service.name} to={service.path} className="service-card group">
-                <div className="relative overflow-hidden rounded-3xl">
+                <div className="service-card__visual">
                   <img
                     src={service.image}
                     alt={`${service.name} cleaning in Brisbane`}
-                    className="h-48 w-full object-cover transition duration-500 group-hover:scale-105"
+                    className="service-card__image"
                     loading="lazy"
                     decoding="async"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#051423]/80 via-[#051423]/20 to-transparent" aria-hidden="true" />
-                  <div className="absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-full bg-white/85 px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-charcoal/70 shadow">
-                    <service.icon className="h-4 w-4" />
+                  <span className="service-card__badge">
+                    <service.icon className="h-4 w-4" aria-hidden="true" />
                     {service.name}
-                  </div>
+                  </span>
                 </div>
-                <p className="text-lg text-jet leading-relaxed">{service.description}</p>
-                <ul className="space-y-2 text-jet/70 text-sm">
-                  {service.highlights.map((highlight) => (
-                    <li key={highlight} className="flex items-start gap-2">
-                      <span className="mt-2 h-1.5 w-1.5 rounded-full bg-celestial-blue-1"></span>
-                      <span>{highlight}</span>
-                    </li>
-                  ))}
-                </ul>
-                <span className="link-arrow">
-                  View program
-                  <ArrowRight className="h-4 w-4" />
-                </span>
+                <div className="service-card__body">
+                  <span className="service-card__eyebrow">Program overview</span>
+                  <h3 className="service-card__title">{service.name}</h3>
+                  <p className="service-card__description">{service.description}</p>
+                  <ul className="service-card__list">
+                    {service.highlights.map((highlight) => (
+                      <li key={highlight}>{highlight}</li>
+                    ))}
+                  </ul>
+                  <span className="service-card__cta">
+                    Explore program
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </span>
+                </div>
               </Link>
             ))}
           </div>
