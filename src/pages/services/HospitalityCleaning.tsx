@@ -20,8 +20,8 @@ import PageHero from '../../components/PageHero';
 import QuoteSection from '../../components/QuoteSection';
 import HeroHighlightBand from '../../components/HeroHighlightBand';
 import HowItWorks from '../../components/HowItWorks';
-import StickyCTABar from '../../components/StickyCTABar';
 import ChecklistPreview from '../../components/ChecklistPreview';
+import FeatureTicker from '../../components/FeatureTicker';
 
 const HospitalityCleaning: React.FC = () => {
   const checklistPreview = [
@@ -173,18 +173,31 @@ const HospitalityCleaning: React.FC = () => {
     },
   ];
 
-  const serviceWindows = [
+  const featureTickerItems = [
     {
-      name: 'After last seating',
-      detail: 'Dining rooms, bars and restrooms detailed between dinner close and breakfast prep.',
+      icon: CheckCircle,
+      title: 'Compliance-ready onboarding',
+      description: 'Capture HACCP documentation, service windows and venue standards within week one.',
     },
     {
-      name: 'Split-shift resets',
-      detail: 'Lunchtime touchpoints refreshed before evening service resumes.',
+      icon: Users,
+      title: 'Duty manager coordination',
+      description: 'Supervisors liaise pre- and post-service to align with front and back-of-house priorities.',
     },
     {
-      name: 'Event turnovers',
-      detail: 'Rapid crews flip ballrooms, conference rooms and marquees between bookings.',
+      icon: Clock,
+      title: 'Around-the-clock rosters',
+      description: 'Late closes, breakfast resets and event flips covered without disrupting guests.',
+    },
+    {
+      icon: Utensils,
+      title: 'Kitchen degreasing specialists',
+      description: 'Cooklines, floors and splashbacks detailed to keep inspections stress-free.',
+    },
+    {
+      icon: Sparkles,
+      title: 'Guest-first finishes',
+      description: 'Lobbies, dining rooms and amenities polished to five-star presentation.',
     },
   ];
 
@@ -268,7 +281,7 @@ const HospitalityCleaning: React.FC = () => {
   };
 
   return (
-    <div className="pb-32">
+    <div>
       <SEO
         title={pageTitle}
         description={pageDescription}
@@ -280,7 +293,7 @@ const HospitalityCleaning: React.FC = () => {
       />
 
       <PageHero
-        backgroundImage="/images/hospitality-cleaning-background.jpg"
+        backgroundImage="/images/hotel-cleaning-background.jpg"
         backgroundPosition="center"
         overlay="charcoal"
         align="center"
@@ -325,49 +338,7 @@ const HospitalityCleaning: React.FC = () => {
         </div>
       </section>
 
-      <section className="section-shell" id="plan">
-        <div className="container-max mx-auto grid gap-12 lg:grid-cols-[1.15fr_1fr] lg:items-center">
-          <div className="space-y-6">
-            <div className="section-heading" data-align="left">
-              <span className="section-heading__eyebrow">Your plan</span>
-              <h2 className="section-heading__title">30 days to reviews that rave about cleanliness</h2>
-              <p className="section-heading__description">
-                We map your service windows, document HACCP requirements and onboard hospitality-trained teams. Nightly reporting keeps managers informed without chasing updates.
-              </p>
-            </div>
-            <ul className="space-y-4 text-jet/80">
-              <li className="flex items-start gap-3">
-                <CheckCircle className="mt-1 h-5 w-5 text-celestial-blue-1" />
-                <span>Kick-off walkthrough capturing front and back-of-house priorities plus compliance needs.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <Users className="mt-1 h-5 w-5 text-celestial-blue-1" />
-                <span>Dedicated supervisors coordinate with your duty managers before and after every shift.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <Clock className="mt-1 h-5 w-5 text-celestial-blue-1" />
-                <span>Flexible rosters covering late closes, breakfast turnover and rapid event resets.</span>
-              </li>
-            </ul>
-            <div className="flex flex-wrap gap-4">
-              <Link to="/contact" className="btn-primary">
-                Schedule my venue tour
-              </Link>
-              <a href="tel:+61411820650" className="btn-secondary">
-                Speak with hospitality support
-              </a>
-            </div>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-3">
-            {serviceWindows.map((window) => (
-              <div key={window.name} className="rounded-[32px] border border-white/40 bg-white p-6 text-center shadow-sm">
-                <h3 className="text-lg font-semibold text-charcoal">{window.name}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-jet/80">{window.detail}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <FeatureTicker items={featureTickerItems} />
 
       <HowItWorks
         eyebrow="How onboarding works"
@@ -511,14 +482,6 @@ const HospitalityCleaning: React.FC = () => {
         </div>
       </section>
 
-      <StickyCTABar
-        title="Lock in five-star cleanliness"
-        description="Schedule a walkthrough today and secure your tailored hospitality program."
-        primaryLabel="Book my walkthrough"
-        primaryHref="/contact"
-        secondaryLabel="Call 0411 820 650"
-        secondaryHref="tel:+61411820650"
-      />
     </div>
   );
 };

@@ -20,8 +20,8 @@ import PageHero from '../../components/PageHero';
 import QuoteSection from '../../components/QuoteSection';
 import HeroHighlightBand from '../../components/HeroHighlightBand';
 import HowItWorks from '../../components/HowItWorks';
-import StickyCTABar from '../../components/StickyCTABar';
 import ChecklistPreview from '../../components/ChecklistPreview';
+import FeatureTicker from '../../components/FeatureTicker';
 
 const RetailCleaning: React.FC = () => {
   const checklistPreview = [
@@ -173,18 +173,31 @@ const RetailCleaning: React.FC = () => {
     },
   ];
 
-  const seasonalMoments = [
+  const featureTickerItems = [
     {
-      label: 'New collection launch',
-      detail: 'Overnight crews refresh windows, fixtures and fitting rooms before unveiling new ranges.',
+      icon: CheckCircle,
+      title: 'Visual merchandising walkthrough',
+      description: 'Capture fixtures, finishes and launch schedules with VM and store leads.',
     },
     {
-      label: 'Mid-season sale',
-      detail: 'Additional touchpoints for signage, promo tables and high-traffic change rooms.',
+      icon: Users,
+      title: 'Zone-specific crews',
+      description: 'Dedicated teams for sales floors, fitting rooms and back-of-house areas.',
     },
     {
-      label: 'Holiday trading',
-      detail: 'Extended-hour rosters and day-porters keeping queues and surfaces immaculate.',
+      icon: Clock,
+      title: 'After-hours & day porters',
+      description: 'Support launches, sales events and extended trading without disruption.',
+    },
+    {
+      icon: Package,
+      title: 'Logistics-ready support',
+      description: 'Stockrooms, docks and click-and-collect areas stay organised and hygienic.',
+    },
+    {
+      icon: Sparkles,
+      title: 'Launch-ready finishes',
+      description: 'Streak-free windows, polished floors and refreshed change rooms daily.',
     },
   ];
 
@@ -268,7 +281,7 @@ const RetailCleaning: React.FC = () => {
   };
 
   return (
-    <div className="pb-32">
+    <div>
       <SEO
         title={pageTitle}
         description={pageDescription}
@@ -325,49 +338,7 @@ const RetailCleaning: React.FC = () => {
         </div>
       </section>
 
-      <section className="section-shell" id="plan">
-        <div className="container-max mx-auto grid gap-12 lg:grid-cols-[1.15fr_1fr] lg:items-center">
-          <div className="space-y-6">
-            <div className="section-heading" data-align="left">
-              <span className="section-heading__eyebrow">Your plan</span>
-              <h2 className="section-heading__title">30 days to stores that always look launch ready</h2>
-              <p className="section-heading__description">
-                We document every zone, align with centre management and onboard retail-trained crews. Daily reporting keeps head office and store teams confident.
-              </p>
-            </div>
-            <ul className="space-y-4 text-jet/80">
-              <li className="flex items-start gap-3">
-                <CheckCircle className="mt-1 h-5 w-5 text-celestial-blue-1" />
-                <span>Kick-off walkthrough with VM teams to capture fixtures, finishes and brand standards.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <Users className="mt-1 h-5 w-5 text-celestial-blue-1" />
-                <span>Dedicated crews for trading floors, change rooms and back-of-house so nothing is overlooked.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <Clock className="mt-1 h-5 w-5 text-celestial-blue-1" />
-                <span>After-hours rosters and day porters to support launches, sale periods and late trade.</span>
-              </li>
-            </ul>
-            <div className="flex flex-wrap gap-4">
-              <Link to="/contact" className="btn-primary">
-                Schedule my store audit
-              </Link>
-              <a href="tel:+61411820650" className="btn-secondary">
-                Speak with retail support
-              </a>
-            </div>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-3">
-            {seasonalMoments.map((moment) => (
-              <div key={moment.label} className="rounded-[32px] border border-white/40 bg-white p-6 text-center shadow-sm">
-                <h3 className="text-lg font-semibold text-charcoal">{moment.label}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-jet/80">{moment.detail}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <FeatureTicker items={featureTickerItems} />
 
       <HowItWorks
         eyebrow="How onboarding works"
@@ -511,14 +482,6 @@ const RetailCleaning: React.FC = () => {
         </div>
       </section>
 
-      <StickyCTABar
-        title="Keep every store photo-ready"
-        description="Book a walkthrough to secure your tailored retail cleaning program."
-        primaryLabel="Book my walkthrough"
-        primaryHref="/contact"
-        secondaryLabel="Call 0411 820 650"
-        secondaryHref="tel:+61411820650"
-      />
     </div>
   );
 };

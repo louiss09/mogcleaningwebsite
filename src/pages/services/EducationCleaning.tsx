@@ -20,8 +20,8 @@ import PageHero from '../../components/PageHero';
 import QuoteSection from '../../components/QuoteSection';
 import HeroHighlightBand from '../../components/HeroHighlightBand';
 import HowItWorks from '../../components/HowItWorks';
-import StickyCTABar from '../../components/StickyCTABar';
 import ChecklistPreview from '../../components/ChecklistPreview';
+import FeatureTicker from '../../components/FeatureTicker';
 
 const EducationCleaning: React.FC = () => {
   const checklistPreview = [
@@ -173,18 +173,31 @@ const EducationCleaning: React.FC = () => {
     },
   ];
 
-  const scheduleHighlights = [
+  const featureTickerItems = [
     {
-      label: '5:00am – 7:30am',
-      description: 'Before-school reset covering classrooms, admin areas and drop-off zones.',
+      icon: CheckCircle,
+      title: 'Week-one onboarding',
+      description: 'Campus walkthrough, safety induction and scope finalised in the first week.',
     },
     {
-      label: '10:30am – 2:00pm',
-      description: 'Daytime touch-ups for bathrooms, lunchrooms and high-traffic corridors.',
+      icon: Users,
+      title: 'Precinct crew leads',
+      description: 'Dedicated supervisors for classrooms, amenities and outdoor hubs.',
     },
     {
-      label: 'School holidays',
-      description: 'Deep cleans, floor scrubs and window detailing while students are away.',
+      icon: Clock,
+      title: 'Term & event rhythms',
+      description: 'Schedules built around bell times, excursions and community events.',
+    },
+    {
+      icon: Brush,
+      title: 'Holiday deep cleans',
+      description: 'Floor care, high dusting and window detailing while students are away.',
+    },
+    {
+      icon: Sparkles,
+      title: 'Rapid outbreak response',
+      description: 'Disinfection crews on standby for urgent hygiene support.',
     },
   ];
 
@@ -268,7 +281,7 @@ const EducationCleaning: React.FC = () => {
   };
 
   return (
-    <div className="pb-32">
+    <div>
       <SEO
         title={pageTitle}
         description={pageDescription}
@@ -280,7 +293,7 @@ const EducationCleaning: React.FC = () => {
       />
 
       <PageHero
-        backgroundImage="/images/school-cleaning-background.jpg"
+        backgroundImage="/images/classroom-cleaning-background.jpg"
         backgroundPosition="center"
         overlay="charcoal"
         align="center"
@@ -325,49 +338,7 @@ const EducationCleaning: React.FC = () => {
         </div>
       </section>
 
-      <section className="section-shell" id="plan">
-        <div className="container-max mx-auto grid gap-12 lg:grid-cols-[1.15fr_1fr] lg:items-center">
-          <div className="space-y-6">
-            <div className="section-heading" data-align="left">
-              <span className="section-heading__eyebrow">Your plan</span>
-              <h2 className="section-heading__title">A term-by-term rhythm parents can see</h2>
-              <p className="section-heading__description">
-                We align rosters with bell times, after-hours events and holiday breaks. Within the first month you receive a campus-wide checklist and proactive communication channel.
-              </p>
-            </div>
-            <ul className="space-y-4 text-jet/80">
-              <li className="flex items-start gap-3">
-                <CheckCircle className="mt-1 h-5 w-5 text-celestial-blue-1" />
-                <span>On-site walkthrough, safety induction and scope build completed in week one.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <Users className="mt-1 h-5 w-5 text-celestial-blue-1" />
-                <span>Dedicated crew leaders for each precinct so classrooms, amenities and grounds stay aligned.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <Clock className="mt-1 h-5 w-5 text-celestial-blue-1" />
-                <span>Holiday deep-clean programs and rapid outbreak response without disrupting learning.</span>
-              </li>
-            </ul>
-            <div className="flex flex-wrap gap-4">
-              <Link to="/contact" className="btn-primary">
-                Plan my walkthrough
-              </Link>
-              <a href="tel:+61411820650" className="btn-secondary">
-                Talk to an education lead
-              </a>
-            </div>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-3">
-            {scheduleHighlights.map((highlight) => (
-              <div key={highlight.label} className="rounded-[32px] border border-white/40 bg-white p-6 text-center shadow-sm">
-                <h3 className="text-lg font-semibold text-charcoal">{highlight.label}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-jet/80">{highlight.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <FeatureTicker items={featureTickerItems} />
 
       <HowItWorks
         eyebrow="How onboarding works"
@@ -511,14 +482,6 @@ const EducationCleaning: React.FC = () => {
         </div>
       </section>
 
-      <StickyCTABar
-        title="Give your campus a fresh start"
-        description="Book a walkthrough to lock in a tailored education cleaning program."
-        primaryLabel="Book my walkthrough"
-        primaryHref="/contact"
-        secondaryLabel="Call 0411 820 650"
-        secondaryHref="tel:+61411820650"
-      />
     </div>
   );
 };
