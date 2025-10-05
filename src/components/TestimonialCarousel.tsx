@@ -112,7 +112,7 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
 
   return (
     <div
-      className={`relative overflow-hidden rounded-[32px] border border-white/60 bg-gradient-to-br from-white via-white to-celestial-blue-1/12 p-8 sm:p-12 shadow-2xl backdrop-blur-sm ${className}`}
+      className={`relative overflow-hidden rounded-[32px] border border-white/60 bg-gradient-to-br from-white via-white to-celestial-blue-1/12 p-6 sm:p-12 shadow-2xl backdrop-blur-sm ${className}`}
     >
       <div className="absolute -top-24 -right-16 h-64 w-64 rounded-full bg-celestial-blue-1/15 blur-3xl" aria-hidden="true"></div>
       <div className="absolute -bottom-28 -left-20 h-72 w-72 rounded-full bg-fresh-green/12 blur-3xl" aria-hidden="true"></div>
@@ -166,7 +166,7 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
             <button
               type="button"
               onClick={goPrev}
-              className="hidden sm:flex items-center justify-center absolute left-6 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-white/90 shadow-lg border border-ash-gray/40 text-charcoal hover:bg-celestial-blue-1 hover:text-white transition-colors"
+              className="hidden sm:flex items-center justify-center absolute left-6 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-white/90 shadow-lg border border-ash-gray/40 text-charcoal transition-colors hover:bg-celestial-blue-1 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-celestial-blue-1/80 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
               aria-label="Previous testimonial"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -174,11 +174,30 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
             <button
               type="button"
               onClick={goNext}
-              className="hidden sm:flex items-center justify-center absolute right-6 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-white/90 shadow-lg border border-ash-gray/40 text-charcoal hover:bg-celestial-blue-1 hover:text-white transition-colors"
+              className="hidden sm:flex items-center justify-center absolute right-6 top-1/2 -translate-y-1/2 h-12 w-12 rounded-full bg-white/90 shadow-lg border border-ash-gray/40 text-charcoal transition-colors hover:bg-celestial-blue-1 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-celestial-blue-1/80 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
               aria-label="Next testimonial"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
+
+            <div className="mt-6 flex items-center justify-center gap-4 sm:hidden">
+              <button
+                type="button"
+                onClick={goPrev}
+                className="flex h-12 w-12 items-center justify-center rounded-full border border-ash-gray/50 bg-white/95 text-charcoal shadow-md transition-colors hover:bg-celestial-blue-1 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-celestial-blue-1/80 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                aria-label="Previous testimonial"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                type="button"
+                onClick={goNext}
+                className="flex h-12 w-12 items-center justify-center rounded-full border border-ash-gray/50 bg-white/95 text-charcoal shadow-md transition-colors hover:bg-celestial-blue-1 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-celestial-blue-1/80 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                aria-label="Next testimonial"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
 
             <div className="mt-10 flex justify-center gap-3">
               {slides.map((testimonial, index) => (
