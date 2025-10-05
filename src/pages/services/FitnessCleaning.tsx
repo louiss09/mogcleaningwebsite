@@ -19,7 +19,6 @@ import PageHero from '../../components/PageHero';
 import QuoteSection from '../../components/QuoteSection';
 import HeroHighlightBand from '../../components/HeroHighlightBand';
 import HowItWorks from '../../components/HowItWorks';
-import StickyCTABar from '../../components/StickyCTABar';
 import ChecklistPreview from '../../components/ChecklistPreview';
 
 const FitnessCleaning: React.FC = () => {
@@ -172,21 +171,6 @@ const FitnessCleaning: React.FC = () => {
     },
   ];
 
-  const memberJourney = [
-    {
-      title: 'Pre-dawn reset',
-      description: 'Equipment sanitised, cardio screens polished and bins cleared before the first 5am class.',
-    },
-    {
-      title: 'Midday refresh',
-      description: 'Changerooms deodorised, towels replenished and mirrors detailed between peak waves.',
-    },
-    {
-      title: 'Evening turnover',
-      description: 'Studios reset, sweat marks removed and mats sanitised ready for the late-night crew.',
-    },
-  ];
-
   const studioPrograms = [
     {
       name: 'Strength & cardio floors',
@@ -267,7 +251,7 @@ const FitnessCleaning: React.FC = () => {
   };
 
   return (
-    <div className="pb-32">
+    <div>
       <SEO
         title={pageTitle}
         description={pageDescription}
@@ -286,7 +270,9 @@ const FitnessCleaning: React.FC = () => {
         eyebrow="Fitness cleaning"
         eyebrowIcon={Dumbbell}
         title="Keep members motivated with spotless, sweat-free spaces."
+        mobileTitle="Spotless, sweat-free gym spaces."
         description="Specialist gym cleaners who protect your brand reputation, support compliance and keep every touchpoint fresh."
+        mobileDescription="Specialist crews protect your brand, compliance and every touchpoint."
         actions={
           <>
             <Link to="/contact" className="btn-primary">
@@ -318,50 +304,6 @@ const FitnessCleaning: React.FC = () => {
                 </div>
                 <h3 className="text-xl font-semibold text-charcoal">{item.title}</h3>
                 <p className="text-jet/80 leading-relaxed">{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section-shell" id="plan">
-        <div className="container-max mx-auto grid gap-12 lg:grid-cols-[1.15fr_1fr] lg:items-center">
-          <div className="space-y-6">
-            <div className="section-heading" data-align="left">
-              <span className="section-heading__eyebrow">Your plan</span>
-              <h2 className="section-heading__title">30 days to a gym that smells as good as it looks</h2>
-              <p className="section-heading__description">
-                We complete a hygiene audit, map your timetable and deploy gym-trained cleaners who know how to care for your equipment. Daily updates keep you in the loop.
-              </p>
-            </div>
-            <ul className="space-y-4 text-jet/80">
-              <li className="flex items-start gap-3">
-                <CheckCircle className="mt-1 h-5 w-5 text-celestial-blue-1" />
-                <span>Kick-off audit and chemical selection tailored to your franchise or brand standards.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <Users className="mt-1 h-5 w-5 text-celestial-blue-1" />
-                <span>Dedicated crews assigned to cardio, strength and studio zones for faster turnarounds.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <Timer className="mt-1 h-5 w-5 text-celestial-blue-1" />
-                <span>Shift schedules that mirror peak classes, competitions and 24/7 access windows.</span>
-              </li>
-            </ul>
-            <div className="flex flex-wrap gap-4">
-              <Link to="/contact" className="btn-primary">
-                Plan my hygiene audit
-              </Link>
-              <a href="tel:+61411820650" className="btn-secondary">
-                Talk to a fitness specialist
-              </a>
-            </div>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-3">
-            {memberJourney.map((stage) => (
-              <div key={stage.title} className="rounded-[32px] border border-white/40 bg-white p-6 text-center shadow-sm">
-                <h3 className="text-lg font-semibold text-charcoal">{stage.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-jet/80">{stage.description}</p>
               </div>
             ))}
           </div>
@@ -510,14 +452,6 @@ const FitnessCleaning: React.FC = () => {
         </div>
       </section>
 
-      <StickyCTABar
-        title="Keep members raving about cleanliness"
-        description="Schedule a walkthrough to launch your tailored fitness cleaning program."
-        primaryLabel="Book my walkthrough"
-        primaryHref="/contact"
-        secondaryLabel="Call 0411 820 650"
-        secondaryHref="tel:+61411820650"
-      />
     </div>
   );
 };

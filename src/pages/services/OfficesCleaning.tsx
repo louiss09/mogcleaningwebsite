@@ -20,7 +20,6 @@ import PageHero from '../../components/PageHero';
 import QuoteSection from '../../components/QuoteSection';
 import HeroHighlightBand from '../../components/HeroHighlightBand';
 import HowItWorks from '../../components/HowItWorks';
-import StickyCTABar from '../../components/StickyCTABar';
 import ChecklistPreview from '../../components/ChecklistPreview';
 
 const OfficesCleaning: React.FC = () => {
@@ -173,21 +172,6 @@ const OfficesCleaning: React.FC = () => {
     },
   ];
 
-  const workplaceRhythms = [
-    {
-      name: 'Before 7am',
-      description: 'Boardrooms, reception and executive offices detailed before leadership arrives.',
-    },
-    {
-      name: 'Lunchtime refresh',
-      description: 'Kitchenettes, breakout spaces and bathrooms reset during hybrid team overlap.',
-    },
-    {
-      name: 'After-hours detail',
-      description: 'Full floor presentation with desk sanitising, bin rotations and AV wipe-downs.',
-    },
-  ];
-
   const officePrograms = [
     {
       title: 'Executive & client floors',
@@ -268,7 +252,7 @@ const OfficesCleaning: React.FC = () => {
   };
 
   return (
-    <div className="pb-32">
+    <div>
       <SEO
         title={pageTitle}
         description={pageDescription}
@@ -287,7 +271,9 @@ const OfficesCleaning: React.FC = () => {
         eyebrow="Office cleaning"
         eyebrowIcon={Building2}
         title="Brisbane offices that look investor-ready every morning."
+        mobileTitle="Investor-ready Brisbane offices."
         description="Keep suites, meeting rooms and breakout spaces inspection-ready with a program tuned to your building."
+        mobileDescription="Suites, meeting rooms and breakout spaces stay inspection-ready on your schedule."
         actions={
           <>
             <Link to="/contact" className="btn-primary">
@@ -320,51 +306,6 @@ const OfficesCleaning: React.FC = () => {
                 </div>
                 <h3 className="text-xl font-semibold text-charcoal">{item.title}</h3>
                 <p className="text-jet/80 leading-relaxed">{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section-shell" id="plan">
-        <div className="container-max mx-auto grid gap-12 lg:grid-cols-[1.15fr_1fr] lg:items-center">
-          <div className="space-y-6">
-            <div className="section-heading" data-align="left">
-              <span className="section-heading__eyebrow">Your plan</span>
-              <h2 className="section-heading__title">A 30-day turnaround that locks in consistency</h2>
-              <p className="section-heading__description">
-                We map your access requirements, design a floor-by-floor checklist and have induction-ready crews on site within
-                days. Every visit is documented so executives see the difference immediately.
-              </p>
-            </div>
-            <ul className="space-y-4 text-jet/80">
-              <li className="flex items-start gap-3">
-                <CheckCircle className="mt-1 h-5 w-5 text-celestial-blue-1" />
-                <span>Discovery walkthrough, scope build and stakeholder alignment in week one.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <Users className="mt-1 h-5 w-5 text-celestial-blue-1" />
-                <span>Dedicated crew allocations with supervisor oversight for each floor plate.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <Clock className="mt-1 h-5 w-5 text-celestial-blue-1" />
-                <span>Rhythms that mirror hybrid work patterns so desks, amenities and client areas stay on point.</span>
-              </li>
-            </ul>
-            <div className="flex flex-wrap gap-4">
-              <Link to="/contact" className="btn-primary">
-                Schedule my walkthrough
-              </Link>
-              <a href="tel:+61411820650" className="btn-secondary">
-                Speak to the team
-              </a>
-            </div>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-3">
-            {workplaceRhythms.map((rhythm) => (
-              <div key={rhythm.name} className="rounded-[32px] border border-white/40 bg-white p-6 text-center shadow-sm">
-                <h3 className="text-lg font-semibold text-charcoal">{rhythm.name}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-jet/80">{rhythm.description}</p>
               </div>
             ))}
           </div>
@@ -513,14 +454,6 @@ const OfficesCleaning: React.FC = () => {
         </div>
       </section>
 
-      <StickyCTABar
-        title="Ready to reclaim your mornings?"
-        description="Book a walkthrough today and lock in your tailored office cleaning program."
-        primaryLabel="Book my walkthrough"
-        primaryHref="/contact"
-        secondaryLabel="Call 0411 820 650"
-        secondaryHref="tel:+61411820650"
-      />
     </div>
   );
 };

@@ -131,7 +131,9 @@ const Process: React.FC = () => {
         eyebrow="Our process"
         eyebrowIcon={Sparkles}
         title="A clear path to your new cleaning partner."
+        mobileTitle="A clear path to your new cleaning partner."
         description="Four fast steps to map your site, induct your crew and keep accountability visible from day one."
+        mobileDescription="Four fast steps to scope your site, induct your crew and keep accountability visible."
         actions={
           <>
             <Link to="/contact" className="btn-primary">

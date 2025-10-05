@@ -342,10 +342,16 @@ const Home: React.FC = () => {
             <span className="hero-minimal__title-line">Partner in Brisbane</span>
           </>
         }
+        mobileTitle="Brisbane's commercial cleaning partner."
         description={
           <>
             Specialist crews for offices, gyms and clinics who keep every shift{' '}
             <span className="text-gradient">polished and on-brand</span>.
+          </>
+        }
+        mobileDescription={
+          <>
+            Specialist crews for offices, gyms and clinics keep every shift on-brand.
           </>
         }
         actions={

@@ -118,7 +118,10 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
       <div className="absolute -bottom-28 -left-20 h-72 w-72 rounded-full bg-fresh-green/12 blur-3xl" aria-hidden="true"></div>
 
       <div className="relative z-10">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between mb-10 text-center sm:text-left">
+        <div
+          className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between mb-10 text-center sm:text-left motion-ready"
+          data-motion="rise"
+        >
           <div className="flex items-center justify-center sm:justify-start gap-2 text-celestial-blue-1">
             {Array.from({ length: 5 }).map((_, index) => (
               <Star key={`star-${index}`} className="h-5 w-5 fill-celestial-blue-1 text-celestial-blue-1" />
@@ -136,7 +139,7 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
         </div>
 
         <div
-          className="flex transition-transform duration-700 ease-out"
+          className="testimonial-carousel__slides flex transition-transform duration-700 ease-out"
           style={{ transform: `translateX(-${activeIndex * 100}%)` }}
           aria-live="polite"
         >

@@ -20,7 +20,6 @@ import PageHero from '../../components/PageHero';
 import QuoteSection from '../../components/QuoteSection';
 import HeroHighlightBand from '../../components/HeroHighlightBand';
 import HowItWorks from '../../components/HowItWorks';
-import StickyCTABar from '../../components/StickyCTABar';
 import ChecklistPreview from '../../components/ChecklistPreview';
 
 const HealthCleaning: React.FC = () => {
@@ -173,21 +172,6 @@ const HealthCleaning: React.FC = () => {
     },
   ];
 
-  const complianceFrameworks = [
-    {
-      label: 'Infection control ready',
-      description: 'QHealth-aligned procedures, PPE and documented zoning plans for every clinic wing.',
-    },
-    {
-      label: 'Auditable reporting',
-      description: 'Digital logs for SWMS, inductions, chemical registers and waste manifests.',
-    },
-    {
-      label: 'Credentialled crews',
-      description: 'Vaccination records, police checks and hospital-grade training verified prior to site access.',
-    },
-  ];
-
   const clinicalSpaces = [
     {
       name: 'General practice & allied health',
@@ -268,7 +252,7 @@ const HealthCleaning: React.FC = () => {
   };
 
   return (
-    <div className="pb-32">
+    <div>
       <SEO
         title={pageTitle}
         description={pageDescription}
@@ -280,14 +264,16 @@ const HealthCleaning: React.FC = () => {
       />
 
       <PageHero
-        backgroundImage="/images/healthcare-cleaning-background.jpg"
+        backgroundImage="/images/medical-cleaning-background.jpg"
         backgroundPosition="center"
         overlay="charcoal"
         align="center"
         eyebrow="Healthcare cleaning"
         eyebrowIcon={Heart}
         title="Keep every clinic space patient-ready and audit confident."
+        mobileTitle="Patient-ready, audit-safe clinics."
         description="Infection-control trained crews who align with your compliance requirements and deliver spotless clinical environments."
+        mobileDescription="Infection-control crews align with your compliance and keep clinics spotless."
         actions={
           <>
             <Link to="/contact" className="btn-primary">
@@ -319,50 +305,6 @@ const HealthCleaning: React.FC = () => {
                 </div>
                 <h3 className="text-xl font-semibold text-charcoal">{item.title}</h3>
                 <p className="text-jet/80 leading-relaxed">{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section-shell" id="plan">
-        <div className="container-max mx-auto grid gap-12 lg:grid-cols-[1.15fr_1fr] lg:items-center">
-          <div className="space-y-6">
-            <div className="section-heading" data-align="left">
-              <span className="section-heading__eyebrow">Your plan</span>
-              <h2 className="section-heading__title">30 days to confident, compliant cleaning</h2>
-              <p className="section-heading__description">
-                We audit your current program, map zoning, then deploy credentialled cleaners with full documentation packs. Supervisors provide daily updates so you’re always audit ready.
-              </p>
-            </div>
-            <ul className="space-y-4 text-jet/80">
-              <li className="flex items-start gap-3">
-                <CheckCircle className="mt-1 h-5 w-5 text-celestial-blue-1" />
-                <span>Clinical walkthrough and risk assessment completed in week one.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <ShieldCheck className="mt-1 h-5 w-5 text-celestial-blue-1" />
-                <span>Zoned protocols created for treatment, admin and public areas with colour-coded systems.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <Clock className="mt-1 h-5 w-5 text-celestial-blue-1" />
-                <span>Rapid response crews available for urgent turnovers, outbreaks and spill management.</span>
-              </li>
-            </ul>
-            <div className="flex flex-wrap gap-4">
-              <Link to="/contact" className="btn-primary">
-                Schedule my consult
-              </Link>
-              <a href="tel:+61411820650" className="btn-secondary">
-                Speak to clinical support
-              </a>
-            </div>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-3">
-            {complianceFrameworks.map((framework) => (
-              <div key={framework.label} className="rounded-[32px] border border-white/40 bg-white p-6 text-center shadow-sm">
-                <h3 className="text-lg font-semibold text-charcoal">{framework.label}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-jet/80">{framework.description}</p>
               </div>
             ))}
           </div>
@@ -511,14 +453,6 @@ const HealthCleaning: React.FC = () => {
         </div>
       </section>
 
-      <StickyCTABar
-        title="Protect every patient experience"
-        description="Book a compliance consult and secure an audit-ready cleaning program."
-        primaryLabel="Book my consult"
-        primaryHref="/contact"
-        secondaryLabel="Call 0411 820 650"
-        secondaryHref="tel:+61411820650"
-      />
     </div>
   );
 };
