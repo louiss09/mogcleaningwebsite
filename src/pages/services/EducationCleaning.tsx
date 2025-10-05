@@ -370,7 +370,7 @@ const EducationCleaning: React.FC = () => {
               Still curious about how we work with your staff and students? Explore the most common questions we receive.
             </p>
           </div>
-          <FAQAccordion faqs={faqs} />
+          <FAQAccordion items={faqs} />
         </div>
       </section>
 

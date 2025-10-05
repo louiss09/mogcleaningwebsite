@@ -370,7 +370,7 @@ const OfficesCleaning: React.FC = () => {
               Learn how we work with facilities teams, manage consumables and support urgent requests.
             </p>
           </div>
-          <FAQAccordion faqs={faqs} />
+          <FAQAccordion items={faqs} />
         </div>
       </section>
 
