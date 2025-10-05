@@ -97,9 +97,7 @@ const About: React.FC = () => {
         eyebrow="About MOG Cleaning"
         eyebrowIcon={Sparkles}
         title="The reliable team behind Brisbane’s high-converting cleaning programs."
-        mobileTitle="Meet Brisbane's dependable cleaning team."
         description="Meet the supervisors, systems and values that keep your sites spotless and your team confident."
-        mobileDescription="Discover the supervisors, systems and values that keep your sites spotless."
         actions={
           <>
             <Link to="/contact" className="btn-primary">

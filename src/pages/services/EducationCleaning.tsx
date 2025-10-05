@@ -173,6 +173,34 @@ const EducationCleaning: React.FC = () => {
     },
   ];
 
+  const featureTickerItems = [
+    {
+      icon: CheckCircle,
+      title: 'Week-one onboarding',
+      description: 'Campus walkthrough, safety induction and scope finalised in the first week.',
+    },
+    {
+      icon: Users,
+      title: 'Precinct crew leads',
+      description: 'Dedicated supervisors for classrooms, amenities and outdoor hubs.',
+    },
+    {
+      icon: Clock,
+      title: 'Term & event rhythms',
+      description: 'Schedules built around bell times, excursions and community events.',
+    },
+    {
+      icon: Brush,
+      title: 'Holiday deep cleans',
+      description: 'Floor care, high dusting and window detailing while students are away.',
+    },
+    {
+      icon: Sparkles,
+      title: 'Rapid outbreak response',
+      description: 'Disinfection crews on standby for urgent hygiene support.',
+    },
+  ];
+
   const campusZones = [
     {
       title: 'Learning spaces',
@@ -272,9 +300,7 @@ const EducationCleaning: React.FC = () => {
         eyebrow="Education cleaning"
         eyebrowIcon={GraduationCap}
         title="Show parents and staff a campus that feels cared for."
-        mobileTitle="A cared-for campus every day."
         description="Specialist education cleaners who protect student wellbeing, support your team and keep every wing presentation ready."
-        mobileDescription="Education crews protect student wellbeing and keep every wing presentation ready."
         actions={
           <>
             <Link to="/contact" className="btn-primary">
@@ -311,6 +337,8 @@ const EducationCleaning: React.FC = () => {
           </div>
         </div>
       </section>
+
+      <FeatureTicker items={featureTickerItems} />
 
       <HowItWorks
         eyebrow="How onboarding works"

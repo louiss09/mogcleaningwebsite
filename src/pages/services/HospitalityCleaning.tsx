@@ -173,6 +173,34 @@ const HospitalityCleaning: React.FC = () => {
     },
   ];
 
+  const featureTickerItems = [
+    {
+      icon: CheckCircle,
+      title: 'Compliance-ready onboarding',
+      description: 'Capture HACCP documentation, service windows and venue standards within week one.',
+    },
+    {
+      icon: Users,
+      title: 'Duty manager coordination',
+      description: 'Supervisors liaise pre- and post-service to align with front and back-of-house priorities.',
+    },
+    {
+      icon: Clock,
+      title: 'Around-the-clock rosters',
+      description: 'Late closes, breakfast resets and event flips covered without disrupting guests.',
+    },
+    {
+      icon: Utensils,
+      title: 'Kitchen degreasing specialists',
+      description: 'Cooklines, floors and splashbacks detailed to keep inspections stress-free.',
+    },
+    {
+      icon: Sparkles,
+      title: 'Guest-first finishes',
+      description: 'Lobbies, dining rooms and amenities polished to five-star presentation.',
+    },
+  ];
+
   const venueBoards = [
     {
       title: 'Hotels & resorts',
@@ -272,9 +300,7 @@ const HospitalityCleaning: React.FC = () => {
         eyebrow="Hospitality cleaning"
         eyebrowIcon={Hotel}
         title="Deliver five-star moments from lobby to last seating."
-        mobileTitle="Five-star moments from lobby to last seating."
         description="Detail-focused crews who protect your guest experience, support your chefs and reset venues fast between events."
-        mobileDescription="Detail-focused crews protect your guest experience and reset venues fast."
         actions={
           <>
             <Link to="/contact" className="btn-primary">
@@ -311,6 +337,8 @@ const HospitalityCleaning: React.FC = () => {
           </div>
         </div>
       </section>
+
+      <FeatureTicker items={featureTickerItems} />
 
       <HowItWorks
         eyebrow="How onboarding works"

@@ -19,7 +19,7 @@ import './App.css';
 
 const AppRoutes: React.FC = () => {
   const location = useLocation();
-  useScrollMotion(location.pathname);
+  useScrollMotion();
 
   useEffect(() => {
     const root = document.documentElement;

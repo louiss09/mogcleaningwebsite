@@ -18,11 +18,11 @@ const HeroHighlightBand: React.FC<HeroHighlightBandProps> = ({ items, className 
   }
 
   return (
-    <section className={`hero-highlight-band motion-ready ${className}`.trim()} data-motion="fade">
+    <section className={`hero-highlight-band ${className}`.trim()}>
       <div className="container-max px-6">
-        <div className="hero-highlight-band__grid" data-motion-stagger="true">
+        <div className="hero-highlight-band__grid">
           {items.map((item) => (
-            <div key={item.title} className="hero-highlight-card motion-child">
+            <div key={item.title} className="hero-highlight-card">
               {item.icon && (
                 <div className="hero-highlight-card__icon">
                   <item.icon className="h-5 w-5" />

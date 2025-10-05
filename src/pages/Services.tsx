@@ -139,9 +139,7 @@ const Services: React.FC = () => {
         eyebrow="Services"
         eyebrowIcon={Sparkles}
         title="Every service is shaped around your facility."
-        mobileTitle="Services shaped around your facility."
         description="Choose the industry pathway that matches your facility. Each page dives into pain points, proof and the steps to get started."
-        mobileDescription="Choose the pathway for your facility to see pain points, proof and next steps."
         actions={
           <>
             <Link to="/contact" className="btn-primary">

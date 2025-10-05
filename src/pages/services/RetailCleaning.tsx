@@ -173,6 +173,34 @@ const RetailCleaning: React.FC = () => {
     },
   ];
 
+  const featureTickerItems = [
+    {
+      icon: CheckCircle,
+      title: 'Visual merchandising walkthrough',
+      description: 'Capture fixtures, finishes and launch schedules with VM and store leads.',
+    },
+    {
+      icon: Users,
+      title: 'Zone-specific crews',
+      description: 'Dedicated teams for sales floors, fitting rooms and back-of-house areas.',
+    },
+    {
+      icon: Clock,
+      title: 'After-hours & day porters',
+      description: 'Support launches, sales events and extended trading without disruption.',
+    },
+    {
+      icon: Package,
+      title: 'Logistics-ready support',
+      description: 'Stockrooms, docks and click-and-collect areas stay organised and hygienic.',
+    },
+    {
+      icon: Sparkles,
+      title: 'Launch-ready finishes',
+      description: 'Streak-free windows, polished floors and refreshed change rooms daily.',
+    },
+  ];
+
   const retailSupport = [
     {
       name: 'Flagship & concept stores',
@@ -272,9 +300,7 @@ const RetailCleaning: React.FC = () => {
         eyebrow="Retail cleaning"
         eyebrowIcon={ShoppingBag}
         title="Keep every display, fitting room and back room retail ready."
-        mobileTitle="Retail-ready displays, daily."
         description="Retail-trained cleaners who protect your visual merchandising, support staff and keep brand standards consistent."
-        mobileDescription="Retail-trained crews protect your merchandising and keep standards consistent."
         actions={
           <>
             <Link to="/contact" className="btn-primary">
@@ -311,6 +337,8 @@ const RetailCleaning: React.FC = () => {
           </div>
         </div>
       </section>
+
+      <FeatureTicker items={featureTickerItems} />
 
       <HowItWorks
         eyebrow="How onboarding works"

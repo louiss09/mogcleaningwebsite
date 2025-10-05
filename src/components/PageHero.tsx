@@ -7,8 +7,6 @@ type HeroOverlay = 'slate' | 'spruce' | 'charcoal';
 interface PageHeroProps {
   title: React.ReactNode;
   description?: React.ReactNode;
-  mobileTitle?: React.ReactNode;
-  mobileDescription?: React.ReactNode;
   backgroundImage: string;
   backgroundPosition?: string;
   eyebrow?: string;
@@ -28,8 +26,6 @@ const overlayToneMap: Record<HeroOverlay, string> = {
 const PageHero: React.FC<PageHeroProps> = ({
   title,
   description,
-  mobileTitle,
-  mobileDescription,
   backgroundImage,
   backgroundPosition = 'center',
   eyebrow,
@@ -53,7 +49,7 @@ const PageHero: React.FC<PageHeroProps> = ({
       </div>
       <div className="hero-minimal__scrim" data-overlay={overlayTone} aria-hidden="true" />
       <div className="hero-minimal__container container-max">
-        <div className="hero-minimal__content motion-ready" data-align={resolvedAlign} data-motion="rise">
+        <div className="hero-minimal__content" data-align={resolvedAlign}>
           {eyebrow && (
             <span className="hero-minimal__eyebrow">
               {EyebrowIcon && <EyebrowIcon className="h-4 w-4" />}
@@ -61,34 +57,10 @@ const PageHero: React.FC<PageHeroProps> = ({
             </span>
           )}
 
-          <h1 className="hero-minimal__title">
-            {mobileTitle ? (
-              <>
-                <span className="hidden sm:[display:contents]">{title}</span>
-                <span className="[display:contents] sm:hidden">{mobileTitle}</span>
-              </>
-            ) : (
-              title
-            )}
-          </h1>
-          {description && (
-            <p className="hero-minimal__description">
-              {mobileDescription ? (
-                <>
-                  <span className="hidden sm:[display:contents]">{description}</span>
-                  <span className="[display:contents] sm:hidden">{mobileDescription}</span>
-                </>
-              ) : (
-                description
-              )}
-            </p>
-          )}
+          <h1 className="hero-minimal__title">{title}</h1>
+          {description && <p className="hero-minimal__description">{description}</p>}
 
-          {actions && (
-            <div className="hero-minimal__actions motion-ready" data-motion="fade">
-              {actions}
-            </div>
-          )}
+          {actions && <div className="hero-minimal__actions">{actions}</div>}
         </div>
       </div>
     </section>
