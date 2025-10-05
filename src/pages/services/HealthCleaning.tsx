@@ -20,17 +20,54 @@ import PageHero from '../../components/PageHero';
 import QuoteSection from '../../components/QuoteSection';
 import HeroHighlightBand from '../../components/HeroHighlightBand';
 import HowItWorks from '../../components/HowItWorks';
+import StickyCTABar from '../../components/StickyCTABar';
+import ChecklistPreview from '../../components/ChecklistPreview';
 
 const HealthCleaning: React.FC = () => {
-  const inclusions = [
-    'Treatment room turnover with TGA-approved disinfectants',
-    'Waiting room presentation including touchpoint sanitising',
-    'Zoned cleaning protocols separating clinical and admin areas',
-    'Surgical suite and procedure room deep cleans',
-    'Medical waste coordination and sharps bin checks',
-    'Sterilisation bay detailing and spill management',
-    'Air filtration and vent dusting for improved IAQ',
+  const checklistPreview = [
+    {
+      icon: Stethoscope,
+      title: 'Clinical room turnovers',
+      description: 'Protect patients and practitioners between appointments.',
+      items: [
+        'Treatment beds, chairs and touchpoints sanitised with TGA-approved products',
+        'Zoned protocols separating clinical and admin areas',
+        'Procedure and consult rooms reset with fresh consumables',
+      ],
+    },
+    {
+      icon: Users,
+      title: 'Waiting & reception presentation',
+      description: 'Front-of-house spaces that build patient confidence.',
+      items: [
+        'Waiting room seating, counters and check-in screens disinfected',
+        'Glass, doors and high-touch surfaces polished throughout the day',
+        'Air filtration vents dusted to support healthy airflow',
+      ],
+    },
+    {
+      icon: Syringe,
+      title: 'Sterilisation & waste control',
+      description: 'Support your compliance and infection control protocols.',
+      items: [
+        'Sterilisation bay detailing and spill management',
+        'Sharps bin checks and medical waste coordination',
+        'Documentation updates for SWMS, chemical registers and audits',
+      ],
+    },
+    {
+      icon: ShieldCheck,
+      title: 'Enhanced support & deep cleans',
+      description: 'Specialised programs for higher-risk spaces.',
+      items: [
+        'Surgical suite and procedure room deep cleans scheduled after lists',
+        'Rapid response sanitisation for outbreaks or incidents',
+        'Custom reporting aligned with accreditation frameworks',
+      ],
+    },
   ];
+
+  const checklistHighlights = checklistPreview.flatMap((group) => group.items);
 
   const benefits = [
     {
@@ -195,7 +232,7 @@ const HealthCleaning: React.FC = () => {
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Healthcare cleaning inclusions',
-      itemListElement: inclusions.map((item) => ({
+      itemListElement: checklistHighlights.map((item) => ({
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
@@ -231,30 +268,30 @@ const HealthCleaning: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="pb-32">
       <SEO
         title={pageTitle}
         description={pageDescription}
         type="service"
-        image="/images/medical-cleaning-background.jpg"
-        imageAlt="Medical treatment room being cleaned"
-        keywords={['medical cleaning Brisbane', 'clinic cleaners brisbane', 'healthcare cleaning services']}
+        image="/images/healthcare-cleaning-background.jpg"
+        imageAlt="Clean Brisbane medical clinic"
+        keywords={['healthcare cleaning Brisbane', 'medical centre cleaners', 'infection control cleaning']}
         jsonLd={[breadcrumbSchema, serviceSchema]}
       />
 
       <PageHero
-        backgroundImage="/images/medical-cleaning-background.jpg"
-        backgroundPosition="center 45%"
+        backgroundImage="/images/healthcare-cleaning-background.jpg"
+        backgroundPosition="center"
         overlay="charcoal"
         align="center"
         eyebrow="Healthcare cleaning"
         eyebrowIcon={Heart}
-        title="Clinically clean spaces that protect patients and practitioners."
-        description="Specialist crews maintain infection control, presentation and documentation for every appointment."
+        title="Keep every clinic space patient-ready and audit confident."
+        description="Infection-control trained crews who align with your compliance requirements and deliver spotless clinical environments."
         actions={
           <>
             <Link to="/contact" className="btn-primary">
-              Get a quote
+              Book a compliance consult
             </Link>
             <a href="tel:+61411820650" className="btn-secondary">
               Call 0411 820 650
@@ -265,45 +302,13 @@ const HealthCleaning: React.FC = () => {
 
       <HeroHighlightBand items={heroHighlights} />
 
-      <section className="section-shell section-shell--muted" id="compliance">
-        <div className="container-max mx-auto grid gap-8 lg:grid-cols-[1.15fr_1fr] lg:items-center">
-          <div className="space-y-6">
-            <div className="section-heading" data-align="left">
-              <span className="section-heading__eyebrow">Clinical governance</span>
-              <h2 className="section-heading__title">Proof you can hand straight to auditors</h2>
-              <p className="section-heading__description">
-                Every healthcare partnership begins with a compliance pack covering inductions, SWMS, insurances and infection control procedures specific to your modalities.
-              </p>
-            </div>
-            <ul className="space-y-4 text-jet/80">
-              <li className="flex items-start gap-3">
-                <ShieldCheck className="mt-1 h-5 w-5 text-celestial-blue-1" />
-                <span>Site-specific zoning maps covering public, clinical and sterile areas.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <ClipboardList className="mt-1 h-5 w-5 text-celestial-blue-1" />
-                <span>Daily, weekly and monthly checklists with sign-off visibility for practice managers.</span>
-              </li>
-            </ul>
-          </div>
-          <div className="grid gap-4">
-            {complianceFrameworks.map((item) => (
-              <div key={item.label} className="glass-panel space-y-2 rounded-3xl p-6" data-variant="frost">
-                <p className="text-sm font-semibold uppercase tracking-wide text-celestial-blue-1/70">{item.label}</p>
-                <p className="text-charcoal text-lg font-semibold">{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="section-shell" id="pain-points">
         <div className="container-max mx-auto">
           <div className="section-heading">
-            <span className="section-heading__eyebrow">Risks to your practice</span>
-            <h2 className="section-heading__title">Why clinics move to MOG Cleaning</h2>
+            <span className="section-heading__eyebrow">When clinics reach out</span>
+            <h2 className="section-heading__title">You can’t risk missed touchpoints or paperwork gaps</h2>
             <p className="section-heading__description">
-              Healthcare environments demand precision. We address the compliance and experience gaps that keep practice managers awake at night.
+              Practice managers come to us when the basics aren’t being met—smudged reception counters, no zoning, or missing SWMS before accreditation.
             </p>
           </div>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -320,70 +325,44 @@ const HealthCleaning: React.FC = () => {
         </div>
       </section>
 
-      <section className="section-shell" id="solution">
-        <div className="container-max mx-auto grid gap-12 lg:grid-cols-2 lg:items-center">
-          <div className="glass-panel" data-variant="frost">
-            <img
-              src="/images/medical-cleaning-background.jpg"
-              alt="Healthcare cleaner preparing a treatment room"
-              className="h-full w-full rounded-[32px] object-cover"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
+      <section className="section-shell" id="plan">
+        <div className="container-max mx-auto grid gap-12 lg:grid-cols-[1.15fr_1fr] lg:items-center">
           <div className="space-y-6">
             <div className="section-heading" data-align="left">
-              <span className="section-heading__eyebrow">Our approach</span>
-              <h2 className="section-heading__title">Infection control woven into every routine</h2>
+              <span className="section-heading__eyebrow">Your plan</span>
+              <h2 className="section-heading__title">30 days to confident, compliant cleaning</h2>
               <p className="section-heading__description">
-                From zoning maps to sealed chemical caddies, our cleaners follow strict procedures that protect staff and patients in every room.
+                We audit your current program, map zoning, then deploy credentialled cleaners with full documentation packs. Supervisors provide daily updates so you’re always audit ready.
               </p>
             </div>
             <ul className="space-y-4 text-jet/80">
               <li className="flex items-start gap-3">
-                <CheckCircle className="h-5 w-5 text-celestial-blue-1" />
-                <span>Colour-coded cloths and mop systems for admin, public and clinical zones.</span>
+                <CheckCircle className="mt-1 h-5 w-5 text-celestial-blue-1" />
+                <span>Clinical walkthrough and risk assessment completed in week one.</span>
               </li>
               <li className="flex items-start gap-3">
-                <CheckCircle className="h-5 w-5 text-celestial-blue-1" />
-                <span>TGA-approved disinfectants validated against bacteria and viruses common in healthcare.</span>
+                <ShieldCheck className="mt-1 h-5 w-5 text-celestial-blue-1" />
+                <span>Zoned protocols created for treatment, admin and public areas with colour-coded systems.</span>
               </li>
               <li className="flex items-start gap-3">
-                <CheckCircle className="h-5 w-5 text-celestial-blue-1" />
-                <span>Documented spill response and sharps incident procedures for full compliance.</span>
+                <Clock className="mt-1 h-5 w-5 text-celestial-blue-1" />
+                <span>Rapid response crews available for urgent turnovers, outbreaks and spill management.</span>
               </li>
             </ul>
             <div className="flex flex-wrap gap-4">
               <Link to="/contact" className="btn-primary">
-                Book a compliance walkthrough
+                Schedule my consult
               </Link>
               <a href="tel:+61411820650" className="btn-secondary">
-                Call 0411 820 650
+                Speak to clinical support
               </a>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="section-shell" id="clinical-spaces">
-        <div className="container-max mx-auto grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:items-center">
-          <div className="space-y-6">
-            <div className="section-heading" data-align="left">
-              <span className="section-heading__eyebrow">Clinical coverage</span>
-              <h2 className="section-heading__title">Programs tailored to your modality mix</h2>
-              <p className="section-heading__description">
-                Each facility receives a bespoke scope of works that aligns with practitioner schedules, treatment types and accreditation needs.
-              </p>
-            </div>
-            <Link to="/contact" className="btn-secondary w-full max-w-xs">
-              Schedule a site discovery
-            </Link>
-          </div>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            {clinicalSpaces.map((space) => (
-              <div key={space.name} className="rounded-[32px] border border-white/40 bg-white p-8 shadow-sm">
-                <h3 className="text-2xl font-semibold text-charcoal">{space.name}</h3>
-                <p className="mt-3 text-jet/80 leading-relaxed">{space.detail}</p>
+          <div className="grid gap-4 sm:grid-cols-3">
+            {complianceFrameworks.map((framework) => (
+              <div key={framework.label} className="rounded-[32px] border border-white/40 bg-white p-6 text-center shadow-sm">
+                <h3 className="text-lg font-semibold text-charcoal">{framework.label}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-jet/80">{framework.description}</p>
               </div>
             ))}
           </div>
@@ -391,60 +370,25 @@ const HealthCleaning: React.FC = () => {
       </section>
 
       <HowItWorks
-        eyebrow="Implementation"
-        title="Four steps to a compliant healthcare cleaning program"
-        description="A predictable onboarding keeps your infection control officer confident from the first visit."
+        eyebrow="How onboarding works"
+        title="Four steps from first call to audit-ready cleaning"
+        description="Every healthcare client follows the same proven process so you stay in control of infection protocols and reporting."
       />
 
-      <QuoteSection
-        eyebrow="Start now"
-        title="Request your healthcare cleaning proposal"
-        description="Share your practice type, consultation room count and compliance requirements. We’ll send a tailored scope and onboarding plan within 24 hours."
-        bullets={[
-          'Infection-control trained cleaners',
-          'Detailed zoning maps and checklists',
-          'Audit-ready documentation supplied',
-        ]}
-        formTitle="Tell us about your clinic"
-        formSubtitle="A healthcare onboarding specialist will respond within one business day."
-      />
-
-      <section className="section-shell" id="benefits">
+      <section className="section-shell section-shell--muted" id="spaces">
         <div className="container-max mx-auto">
           <div className="section-heading">
-            <span className="section-heading__eyebrow">Benefits</span>
-            <h2 className="section-heading__title">What you gain with MOG Cleaning</h2>
+            <span className="section-heading__eyebrow">Clinical spaces</span>
+            <h2 className="section-heading__title">Detailed support for every wing</h2>
             <p className="section-heading__description">
-              Precision cleaning protects patient trust, staff wellbeing and accreditation results.
+              No two healthcare facilities are the same. We tailor checklists for every clinical space you manage.
             </p>
           </div>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {benefits.map((benefit) => (
-              <div key={benefit.title} className="feature-grid-card">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-celestial-blue-1/12 text-celestial-blue-1">
-                  <benefit.icon className="h-7 w-7" />
-                </div>
-                <h3 className="text-xl font-semibold text-charcoal">{benefit.title}</h3>
-                <p className="text-jet/80 leading-relaxed">{benefit.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section-shell section-shell--muted" id="inclusions">
-        <div className="container-max mx-auto">
-          <div className="section-heading">
-            <span className="section-heading__eyebrow">What’s included</span>
-            <h2 className="section-heading__title">Healthcare cleaning checklist</h2>
-            <p className="section-heading__description">
-              Each visit follows a documented sequence covering clinical and public areas to maintain compliance.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            {inclusions.map((inclusion) => (
-              <div key={inclusion} className="service-item p-6">
-                <p className="text-charcoal font-medium">{inclusion}</p>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            {clinicalSpaces.map((space) => (
+              <div key={space.name} className="rounded-[32px] bg-white p-8 shadow-sm">
+                <h3 className="text-2xl font-semibold text-charcoal">{space.name}</h3>
+                <p className="mt-3 leading-relaxed text-jet/80">{space.detail}</p>
               </div>
             ))}
           </div>
@@ -454,15 +398,60 @@ const HealthCleaning: React.FC = () => {
       <section className="section-shell" id="testimonials">
         <div className="container-max mx-auto">
           <div className="section-heading">
-            <span className="section-heading__eyebrow">Results</span>
-            <h2 className="section-heading__title">Feedback from healthcare leaders</h2>
+            <span className="section-heading__eyebrow">Proof that matters</span>
+            <h2 className="section-heading__title">Healthcare teams that trust MOG Cleaning</h2>
             <p className="section-heading__description">
-              Hear from practices that trust MOG Cleaning to support patient safety and accreditation outcomes.
+              Hear from medical centres that rely on us for compliant cleaning and patient-ready spaces.
             </p>
           </div>
           <TestimonialCarousel testimonials={testimonials} className="mx-auto max-w-4xl" />
         </div>
       </section>
+
+      <QuoteSection
+        eyebrow="Start your program"
+        title="Request your healthcare cleaning proposal"
+        description="Tell us about your clinical areas, zoning requirements and key compliance needs. We’ll craft a program, onboarding plan and pricing within 24 hours."
+        bullets={[
+          'Infection-control trained cleaners',
+          'Zoned protocols and PPE ready',
+          'Documentation supplied for audits',
+        ]}
+        formTitle="Tell us about your facility"
+        formSubtitle="Your dedicated healthcare contact will respond within one business day."
+      />
+
+      <section className="section-shell" id="benefits">
+        <div className="container-max mx-auto">
+          <div className="section-heading">
+            <span className="section-heading__eyebrow">Why healthcare leaders choose us</span>
+            <h2 className="section-heading__title">Outcomes for your teams and patients</h2>
+            <p className="section-heading__description">
+              Precision cleaning, infection control protocols and detailed reporting keep your practice running smoothly.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {benefits.map((benefit) => (
+              <div key={benefit.title} className="feature-grid-card">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-celestial-blue-1/12 text-celestial-blue-1">
+                  <benefit.icon className="h-7 w-7" />
+                </div>
+                <h3 className="text-xl font-semibold text-charcoal">{benefit.title}</h3>
+                <p className="leading-relaxed text-jet/80">{benefit.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <ChecklistPreview
+        id="inclusions"
+        eyebrow="What’s included"
+        title="Healthcare cleaning preview"
+        description="A look at the priorities we cover in medical, allied health and specialist clinics."
+        note="This preview covers frequent priorities. After our site visit we document a checklist aligned with your infection control and accreditation requirements."
+        categories={checklistPreview}
+      />
 
       <section className="section-shell" id="faqs">
         <div className="container-max mx-auto">
@@ -470,20 +459,20 @@ const HealthCleaning: React.FC = () => {
             <span className="section-heading__eyebrow">FAQs</span>
             <h2 className="section-heading__title">Healthcare cleaning FAQs</h2>
             <p className="section-heading__description">
-              Understand our infection control processes, compliance documentation and response times before you engage us.
+              Learn how we handle infection control, patient schedules and compliance documentation.
             </p>
           </div>
-          <FAQAccordion faqs={faqs} className="max-w-4xl mx-auto" />
+          <FAQAccordion faqs={faqs} className="mx-auto max-w-4xl" />
         </div>
       </section>
 
       <section className="section-shell section-shell--muted" id="related">
         <div className="container-max mx-auto">
           <div className="section-heading">
-            <span className="section-heading__eyebrow">Explore more support</span>
-            <h2 className="section-heading__title">Consistent standards across every site</h2>
+            <span className="section-heading__eyebrow">Need something else?</span>
+            <h2 className="section-heading__title">Explore other services</h2>
             <p className="section-heading__description">
-              Extend the same level of care to your offices, classrooms or specialist facilities.
+              From office buildings to schools, we deliver the same detail-focused approach across Brisbane.
             </p>
           </div>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -504,11 +493,11 @@ const HealthCleaning: React.FC = () => {
         <div className="container-max mx-auto text-center">
           <div className="mx-auto max-w-3xl space-y-6">
             <span className="pill-chip bg-white/10 text-white">
-              <Sparkles className="h-4 w-4" /> Trusted by Brisbane clinics
+              <Sparkles className="h-4 w-4" /> Trusted by healthcare practices
             </span>
-            <h2 className="section-heading__title text-white">Ready for inspection-ready healthcare spaces?</h2>
+            <h2 className="section-heading__title text-white">Ready for a compliant, patient-ready clinic?</h2>
             <p className="section-heading__description text-white/80">
-              Book a walkthrough and receive a compliance-led cleaning proposal within 24 hours.
+              Book a walkthrough and receive a tailored scope, pricing and onboarding plan within 24 hours.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
               <Link to="/contact" className="btn-primary">
@@ -521,6 +510,15 @@ const HealthCleaning: React.FC = () => {
           </div>
         </div>
       </section>
+
+      <StickyCTABar
+        title="Protect every patient experience"
+        description="Book a compliance consult and secure an audit-ready cleaning program."
+        primaryLabel="Book my consult"
+        primaryHref="/contact"
+        secondaryLabel="Call 0411 820 650"
+        secondaryHref="tel:+61411820650"
+      />
     </div>
   );
 };

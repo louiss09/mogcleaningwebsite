@@ -19,17 +19,54 @@ import PageHero from '../../components/PageHero';
 import QuoteSection from '../../components/QuoteSection';
 import HeroHighlightBand from '../../components/HeroHighlightBand';
 import HowItWorks from '../../components/HowItWorks';
+import StickyCTABar from '../../components/StickyCTABar';
+import ChecklistPreview from '../../components/ChecklistPreview';
 
 const FitnessCleaning: React.FC = () => {
-  const inclusions = [
-    'Daily equipment sanitising with focus on high-contact surfaces',
-    'Locker room and shower disinfecting with odour control treatments',
-    'Reception, retail and lounge presentation including mirrors and glass',
-    'Group fitness studio resets with mat and prop sanitising',
-    'Air handling vents dusting and deodorising',
-    'Towel service coordination and consumable restocking',
-    'Steam cleaning schedules for rubber flooring and high-traffic mats',
+  const checklistPreview = [
+    {
+      icon: Dumbbell,
+      title: 'Member floor reset',
+      description: 'Keep cardio and strength areas spotless between peak sessions.',
+      items: [
+        'Daily equipment sanitising focused on high-contact surfaces',
+        'Console screens, handles and benches polished to a streak-free finish',
+        'Steam cleaning rotations for rubber flooring and high-traffic mats',
+      ],
+    },
+    {
+      icon: Timer,
+      title: 'Studios & class changeovers',
+      description: 'Fast turnovers so every class walks into a fresh space.',
+      items: [
+        'Group fitness studios reset with mats and props sanitised',
+        'Pilates, yoga and reformer equipment disinfected between sessions',
+        'Air handling vents dusted and deodorised to keep airflow fresh',
+      ],
+    },
+    {
+      icon: Droplets,
+      title: 'Changerooms & amenities',
+      description: 'Moisture-prone zones that demand extra attention.',
+      items: [
+        'Locker rooms and showers disinfected with odour control treatments',
+        'Towel service coordination and consumable restocking',
+        'Mould prevention and moisture management for high-use areas',
+      ],
+    },
+    {
+      icon: Users,
+      title: 'Front-of-house experience',
+      description: 'Keep first impressions aligned with your brand.',
+      items: [
+        'Reception, retail and lounge presentation with glass and mirrors detailed',
+        'Daily waste removal and merchandising touch-ups',
+        'Compliance-ready documentation and chemical registers maintained',
+      ],
+    },
   ];
+
+  const checklistHighlights = checklistPreview.flatMap((group) => group.items);
 
   const benefits = [
     {
@@ -194,7 +231,7 @@ const FitnessCleaning: React.FC = () => {
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Fitness cleaning inclusions',
-      itemListElement: inclusions.map((item) => ({
+      itemListElement: checklistHighlights.map((item) => ({
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
@@ -230,30 +267,30 @@ const FitnessCleaning: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="pb-32">
       <SEO
         title={pageTitle}
         description={pageDescription}
         type="service"
         image="/images/fitness-cleaning-background.jpg"
-        imageAlt="Cleaner sanitising gym equipment in Brisbane"
-        keywords={['gym cleaning Brisbane', 'fitness centre cleaners', 'studio cleaning services']}
+        imageAlt="Clean Brisbane gym with sanitised equipment"
+        keywords={['gym cleaning Brisbane', 'fitness centre cleaners', 'health club cleaning services']}
         jsonLd={[breadcrumbSchema, serviceSchema]}
       />
 
       <PageHero
         backgroundImage="/images/fitness-cleaning-background.jpg"
-        backgroundPosition="center 38%"
+        backgroundPosition="center"
         overlay="charcoal"
         align="center"
         eyebrow="Fitness cleaning"
         eyebrowIcon={Dumbbell}
-        title="Keep members coming back to a spotless gym."
-        description="Professional cleaning that eliminates odours, sanitises equipment and keeps every studio presentation ready."
+        title="Keep members motivated with spotless, sweat-free spaces."
+        description="Specialist gym cleaners who protect your brand reputation, support compliance and keep every touchpoint fresh."
         actions={
           <>
             <Link to="/contact" className="btn-primary">
-              Get a quote
+              Book a club walkthrough
             </Link>
             <a href="tel:+61411820650" className="btn-secondary">
               Call 0411 820 650
@@ -264,39 +301,13 @@ const FitnessCleaning: React.FC = () => {
 
       <HeroHighlightBand items={heroHighlights} />
 
-      <section className="section-shell" id="member-journey">
-        <div className="container-max mx-auto">
-          <div className="section-heading">
-            <span className="section-heading__eyebrow">Member experience lens</span>
-            <h2 className="section-heading__title">We clean in rhythm with your daily traffic peaks</h2>
-            <p className="section-heading__description">
-              Timetables, casual entries and PT sessions all influence how we stage our crews so members notice constant freshness.
-            </p>
-          </div>
-          <ol className="flex flex-col gap-6 md:flex-row md:gap-8">
-            {memberJourney.map((phase, index) => (
-              <li
-                key={phase.title}
-                className="flex-1 rounded-[32px] border border-white/40 bg-white p-6 shadow-sm"
-              >
-                <span className="text-sm font-semibold uppercase tracking-wide text-celestial-blue-1/70">
-                  Step {index + 1}
-                </span>
-                <h3 className="mt-3 text-2xl font-semibold text-charcoal">{phase.title}</h3>
-                <p className="mt-3 text-jet/80 leading-relaxed">{phase.description}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
       <section className="section-shell" id="pain-points">
         <div className="container-max mx-auto">
           <div className="section-heading">
-            <span className="section-heading__eyebrow">What’s not working now?</span>
-            <h2 className="section-heading__title">The gym cleaning frustrations we solve</h2>
+            <span className="section-heading__eyebrow">When gyms call us</span>
+            <h2 className="section-heading__title">Member complaints usually start with the basics</h2>
             <p className="section-heading__description">
-              When hygiene slips, member reviews and retention suffer. We remove the friction so your team can focus on experience and growth.
+              Owners reach out when equipment feels oily, changerooms smell stale or inspectors ask for documentation. We eliminate those distractions.
             </p>
           </div>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -313,65 +324,44 @@ const FitnessCleaning: React.FC = () => {
         </div>
       </section>
 
-      <section className="section-shell" id="solution">
-        <div className="container-max mx-auto grid gap-12 lg:grid-cols-2 lg:items-center">
-          <div className="glass-panel" data-variant="frost">
-            <img
-              src="/images/fitness-cleaning-background.jpg"
-              alt="Cleaner wiping down gym equipment"
-              className="h-full w-full rounded-[32px] object-cover"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
+      <section className="section-shell" id="plan">
+        <div className="container-max mx-auto grid gap-12 lg:grid-cols-[1.15fr_1fr] lg:items-center">
           <div className="space-y-6">
             <div className="section-heading" data-align="left">
-              <span className="section-heading__eyebrow">Our approach</span>
-              <h2 className="section-heading__title">High-touch hygiene for high-traffic fitness centres</h2>
+              <span className="section-heading__eyebrow">Your plan</span>
+              <h2 className="section-heading__title">30 days to a gym that smells as good as it looks</h2>
               <p className="section-heading__description">
-                Dedicated crews handle your studios, changerooms and front desk with precision and speed so members notice the difference immediately.
+                We complete a hygiene audit, map your timetable and deploy gym-trained cleaners who know how to care for your equipment. Daily updates keep you in the loop.
               </p>
             </div>
             <ul className="space-y-4 text-jet/80">
               <li className="flex items-start gap-3">
-                <CheckCircle className="h-5 w-5 text-celestial-blue-1" />
-                <span>Colour-coded systems prevent cross-contamination between equipment zones.</span>
+                <CheckCircle className="mt-1 h-5 w-5 text-celestial-blue-1" />
+                <span>Kick-off audit and chemical selection tailored to your franchise or brand standards.</span>
               </li>
               <li className="flex items-start gap-3">
-                <CheckCircle className="h-5 w-5 text-celestial-blue-1" />
-                <span>Odour control treatments keep changerooms and studios smelling clean, not perfumed.</span>
+                <Users className="mt-1 h-5 w-5 text-celestial-blue-1" />
+                <span>Dedicated crews assigned to cardio, strength and studio zones for faster turnarounds.</span>
               </li>
               <li className="flex items-start gap-3">
-                <CheckCircle className="h-5 w-5 text-celestial-blue-1" />
-                <span>Reporting dashboards document every clean for franchise and council checks.</span>
+                <Timer className="mt-1 h-5 w-5 text-celestial-blue-1" />
+                <span>Shift schedules that mirror peak classes, competitions and 24/7 access windows.</span>
               </li>
             </ul>
             <div className="flex flex-wrap gap-4">
               <Link to="/contact" className="btn-primary">
-                Book a hygiene assessment
+                Plan my hygiene audit
               </Link>
               <a href="tel:+61411820650" className="btn-secondary">
-                Call 0411 820 650
+                Talk to a fitness specialist
               </a>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="section-shell section-shell--muted" id="programs">
-        <div className="container-max mx-auto">
-          <div className="section-heading">
-            <span className="section-heading__eyebrow">Spaces we transform</span>
-            <h2 className="section-heading__title">Tailored programs for every area of your club</h2>
-            <p className="section-heading__description">
-              From reformer studios to pool decks, each zone receives a dedicated checklist, chemical plan and inspection cycle.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            {studioPrograms.map((program) => (
-              <div key={program.name} className="rounded-[32px] bg-white p-8 shadow-sm">
-                <h3 className="text-2xl font-semibold text-charcoal">{program.name}</h3>
-                <p className="mt-3 text-jet/80 leading-relaxed">{program.detail}</p>
+          <div className="grid gap-4 sm:grid-cols-3">
+            {memberJourney.map((stage) => (
+              <div key={stage.title} className="rounded-[32px] border border-white/40 bg-white p-6 text-center shadow-sm">
+                <h3 className="text-lg font-semibold text-charcoal">{stage.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-jet/80">{stage.description}</p>
               </div>
             ))}
           </div>
@@ -380,59 +370,24 @@ const FitnessCleaning: React.FC = () => {
 
       <HowItWorks
         eyebrow="How onboarding works"
-        title="Four steps to launch your gym cleaning program"
-        description="A structured process keeps your team in the loop from quote to first workout-ready clean."
+        title="Four steps from first call to fan-favourite feedback"
+        description="From hygiene audit to live reporting, every step keeps your members confident and your brand compliant."
       />
 
-      <QuoteSection
-        eyebrow="Start today"
-        title="Request your gym cleaning quote"
-        description="Tell us about your equipment mix, membership volume and cleaning schedule. We’ll return a tailored proposal within 24 hours."
-        bullets={[
-          'Flexible scheduling around peak times',
-          'Certified disinfectants for shared equipment',
-          'Real-time communication with supervisors',
-        ]}
-        formTitle="Tell us about your fitness space"
-        formSubtitle="We’ll be in touch within one business day."
-      />
-
-      <section className="section-shell" id="benefits">
+      <section className="section-shell section-shell--muted" id="studio-programs">
         <div className="container-max mx-auto">
           <div className="section-heading">
-            <span className="section-heading__eyebrow">Benefits</span>
-            <h2 className="section-heading__title">Why Brisbane gyms choose MOG Cleaning</h2>
+            <span className="section-heading__eyebrow">Zone coverage</span>
+            <h2 className="section-heading__title">Programs tuned to each area of your club</h2>
             <p className="section-heading__description">
-              Confidence in hygiene keeps members loyal and reviews positive. Our crews protect your reputation daily.
+              Strength floors, reformer studios and recovery zones each receive a tailored scope with equipment-safe products.
             </p>
           </div>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {benefits.map((benefit) => (
-              <div key={benefit.title} className="feature-grid-card">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-celestial-blue-1/12 text-celestial-blue-1">
-                  <benefit.icon className="h-7 w-7" />
-                </div>
-                <h3 className="text-xl font-semibold text-charcoal">{benefit.title}</h3>
-                <p className="text-jet/80 leading-relaxed">{benefit.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section-shell section-shell--muted" id="inclusions">
-        <div className="container-max mx-auto">
-          <div className="section-heading">
-            <span className="section-heading__eyebrow">What’s included</span>
-            <h2 className="section-heading__title">Gym & studio cleaning checklist</h2>
-            <p className="section-heading__description">
-              A detailed program covering equipment, changerooms and member touchpoints keeps every visit predictable.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            {inclusions.map((inclusion) => (
-              <div key={inclusion} className="service-item p-6">
-                <p className="text-charcoal font-medium">{inclusion}</p>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            {studioPrograms.map((program) => (
+              <div key={program.name} className="rounded-[32px] bg-white p-8 shadow-sm">
+                <h3 className="text-2xl font-semibold text-charcoal">{program.name}</h3>
+                <p className="mt-3 leading-relaxed text-jet/80">{program.detail}</p>
               </div>
             ))}
           </div>
@@ -442,15 +397,60 @@ const FitnessCleaning: React.FC = () => {
       <section className="section-shell" id="testimonials">
         <div className="container-max mx-auto">
           <div className="section-heading">
-            <span className="section-heading__eyebrow">Results</span>
-            <h2 className="section-heading__title">What Brisbane fitness leaders say</h2>
+            <span className="section-heading__eyebrow">Social proof</span>
+            <h2 className="section-heading__title">Fitness brands that count on MOG Cleaning</h2>
             <p className="section-heading__description">
-              Hear from gym owners and franchise teams who rely on MOG Cleaning to protect their brand standards.
+              Hear from gym owners and franchise leaders who’ve lifted member satisfaction by keeping hygiene front of mind.
             </p>
           </div>
           <TestimonialCarousel testimonials={testimonials} className="mx-auto max-w-4xl" />
         </div>
       </section>
+
+      <QuoteSection
+        eyebrow="Start your program"
+        title="Request your fitness centre cleaning proposal"
+        description="Tell us about your membership size, class timetable and hygiene challenges. We’ll send a tailored scope, onboarding plan and pricing within 24 hours."
+        bullets={[
+          'Gym-trained crews with police checks',
+          'Odour control and moisture management plans',
+          'Compliance-ready reporting and photo logs',
+        ]}
+        formTitle="Tell us about your club"
+        formSubtitle="Your dedicated fitness contact will respond within one business day."
+      />
+
+      <section className="section-shell" id="benefits">
+        <div className="container-max mx-auto">
+          <div className="section-heading">
+            <span className="section-heading__eyebrow">Why clubs stay</span>
+            <h2 className="section-heading__title">Outcomes for your members, staff and brand</h2>
+            <p className="section-heading__description">
+              Consistent presentation, healthier air quality and easy compliance keep retention high and complaints low.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {benefits.map((benefit) => (
+              <div key={benefit.title} className="feature-grid-card">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-celestial-blue-1/12 text-celestial-blue-1">
+                  <benefit.icon className="h-7 w-7" />
+                </div>
+                <h3 className="text-xl font-semibold text-charcoal">{benefit.title}</h3>
+                <p className="leading-relaxed text-jet/80">{benefit.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <ChecklistPreview
+        id="inclusions"
+        eyebrow="What’s included"
+        title="Fitness centre cleaning preview"
+        description="The essentials we cover to keep members happy, equipment protected and audits satisfied."
+        note="This preview showcases common requests. After our walkthrough we tailor the checklist to your timetable, zones and franchise requirements."
+        categories={checklistPreview}
+      />
 
       <section className="section-shell" id="faqs">
         <div className="container-max mx-auto">
@@ -458,20 +458,20 @@ const FitnessCleaning: React.FC = () => {
             <span className="section-heading__eyebrow">FAQs</span>
             <h2 className="section-heading__title">Fitness cleaning FAQs</h2>
             <p className="section-heading__description">
-              Learn how we coordinate after-hours cleans, equipment sanitising and membership area resets for your venue.
+              Get answers on scheduling, odour control and compliance before you confirm your contract.
             </p>
           </div>
-          <FAQAccordion faqs={faqs} className="max-w-4xl mx-auto" />
+          <FAQAccordion faqs={faqs} className="mx-auto max-w-4xl" />
         </div>
       </section>
 
       <section className="section-shell section-shell--muted" id="related">
         <div className="container-max mx-auto">
           <div className="section-heading">
-            <span className="section-heading__eyebrow">Explore more programs</span>
-            <h2 className="section-heading__title">Support for every part of your business</h2>
+            <span className="section-heading__eyebrow">Need something else?</span>
+            <h2 className="section-heading__title">Explore other services</h2>
             <p className="section-heading__description">
-              Keep brand consistency across offices, hospitality venues and customer spaces with MOG Cleaning.
+              Offices, hospitality venues and retail stores enjoy the same responsive communication and spotless finish.
             </p>
           </div>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -494,9 +494,9 @@ const FitnessCleaning: React.FC = () => {
             <span className="pill-chip bg-white/10 text-white">
               <Sparkles className="h-4 w-4" /> Trusted by Brisbane gyms
             </span>
-            <h2 className="section-heading__title text-white">Ready to lift your hygiene standards?</h2>
+            <h2 className="section-heading__title text-white">Ready to wow members at every visit?</h2>
             <p className="section-heading__description text-white/80">
-              Schedule a walkthrough to receive a tailored plan, pricing and onboarding timeline within 24 hours.
+              Book a walkthrough and receive a tailored scope, pricing and onboarding plan within 24 hours.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
               <Link to="/contact" className="btn-primary">
@@ -509,6 +509,15 @@ const FitnessCleaning: React.FC = () => {
           </div>
         </div>
       </section>
+
+      <StickyCTABar
+        title="Keep members raving about cleanliness"
+        description="Schedule a walkthrough to launch your tailored fitness cleaning program."
+        primaryLabel="Book my walkthrough"
+        primaryHref="/contact"
+        secondaryLabel="Call 0411 820 650"
+        secondaryHref="tel:+61411820650"
+      />
     </div>
   );
 };

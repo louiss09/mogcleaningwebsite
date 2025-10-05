@@ -466,7 +466,7 @@ const Home: React.FC = () => {
               Choose the program tailored to your industry. Each page highlights the specifics, results and pricing guidance you need.
             </p>
           </div>
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
             {services.map((service) => (
               <Link key={service.name} to={service.path} className="service-card group">
                 <div className="service-card__visual">

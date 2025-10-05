@@ -20,17 +20,54 @@ import PageHero from '../../components/PageHero';
 import QuoteSection from '../../components/QuoteSection';
 import HeroHighlightBand from '../../components/HeroHighlightBand';
 import HowItWorks from '../../components/HowItWorks';
+import StickyCTABar from '../../components/StickyCTABar';
+import ChecklistPreview from '../../components/ChecklistPreview';
 
 const HospitalityCleaning: React.FC = () => {
-  const inclusions = [
-    'Front-of-house detailing for lobbies, dining rooms and guest areas',
-    'Kitchen and back-of-house deep cleans meeting HACCP standards',
-    'Event turnover support with rapid reset crews',
-    'Function room setup, chair/table polishing and glassware detailing',
-    'Restroom hygiene with consumable management and odour control',
-    'High-dusting, window cleaning and floor maintenance schedules',
-    'After-hours and overnight cleans to protect guest experiences',
+  const checklistPreview = [
+    {
+      icon: Bell,
+      title: 'Guest arrival & public spaces',
+      description: 'First impressions across lobbies, corridors and amenities.',
+      items: [
+        'Lobby, reception and concierge areas detailed nightly',
+        'Guest corridors, lifts and entry glass polished',
+        'Restrooms sanitised with consumables managed and odour control in place',
+      ],
+    },
+    {
+      icon: Wine,
+      title: 'Dining & bar presentation',
+      description: 'Front-of-house experiences that keep reviews glowing.',
+      items: [
+        'Dining rooms, bars and lounges reset between seatings',
+        'Tabletop, glassware and décor polishing for premium finishes',
+        'Daytime touchpoints refreshed to support service teams',
+      ],
+    },
+    {
+      icon: Utensils,
+      title: 'Kitchens & back-of-house',
+      description: 'HACCP-aligned support for culinary teams.',
+      items: [
+        'Degreasing of cooklines, equipment and splashbacks',
+        'Floor scrubbing, drain maintenance and waste coordination',
+        'Compliance documentation for council and HACCP audits',
+      ],
+    },
+    {
+      icon: Clock,
+      title: 'Events & overnight programs',
+      description: 'Flexible crews for high-volume operations.',
+      items: [
+        'Rapid event turnovers with chair, table and AV resets',
+        'Overnight deep cleans to protect guest sleep and breakfast service',
+        'High-dusting, windows and specialty floor care scheduled off-peak',
+      ],
+    },
   ];
+
+  const checklistHighlights = checklistPreview.flatMap((group) => group.items);
 
   const benefits = [
     {
@@ -195,7 +232,7 @@ const HospitalityCleaning: React.FC = () => {
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Hospitality cleaning inclusions',
-      itemListElement: inclusions.map((item) => ({
+      itemListElement: checklistHighlights.map((item) => ({
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
@@ -231,30 +268,30 @@ const HospitalityCleaning: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="pb-32">
       <SEO
         title={pageTitle}
         description={pageDescription}
         type="service"
-        image="/images/hotel-cleaning-background.jpg"
-        imageAlt="Cleaner preparing a hotel dining area"
-        keywords={['hospitality cleaning Brisbane', 'restaurant cleaners', 'hotel cleaning services']}
+        image="/images/hospitality-cleaning-background.jpg"
+        imageAlt="Luxury hospitality venue being cleaned"
+        keywords={['hospitality cleaning Brisbane', 'hotel cleaners Brisbane', 'restaurant cleaning services']}
         jsonLd={[breadcrumbSchema, serviceSchema]}
       />
 
       <PageHero
-        backgroundImage="/images/hotel-cleaning-background.jpg"
-        backgroundPosition="center 40%"
+        backgroundImage="/images/hospitality-cleaning-background.jpg"
+        backgroundPosition="center"
         overlay="charcoal"
         align="center"
         eyebrow="Hospitality cleaning"
         eyebrowIcon={Hotel}
-        title="Hospitality spaces that wow every guest, every time."
-        description="From the lobby to the kitchen pass, your venue stays immaculate with crews who understand your brand."
+        title="Deliver five-star moments from lobby to last seating."
+        description="Detail-focused crews who protect your guest experience, support your chefs and reset venues fast between events."
         actions={
           <>
             <Link to="/contact" className="btn-primary">
-              Get a quote
+              Book a venue walkthrough
             </Link>
             <a href="tel:+61411820650" className="btn-secondary">
               Call 0411 820 650
@@ -265,37 +302,13 @@ const HospitalityCleaning: React.FC = () => {
 
       <HeroHighlightBand items={heroHighlights} />
 
-      <section className="section-shell" id="service-windows">
-        <div className="container-max mx-auto overflow-hidden rounded-[40px] bg-gradient-to-r from-charcoal to-jet p-8 text-white md:p-12">
-          <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
-            <div className="max-w-xl space-y-4">
-              <span className="pill-chip bg-white/10 text-white">Service windows</span>
-              <h2 className="text-3xl font-semibold leading-tight md:text-4xl">
-                Crews operate when your guests and chefs need us most
-              </h2>
-              <p className="text-white/80">
-                From first seating to last call, our scheduling team builds rosters that protect ambience, food safety and review scores.
-              </p>
-            </div>
-            <div className="grid flex-1 gap-4 md:grid-cols-3">
-              {serviceWindows.map((window) => (
-                <div key={window.name} className="rounded-3xl bg-white/10 p-6 backdrop-blur">
-                  <h3 className="text-lg font-semibold">{window.name}</h3>
-                  <p className="mt-2 text-sm text-white/80">{window.detail}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className="section-shell" id="pain-points">
         <div className="container-max mx-auto">
           <div className="section-heading">
-            <span className="section-heading__eyebrow">What’s hurting your reviews?</span>
-            <h2 className="section-heading__title">Hospitality cleaning frustrations we fix</h2>
+            <span className="section-heading__eyebrow">When operators call us</span>
+            <h2 className="section-heading__title">Guest reviews drop when presentation slips</h2>
             <p className="section-heading__description">
-              Venue managers turn to MOG Cleaning when presentation, compliance and turnaround times are letting guests down.
+              Hospitality leaders reach out when fingerprints, grease or slow turnovers start impacting revenue. We restore polish and pace.
             </p>
           </div>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -312,65 +325,44 @@ const HospitalityCleaning: React.FC = () => {
         </div>
       </section>
 
-      <section className="section-shell" id="solution">
-        <div className="container-max mx-auto grid gap-12 lg:grid-cols-2 lg:items-center">
-          <div className="glass-panel" data-variant="frost">
-            <img
-              src="/images/hotel-cleaning-background.jpg"
-              alt="Cleaner preparing a hospitality venue"
-              className="h-full w-full rounded-[32px] object-cover"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
+      <section className="section-shell" id="plan">
+        <div className="container-max mx-auto grid gap-12 lg:grid-cols-[1.15fr_1fr] lg:items-center">
           <div className="space-y-6">
             <div className="section-heading" data-align="left">
-              <span className="section-heading__eyebrow">Our approach</span>
-              <h2 className="section-heading__title">Presentation, compliance and speed in one program</h2>
+              <span className="section-heading__eyebrow">Your plan</span>
+              <h2 className="section-heading__title">30 days to reviews that rave about cleanliness</h2>
               <p className="section-heading__description">
-                We partner with your operations team to keep guest areas immaculate, kitchens audit-ready and events running smoothly.
+                We map your service windows, document HACCP requirements and onboard hospitality-trained teams. Nightly reporting keeps managers informed without chasing updates.
               </p>
             </div>
             <ul className="space-y-4 text-jet/80">
               <li className="flex items-start gap-3">
-                <CheckCircle className="h-5 w-5 text-celestial-blue-1" />
-                <span>Dedicated crews for front-of-house, kitchen and event spaces.</span>
+                <CheckCircle className="mt-1 h-5 w-5 text-celestial-blue-1" />
+                <span>Kick-off walkthrough capturing front and back-of-house priorities plus compliance needs.</span>
               </li>
               <li className="flex items-start gap-3">
-                <CheckCircle className="h-5 w-5 text-celestial-blue-1" />
-                <span>HACCP-aligned checklists and reporting for food safety compliance.</span>
+                <Users className="mt-1 h-5 w-5 text-celestial-blue-1" />
+                <span>Dedicated supervisors coordinate with your duty managers before and after every shift.</span>
               </li>
               <li className="flex items-start gap-3">
-                <CheckCircle className="h-5 w-5 text-celestial-blue-1" />
-                <span>On-call supervisors to respond to spills, VIP visits and late-running events.</span>
+                <Clock className="mt-1 h-5 w-5 text-celestial-blue-1" />
+                <span>Flexible rosters covering late closes, breakfast turnover and rapid event resets.</span>
               </li>
             </ul>
             <div className="flex flex-wrap gap-4">
               <Link to="/contact" className="btn-primary">
-                Book a venue walkthrough
+                Schedule my venue tour
               </Link>
               <a href="tel:+61411820650" className="btn-secondary">
-                Call 0411 820 650
+                Speak with hospitality support
               </a>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="section-shell section-shell--muted" id="venue-boards">
-        <div className="container-max mx-auto">
-          <div className="section-heading">
-            <span className="section-heading__eyebrow">Venue playbooks</span>
-            <h2 className="section-heading__title">A tailored approach for every hospitality concept</h2>
-            <p className="section-heading__description">
-              Whether you manage a luxury lobby or a bustling function centre, we build a cleaning storyboard that mirrors the experience you promise guests.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            {venueBoards.map((board) => (
-              <div key={board.title} className="rounded-[32px] border border-white/40 bg-white p-8 shadow-sm">
-                <h3 className="text-2xl font-semibold text-charcoal">{board.title}</h3>
-                <p className="mt-3 text-jet/80 leading-relaxed">{board.body}</p>
+          <div className="grid gap-4 sm:grid-cols-3">
+            {serviceWindows.map((window) => (
+              <div key={window.name} className="rounded-[32px] border border-white/40 bg-white p-6 text-center shadow-sm">
+                <h3 className="text-lg font-semibold text-charcoal">{window.name}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-jet/80">{window.detail}</p>
               </div>
             ))}
           </div>
@@ -379,59 +371,24 @@ const HospitalityCleaning: React.FC = () => {
 
       <HowItWorks
         eyebrow="How onboarding works"
-        title="Four steps to hospitality-ready cleaning"
-        description="A proven process keeps your team informed and your guests delighted from day one."
+        title="Four steps to five-star presentation"
+        description="From compliance audit to live reporting, our process keeps GMs, chefs and event teams aligned from day one."
       />
 
-      <QuoteSection
-        eyebrow="Start planning"
-        title="Request your hospitality cleaning proposal"
-        description="Share your venue type, service schedule and event calendar. We’ll respond with a tailored program within 24 hours."
-        bullets={[
-          'Front and back-of-house specialists',
-          'HACCP-aligned documentation',
-          'Rapid event turnaround crews',
-        ]}
-        formTitle="Tell us about your venue"
-        formSubtitle="A hospitality specialist will confirm next steps within one business day."
-      />
-
-      <section className="section-shell" id="benefits">
+      <section className="section-shell section-shell--muted" id="venues">
         <div className="container-max mx-auto">
           <div className="section-heading">
-            <span className="section-heading__eyebrow">Benefits</span>
-            <h2 className="section-heading__title">Why hospitality brands choose MOG Cleaning</h2>
+            <span className="section-heading__eyebrow">Venue coverage</span>
+            <h2 className="section-heading__title">Programs tuned to every hospitality environment</h2>
             <p className="section-heading__description">
-              We help your team deliver memorable experiences by keeping every touchpoint pristine and compliant.
+              Hotels, fine dining and event centres receive dedicated crews, tailored checklists and reporting that suits their brand standards.
             </p>
           </div>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {benefits.map((benefit) => (
-              <div key={benefit.title} className="feature-grid-card">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-celestial-blue-1/12 text-celestial-blue-1">
-                  <benefit.icon className="h-7 w-7" />
-                </div>
-                <h3 className="text-xl font-semibold text-charcoal">{benefit.title}</h3>
-                <p className="text-jet/80 leading-relaxed">{benefit.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section-shell section-shell--muted" id="inclusions">
-        <div className="container-max mx-auto">
-          <div className="section-heading">
-            <span className="section-heading__eyebrow">What’s included</span>
-            <h2 className="section-heading__title">Hospitality cleaning checklist</h2>
-            <p className="section-heading__description">
-              Every visit follows detailed checklists for guest areas, kitchens and event spaces, so nothing is missed.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            {inclusions.map((inclusion) => (
-              <div key={inclusion} className="service-item p-6">
-                <p className="text-charcoal font-medium">{inclusion}</p>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            {venueBoards.map((board) => (
+              <div key={board.title} className="rounded-[32px] bg-white p-8 shadow-sm">
+                <h3 className="text-2xl font-semibold text-charcoal">{board.title}</h3>
+                <p className="mt-3 leading-relaxed text-jet/80">{board.body}</p>
               </div>
             ))}
           </div>
@@ -441,15 +398,60 @@ const HospitalityCleaning: React.FC = () => {
       <section className="section-shell" id="testimonials">
         <div className="container-max mx-auto">
           <div className="section-heading">
-            <span className="section-heading__eyebrow">Results</span>
-            <h2 className="section-heading__title">What Brisbane venues say</h2>
+            <span className="section-heading__eyebrow">Proof for owners & chefs</span>
+            <h2 className="section-heading__title">Hospitality brands that trust MOG Cleaning</h2>
             <p className="section-heading__description">
-              Hear from hotels, restaurants and event centres that rely on MOG Cleaning to keep guests impressed.
+              Hear from operators who now enjoy glowing guest feedback, easier inspections and faster event flips.
             </p>
           </div>
           <TestimonialCarousel testimonials={testimonials} className="mx-auto max-w-4xl" />
         </div>
       </section>
+
+      <QuoteSection
+        eyebrow="Start your program"
+        title="Request your hospitality cleaning proposal"
+        description="Share your service windows, kitchen requirements and event schedule. We’ll send a tailored scope, onboarding plan and pricing within 24 hours."
+        bullets={[
+          'HACCP-aligned cleaning documentation',
+          'Front and back-of-house presentation teams',
+          'Rapid response crews for events and VIPs',
+        ]}
+        formTitle="Tell us about your venue"
+        formSubtitle="Your dedicated hospitality contact will respond within one business day."
+      />
+
+      <section className="section-shell" id="benefits">
+        <div className="container-max mx-auto">
+          <div className="section-heading">
+            <span className="section-heading__eyebrow">Why venues stay</span>
+            <h2 className="section-heading__title">Outcomes for your guests, chefs and coordinators</h2>
+            <p className="section-heading__description">
+              Consistent presentation, compliant kitchens and rapid resets increase guest satisfaction and repeat bookings.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {benefits.map((benefit) => (
+              <div key={benefit.title} className="feature-grid-card">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-celestial-blue-1/12 text-celestial-blue-1">
+                  <benefit.icon className="h-7 w-7" />
+                </div>
+                <h3 className="text-xl font-semibold text-charcoal">{benefit.title}</h3>
+                <p className="leading-relaxed text-jet/80">{benefit.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <ChecklistPreview
+        id="inclusions"
+        eyebrow="What’s included"
+        title="Hospitality cleaning preview"
+        description="Core routines we tailor for hotels, restaurants, clubs and event venues."
+        note="Consider this a preview of what we deliver. After a walkthrough we customise every checklist around your service windows, brand standards and compliance obligations."
+        categories={checklistPreview}
+      />
 
       <section className="section-shell" id="faqs">
         <div className="container-max mx-auto">
@@ -457,20 +459,20 @@ const HospitalityCleaning: React.FC = () => {
             <span className="section-heading__eyebrow">FAQs</span>
             <h2 className="section-heading__title">Hospitality cleaning FAQs</h2>
             <p className="section-heading__description">
-              Discover how we coordinate front-of-house presentation, kitchen hygiene and event support without disrupting guest service.
+              Clarify how we work around service times, manage compliance and support events before you onboard.
             </p>
           </div>
-          <FAQAccordion faqs={faqs} className="max-w-4xl mx-auto" />
+          <FAQAccordion faqs={faqs} className="mx-auto max-w-4xl" />
         </div>
       </section>
 
       <section className="section-shell section-shell--muted" id="related">
         <div className="container-max mx-auto">
           <div className="section-heading">
-            <span className="section-heading__eyebrow">Explore more programs</span>
-            <h2 className="section-heading__title">Consistent experiences across your portfolio</h2>
+            <span className="section-heading__eyebrow">Need something else?</span>
+            <h2 className="section-heading__title">Explore other services</h2>
             <p className="section-heading__description">
-              Extend MOG Cleaning to your retail spaces, offices or back-of-house areas for a unified standard.
+              From offices to retail, our teams deliver the same polished experience across Brisbane.
             </p>
           </div>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -493,9 +495,9 @@ const HospitalityCleaning: React.FC = () => {
             <span className="pill-chip bg-white/10 text-white">
               <Sparkles className="h-4 w-4" /> Trusted by Brisbane venues
             </span>
-            <h2 className="section-heading__title text-white">Ready to elevate your guest experience?</h2>
+            <h2 className="section-heading__title text-white">Ready to elevate every guest touchpoint?</h2>
             <p className="section-heading__description text-white/80">
-              Book a walkthrough and receive a tailored hospitality cleaning program within 24 hours.
+              Book a walkthrough and receive a tailored scope, pricing and onboarding plan within 24 hours.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
               <Link to="/contact" className="btn-primary">
@@ -508,6 +510,15 @@ const HospitalityCleaning: React.FC = () => {
           </div>
         </div>
       </section>
+
+      <StickyCTABar
+        title="Lock in five-star cleanliness"
+        description="Schedule a walkthrough today and secure your tailored hospitality program."
+        primaryLabel="Book my walkthrough"
+        primaryHref="/contact"
+        secondaryLabel="Call 0411 820 650"
+        secondaryHref="tel:+61411820650"
+      />
     </div>
   );
 };

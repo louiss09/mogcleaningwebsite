@@ -20,17 +20,54 @@ import PageHero from '../../components/PageHero';
 import QuoteSection from '../../components/QuoteSection';
 import HeroHighlightBand from '../../components/HeroHighlightBand';
 import HowItWorks from '../../components/HowItWorks';
+import StickyCTABar from '../../components/StickyCTABar';
+import ChecklistPreview from '../../components/ChecklistPreview';
 
 const RetailCleaning: React.FC = () => {
-  const inclusions = [
-    'Sales floor detailing with dust-free fixtures and polished floors',
-    'Change room and restroom sanitising with consumable restocking',
-    'Glass, display case and mirror cleaning for streak-free presentation',
-    'Back-of-house storage and stockroom organisation support',
-    'High dusting for lighting, signage and visual merchandising',
-    'After-hours cleaning to protect shopper experiences',
-    'Periodic deep cleans, carpet care and window polishing',
+  const checklistPreview = [
+    {
+      icon: ShoppingBag,
+      title: 'Sales floor polish',
+      description: 'Keep displays and pathways camera-ready every day.',
+      items: [
+        'Shelving, fixtures and product plinths dusted and detailed',
+        'High-gloss floors vacuumed, mopped or buffed for a showroom shine',
+        'Glass, mirrors and display cases polished streak-free',
+      ],
+    },
+    {
+      icon: Sparkles,
+      title: 'Fitting rooms & amenities',
+      description: 'Spaces that turn browsers into buyers.',
+      items: [
+        'Change rooms sanitised and restocked with consumables',
+        'Restrooms cleaned with odour control and amenity checks',
+        'Fragrance-neutral treatments keep enclosed areas inviting',
+      ],
+    },
+    {
+      icon: Package,
+      title: 'Back-of-house & logistics',
+      description: 'Support replenishment, click-and-collect and deliveries.',
+      items: [
+        'Stockrooms organised with floors swept and benches sanitised',
+        'Waste dock coordination, recycling and cardboard breakdown',
+        'High dusting for lighting, signage and storage mezzanines',
+      ],
+    },
+    {
+      icon: Tag,
+      title: 'Trading rhythms & campaigns',
+      description: 'Flexible support for launches, sales and extended trading.',
+      items: [
+        'After-hours cleans aligned to trade and visual merchandising refreshes',
+        'Seasonal deep cleans, carpet care and window polishing',
+        'Day-porters or extra crews for sales events and holiday queues',
+      ],
+    },
   ];
+
+  const checklistHighlights = checklistPreview.flatMap((group) => group.items);
 
   const benefits = [
     {
@@ -195,7 +232,7 @@ const RetailCleaning: React.FC = () => {
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Retail cleaning inclusions',
-      itemListElement: inclusions.map((item) => ({
+      itemListElement: checklistHighlights.map((item) => ({
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
@@ -231,30 +268,30 @@ const RetailCleaning: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="pb-32">
       <SEO
         title={pageTitle}
         description={pageDescription}
         type="service"
         image="/images/retail-cleaning-background.jpg"
-        imageAlt="Retail store being cleaned after hours"
-        keywords={['retail cleaning Brisbane', 'store cleaners brisbane', 'showroom cleaning services']}
+        imageAlt="Retail store being cleaned before opening"
+        keywords={['retail cleaning Brisbane', 'store cleaners', 'showroom cleaning services']}
         jsonLd={[breadcrumbSchema, serviceSchema]}
       />
 
       <PageHero
         backgroundImage="/images/retail-cleaning-background.jpg"
-        backgroundPosition="center 40%"
+        backgroundPosition="center"
         overlay="charcoal"
         align="center"
         eyebrow="Retail cleaning"
         eyebrowIcon={ShoppingBag}
-        title="Retail spaces that sell more with every spotless detail."
-        description="Protect your brand experience with crews who understand visual merchandising, customer flow and stockroom needs."
+        title="Keep every display, fitting room and back room retail ready."
+        description="Retail-trained cleaners who protect your visual merchandising, support staff and keep brand standards consistent."
         actions={
           <>
             <Link to="/contact" className="btn-primary">
-              Get a quote
+              Book a store walkthrough
             </Link>
             <a href="tel:+61411820650" className="btn-secondary">
               Call 0411 820 650
@@ -265,33 +302,13 @@ const RetailCleaning: React.FC = () => {
 
       <HeroHighlightBand items={heroHighlights} />
 
-      <section className="section-shell" id="seasonal-moments">
-        <div className="container-max mx-auto">
-          <div className="section-heading">
-            <span className="section-heading__eyebrow">Retail calendar</span>
-            <h2 className="section-heading__title">Programs that flex with your promotional moments</h2>
-            <p className="section-heading__description">
-              We build calendars that align with floor set changes, sales periods and extended trade so your store always looks launch ready.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-            {seasonalMoments.map((moment) => (
-              <div key={moment.label} className="rounded-[32px] border border-white/40 bg-white p-8 shadow-sm">
-                <h3 className="text-xl font-semibold text-charcoal">{moment.label}</h3>
-                <p className="mt-3 text-jet/80 leading-relaxed">{moment.detail}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="section-shell" id="pain-points">
         <div className="container-max mx-auto">
           <div className="section-heading">
-            <span className="section-heading__eyebrow">What’s at stake</span>
-            <h2 className="section-heading__title">Retail cleaning frustrations we solve</h2>
+            <span className="section-heading__eyebrow">Why retailers switch</span>
+            <h2 className="section-heading__title">Dust, streaks and clutter cost conversions</h2>
             <p className="section-heading__description">
-              From boutique stores to national brands, MOG Cleaning steps in when presentation and operations can’t afford to slip.
+              Retail leaders contact us when presentation slips or stockrooms become chaos. We restore showroom polish without slowing trade.
             </p>
           </div>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -308,65 +325,44 @@ const RetailCleaning: React.FC = () => {
         </div>
       </section>
 
-      <section className="section-shell" id="solution">
-        <div className="container-max mx-auto grid gap-12 lg:grid-cols-2 lg:items-center">
-          <div className="glass-panel" data-variant="frost">
-            <img
-              src="/images/retail-cleaning-background.jpg"
-              alt="Cleaner wiping down retail display"
-              className="h-full w-full rounded-[32px] object-cover"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
+      <section className="section-shell" id="plan">
+        <div className="container-max mx-auto grid gap-12 lg:grid-cols-[1.15fr_1fr] lg:items-center">
           <div className="space-y-6">
             <div className="section-heading" data-align="left">
-              <span className="section-heading__eyebrow">Our approach</span>
-              <h2 className="section-heading__title">Brand-aligned cleaning for stores and showrooms</h2>
+              <span className="section-heading__eyebrow">Your plan</span>
+              <h2 className="section-heading__title">30 days to stores that always look launch ready</h2>
               <p className="section-heading__description">
-                We work with your retail operations team to keep displays, fitting rooms and stock areas running smoothly while you focus on customers.
+                We document every zone, align with centre management and onboard retail-trained crews. Daily reporting keeps head office and store teams confident.
               </p>
             </div>
             <ul className="space-y-4 text-jet/80">
               <li className="flex items-start gap-3">
-                <CheckCircle className="h-5 w-5 text-celestial-blue-1" />
-                <span>Detailed scopes for front-of-house, fitting rooms and back-of-house operations.</span>
+                <CheckCircle className="mt-1 h-5 w-5 text-celestial-blue-1" />
+                <span>Kick-off walkthrough with VM teams to capture fixtures, finishes and brand standards.</span>
               </li>
               <li className="flex items-start gap-3">
-                <CheckCircle className="h-5 w-5 text-celestial-blue-1" />
-                <span>After-hours scheduling and key management keep stores secure and ready for opening.</span>
+                <Users className="mt-1 h-5 w-5 text-celestial-blue-1" />
+                <span>Dedicated crews for trading floors, change rooms and back-of-house so nothing is overlooked.</span>
               </li>
               <li className="flex items-start gap-3">
-                <CheckCircle className="h-5 w-5 text-celestial-blue-1" />
-                <span>Reporting includes photo logs for head office visibility.</span>
+                <Clock className="mt-1 h-5 w-5 text-celestial-blue-1" />
+                <span>After-hours rosters and day porters to support launches, sale periods and late trade.</span>
               </li>
             </ul>
             <div className="flex flex-wrap gap-4">
               <Link to="/contact" className="btn-primary">
-                Book a store walkthrough
+                Schedule my store audit
               </Link>
               <a href="tel:+61411820650" className="btn-secondary">
-                Call 0411 820 650
+                Speak with retail support
               </a>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="section-shell section-shell--muted" id="retail-support">
-        <div className="container-max mx-auto">
-          <div className="section-heading">
-            <span className="section-heading__eyebrow">Store formats</span>
-            <h2 className="section-heading__title">Support for every retail footprint</h2>
-            <p className="section-heading__description">
-              From boutique laneway stores to flagship showrooms, each site receives procedures specific to its fixtures, finishes and foot traffic.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            {retailSupport.map((item) => (
-              <div key={item.name} className="rounded-[32px] bg-white p-8 shadow-sm">
-                <h3 className="text-2xl font-semibold text-charcoal">{item.name}</h3>
-                <p className="mt-3 text-jet/80 leading-relaxed">{item.description}</p>
+          <div className="grid gap-4 sm:grid-cols-3">
+            {seasonalMoments.map((moment) => (
+              <div key={moment.label} className="rounded-[32px] border border-white/40 bg-white p-6 text-center shadow-sm">
+                <h3 className="text-lg font-semibold text-charcoal">{moment.label}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-jet/80">{moment.detail}</p>
               </div>
             ))}
           </div>
@@ -374,60 +370,25 @@ const RetailCleaning: React.FC = () => {
       </section>
 
       <HowItWorks
-        eyebrow="Implementation"
-        title="Four steps to launch your retail cleaning program"
-        description="A streamlined process keeps your support office, store managers and operations team aligned."
+        eyebrow="How onboarding works"
+        title="Four steps to retail-ready presentation"
+        description="From scope capture to live reporting, our process keeps store managers and head office aligned."
       />
 
-      <QuoteSection
-        eyebrow="Start today"
-        title="Request your retail cleaning proposal"
-        description="Tell us about your store footprint, trading hours and compliance expectations. We’ll provide a tailored scope within 24 hours."
-        bullets={[
-          'After-hours crews for uninterrupted trading',
-          'Store-specific checklists and reporting',
-          'Support for visual merchandising resets',
-        ]}
-        formTitle="Tell us about your store"
-        formSubtitle="Your retail account manager will respond within one business day."
-      />
-
-      <section className="section-shell" id="benefits">
+      <section className="section-shell section-shell--muted" id="retail-support">
         <div className="container-max mx-auto">
           <div className="section-heading">
-            <span className="section-heading__eyebrow">Benefits</span>
-            <h2 className="section-heading__title">Why retail brands choose MOG Cleaning</h2>
+            <span className="section-heading__eyebrow">Store formats</span>
+            <h2 className="section-heading__title">Programs for every retail footprint</h2>
             <p className="section-heading__description">
-              We help store teams focus on sales by removing cleaning headaches and protecting brand standards.
+              Flagship stores, boutiques and showrooms all receive tailored checklists, access plans and reporting cadence.
             </p>
           </div>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {benefits.map((benefit) => (
-              <div key={benefit.title} className="feature-grid-card">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-celestial-blue-1/12 text-celestial-blue-1">
-                  <benefit.icon className="h-7 w-7" />
-                </div>
-                <h3 className="text-xl font-semibold text-charcoal">{benefit.title}</h3>
-                <p className="text-jet/80 leading-relaxed">{benefit.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section-shell section-shell--muted" id="inclusions">
-        <div className="container-max mx-auto">
-          <div className="section-heading">
-            <span className="section-heading__eyebrow">What’s included</span>
-            <h2 className="section-heading__title">Retail cleaning checklist</h2>
-            <p className="section-heading__description">
-              Every service is mapped to your store layout so presentation, change rooms and stock areas stay on point.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            {inclusions.map((inclusion) => (
-              <div key={inclusion} className="service-item p-6">
-                <p className="text-charcoal font-medium">{inclusion}</p>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            {retailSupport.map((support) => (
+              <div key={support.name} className="rounded-[32px] bg-white p-8 shadow-sm">
+                <h3 className="text-2xl font-semibold text-charcoal">{support.name}</h3>
+                <p className="mt-3 leading-relaxed text-jet/80">{support.description}</p>
               </div>
             ))}
           </div>
@@ -437,15 +398,60 @@ const RetailCleaning: React.FC = () => {
       <section className="section-shell" id="testimonials">
         <div className="container-max mx-auto">
           <div className="section-heading">
-            <span className="section-heading__eyebrow">Results</span>
-            <h2 className="section-heading__title">What Brisbane retailers say</h2>
+            <span className="section-heading__eyebrow">Proof for your retail ops team</span>
+            <h2 className="section-heading__title">Brands that trust MOG Cleaning</h2>
             <p className="section-heading__description">
-              Hear from state and store managers who rely on MOG Cleaning to keep stores customer-ready.
+              Hear how multi-site managers describe the uplift in store presentation and communication.
             </p>
           </div>
           <TestimonialCarousel testimonials={testimonials} className="mx-auto max-w-4xl" />
         </div>
       </section>
+
+      <QuoteSection
+        eyebrow="Start your program"
+        title="Request your retail cleaning proposal"
+        description="Share your store count, trading hours and current challenges. We’ll deliver a tailored scope, onboarding plan and pricing within 24 hours."
+        bullets={[
+          'Retail-trained crews with security clearances',
+          'After-hours rosters and day porter options',
+          'Photo reporting for head office visibility',
+        ]}
+        formTitle="Tell us about your stores"
+        formSubtitle="Your dedicated retail contact will respond within one business day."
+      />
+
+      <section className="section-shell" id="benefits">
+        <div className="container-max mx-auto">
+          <div className="section-heading">
+            <span className="section-heading__eyebrow">Why retailers stay</span>
+            <h2 className="section-heading__title">Outcomes for your team, customers and brand</h2>
+            <p className="section-heading__description">
+              Consistent presentation, organised back rooms and confident staff keep conversion rates and NPS high.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {benefits.map((benefit) => (
+              <div key={benefit.title} className="feature-grid-card">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-celestial-blue-1/12 text-celestial-blue-1">
+                  <benefit.icon className="h-7 w-7" />
+                </div>
+                <h3 className="text-xl font-semibold text-charcoal">{benefit.title}</h3>
+                <p className="leading-relaxed text-jet/80">{benefit.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <ChecklistPreview
+        id="inclusions"
+        eyebrow="What’s included"
+        title="Retail cleaning preview"
+        description="Highlights from the tailored programs we deliver for boutiques, multi-site retailers and showrooms."
+        note="This preview shows popular inclusions. After our walkthrough we build a checklist around your trading hours, merchandising calendar and back-of-house workflow."
+        categories={checklistPreview}
+      />
 
       <section className="section-shell" id="faqs">
         <div className="container-max mx-auto">
@@ -453,20 +459,20 @@ const RetailCleaning: React.FC = () => {
             <span className="section-heading__eyebrow">FAQs</span>
             <h2 className="section-heading__title">Retail cleaning FAQs</h2>
             <p className="section-heading__description">
-              See how we handle opening routines, promotional changeovers and national reporting before you book your walkthrough.
+              Learn how we coordinate with centre management, access requirements and after-hours schedules before you engage us.
             </p>
           </div>
-          <FAQAccordion faqs={faqs} className="max-w-4xl mx-auto" />
+          <FAQAccordion faqs={faqs} className="mx-auto max-w-4xl" />
         </div>
       </section>
 
       <section className="section-shell section-shell--muted" id="related">
         <div className="container-max mx-auto">
           <div className="section-heading">
-            <span className="section-heading__eyebrow">Explore more programs</span>
-            <h2 className="section-heading__title">Extend spotless standards everywhere</h2>
+            <span className="section-heading__eyebrow">Need something else?</span>
+            <h2 className="section-heading__title">Explore other services</h2>
             <p className="section-heading__description">
-              Keep your entire brand ecosystem aligned by partnering with MOG Cleaning across venues and offices.
+              From hospitality to offices, we bring the same attentive crews and transparent reporting to every site.
             </p>
           </div>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -487,11 +493,11 @@ const RetailCleaning: React.FC = () => {
         <div className="container-max mx-auto text-center">
           <div className="mx-auto max-w-3xl space-y-6">
             <span className="pill-chip bg-white/10 text-white">
-              <Sparkles className="h-4 w-4" /> Trusted by Brisbane retailers
+              <Sparkles className="h-4 w-4" /> Trusted by national retailers
             </span>
-            <h2 className="section-heading__title text-white">Ready to keep shoppers impressed?</h2>
+            <h2 className="section-heading__title text-white">Ready to unlock higher conversion rates?</h2>
             <p className="section-heading__description text-white/80">
-              Book a walkthrough and receive a tailored retail cleaning program within 24 hours.
+              Book a walkthrough and receive a tailored scope, pricing and onboarding plan within 24 hours.
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
               <Link to="/contact" className="btn-primary">
@@ -504,6 +510,15 @@ const RetailCleaning: React.FC = () => {
           </div>
         </div>
       </section>
+
+      <StickyCTABar
+        title="Keep every store photo-ready"
+        description="Book a walkthrough to secure your tailored retail cleaning program."
+        primaryLabel="Book my walkthrough"
+        primaryHref="/contact"
+        secondaryLabel="Call 0411 820 650"
+        secondaryHref="tel:+61411820650"
+      />
     </div>
   );
 };
