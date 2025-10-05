@@ -20,6 +20,7 @@ import PageHero from '../../components/PageHero';
 import QuoteSection from '../../components/QuoteSection';
 import HeroHighlightBand from '../../components/HeroHighlightBand';
 import HowItWorks from '../../components/HowItWorks';
+import StickyCTABar from '../../components/StickyCTABar';
 
 const OfficesCleaning: React.FC = () => {
   const inclusions = [
@@ -233,7 +234,7 @@ const OfficesCleaning: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="pb-32">
       <SEO
         title={pageTitle}
         description={pageDescription}
@@ -256,7 +257,7 @@ const OfficesCleaning: React.FC = () => {
         actions={
           <>
             <Link to="/contact" className="btn-primary">
-              Get a quote
+              Book your site walkthrough
             </Link>
             <a href="tel:+61411820650" className="btn-secondary">
               Call 0411 820 650
@@ -267,45 +268,14 @@ const OfficesCleaning: React.FC = () => {
 
       <HeroHighlightBand items={heroHighlights} />
 
-      <section className="section-shell" id="workplace-rhythm">
-        <div className="container-max mx-auto grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:items-center">
-          <div className="space-y-6">
-            <div className="section-heading" data-align="left">
-              <span className="section-heading__eyebrow">Daily cadence</span>
-              <h2 className="section-heading__title">Cleaning schedules that mirror hybrid work patterns</h2>
-              <p className="section-heading__description">
-                We plot rosters around desk bookings, visitor arrivals and critical meetings so spaces stay presentation ready without disrupting productivity.
-              </p>
-            </div>
-            <ul className="space-y-4 text-jet/80">
-              <li className="flex items-start gap-3">
-                <Clock className="mt-1 h-5 w-5 text-celestial-blue-1" />
-                <span>Flexible shift options for early birds, day porters and overnight detail crews.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <Users className="mt-1 h-5 w-5 text-celestial-blue-1" />
-                <span>Alignment with building management and security for seamless access.</span>
-              </li>
-            </ul>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-3">
-            {workplaceRhythms.map((rhythm) => (
-              <div key={rhythm.name} className="rounded-[32px] border border-white/40 bg-white p-6 text-center shadow-sm">
-                <h3 className="text-lg font-semibold text-charcoal">{rhythm.name}</h3>
-                <p className="mt-2 text-sm text-jet/80 leading-relaxed">{rhythm.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="section-shell" id="pain-points">
         <div className="container-max mx-auto">
           <div className="section-heading">
-            <span className="section-heading__eyebrow">Your challenges</span>
-            <h2 className="section-heading__title">The reasons facility managers switch to us</h2>
+            <span className="section-heading__eyebrow">What you’re feeling</span>
+            <h2 className="section-heading__title">Facility teams call us when the basics keep slipping</h2>
             <p className="section-heading__description">
-              Office managers come to MOG Cleaning when inconsistency, poor presentation and slow responses start costing them credibility.
+              If desks are still dusty at 9am or boardrooms aren’t investor ready, it’s costing you credibility. We step in when you
+              need a partner who owns the presentation and the reporting.
             </p>
           </div>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -322,65 +292,45 @@ const OfficesCleaning: React.FC = () => {
         </div>
       </section>
 
-      <section className="section-shell" id="solution">
-        <div className="container-max mx-auto grid gap-12 lg:grid-cols-2 lg:items-center">
-          <div className="glass-panel" data-variant="frost">
-            <img
-              src="/images/office-cleaning-background.jpg"
-              alt="Office cleaners detailing a Brisbane boardroom"
-              className="h-full w-full rounded-[32px] object-cover"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
+      <section className="section-shell" id="plan">
+        <div className="container-max mx-auto grid gap-12 lg:grid-cols-[1.15fr_1fr] lg:items-center">
           <div className="space-y-6">
             <div className="section-heading" data-align="left">
-              <span className="section-heading__eyebrow">Our solution</span>
-              <h2 className="section-heading__title">Structured office cleaning that protects your reputation</h2>
+              <span className="section-heading__eyebrow">Your plan</span>
+              <h2 className="section-heading__title">A 30-day turnaround that locks in consistency</h2>
               <p className="section-heading__description">
-                Dedicated corporate crews, supervisor audits and photo reporting keep your leadership team confident the moment they walk into the building.
+                We map your access requirements, design a floor-by-floor checklist and have induction-ready crews on site within
+                days. Every visit is documented so executives see the difference immediately.
               </p>
             </div>
             <ul className="space-y-4 text-jet/80">
               <li className="flex items-start gap-3">
-                <CheckCircle className="h-5 w-5 text-celestial-blue-1" />
-                <span>Custom scope by floor, including executive suites and shared amenities.</span>
+                <CheckCircle className="mt-1 h-5 w-5 text-celestial-blue-1" />
+                <span>Discovery walkthrough, scope build and stakeholder alignment in week one.</span>
               </li>
               <li className="flex items-start gap-3">
-                <CheckCircle className="h-5 w-5 text-celestial-blue-1" />
-                <span>After-hours scheduling that keeps your staff productive and undisturbed.</span>
+                <Users className="mt-1 h-5 w-5 text-celestial-blue-1" />
+                <span>Dedicated crew allocations with supervisor oversight for each floor plate.</span>
               </li>
               <li className="flex items-start gap-3">
-                <CheckCircle className="h-5 w-5 text-celestial-blue-1" />
-                <span>Inductions, SWMS and insurance certificates supplied before the first shift.</span>
+                <Clock className="mt-1 h-5 w-5 text-celestial-blue-1" />
+                <span>Rhythms that mirror hybrid work patterns so desks, amenities and client areas stay on point.</span>
               </li>
             </ul>
             <div className="flex flex-wrap gap-4">
               <Link to="/contact" className="btn-primary">
-                Book your walkthrough
+                Schedule my walkthrough
               </Link>
               <a href="tel:+61411820650" className="btn-secondary">
-                Call 0411 820 650
+                Speak to the team
               </a>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="section-shell section-shell--muted" id="office-programs">
-        <div className="container-max mx-auto">
-          <div className="section-heading">
-            <span className="section-heading__eyebrow">Workplace zones</span>
-            <h2 className="section-heading__title">Playbooks for every corner of your office</h2>
-            <p className="section-heading__description">
-              Each zone receives a purpose-built checklist, from executive floors to end-of-trip facilities, so nothing is overlooked.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            {officePrograms.map((program) => (
-              <div key={program.title} className="rounded-[32px] bg-white p-8 shadow-sm">
-                <h3 className="text-2xl font-semibold text-charcoal">{program.title}</h3>
-                <p className="mt-3 text-jet/80 leading-relaxed">{program.copy}</p>
+          <div className="grid gap-4 sm:grid-cols-3">
+            {workplaceRhythms.map((rhythm) => (
+              <div key={rhythm.name} className="rounded-[32px] border border-white/40 bg-white p-6 text-center shadow-sm">
+                <h3 className="text-lg font-semibold text-charcoal">{rhythm.name}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-jet/80">{rhythm.description}</p>
               </div>
             ))}
           </div>
@@ -388,13 +338,46 @@ const OfficesCleaning: React.FC = () => {
       </section>
 
       <HowItWorks
-        eyebrow="Your onboarding path"
-        title="Four steps from quote request to quality assured cleaning"
-        description="Every office client follows the same proven process so you know exactly what happens before day one."
+        eyebrow="How we onboard"
+        title="Four steps to a spotless corporate workspace"
+        description="From first walkthrough to ongoing QA, every stage is mapped so you can track progress and raise feedback instantly."
       />
 
+      <section className="section-shell section-shell--muted" id="office-programs">
+        <div className="container-max mx-auto">
+          <div className="section-heading">
+            <span className="section-heading__eyebrow">Tailored playbooks</span>
+            <h2 className="section-heading__title">Coverage for every space in your building</h2>
+            <p className="section-heading__description">
+              Executive suites, hybrid hubs and wellness zones each receive their own scope so your entire workplace looks intentional.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            {officePrograms.map((program) => (
+              <div key={program.title} className="rounded-[32px] bg-white p-8 shadow-sm">
+                <h3 className="text-2xl font-semibold text-charcoal">{program.title}</h3>
+                <p className="mt-3 leading-relaxed text-jet/80">{program.copy}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-shell" id="results">
+        <div className="container-max mx-auto">
+          <div className="section-heading">
+            <span className="section-heading__eyebrow">Proof that sticks</span>
+            <h2 className="section-heading__title">Brisbane offices staying presentation-ready</h2>
+            <p className="section-heading__description">
+              See how facility teams describe the difference once MOG Cleaning takes over their corporate floors.
+            </p>
+          </div>
+          <TestimonialCarousel testimonials={testimonials} className="mx-auto max-w-4xl" />
+        </div>
+      </section>
+
       <QuoteSection
-        eyebrow="Start here"
+        eyebrow="Start your program"
         title="Request your office cleaning proposal"
         description="Share your floor count, key access notes and current pain points. We’ll prepare a tailored scope, onboarding timeline and pricing within 24 hours."
         bullets={[
@@ -409,7 +392,7 @@ const OfficesCleaning: React.FC = () => {
       <section className="section-shell" id="benefits">
         <div className="container-max mx-auto">
           <div className="section-heading">
-            <span className="section-heading__eyebrow">Why businesses switch to us</span>
+            <span className="section-heading__eyebrow">Why teams stay</span>
             <h2 className="section-heading__title">Outcomes for your people and presentation</h2>
             <p className="section-heading__description">
               We tailor programs that support productivity, impress stakeholders and keep your compliance documentation audit ready.
@@ -422,7 +405,7 @@ const OfficesCleaning: React.FC = () => {
                   <benefit.icon className="h-7 w-7" />
                 </div>
                 <h3 className="text-xl font-semibold text-charcoal">{benefit.title}</h3>
-                <p className="text-jet/80 leading-relaxed">{benefit.description}</p>
+                <p className="leading-relaxed text-jet/80">{benefit.description}</p>
               </div>
             ))}
           </div>
@@ -441,23 +424,10 @@ const OfficesCleaning: React.FC = () => {
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             {inclusions.map((inclusion) => (
               <div key={inclusion} className="service-item p-6">
-                <p className="text-charcoal font-medium">{inclusion}</p>
+                <p className="font-medium text-charcoal">{inclusion}</p>
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="section-shell" id="results">
-        <div className="container-max mx-auto">
-          <div className="section-heading">
-            <span className="section-heading__eyebrow">Client stories</span>
-            <h2 className="section-heading__title">Brisbane offices that trust MOG Cleaning</h2>
-            <p className="section-heading__description">
-              Hear from corporate partners who rely on us for consistent presentation and responsive support.
-            </p>
-          </div>
-          <TestimonialCarousel testimonials={testimonials} className="mx-auto max-w-4xl" />
         </div>
       </section>
 
@@ -470,7 +440,7 @@ const OfficesCleaning: React.FC = () => {
               Find out how we onboard security, manage keys and document every shift before confirming your contract.
             </p>
           </div>
-          <FAQAccordion faqs={faqs} className="max-w-4xl mx-auto" />
+          <FAQAccordion faqs={faqs} className="mx-auto max-w-4xl" />
         </div>
       </section>
 
@@ -518,6 +488,15 @@ const OfficesCleaning: React.FC = () => {
           </div>
         </div>
       </section>
+
+      <StickyCTABar
+        title="Ready to reclaim your mornings?"
+        description="Book a walkthrough today and lock in your tailored office cleaning program."
+        primaryLabel="Book my walkthrough"
+        primaryHref="/contact"
+        secondaryLabel="Call 0411 820 650"
+        secondaryHref="tel:+61411820650"
+      />
     </div>
   );
 };
