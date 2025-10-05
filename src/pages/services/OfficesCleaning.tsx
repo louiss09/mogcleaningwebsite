@@ -21,6 +21,7 @@ import QuoteSection from '../../components/QuoteSection';
 import HeroHighlightBand from '../../components/HeroHighlightBand';
 import HowItWorks from '../../components/HowItWorks';
 import ChecklistPreview from '../../components/ChecklistPreview';
+import FeatureTicker from '../../components/FeatureTicker';
 
 const OfficesCleaning: React.FC = () => {
   const checklistPreview = [
