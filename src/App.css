@@ -1395,6 +1395,94 @@ h6 {
     line-height: 1.65;
   }
 
+  .services-carousel__copy {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .services-carousel__title {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #0a2233;
+    text-wrap: balance;
+  }
+
+  .services-carousel__description {
+    margin-top: 0.45rem;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: rgba(9, 32, 53, 0.72);
+    text-wrap: pretty;
+  }
+
+  .services-carousel__controls {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+
+  .services-carousel__control {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 999px;
+    border: 1px solid rgba(13, 161, 225, 0.3);
+    background: rgba(255, 255, 255, 0.96);
+    color: #0da1e1;
+    box-shadow: 0 24px 46px -32px rgba(5, 31, 52, 0.48);
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .services-carousel__control:active {
+    background: rgba(13, 161, 225, 0.12);
+  }
+
+  .services-carousel__control:focus-visible {
+    outline: 3px solid rgba(13, 161, 225, 0.35);
+    outline-offset: 3px;
+  }
+
+  .services-carousel__track {
+    display: flex;
+    gap: 1.15rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    margin-inline: -0.25rem;
+    padding-inline: 0.25rem;
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 0.25rem;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .services-carousel__track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .services-carousel__card {
+    flex: 0 0 82%;
+    min-width: 82%;
+    scroll-snap-align: start;
+  }
+
+  .services-carousel__card .service-card__title {
+    font-size: 1.35rem;
+  }
+
+  .services-carousel__card .service-card__description {
+    font-size: 0.98rem;
+  }
+
+  .services-carousel__hint {
+    margin: 0;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(9, 32, 53, 0.58);
+  }
+
   .testimonial-carousel {
     border-radius: 26px;
     padding: 2.25rem 1.5rem;
