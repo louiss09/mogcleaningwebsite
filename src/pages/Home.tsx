@@ -416,7 +416,7 @@ const Home: React.FC = () => {
               </div>
             ))}
           </div>
-          <div className="mt-8 flex flex-wrap justify-center gap-3 text-sm font-medium uppercase tracking-wide text-jet/70">
+          <div className="industries-pills mt-8 flex flex-wrap justify-center gap-3 text-sm font-medium uppercase tracking-wide text-jet/70">
             {industriesServed.map((industry) => (
               <span key={industry} className="pill-chip bg-white text-charcoal">
                 {industry}
@@ -484,9 +484,9 @@ const Home: React.FC = () => {
           <div className="services-carousel md:hidden" aria-label="Swipeable list of cleaning service programs">
             <div className="services-carousel__header">
               <div className="services-carousel__copy">
-                <h3 className="services-carousel__title">Swipe through our specialist programs</h3>
+                <h3 className="services-carousel__title">Explore our specialist programs</h3>
                 <p className="services-carousel__description">
-                  Slide sideways or tap the arrows to browse each industry-specific cleaning pathway.
+                  Swipe or tap the arrows to open the cleaning pathway tailored to your facility.
                 </p>
               </div>
               <div className="services-carousel__controls" role="group" aria-label="Service carousel controls">
@@ -512,7 +512,6 @@ const Home: React.FC = () => {
               ref={servicesCarouselRef}
               className="services-carousel__track"
               aria-live="polite"
-              aria-describedby="services-carousel-hint"
             >
               {services.map((service) => (
                 <Link key={service.name} to={service.path} className="service-card group services-carousel__card">
@@ -541,9 +540,6 @@ const Home: React.FC = () => {
                 </Link>
               ))}
             </div>
-            <p id="services-carousel-hint" className="services-carousel__hint">
-              Swipe left or right to see more industries.
-            </p>
           </div>
           <div className="hidden gap-8 md:grid md:grid-cols-2 xl:grid-cols-3">
             {services.map((service) => (
