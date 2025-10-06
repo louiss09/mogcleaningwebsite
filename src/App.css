@@ -1,4 +1,14 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+:root {
+  color-scheme: light;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  font-variant-ligatures: contextual common-ligatures;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 * {
   box-sizing: border-box;
@@ -12,7 +22,45 @@ body {
   color: #172339;
   background: radial-gradient(circle at top left, rgba(13, 161, 225, 0.08) 0%, rgba(92, 201, 112, 0.04) 36%, #f7f9fc 100%);
   min-height: 100vh;
+  text-size-adjust: 100%;
+  font-optical-sizing: auto;
 }
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+img,
+picture {
+  height: auto;
+}
+
+@supports (scrollbar-gutter: stable) {
+  :root {
+    scrollbar-gutter: stable;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html {
+    scroll-behavior: auto !important;
+  }
+}
+
 
 h1,
 h2,
@@ -1364,8 +1412,11 @@ h6 {
     scroll-snap-stop: always;
     scroll-padding-left: 0.35rem;
     -webkit-overflow-scrolling: touch;
-    touch-action: pan-y;
+    touch-action: pan-x pinch-zoom;
     scroll-behavior: smooth;
+    overscroll-behavior-x: contain;
+    contain: paint;
+    will-change: scroll-position;
   }
 
   .services-carousel__track::-webkit-scrollbar {
@@ -1393,6 +1444,122 @@ h6 {
   .services-carousel__card .service-card__description {
     font-size: 0.96rem;
     line-height: 1.65;
+  }
+
+  @media (max-width: 767px) {
+    .services-carousel {
+      gap: 1.85rem;
+    }
+
+    .services-carousel__track {
+      gap: 1.1rem;
+      margin-inline: -0.5rem;
+      padding-inline: 0.5rem;
+    }
+
+    .services-carousel__card {
+      flex: 0 0 88%;
+      min-width: 88%;
+      max-width: 88%;
+      border-radius: 24px;
+      border: 1px solid rgba(13, 161, 225, 0.18);
+      background: linear-gradient(155deg, rgba(255, 255, 255, 0.98), rgba(229, 244, 255, 0.95));
+      box-shadow: 0 32px 70px -48px rgba(5, 31, 52, 0.65);
+      overflow: hidden;
+      transition: none;
+      contain: layout paint;
+    }
+
+    .services-carousel__card:focus-visible {
+      outline: 3px solid rgba(13, 161, 225, 0.32);
+      outline-offset: 4px;
+    }
+
+    .services-carousel__card:hover,
+    .services-carousel__card:focus-visible {
+      transform: none;
+      border-color: rgba(13, 161, 225, 0.18);
+      box-shadow: 0 32px 70px -48px rgba(5, 31, 52, 0.65);
+    }
+
+    .services-carousel__card .service-card__visual {
+      aspect-ratio: auto;
+      min-height: clamp(11.5rem, 52vw, 13.5rem);
+    }
+
+    .services-carousel__card .service-card__visual::after {
+      opacity: 0.45;
+    }
+
+    .services-carousel__card .service-card__image {
+      transform: scale(1.04);
+    }
+
+    .services-carousel__card .service-card__badge {
+      top: clamp(1rem, 2.2vw, 1.25rem);
+      bottom: auto;
+      left: clamp(1rem, 2.2vw, 1.25rem);
+      padding: 0.45rem 0.95rem;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      background: rgba(255, 255, 255, 0.85);
+      box-shadow: 0 18px 32px -30px rgba(5, 24, 38, 0.5);
+    }
+
+    .services-carousel__card .service-card__body {
+      min-height: auto;
+      gap: 0.9rem;
+      padding: 1.55rem 1.35rem 1.85rem;
+    }
+
+    .services-carousel__card .service-card__eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.28em;
+    }
+
+    .services-carousel__card .service-card__title {
+      font-size: 1.38rem;
+      line-height: 1.25;
+    }
+
+    .services-carousel__card .service-card__description {
+      font-size: 0.98rem;
+      line-height: 1.65;
+      color: rgba(9, 32, 53, 0.78);
+    }
+
+    .services-carousel__card .service-card__cta {
+      margin-top: 0.6rem;
+      font-size: 0.95rem;
+      color: #0a2233;
+    }
+
+    .services-carousel__card .service-card__cta svg {
+      width: 1.1rem;
+      height: 1.1rem;
+      transform: none;
+    }
+
+    .services-carousel__card:hover .service-card__image,
+    .services-carousel__card:focus-visible .service-card__image {
+      transform: scale(1.04);
+      filter: saturate(1.05);
+    }
+
+    .services-carousel__card:hover .service-card__visual::after,
+    .services-carousel__card:focus-visible .service-card__visual::after {
+      opacity: 0.45;
+    }
+
+    .services-carousel__card:hover .service-card__cta,
+    .services-carousel__card:focus-visible .service-card__cta {
+      color: #0a2233;
+    }
+
+    .services-carousel__card:hover .service-card__cta svg,
+    .services-carousel__card:focus-visible .service-card__cta svg {
+      transform: none;
+    }
   }
 
   .testimonial-carousel {

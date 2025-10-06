@@ -1,4 +1,4 @@
-﻿import React, { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -17,6 +17,14 @@ import ThankYou from './pages/ThankYou';
 import useScrollMotion from './hooks/useScrollMotion';
 import './App.css';
 
+const GA_MEASUREMENT_ID = 'G-PJ1MB2NTCL';
+
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+  }
+}
+
 const AppRoutes: React.FC = () => {
   const location = useLocation();
   useScrollMotion();
@@ -33,6 +41,16 @@ const AppRoutes: React.FC = () => {
       root.classList.remove('page-transition');
     };
   }, [location.pathname]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || typeof window.gtag !== 'function') {
+      return;
+    }
+
+    window.gtag('config', GA_MEASUREMENT_ID, {
+      page_path: `${location.pathname}${location.search}${location.hash}`,
+    });
+  }, [location.pathname, location.search, location.hash]);
 
   return (
     <div className="min-h-screen bg-white">

@@ -25,3 +25,10 @@
 .feature-ticker__track {
   animation: featureTickerScroll 26s linear infinite;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .feature-ticker__track {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

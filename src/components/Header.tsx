@@ -92,7 +92,13 @@ const Header: React.FC = () => {
               onClick={() => handleNavLinkClick('/')}
             >
               <div className="h-12 w-12 rounded-full border border-white/50 bg-white/70 p-2 shadow-sm backdrop-blur">
-                <img src="/logo.svg" alt="MOG Cleaning Logo" className="w-full h-full object-contain" />
+                <img
+                  src="/logo.svg"
+                  alt="MOG Cleaning Logo"
+                  className="h-full w-full object-contain"
+                  decoding="async"
+                  fetchPriority="high"
+                />
               </div>
               <div className="leading-tight">
                 <h2 className="text-lg font-semibold text-charcoal">MOG Cleaning</h2>
