@@ -150,7 +150,7 @@ const QuoteForm: React.FC<QuoteFormProps> = ({
               rows={4}
               value={formData.message}
               onChange={handleChange}
-              className={`${inputClasses} min-h-[140px] resize-none sm:min-h-[170px]`}
+              className={`${inputClasses} min-h-[118px] resize-none sm:min-h-[170px]`}
               placeholder="Facility type, approximate size, frequency required, any compliance notes."
             ></textarea>
           </div>

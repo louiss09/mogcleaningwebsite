@@ -5,7 +5,7 @@ import QuoteForm from './QuoteForm';
 interface QuoteSectionProps {
   eyebrow?: string;
   title: string;
-  description: string;
+  description: React.ReactNode;
   bullets?: string[];
   formTitle?: string;
   formSubtitle?: string;
