@@ -79,12 +79,12 @@ const QuoteForm: React.FC<QuoteFormProps> = ({
       <div className="pointer-events-none absolute -bottom-16 left-6 h-40 w-40 rounded-full bg-fresh-green/20 blur-3xl"></div>
 
       <div className="relative">
-        <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:items-center sm:justify-between sm:gap-5 sm:text-left">
-          <div>
-            <h3 className="text-2xl font-bold text-charcoal sm:text-[1.65rem]">{title}</h3>
-            <p className="mt-1 text-sm text-jet/80 sm:text-base">{subtitle}</p>
+        <div className="quote-form__header flex flex-col items-center gap-4 text-center sm:flex-row sm:items-center sm:justify-between sm:gap-5 sm:text-left">
+          <div className="quote-form__intro">
+            <h3 className="quote-form__title text-2xl font-bold text-charcoal sm:text-[1.65rem]">{title}</h3>
+            <p className="quote-form__subtitle mt-1 text-sm text-jet/80 sm:text-base">{subtitle}</p>
           </div>
-          <div className="inline-flex items-center justify-center gap-2 rounded-full border border-ash-gray/40 bg-white/85 px-4 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.3em] text-charcoal/70 shadow-sm sm:self-center">
+          <div className="quote-form__badge inline-flex items-center justify-center gap-2 rounded-full border border-ash-gray/40 bg-white/85 px-4 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.3em] text-charcoal/70 shadow-sm sm:self-center">
             <span className="whitespace-nowrap">24hr Reply</span>
           </div>
         </div>
@@ -104,6 +104,7 @@ const QuoteForm: React.FC<QuoteFormProps> = ({
                 onChange={handleChange}
                 className={inputClasses}
                 placeholder="Your full name"
+                autoComplete="name"
               />
             </div>
 
@@ -120,6 +121,8 @@ const QuoteForm: React.FC<QuoteFormProps> = ({
                 onChange={handleChange}
                 className={inputClasses}
                 placeholder="0411 820 650"
+                autoComplete="tel"
+                inputMode="tel"
               />
             </div>
           </div>
@@ -137,6 +140,7 @@ const QuoteForm: React.FC<QuoteFormProps> = ({
               onChange={handleChange}
               className={inputClasses}
               placeholder="your.email@company.com"
+              autoComplete="email"
             />
           </div>
 
@@ -152,6 +156,7 @@ const QuoteForm: React.FC<QuoteFormProps> = ({
               onChange={handleChange}
               className={`${inputClasses} min-h-[140px] resize-none sm:min-h-[170px]`}
               placeholder="Facility type, approximate size, frequency required, any compliance notes."
+              autoComplete="off"
             ></textarea>
           </div>
 
