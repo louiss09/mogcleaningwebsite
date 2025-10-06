@@ -41,10 +41,22 @@ const Home: React.FC = () => {
     }
 
     const scrollAmount = node.clientWidth * 0.88;
-    node.scrollBy({
-      left: direction === 'next' ? scrollAmount : -scrollAmount,
-      behavior: 'smooth',
-    });
+    const maxScrollLeft = Math.max(node.scrollWidth - node.clientWidth, 0);
+    const threshold = 12;
+
+    if (direction === 'next') {
+      if (node.scrollLeft >= maxScrollLeft - threshold) {
+        node.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        node.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
+    } else {
+      if (node.scrollLeft <= threshold) {
+        node.scrollTo({ left: maxScrollLeft, behavior: 'smooth' });
+      } else {
+        node.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      }
+    }
   };
 
   const heroHighlights = [
@@ -485,9 +497,6 @@ const Home: React.FC = () => {
             <div className="services-carousel__header">
               <div className="services-carousel__copy">
                 <h3 className="services-carousel__title">Explore our specialist programs</h3>
-                <p className="services-carousel__description">
-                  Swipe or tap the arrows to open the cleaning pathway tailored to your facility.
-                </p>
               </div>
               <div className="services-carousel__controls" role="group" aria-label="Service carousel controls">
                 <button
