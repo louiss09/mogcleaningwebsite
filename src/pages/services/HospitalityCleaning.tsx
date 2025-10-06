@@ -21,7 +21,6 @@ import QuoteSection from '../../components/QuoteSection';
 import HeroHighlightBand from '../../components/HeroHighlightBand';
 import HowItWorks from '../../components/HowItWorks';
 import ChecklistPreview from '../../components/ChecklistPreview';
-import FeatureTicker from '../../components/FeatureTicker';
 
 const HospitalityCleaning: React.FC = () => {
   const checklistPreview = [
@@ -173,34 +172,6 @@ const HospitalityCleaning: React.FC = () => {
     },
   ];
 
-  const featureTickerItems = [
-    {
-      icon: CheckCircle,
-      title: 'Compliance-ready onboarding',
-      description: 'Capture HACCP documentation, service windows and venue standards within week one.',
-    },
-    {
-      icon: Users,
-      title: 'Duty manager coordination',
-      description: 'Supervisors liaise pre- and post-service to align with front and back-of-house priorities.',
-    },
-    {
-      icon: Clock,
-      title: 'Around-the-clock rosters',
-      description: 'Late closes, breakfast resets and event flips covered without disrupting guests.',
-    },
-    {
-      icon: Utensils,
-      title: 'Kitchen degreasing specialists',
-      description: 'Cooklines, floors and splashbacks detailed to keep inspections stress-free.',
-    },
-    {
-      icon: Sparkles,
-      title: 'Guest-first finishes',
-      description: 'Lobbies, dining rooms and amenities polished to five-star presentation.',
-    },
-  ];
-
   const venueBoards = [
     {
       title: 'Hotels & resorts',
@@ -337,8 +308,6 @@ const HospitalityCleaning: React.FC = () => {
           </div>
         </div>
       </section>
-
-      <FeatureTicker items={featureTickerItems} />
 
       <HowItWorks
         eyebrow="How onboarding works"

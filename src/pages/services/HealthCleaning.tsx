@@ -21,7 +21,6 @@ import QuoteSection from '../../components/QuoteSection';
 import HeroHighlightBand from '../../components/HeroHighlightBand';
 import HowItWorks from '../../components/HowItWorks';
 import ChecklistPreview from '../../components/ChecklistPreview';
-import FeatureTicker from '../../components/FeatureTicker';
 
 const HealthCleaning: React.FC = () => {
   const checklistPreview = [
@@ -173,34 +172,6 @@ const HealthCleaning: React.FC = () => {
     },
   ];
 
-  const featureTickerItems = [
-    {
-      icon: CheckCircle,
-      title: 'Week-one clinical audit',
-      description: 'Risk assessment, zoning map and documentation capture completed within days.',
-    },
-    {
-      icon: ShieldCheck,
-      title: 'Zoned protocols & PPE',
-      description: 'Colour-coded systems and PPE compliance maintained across clinical, admin and public areas.',
-    },
-    {
-      icon: Clock,
-      title: 'Rapid response crews',
-      description: 'On-call support for urgent turnovers, outbreaks and spill management.',
-    },
-    {
-      icon: FileWarning,
-      title: 'Audit-ready reporting',
-      description: 'SWMS, inductions and chemical registers updated and accessible at any time.',
-    },
-    {
-      icon: Sparkles,
-      title: 'Patient-first presentation',
-      description: 'Waiting rooms and consult spaces reset to reassure every visitor.',
-    },
-  ];
-
   const clinicalSpaces = [
     {
       name: 'General practice & allied health',
@@ -337,8 +308,6 @@ const HealthCleaning: React.FC = () => {
           </div>
         </div>
       </section>
-
-      <FeatureTicker items={featureTickerItems} />
 
       <HowItWorks
         eyebrow="How onboarding works"
