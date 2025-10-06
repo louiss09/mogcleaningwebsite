@@ -73,24 +73,24 @@ const QuoteForm: React.FC<QuoteFormProps> = ({
 
   return (
     <div
-      className={`relative overflow-hidden rounded-[32px] border border-white/50 bg-white/95 p-8 shadow-[0_35px_60px_-25px_rgba(15,23,42,0.55)] backdrop-blur ${className}`}
+      className={`relative overflow-hidden rounded-[28px] sm:rounded-[32px] border border-white/50 bg-white/95 p-6 sm:p-8 shadow-[0_28px_60px_-28px_rgba(15,23,42,0.5)] backdrop-blur-lg ${className}`}
     >
       <div className="pointer-events-none absolute -top-28 right-0 h-48 w-48 rounded-full bg-celestial-blue-1/25 blur-3xl"></div>
       <div className="pointer-events-none absolute -bottom-16 left-6 h-40 w-40 rounded-full bg-fresh-green/20 blur-3xl"></div>
 
       <div className="relative">
-        <div className="flex flex-col items-center gap-5 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
+        <div className="flex flex-col items-center gap-4 sm:gap-5 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
           <div>
             <h3 className="text-2xl font-bold text-charcoal">{title}</h3>
             <p className="text-sm text-jet/80 sm:text-base">{subtitle}</p>
           </div>
-          <div className="inline-flex items-center justify-center gap-2 rounded-full border border-ash-gray/40 bg-white/85 px-5 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-charcoal/70 shadow-sm sm:self-center">
+          <div className="inline-flex items-center justify-center gap-2 rounded-full border border-ash-gray/40 bg-white/85 px-4 sm:px-5 py-1.5 sm:py-2 text-[0.65rem] sm:text-xs font-semibold uppercase tracking-[0.3em] text-charcoal/70 shadow-sm sm:self-center">
             <span className="whitespace-nowrap">24hr Reply</span>
           </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="mt-10 space-y-6">
-          <div className="grid gap-6 sm:grid-cols-2">
+        <form onSubmit={handleSubmit} className="mt-8 sm:mt-10 space-y-5 sm:space-y-6">
+          <div className="grid gap-5 sm:gap-6 sm:grid-cols-2">
             <div>
               <label htmlFor="name" className="mb-2 block text-sm font-semibold text-charcoal">
                 Full Name *
@@ -164,7 +164,7 @@ const QuoteForm: React.FC<QuoteFormProps> = ({
           <button
             type="submit"
             disabled={loading}
-            className={`btn-primary flex w-full items-center justify-center gap-2 rounded-2xl py-3 text-base font-semibold shadow-lg shadow-celestial-blue-1/30 transition ${
+            className={`btn-primary flex w-full items-center justify-center gap-2 rounded-2xl py-3 sm:py-3.5 text-base font-semibold shadow-lg shadow-celestial-blue-1/30 transition ${
               loading ? 'cursor-not-allowed opacity-70' : ''
             }`}
           >
@@ -173,7 +173,7 @@ const QuoteForm: React.FC<QuoteFormProps> = ({
           </button>
         </form>
 
-        <p className="mt-6 text-center text-xs text-jet/70">
+        <p className="mt-5 sm:mt-6 text-center text-xs text-jet/70">
           We respect your privacy and never share your information with third parties.
         </p>
       </div>
