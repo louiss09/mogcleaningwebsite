@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Shield,
@@ -6,6 +6,7 @@ import {
   Users,
   CheckCircle,
   Star,
+  ArrowLeft,
   ArrowRight,
   Building2,
   Dumbbell,
@@ -31,6 +32,20 @@ import HowItWorks from '../components/HowItWorks';
 
 const Home: React.FC = () => {
   const scrollToServices = useScrollToSection('services');
+  const servicesCarouselRef = useRef<HTMLDivElement | null>(null);
+
+  const scrollServicesCarousel = (direction: 'previous' | 'next') => {
+    const node = servicesCarouselRef.current;
+    if (!node) {
+      return;
+    }
+
+    const scrollAmount = node.clientWidth * 0.88;
+    node.scrollBy({
+      left: direction === 'next' ? scrollAmount : -scrollAmount,
+      behavior: 'smooth',
+    });
+  };
 
   const heroHighlights = [
     {
@@ -466,7 +481,71 @@ const Home: React.FC = () => {
               Choose the program tailored to your industry. Each page highlights the specifics, results and pricing guidance you need.
             </p>
           </div>
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
+          <div className="services-carousel md:hidden" aria-label="Swipeable list of cleaning service programs">
+            <div className="services-carousel__header">
+              <div className="services-carousel__copy">
+                <h3 className="services-carousel__title">Swipe through our specialist programs</h3>
+                <p className="services-carousel__description">
+                  Slide sideways or tap the arrows to browse each industry-specific cleaning pathway.
+                </p>
+              </div>
+              <div className="services-carousel__controls" role="group" aria-label="Service carousel controls">
+                <button
+                  type="button"
+                  className="services-carousel__control"
+                  aria-label="View previous service"
+                  onClick={() => scrollServicesCarousel('previous')}
+                >
+                  <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+                </button>
+                <button
+                  type="button"
+                  className="services-carousel__control"
+                  aria-label="View next service"
+                  onClick={() => scrollServicesCarousel('next')}
+                >
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </button>
+              </div>
+            </div>
+            <div
+              ref={servicesCarouselRef}
+              className="services-carousel__track"
+              aria-live="polite"
+              aria-describedby="services-carousel-hint"
+            >
+              {services.map((service) => (
+                <Link key={service.name} to={service.path} className="service-card group services-carousel__card">
+                  <div className="service-card__visual">
+                    <img
+                      src={service.image}
+                      alt={`${service.name} cleaning in Brisbane`}
+                      className="service-card__image"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <span className="service-card__badge">
+                      <service.icon className="h-4 w-4" aria-hidden="true" />
+                      {service.name}
+                    </span>
+                  </div>
+                  <div className="service-card__body">
+                    <span className="service-card__eyebrow">Tailored program</span>
+                    <h3 className="service-card__title">{service.name}</h3>
+                    <p className="service-card__description">{service.description}</p>
+                    <span className="service-card__cta">
+                      Explore program
+                      <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+            <p id="services-carousel-hint" className="services-carousel__hint">
+              Swipe left or right to see more industries.
+            </p>
+          </div>
+          <div className="hidden gap-8 md:grid md:grid-cols-2 xl:grid-cols-3">
             {services.map((service) => (
               <Link key={service.name} to={service.path} className="service-card group">
                 <div className="service-card__visual">
