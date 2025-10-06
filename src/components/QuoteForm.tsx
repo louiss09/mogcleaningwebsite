@@ -73,7 +73,7 @@ const QuoteForm: React.FC<QuoteFormProps> = ({
 
   return (
     <div
-      className={`relative overflow-hidden rounded-[32px] border border-white/50 bg-white/95 p-8 shadow-[0_35px_60px_-25px_rgba(15,23,42,0.55)] backdrop-blur ${className}`}
+      className={`relative overflow-hidden rounded-[28px] border border-white/50 bg-white/95 p-6 shadow-[0_35px_60px_-25px_rgba(15,23,42,0.55)] backdrop-blur sm:rounded-[32px] sm:p-8 ${className}`}
     >
       <div className="pointer-events-none absolute -top-28 right-0 h-48 w-48 rounded-full bg-celestial-blue-1/25 blur-3xl"></div>
       <div className="pointer-events-none absolute -bottom-16 left-6 h-40 w-40 rounded-full bg-fresh-green/20 blur-3xl"></div>

@@ -325,7 +325,10 @@ const FitnessCleaning: React.FC = () => {
           </div>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             {studioPrograms.map((program) => (
-              <div key={program.name} className="rounded-[32px] bg-white p-8 shadow-sm">
+              <div
+                key={program.name}
+                className="rounded-[28px] bg-white p-6 shadow-sm sm:rounded-[32px] sm:p-8"
+              >
                 <h3 className="text-2xl font-semibold text-charcoal">{program.name}</h3>
                 <p className="mt-3 leading-relaxed text-jet/80">{program.detail}</p>
               </div>

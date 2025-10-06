@@ -38,7 +38,10 @@ const ChecklistPreview: React.FC<ChecklistPreviewProps> = ({
         </p>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {categories.map((category) => (
-            <div key={category.title} className="rounded-[32px] bg-white p-8 shadow-sm">
+            <div
+              key={category.title}
+              className="rounded-[28px] bg-white p-6 shadow-sm sm:rounded-[32px] sm:p-8"
+            >
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-celestial-blue-1/12 text-celestial-blue-1">
                 <category.icon className="h-6 w-6" />
               </div>
