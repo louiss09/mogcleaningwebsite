@@ -175,14 +175,9 @@ const OfficesCleaning: React.FC = () => {
 
   const featureTickerItems = [
     {
-      icon: Sparkles,
-      title: 'High-touch finishes',
-      description: 'Boardrooms, reception and amenities detailed before leadership arrives.',
-    },
-    {
-      icon: ClipboardCheck,
-      title: 'Documented QA',
-      description: 'Photo reporting, KPI reviews and transparent visit tracking.',
+      icon: CheckCircle,
+      title: 'Week-one discovery',
+      description: 'Walkthrough, scope build and stakeholder alignment completed in days.',
     },
     {
       icon: Users,
@@ -195,9 +190,14 @@ const OfficesCleaning: React.FC = () => {
       description: 'Rhythms that align with early starts, lunch peaks and after-hours resets.',
     },
     {
-      icon: CheckCircle,
-      title: 'Week-one discovery',
-      description: 'Walkthrough, scope build and stakeholder alignment completed in days.',
+      icon: ClipboardCheck,
+      title: 'Documented QA',
+      description: 'Photo reporting, KPI reviews and transparent visit tracking.',
+    },
+    {
+      icon: Sparkles,
+      title: 'High-touch finishes',
+      description: 'Boardrooms, reception and amenities detailed before leadership arrives.',
     },
   ];
 

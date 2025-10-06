@@ -175,9 +175,9 @@ const RetailCleaning: React.FC = () => {
 
   const featureTickerItems = [
     {
-      icon: Sparkles,
-      title: 'Launch-ready finishes',
-      description: 'Streak-free windows, polished floors and refreshed change rooms daily.',
+      icon: CheckCircle,
+      title: 'Visual merchandising walkthrough',
+      description: 'Capture fixtures, finishes and launch schedules with VM and store leads.',
     },
     {
       icon: Users,
@@ -195,9 +195,9 @@ const RetailCleaning: React.FC = () => {
       description: 'Stockrooms, docks and click-and-collect areas stay organised and hygienic.',
     },
     {
-      icon: CheckCircle,
-      title: 'Visual merchandising walkthrough',
-      description: 'Capture fixtures, finishes and launch schedules with VM and store leads.',
+      icon: Sparkles,
+      title: 'Launch-ready finishes',
+      description: 'Streak-free windows, polished floors and refreshed change rooms daily.',
     },
   ];
 

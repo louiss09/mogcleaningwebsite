@@ -20,10 +20,7 @@ const FeatureTicker: React.FC<FeatureTickerProps> = ({ items, className }) => {
   const duplicatedItems = [...items, ...items];
 
   return (
-    <div
-      className={['feature-ticker', 'glass-panel', className].filter(Boolean).join(' ')}
-      data-variant="frost"
-    >
+    <div className={['feature-ticker', className].filter(Boolean).join(' ')}>
       <div className="feature-ticker__viewport">
         <div className="feature-ticker__track">
           {duplicatedItems.map((item, index) => (

@@ -25,15 +25,3 @@
 .feature-ticker__track {
   animation: featureTickerScroll 26s linear infinite;
 }
-
-@media (max-width: 640px) {
-  .feature-ticker__track {
-    animation-duration: 32s;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .feature-ticker__track {
-    animation: none;
-  }
-}

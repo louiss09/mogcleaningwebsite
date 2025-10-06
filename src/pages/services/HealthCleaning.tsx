@@ -175,9 +175,9 @@ const HealthCleaning: React.FC = () => {
 
   const featureTickerItems = [
     {
-      icon: Sparkles,
-      title: 'Patient-first presentation',
-      description: 'Waiting rooms and consult spaces reset to reassure every visitor.',
+      icon: CheckCircle,
+      title: 'Week-one clinical audit',
+      description: 'Risk assessment, zoning map and documentation capture completed within days.',
     },
     {
       icon: ShieldCheck,
@@ -195,9 +195,9 @@ const HealthCleaning: React.FC = () => {
       description: 'SWMS, inductions and chemical registers updated and accessible at any time.',
     },
     {
-      icon: CheckCircle,
-      title: 'Week-one clinical audit',
-      description: 'Risk assessment, zoning map and documentation capture completed within days.',
+      icon: Sparkles,
+      title: 'Patient-first presentation',
+      description: 'Waiting rooms and consult spaces reset to reassure every visitor.',
     },
   ];
 

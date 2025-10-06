@@ -175,9 +175,14 @@ const HospitalityCleaning: React.FC = () => {
 
   const featureTickerItems = [
     {
-      icon: Sparkles,
-      title: 'Guest-first finishes',
-      description: 'Lobbies, dining rooms and amenities polished to five-star presentation.',
+      icon: CheckCircle,
+      title: 'Compliance-ready onboarding',
+      description: 'Capture HACCP documentation, service windows and venue standards within week one.',
+    },
+    {
+      icon: Users,
+      title: 'Duty manager coordination',
+      description: 'Supervisors liaise pre- and post-service to align with front and back-of-house priorities.',
     },
     {
       icon: Clock,
@@ -190,14 +195,9 @@ const HospitalityCleaning: React.FC = () => {
       description: 'Cooklines, floors and splashbacks detailed to keep inspections stress-free.',
     },
     {
-      icon: Users,
-      title: 'Duty manager coordination',
-      description: 'Supervisors liaise pre- and post-service to align with front and back-of-house priorities.',
-    },
-    {
-      icon: CheckCircle,
-      title: 'Compliance-ready onboarding',
-      description: 'Capture HACCP documentation, service windows and venue standards within week one.',
+      icon: Sparkles,
+      title: 'Guest-first finishes',
+      description: 'Lobbies, dining rooms and amenities polished to five-star presentation.',
     },
   ];
 
