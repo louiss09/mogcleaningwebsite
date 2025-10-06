@@ -45,7 +45,14 @@ const PageHero: React.FC<PageHeroProps> = ({
       data-overlay={overlayTone}
     >
       <div className="hero-minimal__media" aria-hidden="true">
-        <img src={backgroundImage} alt="" style={{ objectPosition: backgroundPosition }} />
+        <img
+          src={backgroundImage}
+          alt=""
+          style={{ objectPosition: backgroundPosition }}
+          loading="eager"
+          decoding="async"
+          fetchPriority="high"
+        />
       </div>
       <div className="hero-minimal__scrim" data-overlay={overlayTone} aria-hidden="true" />
       <div className="hero-minimal__container container-max">

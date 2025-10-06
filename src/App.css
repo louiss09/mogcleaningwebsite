@@ -1,4 +1,14 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+:root {
+  color-scheme: light;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  font-variant-ligatures: contextual common-ligatures;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 * {
   box-sizing: border-box;
@@ -12,7 +22,45 @@ body {
   color: #172339;
   background: radial-gradient(circle at top left, rgba(13, 161, 225, 0.08) 0%, rgba(92, 201, 112, 0.04) 36%, #f7f9fc 100%);
   min-height: 100vh;
+  text-size-adjust: 100%;
+  font-optical-sizing: auto;
 }
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+img,
+picture {
+  height: auto;
+}
+
+@supports (scrollbar-gutter: stable) {
+  :root {
+    scrollbar-gutter: stable;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html {
+    scroll-behavior: auto !important;
+  }
+}
+
 
 h1,
 h2,
@@ -1366,6 +1414,9 @@ h6 {
     -webkit-overflow-scrolling: touch;
     touch-action: pan-x pinch-zoom;
     scroll-behavior: smooth;
+    overscroll-behavior-x: contain;
+    contain: paint;
+    will-change: scroll-position;
   }
 
   .services-carousel__track::-webkit-scrollbar {
@@ -1416,6 +1467,7 @@ h6 {
       box-shadow: 0 32px 70px -48px rgba(5, 31, 52, 0.65);
       overflow: hidden;
       transition: none;
+      contain: layout paint;
     }
 
     .services-carousel__card:focus-visible {
