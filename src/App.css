@@ -341,8 +341,10 @@ h6 {
   display: block;
 }
 
-.hero-minimal--home .hero-minimal__title-line {
-  white-space: nowrap;
+@media (min-width: 640px) {
+  .hero-minimal--home .hero-minimal__title-line {
+    white-space: nowrap;
+  }
 }
 
 .hero-minimal__title-line + .hero-minimal__title-line {
@@ -916,6 +918,18 @@ h6 {
   @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
 }
 
+.testimonial-carousel {
+  isolation: isolate;
+}
+
+.testimonial-carousel__track {
+  will-change: transform;
+}
+
+.testimonial-carousel__quote {
+  text-wrap: pretty;
+}
+
 /* Improved responsive text sizing */
 .hero-title {
   @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight;
@@ -1076,6 +1090,274 @@ h6 {
 }
 
 @media (max-width: 767px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  body {
+    font-size: 15px;
+    line-height: 1.7;
+    letter-spacing: 0.01em;
+  }
+
+  main,
+  .page-shell {
+    width: 100%;
+    overflow-x: clip;
+  }
+
+  .container-max {
+    padding-inline: clamp(1.25rem, 5vw, 1.75rem);
+  }
+
+  .hero-section-spacing {
+    padding-top: clamp(5.5rem, 8vw + 2.9rem, 6.75rem);
+    padding-bottom: clamp(3.8rem, 10vw, 4.9rem);
+  }
+
+  .hero-minimal {
+    min-height: auto;
+    align-items: flex-end;
+  }
+
+  .hero-minimal__container {
+    padding-inline: clamp(1.1rem, 5vw, 1.5rem);
+  }
+
+  .hero-minimal__content {
+    align-items: flex-start;
+    text-align: left;
+    gap: 1.2rem;
+  }
+
+  .hero-minimal__title {
+    font-size: clamp(2.2rem, 6vw + 1rem, 3rem);
+    text-wrap: balance;
+  }
+
+  .hero-minimal__description {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: rgba(230, 240, 250, 0.92);
+    -webkit-line-clamp: unset;
+    display: block;
+    text-wrap: pretty;
+  }
+
+  .hero-minimal__cta-group {
+    align-items: stretch;
+    gap: 1.1rem;
+  }
+
+  .hero-minimal__cta-buttons {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .hero-minimal__cta-buttons .btn-primary,
+  .hero-minimal__cta-buttons .btn-ghost {
+    width: 100%;
+  }
+
+  .hero-minimal__cta-note {
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+
+  .hero-minimal__assurances {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.65rem;
+  }
+
+  .hero-minimal__assurance {
+    justify-content: flex-start;
+    padding: 0.65rem 1rem;
+    border-radius: 18px;
+    background: rgba(6, 20, 36, 0.3);
+    font-size: 0.92rem;
+  }
+
+  .feature-ticker {
+    left: 0;
+    right: auto;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    border-radius: 24px;
+    padding-inline: clamp(1.1rem, 4vw, 1.5rem);
+  }
+
+  .hero-highlight-band {
+    margin-inline: clamp(1rem, 5vw, 1.5rem);
+    border-radius: 26px;
+  }
+
+  .hero-highlight-band .container-max {
+    padding-inline: 0;
+  }
+
+  .hero-highlight-card::after {
+    content: none;
+  }
+
+  .hero-highlight-band__grid {
+    gap: clamp(1.1rem, 4vw, 1.8rem);
+  }
+
+  .section-shell {
+    padding: clamp(3rem, 6vw + 1.5rem, 3.8rem) clamp(1.1rem, 5vw, 1.5rem);
+  }
+
+  .section-heading {
+    text-align: left;
+    margin-bottom: 2.4rem;
+  }
+
+  .section-heading__title {
+    font-size: clamp(1.95rem, 7vw + 0.8rem, 2.5rem);
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+
+  .section-heading__description {
+    font-size: 1rem;
+    line-height: 1.7;
+    text-wrap: pretty;
+  }
+
+  .stat-grid {
+    gap: 1.35rem;
+  }
+
+  .stat-card,
+  .feature-grid-card {
+    padding: clamp(1.45rem, 5vw, 1.9rem);
+    border-radius: 22px;
+  }
+
+  .glass-panel {
+    margin-top: 2rem;
+  }
+
+  .stat-card__value {
+    font-size: clamp(2rem, 8vw, 2.8rem);
+  }
+
+  .stat-card__description,
+  .service-card__description,
+  .service-card__list li,
+  .testimonial-carousel__quote,
+  .site-footer__subtitle {
+    text-wrap: pretty;
+  }
+
+  .service-card {
+    border-radius: 24px;
+  }
+
+  .service-card__visual {
+    aspect-ratio: 5 / 4;
+  }
+
+  .service-card__badge {
+    left: 1rem;
+    bottom: 1rem;
+  }
+
+  .service-card__body {
+    padding: 1.6rem 1.3rem 1.9rem;
+    gap: 1rem;
+  }
+
+  .testimonial-carousel {
+    border-radius: 26px;
+    padding: 2.25rem 1.5rem;
+  }
+
+  .testimonial-carousel__intro {
+    align-items: flex-start;
+    gap: 1.1rem;
+    text-align: left;
+  }
+
+  .testimonial-carousel__intro-rating,
+  .testimonial-carousel__intro-meta {
+    justify-content: flex-start;
+  }
+
+  .testimonial-carousel__quote {
+    font-size: 1.12rem;
+    line-height: 1.75;
+  }
+
+  .testimonial-carousel__nav {
+    width: 100%;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  .testimonial-carousel__nav-button {
+    height: 3rem;
+    width: 3rem;
+  }
+
+  .quote-section {
+    padding: clamp(1.75rem, 5vw, 2.3rem);
+    border-radius: 26px;
+    background: rgba(255, 255, 255, 0.92);
+  }
+
+  .quote-section::before {
+    content: none;
+  }
+
+  .quote-section__copy {
+    gap: 1rem;
+  }
+
+  .quote-section__title {
+    font-size: clamp(1.7rem, 6vw + 0.8rem, 2.1rem);
+  }
+
+  .quote-section__list {
+    gap: 0.6rem;
+  }
+
+  .quote-section__form {
+    width: 100%;
+  }
+
+  .faq-accordion-card {
+    padding: 1.6rem 1.4rem;
+  }
+
+  .site-footer__container {
+    padding-inline: clamp(1.25rem, 5vw, 1.75rem);
+  }
+
+  .site-footer__brand-card {
+    padding: 1.8rem 1.6rem;
+  }
+
+  .site-footer__contact-list {
+    gap: 0.75rem;
+  }
+
+  .site-footer__subtitle {
+    font-size: 0.98rem;
+    line-height: 1.65;
+  }
+
+  .site-footer__glow--one,
+  .site-footer__glow--two {
+    display: none;
+  }
+
   .faq-stack .faq-card {
     margin-top: 0 !important;
     opacity: 1;
