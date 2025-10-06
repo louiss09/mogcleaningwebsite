@@ -19,6 +19,7 @@ import {
   ClipboardCheck,
   ShieldCheck,
   ClipboardList,
+  ChevronDown,
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import TestimonialCarousel from '../components/TestimonialCarousel';
@@ -37,16 +38,19 @@ const Home: React.FC = () => {
       icon: Shield,
       title: 'Police-checked crews',
       description: 'Uniformed cleaners inducted to your standards before the first shift.',
+      mobileDescription: 'Uniformed cleaners inducted to your standards.',
     },
     {
       icon: Clock,
       title: 'Fast responses',
       description: 'Operations team on call when schedules change or urgent cleans pop up.',
+      mobileDescription: 'Operations team ready when rosters change or urgent cleans pop up.',
     },
     {
       icon: Sparkles,
       title: 'Presentation-first',
       description: 'Detail-driven routines that impress visitors and reassure staff.',
+      mobileDescription: 'Detail-driven routines that impress visitors and reassure staff.',
     },
   ];
 
@@ -56,18 +60,21 @@ const Home: React.FC = () => {
       value: '5.0/5',
       label: 'Average rating',
       description: 'Facility managers review us across quarterly surveys and public testimonials.',
+      mobileDescription: 'Facility managers keep us at five stars across every review.',
     },
     {
       icon: Award,
       value: '60+',
       label: 'Active sites',
       description: 'Across offices, clinics, gyms, hospitality venues and multi-site retailers in SEQ.',
+      mobileDescription: 'Offices, clinics, gyms, hospitality venues and retailers across SEQ.',
     },
     {
       icon: Shield,
       value: '100%',
       label: 'Police-checked team',
       description: 'Documented inductions, SWMS and TGA-approved products ready for compliance.',
+      mobileDescription: 'Every cleaner is police-checked with inductions and SWMS ready.',
     },
   ];
 
@@ -76,16 +83,19 @@ const Home: React.FC = () => {
       icon: ClipboardList,
       title: 'Chasing inconsistent cleaners',
       description: 'Missed bins, dusty desks and rushed bathrooms keep you firefighting instead of focusing on your role.',
+      mobileDescription: 'Dusty desks and missed bins keep you firefighting instead of focusing on your role.',
     },
     {
       icon: Clock,
       title: 'Slow responses when something breaks',
       description: 'Last-minute events and spills need action now – not a call back days later.',
+      mobileDescription: 'Spills and events need action now — not a follow-up days later.',
     },
     {
       icon: ShieldCheck,
       title: 'Compliance paperwork gaps',
       description: 'Auditors want proof of inductions, SWMS and police checks on demand.',
+      mobileDescription: 'Auditors expect inductions, SWMS and police checks on demand.',
     },
   ];
 
@@ -94,21 +104,25 @@ const Home: React.FC = () => {
       icon: Users,
       title: 'Specialists for every industry',
       description: 'Dedicated crews for offices, gyms, healthcare, hospitality and retail understand the nuances of each space.',
+      mobileDescription: 'Specialist crews for offices, gyms, healthcare, hospitality and retail.',
     },
     {
       icon: CheckCircle,
       title: 'Measured quality control',
       description: 'Supervisor audits, photo checklists and KPI reviews make every visit accountable.',
+      mobileDescription: 'Supervisor audits, photo checklists and KPI reviews keep every visit accountable.',
     },
     {
       icon: PhoneCall,
       title: 'Direct line to operations',
       description: 'Reach the decision makers who can adjust schedules, add services or send rapid-response crews.',
+      mobileDescription: 'Speak straight with decision makers who adjust schedules or send rapid-response crews.',
     },
     {
       icon: ClipboardCheck,
       title: 'Compliance-ready onboarding',
       description: 'We deliver inductions, insurance certificates and safe work method statements before we begin.',
+      mobileDescription: 'Inductions, insurance certificates and SWMS arrive before the first clean.',
     },
   ];
 
@@ -119,6 +133,7 @@ const Home: React.FC = () => {
       path: '/services/offices',
       description:
         'Presentation-ready office spaces with workstation sanitising, meeting room resets and amenity care for corporate teams.',
+      mobileDescription: 'Presentation-ready offices with workstation sanitising and amenity care.',
       image: '/images/office-cleaning-background.jpg',
     },
     {
@@ -126,6 +141,7 @@ const Home: React.FC = () => {
       name: 'Fitness Centres',
       path: '/services/fitness',
       description: 'Equipment sanitising, odour control and locker room detailing to keep members returning.',
+      mobileDescription: 'Equipment sanitising, odour control and pristine locker rooms.',
       image: '/images/fitness-cleaning-background.jpg',
     },
     {
@@ -133,6 +149,7 @@ const Home: React.FC = () => {
       name: 'Medical Facilities',
       path: '/services/health',
       description: 'Clinical-grade disinfection, zoning and waiting room presentation aligned to QHealth standards.',
+      mobileDescription: 'Clinical-grade disinfection, zoning and polished waiting rooms.',
       image: '/images/medical-cleaning-background.jpg',
     },
     {
@@ -140,6 +157,7 @@ const Home: React.FC = () => {
       name: 'Educational',
       path: '/services/education',
       description: 'Low-tox classroom cleaning, playground tidying and scheduled deep cleans for schools and childcare.',
+      mobileDescription: 'Low-tox classroom cleaning, tidy playgrounds and scheduled deep cleans.',
       image: '/images/classroom-cleaning-background.jpg',
     },
     {
@@ -147,6 +165,7 @@ const Home: React.FC = () => {
       name: 'Hospitality',
       path: '/services/hospitality',
       description: 'Front-of-house sparkle, kitchen compliance and fast turnarounds between events and seatings.',
+      mobileDescription: 'Front-of-house sparkle, compliant kitchens and fast turnarounds.',
       image: '/images/hotel-cleaning-background.jpg',
     },
     {
@@ -154,6 +173,7 @@ const Home: React.FC = () => {
       name: 'Retail Spaces',
       path: '/services/retail',
       description: 'Dust-free displays, immaculate fitting rooms and after-hours cleans that protect the shopper experience.',
+      mobileDescription: 'Dust-free displays, spotless fitting rooms and after-hours cleans.',
       image: '/images/retail-cleaning-background.jpg',
     },
   ];
@@ -219,22 +239,26 @@ const Home: React.FC = () => {
   const crossLinks: Array<{
     title: string;
     description: string;
+    mobileDescription?: string;
     to: string;
     onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
   }> = [
     {
       title: 'See our step-by-step onboarding',
       description: 'Understand every milestone from your quote request to the first quality audit.',
+      mobileDescription: 'See each step from quote request to the first audit.',
       to: '/process',
     },
     {
       title: 'Meet the team keeping Brisbane spotless',
       description: 'Get to know our supervisors, training and the values behind MOG Cleaning.',
+      mobileDescription: 'Meet the supervisors, training and values behind MOG Cleaning.',
       to: '/about',
     },
     {
       title: 'Pick the program for your facility',
       description: 'Explore detailed inclusions for offices, gyms, clinics and venues.',
+      mobileDescription: 'Explore inclusions for offices, gyms, clinics and venues.',
       to: '/#services',
       onClick: scrollToServices,
     },
@@ -386,7 +410,10 @@ const Home: React.FC = () => {
             <span className="section-heading__eyebrow">Why Brisbane trusts us</span>
             <h2 className="section-heading__title">Numbers that prove the partnership works</h2>
             <p className="section-heading__description">
-              Facility managers stay with MOG Cleaning because communication is fast, the results are visible and the paperwork is always ready for audits.
+              <span className="hidden sm:inline">
+                Facility managers stay with MOG Cleaning because communication is fast, the results are visible and the paperwork is always ready for audits.
+              </span>
+              <span className="sm:hidden">Facility managers choose us for fast replies, visible results and audit-ready paperwork.</span>
             </p>
           </div>
           <div className="stat-grid" data-columns="3">
@@ -397,7 +424,10 @@ const Home: React.FC = () => {
                 </div>
                 <div className="stat-card__value">{signal.value}</div>
                 <div className="stat-card__label">{signal.label}</div>
-                <p className="stat-card__description">{signal.description}</p>
+                <p className="stat-card__description">
+                  <span className="hidden sm:inline">{signal.description}</span>
+                  <span className="sm:hidden">{signal.mobileDescription ?? signal.description}</span>
+                </p>
               </div>
             ))}
           </div>
@@ -417,10 +447,29 @@ const Home: React.FC = () => {
             <span className="section-heading__eyebrow">We get the frustration</span>
             <h2 className="section-heading__title">Does your current cleaning program keep letting you down?</h2>
             <p className="section-heading__description">
-              Most new clients come to us after dealing with slow responses, inconsistent standards and missing compliance files. Sound familiar?
+              <span className="hidden sm:inline">
+                Most new clients come to us after dealing with slow responses, inconsistent standards and missing compliance files. Sound familiar?
+              </span>
+              <span className="sm:hidden">Most new clients join after slow responses, inconsistent standards and missing compliance files.</span>
             </p>
           </div>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+          <div className="mobile-accordion sm:hidden">
+            {painPoints.map((item) => (
+              <details key={item.title} className="mobile-accordion__item">
+                <summary className="mobile-accordion__summary">
+                  <span className="mobile-accordion__icon">
+                    <item.icon className="h-4 w-4" />
+                  </span>
+                  <span className="mobile-accordion__title">{item.title}</span>
+                  <ChevronDown className="mobile-accordion__chevron" aria-hidden="true" />
+                </summary>
+                <div className="mobile-accordion__content">
+                  <p>{item.mobileDescription ?? item.description}</p>
+                </div>
+              </details>
+            ))}
+          </div>
+          <div className="hidden gap-6 sm:grid sm:grid-cols-2 md:grid-cols-3">
             {painPoints.map((item) => (
               <div key={item.title} className="feature-grid-card h-full">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-celestial-blue-1/12 text-celestial-blue-1">
@@ -440,10 +489,29 @@ const Home: React.FC = () => {
             <span className="section-heading__eyebrow">Our promise</span>
             <h2 className="section-heading__title">We remove the cleaning headaches for good</h2>
             <p className="section-heading__description">
-              Every engagement is designed to make life easier for facility managers and business owners, not create more follow-up work.
+              <span className="hidden sm:inline">
+                Every engagement is designed to make life easier for facility managers and business owners, not create more follow-up work.
+              </span>
+              <span className="sm:hidden">We design the program so you have less chasing and more certainty.</span>
             </p>
           </div>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+          <div className="mobile-accordion sm:hidden">
+            {solutionPillars.map((pillar) => (
+              <details key={pillar.title} className="mobile-accordion__item">
+                <summary className="mobile-accordion__summary">
+                  <span className="mobile-accordion__icon">
+                    <pillar.icon className="h-4 w-4" />
+                  </span>
+                  <span className="mobile-accordion__title">{pillar.title}</span>
+                  <ChevronDown className="mobile-accordion__chevron" aria-hidden="true" />
+                </summary>
+                <div className="mobile-accordion__content">
+                  <p>{pillar.mobileDescription ?? pillar.description}</p>
+                </div>
+              </details>
+            ))}
+          </div>
+          <div className="hidden gap-6 sm:grid sm:grid-cols-2 xl:grid-cols-4">
             {solutionPillars.map((pillar) => (
               <div key={pillar.title} className="feature-grid-card h-full">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-celestial-blue-1/12 text-celestial-blue-1">
@@ -463,10 +531,13 @@ const Home: React.FC = () => {
             <span className="section-heading__eyebrow">Services</span>
             <h2 className="section-heading__title">Pick your pathway to a spotless facility</h2>
             <p className="section-heading__description">
-              Choose the program tailored to your industry. Each page highlights the specifics, results and pricing guidance you need.
+              <span className="hidden sm:inline">
+                Choose the program tailored to your industry. Each page highlights the specifics, results and pricing guidance you need.
+              </span>
+              <span className="sm:hidden">Pick the program that matches your facility and see what’s included.</span>
             </p>
           </div>
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
+          <div className="service-card-rail sm:grid sm:grid-cols-2 xl:grid-cols-3">
             {services.map((service) => (
               <Link key={service.name} to={service.path} className="service-card group">
                 <div className="service-card__visual">
@@ -485,7 +556,10 @@ const Home: React.FC = () => {
                 <div className="service-card__body">
                   <span className="service-card__eyebrow">Tailored program</span>
                   <h3 className="service-card__title">{service.name}</h3>
-                  <p className="service-card__description">{service.description}</p>
+                  <p className="service-card__description">
+                    <span className="hidden sm:inline">{service.description}</span>
+                    <span className="sm:hidden">{service.mobileDescription ?? service.description}</span>
+                  </p>
                   <span className="service-card__cta">
                     Explore program
                     <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -506,7 +580,14 @@ const Home: React.FC = () => {
       <QuoteSection
         eyebrow="Start the conversation"
         title="Tell us about your facility and we’ll build your plan"
-        description="We respond fast with pricing, onboarding dates and the supervisor who will own your account."
+        description={
+          <>
+            <span className="hidden sm:inline">
+              We respond fast with pricing, onboarding dates and the supervisor who will own your account.
+            </span>
+            <span className="sm:hidden">Get pricing, start dates and your dedicated supervisor within one business day.</span>
+          </>
+        }
         bullets={[
           '24-hour response on business days',
           'Police-checked cleaners with full insurance',
@@ -522,7 +603,10 @@ const Home: React.FC = () => {
             <span className="section-heading__eyebrow">Social proof</span>
             <h2 className="section-heading__title">Brisbane leaders who rely on MOG Cleaning</h2>
             <p className="section-heading__description">
-              Testimonials and renewals from clients across offices, gyms and clinics prove we deliver consistent outcomes.
+              <span className="hidden sm:inline">
+                Testimonials and renewals from clients across offices, gyms and clinics prove we deliver consistent outcomes.
+              </span>
+              <span className="sm:hidden">Clients across offices, gyms and clinics renew with us because outcomes stay consistent.</span>
             </p>
           </div>
           <TestimonialCarousel testimonials={testimonials} className="mx-auto max-w-4xl" />
@@ -535,7 +619,10 @@ const Home: React.FC = () => {
             <span className="section-heading__eyebrow">Before you enquire</span>
             <h2 className="section-heading__title">Commercial cleaning FAQs</h2>
             <p className="section-heading__description">
-              If you still have questions before requesting a quote, the answers below will help you move forward confidently.
+              <span className="hidden sm:inline">
+                If you still have questions before requesting a quote, the answers below will help you move forward confidently.
+              </span>
+              <span className="sm:hidden">Answer the top questions before you request a quote.</span>
             </p>
           </div>
           <FAQAccordion faqs={faqs} className="max-w-4xl mx-auto" />
@@ -548,7 +635,10 @@ const Home: React.FC = () => {
             <span className="section-heading__eyebrow">Keep the momentum going</span>
             <h2 className="section-heading__title">Choose your next best step</h2>
             <p className="section-heading__description">
-              Dive deeper into our services, meet the people behind the brand or see exactly how onboarding unfolds.
+              <span className="hidden sm:inline">
+                Dive deeper into our services, meet the people behind the brand or see exactly how onboarding unfolds.
+              </span>
+              <span className="sm:hidden">Jump straight to the page that helps you move forward.</span>
             </p>
           </div>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -556,7 +646,10 @@ const Home: React.FC = () => {
               const content = (
                 <>
                   <h3 className="text-xl font-semibold text-charcoal">{link.title}</h3>
-                  <p className="text-jet/80 leading-relaxed">{link.description}</p>
+                  <p className="text-jet/80 leading-relaxed">
+                    <span className="hidden sm:inline">{link.description}</span>
+                    <span className="sm:hidden">{link.mobileDescription ?? link.description}</span>
+                  </p>
                   <span className="link-arrow">
                     Continue
                     <ArrowRight className="h-4 w-4" />
@@ -590,7 +683,10 @@ const Home: React.FC = () => {
             </span>
             <h2 className="section-heading__title text-white">Book your walkthrough and secure your crew</h2>
             <p className="section-heading__description text-white/80">
-              Talk with our team today and receive a tailored proposal, onboarding plan and supervisor introduction within 24 hours.
+              <span className="hidden sm:inline">
+                Talk with our team today and receive a tailored proposal, onboarding plan and supervisor introduction within 24 hours.
+              </span>
+              <span className="sm:hidden">Speak with our team for a tailored proposal and onboarding plan within 24 hours.</span>
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
               <Link to="/contact" className="btn-primary">

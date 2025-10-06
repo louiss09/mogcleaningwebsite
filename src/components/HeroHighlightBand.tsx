@@ -5,6 +5,7 @@ export interface HeroHighlightItem {
   icon?: LucideIcon;
   title: string;
   description?: string;
+  mobileDescription?: string;
 }
 
 interface HeroHighlightBandProps {
@@ -29,7 +30,12 @@ const HeroHighlightBand: React.FC<HeroHighlightBandProps> = ({ items, className 
                 </div>
               )}
               <div className="hero-highlight-card__title">{item.title}</div>
-              {item.description && <p>{item.description}</p>}
+              {item.description && (
+                <p>
+                  <span className="hidden sm:inline">{item.description}</span>
+                  <span className="sm:hidden">{item.mobileDescription ?? item.description}</span>
+                </p>
+              )}
             </div>
           ))}
         </div>
