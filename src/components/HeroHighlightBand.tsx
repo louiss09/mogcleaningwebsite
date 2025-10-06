@@ -19,7 +19,7 @@ const HeroHighlightBand: React.FC<HeroHighlightBandProps> = ({ items, className 
 
   return (
     <section className={`hero-highlight-band ${className}`.trim()}>
-      <div className="container-max layout-tight">
+      <div className="container-max px-6">
         <div className="hero-highlight-band__grid">
           {items.map((item) => (
             <div key={item.title} className="hero-highlight-card">

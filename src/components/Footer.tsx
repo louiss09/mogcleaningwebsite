@@ -37,7 +37,7 @@ const Footer: React.FC = () => {
       <div className="site-footer__gradient" aria-hidden="true"></div>
       <div className="site-footer__glow site-footer__glow--one" aria-hidden="true"></div>
       <div className="site-footer__glow site-footer__glow--two" aria-hidden="true"></div>
-      <div className="site-footer__container container-max layout-tight">
+      <div className="site-footer__container container-max px-6">
         <div className="site-footer__primary">
           <div className="site-footer__brand-card">
             <div className="site-footer__brand-heading">

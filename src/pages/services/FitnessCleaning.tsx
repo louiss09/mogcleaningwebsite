@@ -174,6 +174,11 @@ const FitnessCleaning: React.FC = () => {
 
   const featureTickerItems = [
     {
+      icon: CheckCircle,
+      title: 'Hygiene audit complete',
+      description: 'Chemical selection and compliance checks aligned to your brand within week one.',
+    },
+    {
       icon: Users,
       title: 'Zone-specific crews',
       description: 'Dedicated teams for cardio, strength, studios and amenities for faster resets.',
@@ -184,19 +189,14 @@ const FitnessCleaning: React.FC = () => {
       description: 'Schedules mirror peak classes, comps and 24/7 access windows.',
     },
     {
-      icon: Droplets,
-      title: 'Odour control routines',
-      description: 'Ventilation cleaning and deodorising keep changerooms fresh around the clock.',
-    },
-    {
       icon: SprayCan,
       title: 'Documented disinfecting',
       description: 'Photo logs and chemical registers ready for franchise and council reviews.',
     },
     {
-      icon: CheckCircle,
-      title: 'Hygiene audit complete',
-      description: 'Chemical selection and compliance checks aligned to your brand within week one.',
+      icon: Droplets,
+      title: 'Odour control routines',
+      description: 'Ventilation cleaning and deodorising keep changerooms fresh around the clock.',
     },
   ];
 

@@ -175,14 +175,9 @@ const EducationCleaning: React.FC = () => {
 
   const featureTickerItems = [
     {
-      icon: Sparkles,
-      title: 'Rapid outbreak response',
-      description: 'Disinfection crews on standby for urgent hygiene support.',
-    },
-    {
-      icon: Clock,
-      title: 'Term & event rhythms',
-      description: 'Schedules built around bell times, excursions and community events.',
+      icon: CheckCircle,
+      title: 'Week-one onboarding',
+      description: 'Campus walkthrough, safety induction and scope finalised in the first week.',
     },
     {
       icon: Users,
@@ -190,14 +185,19 @@ const EducationCleaning: React.FC = () => {
       description: 'Dedicated supervisors for classrooms, amenities and outdoor hubs.',
     },
     {
+      icon: Clock,
+      title: 'Term & event rhythms',
+      description: 'Schedules built around bell times, excursions and community events.',
+    },
+    {
       icon: Brush,
       title: 'Holiday deep cleans',
       description: 'Floor care, high dusting and window detailing while students are away.',
     },
     {
-      icon: CheckCircle,
-      title: 'Week-one onboarding',
-      description: 'Campus walkthrough, safety induction and scope finalised in the first week.',
+      icon: Sparkles,
+      title: 'Rapid outbreak response',
+      description: 'Disinfection crews on standby for urgent hygiene support.',
     },
   ];
 
