@@ -341,8 +341,10 @@ h6 {
   display: block;
 }
 
-.hero-minimal--home .hero-minimal__title-line {
-  white-space: nowrap;
+@media (min-width: 640px) {
+  .hero-minimal--home .hero-minimal__title-line {
+    white-space: nowrap;
+  }
 }
 
 .hero-minimal__title-line + .hero-minimal__title-line {
