@@ -76,16 +76,16 @@ const Header: React.FC = () => {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'py-3' : 'py-6'
+        isScrolled ? 'py-2.5 sm:py-3' : 'py-4 sm:py-6'
       }`}
     >
-      <div className="px-4">
+      <div className="layout-tight">
         <div
-          className={`container-max mx-auto flex flex-col rounded-[32px] border bg-white/60 px-6 py-3 shadow-lg backdrop-blur-xl transition-all duration-300 ${
-            isScrolled ? 'border-white/60 shadow-xl' : 'border-white/30'
+          className={`container-max mx-auto flex flex-col rounded-[26px] sm:rounded-[32px] border bg-white/70 layout-tight py-2.5 sm:py-3 backdrop-blur-lg sm:backdrop-blur-xl transition-all duration-300 ${
+            isScrolled ? 'border-white/60 shadow-lg sm:shadow-xl' : 'border-white/30 shadow-md sm:shadow-lg'
           }`}
         >
-          <div className="flex items-center justify-between gap-6">
+          <div className="flex items-center justify-between gap-4 sm:gap-6">
             <Link
               to="/"
               className="flex items-center gap-3"
@@ -219,7 +219,7 @@ const Header: React.FC = () => {
             >
               <div className="overflow-hidden">
                 {isMenuVisible && (
-                  <div className="flex flex-col space-y-4 border-t border-white/50 pt-4">
+                  <div className="flex flex-col space-y-3 border-t border-white/50 pt-3">
                     <Link
                       to="/"
                       className="font-medium text-jet hover:text-celestial-blue-1"
