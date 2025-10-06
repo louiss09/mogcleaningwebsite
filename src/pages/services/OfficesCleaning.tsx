@@ -21,7 +21,6 @@ import QuoteSection from '../../components/QuoteSection';
 import HeroHighlightBand from '../../components/HeroHighlightBand';
 import HowItWorks from '../../components/HowItWorks';
 import ChecklistPreview from '../../components/ChecklistPreview';
-import FeatureTicker from '../../components/FeatureTicker';
 
 const OfficesCleaning: React.FC = () => {
   const checklistPreview = [
@@ -173,34 +172,6 @@ const OfficesCleaning: React.FC = () => {
     },
   ];
 
-  const featureTickerItems = [
-    {
-      icon: CheckCircle,
-      title: 'Week-one discovery',
-      description: 'Walkthrough, scope build and stakeholder alignment completed in days.',
-    },
-    {
-      icon: Users,
-      title: 'Named supervisors',
-      description: 'Dedicated crew leads for every floor plate and specialist zone.',
-    },
-    {
-      icon: Clock,
-      title: 'Hybrid-ready scheduling',
-      description: 'Rhythms that align with early starts, lunch peaks and after-hours resets.',
-    },
-    {
-      icon: ClipboardCheck,
-      title: 'Documented QA',
-      description: 'Photo reporting, KPI reviews and transparent visit tracking.',
-    },
-    {
-      icon: Sparkles,
-      title: 'High-touch finishes',
-      description: 'Boardrooms, reception and amenities detailed before leadership arrives.',
-    },
-  ];
-
   const officePrograms = [
     {
       title: 'Executive & client floors',
@@ -338,8 +309,6 @@ const OfficesCleaning: React.FC = () => {
           </div>
         </div>
       </section>
-
-      <FeatureTicker items={featureTickerItems} />
 
       <HowItWorks
         eyebrow="How we onboard"

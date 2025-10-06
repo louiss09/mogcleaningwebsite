@@ -21,7 +21,6 @@ import QuoteSection from '../../components/QuoteSection';
 import HeroHighlightBand from '../../components/HeroHighlightBand';
 import HowItWorks from '../../components/HowItWorks';
 import ChecklistPreview from '../../components/ChecklistPreview';
-import FeatureTicker from '../../components/FeatureTicker';
 
 const EducationCleaning: React.FC = () => {
   const checklistPreview = [
@@ -173,34 +172,6 @@ const EducationCleaning: React.FC = () => {
     },
   ];
 
-  const featureTickerItems = [
-    {
-      icon: CheckCircle,
-      title: 'Week-one onboarding',
-      description: 'Campus walkthrough, safety induction and scope finalised in the first week.',
-    },
-    {
-      icon: Users,
-      title: 'Precinct crew leads',
-      description: 'Dedicated supervisors for classrooms, amenities and outdoor hubs.',
-    },
-    {
-      icon: Clock,
-      title: 'Term & event rhythms',
-      description: 'Schedules built around bell times, excursions and community events.',
-    },
-    {
-      icon: Brush,
-      title: 'Holiday deep cleans',
-      description: 'Floor care, high dusting and window detailing while students are away.',
-    },
-    {
-      icon: Sparkles,
-      title: 'Rapid outbreak response',
-      description: 'Disinfection crews on standby for urgent hygiene support.',
-    },
-  ];
-
   const campusZones = [
     {
       title: 'Learning spaces',
@@ -337,8 +308,6 @@ const EducationCleaning: React.FC = () => {
           </div>
         </div>
       </section>
-
-      <FeatureTicker items={featureTickerItems} />
 
       <HowItWorks
         eyebrow="How onboarding works"

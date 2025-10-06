@@ -21,7 +21,6 @@ import QuoteSection from '../../components/QuoteSection';
 import HeroHighlightBand from '../../components/HeroHighlightBand';
 import HowItWorks from '../../components/HowItWorks';
 import ChecklistPreview from '../../components/ChecklistPreview';
-import FeatureTicker from '../../components/FeatureTicker';
 
 const RetailCleaning: React.FC = () => {
   const checklistPreview = [
@@ -173,34 +172,6 @@ const RetailCleaning: React.FC = () => {
     },
   ];
 
-  const featureTickerItems = [
-    {
-      icon: CheckCircle,
-      title: 'Visual merchandising walkthrough',
-      description: 'Capture fixtures, finishes and launch schedules with VM and store leads.',
-    },
-    {
-      icon: Users,
-      title: 'Zone-specific crews',
-      description: 'Dedicated teams for sales floors, fitting rooms and back-of-house areas.',
-    },
-    {
-      icon: Clock,
-      title: 'After-hours & day porters',
-      description: 'Support launches, sales events and extended trading without disruption.',
-    },
-    {
-      icon: Package,
-      title: 'Logistics-ready support',
-      description: 'Stockrooms, docks and click-and-collect areas stay organised and hygienic.',
-    },
-    {
-      icon: Sparkles,
-      title: 'Launch-ready finishes',
-      description: 'Streak-free windows, polished floors and refreshed change rooms daily.',
-    },
-  ];
-
   const retailSupport = [
     {
       name: 'Flagship & concept stores',
@@ -337,8 +308,6 @@ const RetailCleaning: React.FC = () => {
           </div>
         </div>
       </section>
-
-      <FeatureTicker items={featureTickerItems} />
 
       <HowItWorks
         eyebrow="How onboarding works"

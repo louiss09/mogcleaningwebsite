@@ -20,7 +20,6 @@ import QuoteSection from '../../components/QuoteSection';
 import HeroHighlightBand from '../../components/HeroHighlightBand';
 import HowItWorks from '../../components/HowItWorks';
 import ChecklistPreview from '../../components/ChecklistPreview';
-import FeatureTicker from '../../components/FeatureTicker';
 
 const FitnessCleaning: React.FC = () => {
   const checklistPreview = [
@@ -172,34 +171,6 @@ const FitnessCleaning: React.FC = () => {
     },
   ];
 
-  const featureTickerItems = [
-    {
-      icon: CheckCircle,
-      title: 'Hygiene audit complete',
-      description: 'Chemical selection and compliance checks aligned to your brand within week one.',
-    },
-    {
-      icon: Users,
-      title: 'Zone-specific crews',
-      description: 'Dedicated teams for cardio, strength, studios and amenities for faster resets.',
-    },
-    {
-      icon: Timer,
-      title: 'Timetable-matched rosters',
-      description: 'Schedules mirror peak classes, comps and 24/7 access windows.',
-    },
-    {
-      icon: SprayCan,
-      title: 'Documented disinfecting',
-      description: 'Photo logs and chemical registers ready for franchise and council reviews.',
-    },
-    {
-      icon: Droplets,
-      title: 'Odour control routines',
-      description: 'Ventilation cleaning and deodorising keep changerooms fresh around the clock.',
-    },
-  ];
-
   const studioPrograms = [
     {
       name: 'Strength & cardio floors',
@@ -336,8 +307,6 @@ const FitnessCleaning: React.FC = () => {
           </div>
         </div>
       </section>
-
-      <FeatureTicker items={featureTickerItems} />
 
       <HowItWorks
         eyebrow="How onboarding works"
