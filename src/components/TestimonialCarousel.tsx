@@ -112,20 +112,26 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
 
   return (
     <div
-      className={`relative overflow-hidden rounded-[32px] border border-white/60 bg-gradient-to-br from-white via-white to-celestial-blue-1/12 p-6 sm:p-12 shadow-2xl backdrop-blur-sm ${className}`}
+      className={`testimonial-carousel relative overflow-hidden rounded-[32px] border border-white/60 bg-gradient-to-br from-white via-white to-celestial-blue-1/12 p-6 sm:p-12 shadow-2xl backdrop-blur-sm ${className}`}
     >
-      <div className="absolute -top-24 -right-16 h-64 w-64 rounded-full bg-celestial-blue-1/15 blur-3xl" aria-hidden="true"></div>
-      <div className="absolute -bottom-28 -left-20 h-72 w-72 rounded-full bg-fresh-green/12 blur-3xl" aria-hidden="true"></div>
+      <div
+        className="absolute hidden h-64 w-64 rounded-full bg-celestial-blue-1/15 blur-3xl sm:block sm:-top-24 sm:-right-16"
+        aria-hidden="true"
+      ></div>
+      <div
+        className="absolute hidden h-72 w-72 rounded-full bg-fresh-green/12 blur-3xl sm:block sm:-bottom-28 sm:-left-20"
+        aria-hidden="true"
+      ></div>
 
       <div className="relative z-10">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between mb-10 text-center sm:text-left">
-          <div className="flex items-center justify-center sm:justify-start gap-2 text-celestial-blue-1">
+        <div className="testimonial-carousel__intro mb-10 flex flex-col gap-4 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
+          <div className="testimonial-carousel__intro-rating flex items-center justify-center gap-2 text-celestial-blue-1 sm:justify-start">
             {Array.from({ length: 5 }).map((_, index) => (
               <Star key={`star-${index}`} className="h-5 w-5 fill-celestial-blue-1 text-celestial-blue-1" />
             ))}
             <span className="text-sm font-semibold text-celestial-blue-1/80">Trusted by Brisbane businesses</span>
           </div>
-          <div className="flex items-center justify-center sm:justify-end gap-3">
+          <div className="testimonial-carousel__intro-meta flex items-center justify-center gap-3 sm:justify-end">
             <div className="rounded-full bg-white/80 p-3 shadow-inner">
               <MessageCircle className="h-6 w-6 text-celestial-blue-1" />
             </div>
@@ -136,13 +142,13 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
         </div>
 
         <div
-          className="flex transition-transform duration-700 ease-out"
+          className="testimonial-carousel__track flex transition-transform duration-500 ease-out"
           style={{ transform: `translateX(-${activeIndex * 100}%)` }}
           aria-live="polite"
         >
           {slides.map((testimonial, index) => (
             <div key={`${testimonial.name}-${index}`} className="min-w-full flex-shrink-0 basis-full px-2">
-              <div className="mx-auto flex max-w-3xl flex-col justify-between px-2 sm:px-6 text-center md:text-left">
+              <div className="mx-auto flex max-w-3xl flex-col justify-between px-2 text-center sm:px-6 md:text-left">
                 {testimonial.highlight && (
                   <span className="mb-6 inline-block rounded-full bg-celestial-blue-1/10 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-celestial-blue-1/70">
                     {testimonial.highlight}
@@ -151,7 +157,7 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
                 <div className="mb-6 flex justify-center md:justify-start">
                   <Quote className="h-8 w-8 text-celestial-blue-1/40" />
                 </div>
-                <p className="text-lg sm:text-2xl text-charcoal leading-relaxed mb-8">&ldquo;{testimonial.quote}&rdquo;</p>
+                <p className="testimonial-carousel__quote mb-8 text-lg leading-relaxed text-charcoal sm:text-2xl">&ldquo;{testimonial.quote}&rdquo;</p>
                 <div className="space-y-1">
                   <div className="text-lg font-semibold text-charcoal">{testimonial.name}</div>
                   <div className="text-sm text-jet/80">{testimonial.role}</div>
@@ -180,11 +186,11 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
               <ChevronRight className="w-5 h-5" />
             </button>
 
-            <div className="mt-6 flex items-center justify-center gap-4 sm:hidden">
+            <div className="testimonial-carousel__nav mt-6 flex items-center justify-center gap-4 sm:hidden">
               <button
                 type="button"
                 onClick={goPrev}
-                className="flex h-12 w-12 items-center justify-center rounded-full border border-ash-gray/50 bg-white/95 text-charcoal shadow-md transition-colors hover:bg-celestial-blue-1 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-celestial-blue-1/80 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                className="testimonial-carousel__nav-button flex h-12 w-12 items-center justify-center rounded-full border border-ash-gray/50 bg-white/95 text-charcoal shadow-md transition-colors hover:bg-celestial-blue-1 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-celestial-blue-1/80 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                 aria-label="Previous testimonial"
               >
                 <ChevronLeft className="w-5 h-5" />
@@ -192,7 +198,7 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
               <button
                 type="button"
                 onClick={goNext}
-                className="flex h-12 w-12 items-center justify-center rounded-full border border-ash-gray/50 bg-white/95 text-charcoal shadow-md transition-colors hover:bg-celestial-blue-1 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-celestial-blue-1/80 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                className="testimonial-carousel__nav-button flex h-12 w-12 items-center justify-center rounded-full border border-ash-gray/50 bg-white/95 text-charcoal shadow-md transition-colors hover:bg-celestial-blue-1 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-celestial-blue-1/80 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                 aria-label="Next testimonial"
               >
                 <ChevronRight className="w-5 h-5" />
