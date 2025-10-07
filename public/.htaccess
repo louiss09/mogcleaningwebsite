@@ -1,0 +1,28 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # ==============================
+  # Force HTTPS
+  # ==============================
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://www.mogcleaning.com.au/$1 [L,R=301]
+
+  # ==============================
+  # React SPA Routing Fix
+  # ==============================
+
+  # Allow direct access to existing files and directories (including PHP endpoints)
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Avoid rewriting the entry point itself to prevent rewrite loops
+  RewriteRule ^index\.html$ - [L]
+
+  # Fallback all other requests to the SPA entry point for client-side routing
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# Provide a sensible fallback when mod_rewrite is unavailable
+FallbackResource /index.html
