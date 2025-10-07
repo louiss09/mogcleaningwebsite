@@ -33,15 +33,34 @@
       />
     </noscript>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PJ1MB2NTCL"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
+    <script type="module">
+      const measurementId = import.meta.env.VITE_GA_MEASUREMENT_ID;
+      const adsId = import.meta.env.VITE_GOOGLE_ADS_ID;
+      const loaderId = adsId || measurementId;
+
+      if (loaderId) {
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(loaderId)}`;
+        document.head.appendChild(script);
       }
+
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        window.dataLayer.push(arguments);
+      }
+
+      window.gtag = gtag;
       gtag('js', new Date());
 
-      gtag('config', 'G-PJ1MB2NTCL', { send_page_view: false });
+      if (measurementId) {
+        gtag('config', measurementId, { send_page_view: false });
+      }
+
+      if (adsId) {
+        gtag('config', adsId);
+      }
     </script>
   </head>
   <body>
