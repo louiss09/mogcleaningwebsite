@@ -17,7 +17,8 @@ import ThankYou from './pages/ThankYou';
 import useScrollMotion from './hooks/useScrollMotion';
 import './App.css';
 
-const GA_MEASUREMENT_ID = 'G-PJ1MB2NTCL';
+const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID;
+const GOOGLE_ADS_ID = import.meta.env.VITE_GOOGLE_ADS_ID;
 
 declare global {
   interface Window {
@@ -47,9 +48,19 @@ const AppRoutes: React.FC = () => {
       return;
     }
 
-    window.gtag('config', GA_MEASUREMENT_ID, {
-      page_path: `${location.pathname}${location.search}${location.hash}`,
-    });
+    const pagePath = `${location.pathname}${location.search}${location.hash}`;
+
+    if (GA_MEASUREMENT_ID) {
+      window.gtag('config', GA_MEASUREMENT_ID, {
+        page_path: pagePath,
+      });
+    }
+
+    if (GOOGLE_ADS_ID) {
+      window.gtag('config', GOOGLE_ADS_ID, {
+        page_path: pagePath,
+      });
+    }
   }, [location.pathname, location.search, location.hash]);
 
   return (

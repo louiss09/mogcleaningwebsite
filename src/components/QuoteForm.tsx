@@ -8,6 +8,11 @@ interface QuoteFormProps {
   className?: string;
 }
 
+const GOOGLE_ADS_ID = import.meta.env.VITE_GOOGLE_ADS_ID;
+const GOOGLE_ADS_CONVERSION_LABEL = import.meta.env.VITE_GOOGLE_ADS_CONVERSION_LABEL;
+const GOOGLE_ADS_CONVERSION_VALUE = import.meta.env.VITE_GOOGLE_ADS_CONVERSION_VALUE;
+const GOOGLE_ADS_CONVERSION_CURRENCY = import.meta.env.VITE_GOOGLE_ADS_CONVERSION_CURRENCY;
+
 const QuoteForm: React.FC<QuoteFormProps> = ({
   title = 'Get Your Free Quote',
   subtitle = 'No obligation. Response within 24 hours.',
@@ -48,6 +53,24 @@ const QuoteForm: React.FC<QuoteFormProps> = ({
       const data = await res.json().catch(() => null);
 
       if (res.ok && data && data.success) {
+        if (typeof window !== 'undefined' && typeof window.gtag === 'function' && GOOGLE_ADS_ID && GOOGLE_ADS_CONVERSION_LABEL) {
+          const conversionPayload: Record<string, unknown> = {
+            send_to: `${GOOGLE_ADS_ID}/${GOOGLE_ADS_CONVERSION_LABEL}`,
+          };
+
+          const parsedValue = GOOGLE_ADS_CONVERSION_VALUE ? Number(GOOGLE_ADS_CONVERSION_VALUE) : undefined;
+
+          if (!Number.isNaN(parsedValue) && parsedValue !== undefined) {
+            conversionPayload.value = parsedValue;
+          }
+
+          if (GOOGLE_ADS_CONVERSION_CURRENCY) {
+            conversionPayload.currency = GOOGLE_ADS_CONVERSION_CURRENCY;
+          }
+
+          window.gtag('event', 'conversion', conversionPayload);
+        }
+
         setFormData({ name: '', phone: '', email: '', message: '' });
         navigate('/thank-you');
       } else {
